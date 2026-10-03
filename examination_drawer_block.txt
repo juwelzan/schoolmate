@@ -1,0 +1,51 @@
+
+                  ExpandableDrawerItem(
+                    icon: Icons.assignment_outlined,
+                    title: "Examination",
+                    isInitiallyExpanded: currentRoute.contains('/examination') ||
+                                         currentRoute == AppRoutes.exams ||
+                                         currentRoute == AppRoutes.examTerms ||
+                                         currentRoute == AppRoutes.examTypes ||
+                                         currentRoute == AppRoutes.boardSubjectCombinations ||
+                                         currentRoute == AppRoutes.backlogImprovementRules ||
+                                         currentRoute == AppRoutes.questionBank ||
+                                         currentRoute == AppRoutes.questionPapers ||
+                                         currentRoute == AppRoutes.marksEntry ||
+                                         currentRoute == AppRoutes.marksApprovalQueue ||
+                                         currentRoute == AppRoutes.resultCompositions ||
+                                         currentRoute == AppRoutes.weightProfiles ||
+                                         currentRoute == AppRoutes.rankingProfiles ||
+                                         currentRoute == AppRoutes.graceMarkPolicies ||
+                                         currentRoute == AppRoutes.compartmentalEligibilityPolicies ||
+                                         currentRoute == AppRoutes.assessmentDomains ||
+                                         currentRoute == AppRoutes.prePrimaryAssessment ||
+                                         currentRoute == AppRoutes.developmentalMilestones ||
+                                         currentRoute == AppRoutes.milestoneTracker,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20.0),
+                        child: Column(
+                          children: [
+                            _buildSubMenuItem(context, "Exams", AppRoutes.exams, currentRoute),
+                            _buildSubMenuItem(context, "Exam Terms", AppRoutes.examTerms, currentRoute),
+                            _buildSubMenuItem(context, "Exam Types", AppRoutes.examTypes, currentRoute),
+                            _buildSubMenuItem(context, "Board Subject Combinations", AppRoutes.boardSubjectCombinations, currentRoute),
+                            _buildSubMenuItem(context, "Backlog/Improvement Rules", AppRoutes.backlogImprovementRules, currentRoute),
+                            _buildSubMenuItem(context, "Question Bank", AppRoutes.questionBank, currentRoute),
+                            _buildSubMenuItem(context, "Question Papers", AppRoutes.questionPapers, currentRoute),
+                            _buildSubMenuItem(context, "Marks Entry", AppRoutes.marksEntry, currentRoute),
+                            _buildSubMenuItem(context, "Marks Approval Queue", AppRoutes.marksApprovalQueue, currentRoute),
+                            _buildSubMenuItem(context, "Result Compositions", AppRoutes.resultCompositions, currentRoute),
+                            _buildSubMenuItem(context, "Weight Profiles", AppRoutes.weightProfiles, currentRoute),
+                            _buildSubMenuItem(context, "Ranking Profiles", AppRoutes.rankingProfiles, currentRoute),
+                            _buildSubMenuItem(context, "Grace Mark Policies", AppRoutes.graceMarkPolicies, currentRoute),
+                            _buildSubMenuItem(context, "Compartmental Eligibility Policies", AppRoutes.compartmentalEligibilityPolicies, currentRoute),
+                            _buildSubMenuItem(context, "Assessment Domains", AppRoutes.assessmentDomains, currentRoute),
+                            _buildSubMenuItem(context, "Pre-Primary Assessment", AppRoutes.prePrimaryAssessment, currentRoute),
+                            _buildSubMenuItem(context, "Developmental Milestones", AppRoutes.developmentalMilestones, currentRoute),
+                            _buildSubMenuItem(context, "Milestone Tracker", AppRoutes.milestoneTracker, currentRoute),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
