@@ -1,6 +1,8 @@
 // === Core & Feature Imports ===
-import 'package:go_router/go_router.dart';
+
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/onboarding/presentation/pages/role_selection_page.dart';
+import 'package:schoolmate/features/onboarding/presentation/pages/splash_page.dart';
 import 'package:schoolmate/features/settings/presentation/pages/change_password_page.dart';
 
 class AppRouter {
@@ -603,6 +605,10 @@ class AppRouter {
       GoRoute(
         path: AppRoutes.initial,
         builder: (context, state) => const SplashPage(),
+      ),
+      GoRoute(
+        path: AppRoutes.onboarding,
+        builder: (context, state) => const OnboardingPage(),
       ),
       GoRoute(
         path: AppRoutes.roleSelection,

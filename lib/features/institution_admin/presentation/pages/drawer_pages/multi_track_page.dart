@@ -9,11 +9,12 @@ class MultiTrackPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Multi-Track",
-        subtitle: "Manage Institution Tracks",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.multiTrackTitle,
+        subtitle: l10n.multiTrackSubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -24,19 +25,19 @@ class MultiTrackPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Dhaka Public School",
+                Text(
+                  l10n.drawerSchoolName,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.textSecondary,
+                    color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                   ),
                 ),
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                  label: const Text(
-                    "Add Track",
+                  label: Text(
+                    l10n.multiTrackAddTrack,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -59,7 +60,7 @@ class MultiTrackPage extends StatelessWidget {
             // Dashed Empty State Container
             CustomPaint(
               painter: DashedBorderPainter(
-                color: AppColors.primaryPurple.withOpacity(0.3),
+                color: AppColors.primaryPurple.withValues(alpha: 0.3),
                 strokeWidth: 1.5,
                 dashLength: 8.0,
                 dashGap: 6.0,
@@ -73,7 +74,7 @@ class MultiTrackPage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: AppColors.surfaceVerySoftPurple,
+                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -83,21 +84,21 @@ class MultiTrackPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const Text(
-                      "No tracks configured.",
+                    Text(
+                      l10n.multiTrackNoTracks,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "Add a track if your institution runs multiple programs under different boards.",
+                    Text(
+                      l10n.multiTrackEmptyDesc,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                       ),
                     ),
                   ],

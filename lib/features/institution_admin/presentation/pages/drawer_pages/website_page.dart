@@ -11,22 +11,22 @@ class WebsitePage extends StatefulWidget {
 }
 
 class _WebsitePageState extends State<WebsitePage> {
-  final List<String> _tabs = [
-    "Settings", "Hero", "About", "Principal's Message", "Notices", 
-    "Gallery", "Contact", "Mission & Vision", "Why Choose Us", 
-    "Classes", "Events", "Testimonials", "Videos", "FAQ", 
-    "Teachers", "Committee", "Admissions", "Results", "Inbox"
-  ];
-  
-  String _selectedTab = "Hero"; // Default selected as per image
+  int _selectedTabIndex = 1;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final List<String> tabs = [
+      l10n.webTabSettings, l10n.webTabHero, l10n.webTabAbout, l10n.webTabPrincipalMsg, l10n.webTabNotices,
+      l10n.webTabGallery, l10n.webTabContact, l10n.webTabMission, l10n.webTabWhyChoose,
+      l10n.webTabClasses, l10n.webTabEvents, l10n.webTabTestimonials, l10n.webTabVideos, l10n.webTabFaq,
+      l10n.webTabTeachers, l10n.webTabCommittee, l10n.webTabAdmissions, l10n.webTabResults, l10n.webTabInbox
+    ];
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Website",
-        subtitle: "Manage Public Website",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.websiteTitle,
+        subtitle: l10n.websiteSubtitle,
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
@@ -41,7 +41,7 @@ class _WebsitePageState extends State<WebsitePage> {
                   TextButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.open_in_new, size: 16, color: AppColors.primaryPurple),
-                    label: const Text("View live site", style: TextStyle(color: AppColors.primaryPurple, fontWeight: FontWeight.w600)),
+                    label: Text(l10n.websiteLiveSiteBtn, style: TextStyle(color: AppColors.primaryPurple, fontWeight: FontWeight.w600)),
                   ),
                   OutlinedButton(
                     onPressed: () {},
@@ -51,7 +51,7 @@ class _WebsitePageState extends State<WebsitePage> {
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                     ),
-                    child: const Text("Unpublish"),
+                    child: Text(l10n.websiteUnpublishBtn),
                   ),
                 ],
               ),
@@ -63,10 +63,10 @@ class _WebsitePageState extends State<WebsitePage> {
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 24),
-                itemCount: _tabs.length,
+                itemCount: tabs.length,
                 itemBuilder: (context, index) {
-                  final tab = _tabs[index];
-                  final isSelected = _selectedTab == tab;
+                  final tab = tabs[index];
+                  final isSelected = _selectedTabIndex == index;
                   return Padding(
                     padding: const EdgeInsets.only(right: 8.0, bottom: 8.0),
                     child: ChoiceChip(
@@ -74,15 +74,15 @@ class _WebsitePageState extends State<WebsitePage> {
                       selected: isSelected,
                       onSelected: (selected) {
                         setState(() {
-                          _selectedTab = tab;
+                          _selectedTabIndex = index;
                         });
                       },
                       labelStyle: TextStyle(
                         color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
                         fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                       ),
-                      backgroundColor: AppColors.white,
-                      selectedColor: AppColors.white,
+                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                      selectedColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                       side: BorderSide(
                         color: isSelected ? AppColors.primaryPurple : AppColors.divider,
                         width: isSelected ? 1.5 : 1.0,
@@ -103,13 +103,13 @@ class _WebsitePageState extends State<WebsitePage> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: AppColors.divider),
                   ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(32.0),
-                    child: _selectedTab == "Hero" ? _buildHeroForm() : _buildComingSoon(),
+                    child: _selectedTabIndex == 1 ? _buildHeroForm(l10n) : _buildComingSoon(context, l10n, tabs[_selectedTabIndex]),
                   ),
                 ),
               ),
@@ -120,7 +120,7 @@ class _WebsitePageState extends State<WebsitePage> {
     );
   }
 
-  Widget _buildComingSoon() {
+  Widget _buildComingSoon(BuildContext context, AppLocalizations l10n, String tabName) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(64.0),
@@ -128,49 +128,49 @@ class _WebsitePageState extends State<WebsitePage> {
           children: [
             const Icon(Icons.build_circle_outlined, size: 64, color: AppColors.inactiveIcon),
             const SizedBox(height: 16),
-            Text("$_selectedTab settings coming soon.", style: const TextStyle(color: AppColors.textSecondary, fontSize: 16)),
+            Text(l10n.webSettingsComingSoon(tabName), style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 16)),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildHeroForm() {
+  Widget _buildHeroForm(AppLocalizations l10n) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          "Hero",
+        Text(
+          l10n.webTabHero,
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
         ),
         const SizedBox(height: 4),
-        const Text(
-          "The first thing visitors see.",
+        Text(
+          l10n.webHeroSubtitle,
           style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
         ),
         const SizedBox(height: 32),
         
-        _buildTextFieldLabel("Headline"),
+        _buildTextFieldLabel(l10n.webHeroHeadlineLbl),
         const SizedBox(height: 8),
-        _buildTextField(hint: "Your institution's name or slogan"),
+        _buildTextField(hint: l10n.webHeroHeadlineHint),
         const SizedBox(height: 24),
         
-        _buildTextFieldLabel("Subheadline"),
+        _buildTextFieldLabel(l10n.webHeroSubheadlineLbl),
         const SizedBox(height: 8),
         _buildTextField(maxLines: 4),
         const SizedBox(height: 24),
         
-        _buildTextFieldLabel("Call-to-Action Button Text"),
+        _buildTextFieldLabel(l10n.webHeroCtaLbl),
         const SizedBox(height: 8),
-        _buildTextField(hint: "Admission Open"),
+        _buildTextField(hint: l10n.webHeroCtaHint),
         const SizedBox(height: 24),
         
-        _buildTextFieldLabel("Background Image"),
+        _buildTextFieldLabel(l10n.webHeroBgLbl),
         const SizedBox(height: 8),
         OutlinedButton.icon(
           onPressed: () {},
           icon: const Icon(Icons.upload_outlined, size: 18),
-          label: const Text("Upload"),
+          label: Text(l10n.webHeroUploadBtn),
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.textPrimary,
             side: const BorderSide(color: AppColors.divider),
@@ -189,8 +189,8 @@ class _WebsitePageState extends State<WebsitePage> {
               activeColor: AppColors.primaryPurple,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
             ),
-            const Expanded(
-              child: Text("Show this section on the public site", style: TextStyle(color: AppColors.textPrimary, fontSize: 14)),
+            Expanded(
+              child: Text(l10n.webHeroShowSection, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14)),
             ),
           ],
         ),
@@ -204,7 +204,7 @@ class _WebsitePageState extends State<WebsitePage> {
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
           ),
-          child: const Text("Save Section", style: TextStyle(fontWeight: FontWeight.w600)),
+          child: Text(l10n.webHeroSaveBtn, style: TextStyle(fontWeight: FontWeight.w600)),
         ),
       ],
     );
@@ -224,7 +224,7 @@ class _WebsitePageState extends State<WebsitePage> {
         hintText: hint,
         hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
         filled: true,
-        fillColor: const Color(0xFFF9FAFB),
+        fillColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
         contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),

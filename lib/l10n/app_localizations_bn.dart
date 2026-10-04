@@ -298,4 +298,886 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get instSaveChanges => 'পরিবর্তন সংরক্ষণ করুন';
+
+  @override
+  String get drawerInstitutionSetup => 'প্রতিষ্ঠান সেটআপ';
+
+  @override
+  String get drawerPeople => 'ব্যক্তিবর্গ';
+
+  @override
+  String get drawerAcademics => 'একাডেমিকস';
+
+  @override
+  String get drawerFinance => 'অর্থ ও হিসাব';
+
+  @override
+  String get drawerOperations => 'অপারেশনস';
+
+  @override
+  String get drawerAcademic => 'একাডেমিক';
+
+  @override
+  String get drawerTimetable => 'সময়সূচী';
+
+  @override
+  String get drawerTeachersStaff => 'শিক্ষক ও স্টাফ';
+
+  @override
+  String get drawerExamination => 'পরীক্ষা';
+
+  @override
+  String get drawerAttendance => 'উপস্থিতি';
+
+  @override
+  String get drawerCertificates => 'সার্টিফিকেট';
+
+  @override
+  String get drawerFee => 'ফি';
+
+  @override
+  String get drawerInventory => 'ইনভেন্টরি';
+
+  @override
+  String get drawerCommunication => 'যোগাযোগ';
+
+  @override
+  String get drawerDashboard => 'ড্যাশবোর্ড';
+
+  @override
+  String get drawerMultitrack => 'মাল্টি-ট্র্যাক';
+
+  @override
+  String get drawerBoardAffiliations => 'বোর্ড অধিভুক্তি';
+
+  @override
+  String get drawerSmcGoverningBody => 'পরিচালনা পর্ষদ';
+
+  @override
+  String get drawerCampuses => 'ক্যাম্পাসসমূহ';
+
+  @override
+  String get drawerBranches => 'শাখাসমূহ';
+
+  @override
+  String get drawerDocumentTemplates => 'ডকুমেন্ট টেমপ্লেট';
+
+  @override
+  String get drawerStudents => 'শিক্ষার্থী';
+
+  @override
+  String get drawerUsers => 'ইউজার্স';
+
+  @override
+  String get drawerPaymentGateways => 'পেমেন্ট গেটওয়ে';
+
+  @override
+  String get drawerOnlineAdmission => 'অনলাইন ভর্তি';
+
+  @override
+  String get drawerWebsite => 'ওয়েবসাইট';
+
+  @override
+  String get drawerActivityLog => 'অ্যাক্টিভিটি লগ';
+
+  @override
+  String get drawerLogout => 'লগআউট';
+
+  @override
+  String get drawerYears => 'বছর';
+
+  @override
+  String get drawerCalendar => 'ক্যালেন্ডার';
+
+  @override
+  String get drawerShifts => 'শিফট';
+
+  @override
+  String get drawerProgramStructures => 'প্রোগ্রাম কাঠামো';
+
+  @override
+  String get drawerGradingScales => 'গ্রেডিং স্কেল';
+
+  @override
+  String get drawerComponentTypes => 'উপাদানের ধরন';
+
+  @override
+  String get drawerClassesSections => 'শ্রেণী ও শাখা';
+
+  @override
+  String get drawerGroupsStreams => 'বিভাগ / স্ট্রিম';
+
+  @override
+  String get drawerSubjects => 'বিষয়সমূহ';
+
+  @override
+  String get drawerSubjectAssignments => 'বিষয় বন্টন';
+
+  @override
+  String get drawerPreprimary => 'প্রাক-প্রাথমিক';
+
+  @override
+  String get drawerLessonPlans => 'পাঠ পরিকল্পনা';
+
+  @override
+  String get drawerCurriculum => 'পাঠ্যক্রম';
+
+  @override
+  String get drawerSyllabus => 'সিলেবাস';
+
+  @override
+  String get drawerStudyPlans => 'অধ্যয়ন পরিকল্পনা';
+
+  @override
+  String get drawerPeriodSlots => 'পিরিয়ড স্লট';
+
+  @override
+  String get drawerRooms => 'কক্ষসমূহ';
+
+  @override
+  String get drawerClassTimetable => 'ক্লাস রুটিন';
+
+  @override
+  String get drawerShiftTimetable => 'শিফট রুটিন';
+
+  @override
+  String get drawerTeacherTimetable => 'শিক্ষক রুটিন';
+
+  @override
+  String get drawerRoomTimetable => 'কক্ষ রুটিন';
+
+  @override
+  String get drawerSubjectDistributionRules => 'বিষয় বন্টন বিধি';
+
+  @override
+  String get drawerTeacherAvailability => 'শিক্ষকের প্রাপ্যতা';
+
+  @override
+  String get drawerPublish => 'প্রকাশ করুন';
+
+  @override
+  String get drawerSubstituteAssignment => 'বিকল্প শিক্ষক নিয়োগ';
+
+  @override
+  String get drawerRevisions => 'সংশোধন';
+
+  @override
+  String get drawerPeriodSwap => 'পিরিয়ড অদলবদল';
+
+  @override
+  String get drawerTeachers => 'শিক্ষক';
+
+  @override
+  String get drawerStaff => 'কর্মচারী';
+
+  @override
+  String get drawerRecruitment => 'নিয়োগ';
+
+  @override
+  String get drawerLeaveTypes => 'ছুটির ধরন';
+
+  @override
+  String get drawerAcademicDesignations => 'একাডেমিক পদবি';
+
+  @override
+  String get drawerBulkImportAssignments => 'একসাথে অ্যাসাইনমেন্ট আপলোড';
+
+  @override
+  String get drawerSubjectAssignmentMatrix => 'বিষয় বন্টন ম্যাট্রিক্স';
+
+  @override
+  String get drawerExams => 'পরীক্ষাসমূহ';
+
+  @override
+  String get drawerExamTerms => 'পরীক্ষার মেয়াদ';
+
+  @override
+  String get drawerExamTypes => 'পরীক্ষার ধরন';
+
+  @override
+  String get drawerBoardSubjectCombinations => 'বোর্ড বিষয় সমন্বয়';
+
+  @override
+  String get drawerBacklogimprovementRules => 'ব্যাকলগ/উন্নয়ন বিধি';
+
+  @override
+  String get drawerQuestionBank => 'প্রশ্নব্যাংক';
+
+  @override
+  String get drawerQuestionPapers => 'প্রশ্নপত্র';
+
+  @override
+  String get drawerMarksEntry => 'নম্বর এন্ট্রি';
+
+  @override
+  String get drawerMarksApprovalQueue => 'নম্বর অনুমোদনের সারি';
+
+  @override
+  String get drawerResultCompositions => 'ফলাফল কাঠামো';
+
+  @override
+  String get drawerWeightProfiles => 'ওয়েট প্রোফাইল';
+
+  @override
+  String get drawerRankingProfiles => 'র‌্যাংকিং প্রোফাইল';
+
+  @override
+  String get drawerGraceMarkPolicies => 'গ্রেস মার্ক নীতি';
+
+  @override
+  String get drawerCompartmentalEligibilityPolicies =>
+      'কম্পার্টমেন্টাল যোগ্যতা নীতি';
+
+  @override
+  String get drawerAssessmentDomains => 'মূল্যায়ন ডোমেইন';
+
+  @override
+  String get drawerPreprimaryAssessment => 'প্রাক-প্রাথমিক মূল্যায়ন';
+
+  @override
+  String get drawerDevelopmentalMilestones => 'উন্নয়নমূলক মাইলফলক';
+
+  @override
+  String get drawerMilestoneTracker => 'মাইলফলক ট্র্যাকার';
+
+  @override
+  String get drawerDailySummary => 'দৈনিক সারাংশ';
+
+  @override
+  String get drawerShiftAttendance => 'শিফট উপস্থিতি';
+
+  @override
+  String get drawerMonthlyAttendance => 'মাসিক উপস্থিতি';
+
+  @override
+  String get drawerAttendanceEligibility => 'উপস্থিতি যোগ্যতা';
+
+  @override
+  String get drawerTeacherAttendance => 'শিক্ষক উপস্থিতি';
+
+  @override
+  String get drawerStaffAttendance => 'কর্মচারী উপস্থিতি';
+
+  @override
+  String get drawerTeacherMonthlyReport => 'শিক্ষকের মাসিক রিপোর্ট';
+
+  @override
+  String get drawerSubjectCoverageReport => 'বিষয় কভারেজ রিপোর্ট';
+
+  @override
+  String get drawerAttendanceAnalytics => 'উপস্থিতি বিশ্লেষণ';
+
+  @override
+  String get drawerAttendanceDevices => 'উপস্থিতি ডিভাইস';
+
+  @override
+  String get drawerInstituteGateAttendance => 'গেট উপস্থিতি';
+
+  @override
+  String get drawerAttendanceEvents => 'উপস্থিতি ইভেন্ট';
+
+  @override
+  String get drawerPracticalLabAttendance => 'ল্যাব উপস্থিতি';
+
+  @override
+  String get drawerPracticalLabSummary => 'ল্যাব উপস্থিতির সারাংশ';
+
+  @override
+  String get drawerCombinedEligibility => 'সম্মিলিত যোগ্যতা';
+
+  @override
+  String get drawerIssueCertificates => 'সার্টিফিকেট প্রদান';
+
+  @override
+  String get drawerTemplates => 'টেমপ্লেট';
+
+  @override
+  String get drawerFeeHeads => 'ফি খাত';
+
+  @override
+  String get drawerFeeStructure => 'ফি কাঠামো';
+
+  @override
+  String get drawerLateFeeRules => 'বিলম্বে ফি বিধি';
+
+  @override
+  String get drawerInstalmentPlans => 'কিস্তি পরিকল্পনা';
+
+  @override
+  String get drawerShiftFeeStructure => 'শিফট ফি কাঠামো';
+
+  @override
+  String get drawerInvoices => 'ইনভয়েস';
+
+  @override
+  String get drawerDueTracking => 'বকেয়া ট্র্যাকিং';
+
+  @override
+  String get drawerDefaulterList => 'বকেয়াকারীর তালিকা';
+
+  @override
+  String get drawerCollectPayment => 'ফি সংগ্রহ';
+
+  @override
+  String get drawerOnlinePayments => 'অনলাইন পেমেন্ট';
+
+  @override
+  String get drawerDuesbasedAccess => 'বকেয়া ভিত্তিক অ্যাক্সেস';
+
+  @override
+  String get drawerGovernmentStipend => 'সরকারি উপবৃত্তি';
+
+  @override
+  String get drawerFeeReports => 'ফি রিপোর্ট';
+
+  @override
+  String get drawerStudentLedger => 'শিক্ষার্থী লেজার';
+
+  @override
+  String get drawerChartOfAccounts => 'হিসাবের তালিকা';
+
+  @override
+  String get drawerVouchers => 'ভাউচার';
+
+  @override
+  String get drawerNewVoucher => 'নতুন ভাউচার';
+
+  @override
+  String get drawerNewDebitcreditNote => 'নতুন ডেবিট/ক্রেডিট নোট';
+
+  @override
+  String get drawerExpenses => 'ব্যয়';
+
+  @override
+  String get drawerNewExpense => 'নতুন ব্যয়';
+
+  @override
+  String get drawerIncome => 'আয়';
+
+  @override
+  String get drawerNewIncome => 'নতুন আয়';
+
+  @override
+  String get drawerAutopostingSettings => 'অটো-পেস্টিং সেটিংস';
+
+  @override
+  String get drawerGeneralLedger => 'জেনারেল লেজার';
+
+  @override
+  String get drawerTrialBalance => 'রেওয়ামিল';
+
+  @override
+  String get drawerIncomeStatement => 'আয় বিবরণী';
+
+  @override
+  String get drawerBalanceSheet => 'উদ্বর্তপত্র';
+
+  @override
+  String get drawerCashBook => 'নগদান বই';
+
+  @override
+  String get drawerBankBook => 'ব্যাংক বই';
+
+  @override
+  String get drawerBudgets => 'বাজেট';
+
+  @override
+  String get drawerBudgetVsActual => 'বাজেট বনাম প্রকৃত';
+
+  @override
+  String get drawerAssets => 'সম্পদ';
+
+  @override
+  String get drawerStockItems => 'মজুদ সামগ্রী';
+
+  @override
+  String get drawerWarehouses => 'গুদাম';
+
+  @override
+  String get drawerVendors => 'সরবরাহকারী';
+
+  @override
+  String get drawerProcurementRequests => 'ক্রয় অনুরোধ';
+
+  @override
+  String get drawerPurchaseOrders => 'ক্রয়াদেশ';
+
+  @override
+  String get drawerGoodsReceipts => 'পণ্য প্রাপ্তি';
+
+  @override
+  String get drawerBulkSms => 'বাল্ক এসএমএস';
+
+  @override
+  String get drawerBulkEmail => 'বাল্ক ইমেইল';
+
+  @override
+  String get drawerSmsGateways => 'এসএমএস গেটওয়ে';
+
+  @override
+  String get drawerEmailSettings => 'ইমেইল সেটিংস';
+
+  @override
+  String get drawerAnnouncements => 'ঘোষণাসমূহ';
+
+  @override
+  String get drawerNoticeBoard => 'নোটিশ বোর্ড';
+
+  @override
+  String get drawerEmergencyBroadcast => 'জরুরি সম্প্রচার';
+
+  @override
+  String get drawerMessages => 'বার্তাসমূহ';
+
+  @override
+  String get drawerViewInstitutionProfile => 'প্রতিষ্ঠান প্রোফাইল দেখুন';
+
+  @override
+  String get drawerFindAPage => 'একটি পেজ খুঁজুন...';
+
+  @override
+  String get drawerSchoolName => 'ঢাকা পাবলিক স্কুল';
+
+  @override
+  String get multiTrackTitle => 'মাল্টি-ট্র্যাক';
+
+  @override
+  String get multiTrackSubtitle => 'প্রতিষ্ঠানের ট্র্যাক পরিচালনা করুন';
+
+  @override
+  String get multiTrackAddTrack => 'ট্র্যাক যোগ করুন';
+
+  @override
+  String get multiTrackNoTracks => 'কোনো ট্র্যাক কনফিগার করা নেই।';
+
+  @override
+  String get multiTrackEmptyDesc =>
+      'আপনার প্রতিষ্ঠান যদি বিভিন্ন বোর্ডের অধীনে একাধিক প্রোগ্রাম পরিচালনা করে তবে একটি ট্র্যাক যোগ করুন।';
+
+  @override
+  String get boardAffiliationsTitle => 'বোর্ড অধিভুক্তি';
+
+  @override
+  String get boardAffiliationsSubtitle =>
+      'প্রতিষ্ঠানের বোর্ডগুলো পরিচালনা করুন';
+
+  @override
+  String get boardAffiliationsAdd => 'অধিভুক্তি যোগ করুন';
+
+  @override
+  String get boardAffiliationsNoData => 'কোনো বোর্ড অধিভুক্তি কনফিগার করা নেই।';
+
+  @override
+  String get boardAffiliationsEmptyDesc =>
+      'বোর্ড-ফরম্যাট মার্কশিট এবং অ্যাডমিট কার্ডের জন্য বোর্ডের আঞ্চলিক কেন্দ্র, সাবজেক্ট কোড প্রিফিক্স এবং ফলাফল ইম্পোর্ট ফরম্যাট সেট করতে এখানে একটি বোর্ড যোগ করুন।';
+
+  @override
+  String get smcBodyTitle => 'পরিচালনা পর্ষদ';
+
+  @override
+  String get smcBodySubtitle => 'কমিটি পরিচালনা করুন';
+
+  @override
+  String get smcBodyAdd => 'নতুন পরিচালনা পর্ষদ';
+
+  @override
+  String get smcBodyNoData => 'এখনো কোনো পরিচালনা পর্ষদ কনফিগার করা হয়নি।';
+
+  @override
+  String get campusTitle => 'ক্যাম্পাস ব্যবস্থাপনা';
+
+  @override
+  String get campusSubtitle => 'প্রতিষ্ঠানের ক্যাম্পাসগুলো পরিচালনা করুন';
+
+  @override
+  String get campusDesc =>
+      'এই প্রতিষ্ঠানের ফিজিক্যাল ক্যাম্পাসগুলো পরিচালনা করুন';
+
+  @override
+  String get campusAddBtn => 'ক্যাম্পাস যোগ করুন';
+
+  @override
+  String get campusNoData => 'এখনো কোনো ক্যাম্পাস নেই';
+
+  @override
+  String get campusEmptyDesc =>
+      'শুরু করার জন্য আপনার প্রথম ক্যাম্পাসটি যোগ করুন';
+
+  @override
+  String get branchTitle => 'ব্রাঞ্চ ব্যবস্থাপনা';
+
+  @override
+  String get branchSubtitle => 'প্রতিষ্ঠানের ব্রাঞ্চগুলো পরিচালনা করুন';
+
+  @override
+  String get branchDesc => 'এই প্রতিষ্ঠানের ব্রাঞ্চগুলো পরিচালনা করুন';
+
+  @override
+  String get branchAddBtn => 'ব্রাঞ্চ যোগ করুন';
+
+  @override
+  String get branchNoData => 'এখনো কোনো ব্রাঞ্চ নেই';
+
+  @override
+  String get branchEmptyDesc => 'শুরু করার জন্য আপনার প্রথম ব্রাঞ্চটি যোগ করুন';
+
+  @override
+  String get docTempAdmitCard => 'অ্যাডমিট কার্ড';
+
+  @override
+  String get docTempBoardAdmitCard => 'বোর্ড অ্যাডমিট কার্ড';
+
+  @override
+  String get docTempSeatPlan => 'সিট প্ল্যান';
+
+  @override
+  String get docTempIdCard => 'আইডি কার্ড';
+
+  @override
+  String get docTempTitle => 'ডকুমেন্ট টেমপ্লেট';
+
+  @override
+  String get docTempSubtitle => 'প্রতিষ্ঠানের ডকুমেন্ট পরিচালনা করুন';
+
+  @override
+  String get docTempDesc =>
+      'অ্যাডমিট কার্ড, বোর্ড অ্যাডমিট কার্ড, সিট প্ল্যান এবং আইডি কার্ড প্রিন্ট করার জন্য একটি লেআউট এবং অপশনাল ব্যাকগ্রাউন্ড বেছে নিন।';
+
+  @override
+  String get docTempAddBtn => 'নতুন টেমপ্লেট';
+
+  @override
+  String docTempNoDataMsg(String tabName) {
+    return 'এখনো কোনো কাস্টম টেমপ্লেট নেই — $tabName ডিফল্ট ক্লাসিক লেআউট এবং কোনো ব্যাকগ্রাউন্ড ছাড়াই প্রিন্ট হবে।';
+  }
+
+  @override
+  String get studentsTitle => 'শিক্ষার্থী';
+
+  @override
+  String get studentsSubtitle => 'শিক্ষার্থী ব্যবস্থাপনা';
+
+  @override
+  String get studentsBtnPromotion => 'প্রমোশন';
+
+  @override
+  String get studentsBtnPrintID => 'আইডি কার্ড প্রিন্ট করুন';
+
+  @override
+  String get studentsBtnStipend => 'উপবৃত্তি তালিকা';
+
+  @override
+  String get studentsBtnImport => 'এক্সেল থেকে আনুন';
+
+  @override
+  String get studentsBtnAdmit => 'নতুন ভর্তি';
+
+  @override
+  String get studentsDesc =>
+      'ভর্তিকৃত শিক্ষার্থীদের খুঁজুন, ফিল্টার করুন এবং পরিচালনা করুন';
+
+  @override
+  String get studentsSearchHint => 'নাম, বিআরসি (BRC), বা ফোন দিয়ে খুঁজুন...';
+
+  @override
+  String get studentsFilterClasses => 'সব ক্লাস';
+
+  @override
+  String get studentsFilterSections => 'সব শাখা';
+
+  @override
+  String get studentsFilterStatuses => 'সব স্ট্যাটাস';
+
+  @override
+  String get studentsFilterNSID => 'NSID: সব';
+
+  @override
+  String get studentsTableStudent => 'শিক্ষার্থী';
+
+  @override
+  String get studentsTableBRC => 'বিআরসি (BRC)';
+
+  @override
+  String get studentsTableClassSec => 'ক্লাস / শাখা';
+
+  @override
+  String get studentsTableGuardian => 'অভিভাবকের মোবাইল';
+
+  @override
+  String get studentsTableStatus => 'অবস্থা';
+
+  @override
+  String get studentsTableActions => 'অ্যাকশন';
+
+  @override
+  String get actionView => 'দেখুন';
+
+  @override
+  String get actionEdit => 'সম্পাদনা';
+
+  @override
+  String get actionDelete => 'মুছুন';
+
+  @override
+  String get statusActive => 'সক্রিয়';
+
+  @override
+  String get statusNsidPending => 'NSID অপেক্ষমাণ';
+
+  @override
+  String get usersTitle => 'ব্যবহারকারী';
+
+  @override
+  String get usersSubtitle => 'সিস্টেম ব্যবহারকারী অ্যাকাউন্ট';
+
+  @override
+  String get usersDesc =>
+      'এই প্রতিষ্ঠানের লগইন অ্যাকাউন্ট — স্টাফরা এগুলোর সাহায্যে লগইন করেন। শিক্ষকের নিজস্ব ফর্ম থেকে এটি শিক্ষকের অ্যাকাউন্টের সাথে লিঙ্ক করুন।';
+
+  @override
+  String get usersAddBtn => 'নতুন ব্যবহারকারী';
+
+  @override
+  String get usersSearchHint => 'নাম, ইমেইল বা ফোন দিয়ে খুঁজুন...';
+
+  @override
+  String get usersFilterRoles => 'সব ভূমিকা';
+
+  @override
+  String get usersIsYou => '(আপনি)';
+
+  @override
+  String get roleParent => 'অভিভাবক';
+
+  @override
+  String get roleInstitutionAdmin => 'প্রতিষ্ঠান অ্যাডমিন';
+
+  @override
+  String get payGatewayTitle => 'পেমেন্ট গেটওয়ে';
+
+  @override
+  String get payGatewaySubtitle => 'অনলাইন পেমেন্ট পরিচালনা করুন';
+
+  @override
+  String get payGatewayDesc =>
+      'আপনার প্রতিষ্ঠান কীভাবে অনলাইনে ফি সংগ্রহ করবে তা কনফিগার করুন — SSLCommerz (এক চেকআউটে বিকাশ / নগদ / রকেট / কার্ড), একটি ডিরেক্ট বিকাশ বা ShurjoPay অ্যাকাউন্ট, একটি কাস্টম API-ভিত্তিক গেটওয়ে, বা স্টাফ কর্তৃক নিশ্চিত করা কোনো ম্যানুয়াল অপশন।';
+
+  @override
+  String get payGatewayAddBtn => 'গেটওয়ে যোগ করুন';
+
+  @override
+  String get payGatewayNoData =>
+      'এখনো কোনো পেমেন্ট গেটওয়ে কনফিগার করা হয়নি — এখানে একটি গেটওয়ে যোগ না করা পর্যন্ত অনলাইন অ্যাডমিশন ফি পেমেন্ট প্ল্যাটফর্মের ডিফল্ট SSLCommerz স্যান্ডবক্সে যাবে।';
+
+  @override
+  String get onlineAdmissionTitle => 'অনলাইন ভর্তি';
+
+  @override
+  String get onlineAdmissionSubtitle => 'ভর্তি চক্র এবং কোটা';
+
+  @override
+  String get onlineAdmissionDesc =>
+      'ক্লাস অনুযায়ী ভর্তি চক্র, আবেদনের সময়সীমা, ফি এবং আসন বন্টন কনফিগার করুন।';
+
+  @override
+  String get onlineAdmissionBtnQuota => 'কোটার ধরন';
+
+  @override
+  String get onlineAdmissionBtnNewCycle => 'নতুন চক্র';
+
+  @override
+  String get onlineAdmissionNoData => 'এখনো কোনো ভর্তি চক্র কনফিগার করা হয়নি।';
+
+  @override
+  String get websiteTitle => 'ওয়েবসাইট';
+
+  @override
+  String get websiteSubtitle => 'পাবলিক ওয়েবসাইট পরিচালনা করুন';
+
+  @override
+  String get websiteLiveSiteBtn => 'লাইভ সাইট দেখুন';
+
+  @override
+  String get websiteUnpublishBtn => 'আনপাবলিশ করুন';
+
+  @override
+  String get webTabSettings => 'সেটিংস';
+
+  @override
+  String get webTabHero => 'হিরো (Hero)';
+
+  @override
+  String get webTabAbout => 'আমাদের সম্পর্কে';
+
+  @override
+  String get webTabPrincipalMsg => 'অধ্যক্ষের বাণী';
+
+  @override
+  String get webTabNotices => 'নোটিশ';
+
+  @override
+  String get webTabGallery => 'গ্যালারি';
+
+  @override
+  String get webTabContact => 'যোগাযোগ';
+
+  @override
+  String get webTabMission => 'মিশন ও ভিশন';
+
+  @override
+  String get webTabWhyChoose => 'কেন আমাদের বেছে নেবেন';
+
+  @override
+  String get webTabClasses => 'ক্লাসসমূহ';
+
+  @override
+  String get webTabEvents => 'ইভেন্ট';
+
+  @override
+  String get webTabTestimonials => 'মতামত';
+
+  @override
+  String get webTabVideos => 'ভিডিও';
+
+  @override
+  String get webTabFaq => 'সাধারণ জিজ্ঞাসা';
+
+  @override
+  String get webTabTeachers => 'শিক্ষকমণ্ডলী';
+
+  @override
+  String get webTabCommittee => 'কমিটি';
+
+  @override
+  String get webTabAdmissions => 'ভর্তি';
+
+  @override
+  String get webTabResults => 'ফলাফল';
+
+  @override
+  String get webTabInbox => 'ইনবক্স';
+
+  @override
+  String get webHeroSubtitle => 'ভিজিটররা প্রথমেই যা দেখেন।';
+
+  @override
+  String get webHeroHeadlineLbl => 'শিরোনাম';
+
+  @override
+  String get webHeroHeadlineHint => 'আপনার প্রতিষ্ঠানের নাম বা স্লোগান';
+
+  @override
+  String get webHeroSubheadlineLbl => 'উপ-শিরোনাম';
+
+  @override
+  String get webHeroCtaLbl => 'কল-টু-অ্যাকশন বাটনের টেক্সট';
+
+  @override
+  String get webHeroCtaHint => 'ভর্তি চলছে';
+
+  @override
+  String get webHeroBgLbl => 'ব্যাকগ্রাউন্ড ছবি';
+
+  @override
+  String get webHeroUploadBtn => 'আপলোড করুন';
+
+  @override
+  String get webHeroShowSection => 'পাবলিক সাইটে এই অংশটি দেখান';
+
+  @override
+  String get webHeroSaveBtn => 'সংরক্ষণ করুন';
+
+  @override
+  String webSettingsComingSoon(String tabName) {
+    return '$tabName সেটিংস শীঘ্রই আসছে।';
+  }
+
+  @override
+  String get activityLogTitle => 'অ্যাক্টিভিটি লগ';
+
+  @override
+  String get activityLogSubtitle => 'সব তৈরি, আপডেট এবং মুছে ফেলার অডিট ট্রেইল';
+
+  @override
+  String get activityLogAllEvents => 'সব ইভেন্ট';
+
+  @override
+  String get activityLogCreated => 'তৈরি হয়েছে';
+
+  @override
+  String get activityLogUpdated => 'আপডেট হয়েছে';
+
+  @override
+  String get activityLogDeleted => 'মুছে ফেলা হয়েছে';
+
+  @override
+  String get activityLogFilterUserId => 'ইউজার আইডি দিয়ে খুঁজুন';
+
+  @override
+  String get activityLogDateFormat => 'দিন/মাস/বছর';
+
+  @override
+  String activityLogFieldsChanged(String count) {
+    return '$count টি ফিল্ড পরিবর্তন হয়েছে';
+  }
+
+  @override
+  String get notificationsPageTitle => 'নোটিফিকেশন';
+
+  @override
+  String get notificationsPageSubtitle =>
+      'আপনার সাম্প্রতিক অ্যালার্ট এবং মেসেজ';
+
+  @override
+  String get notificationsMarkAllRead => 'সব পড়া হয়েছে হিসেবে চিহ্নিত করুন';
+
+  @override
+  String get notificationSystemUpdateTitle => 'সিস্টেম আপডেট';
+
+  @override
+  String get notificationSystemUpdateDesc =>
+      'SchoolMate v2.4 সফলভাবে ইনস্টল করা হয়েছে। নতুন ফাইন্যান্স রিপোর্ট ফিচারটি চেক করে দেখুন।';
+
+  @override
+  String get notificationTime10MinsAgo => '১০ মিনিট আগে';
+
+  @override
+  String get notificationAdmissionTitle => 'নতুন ভর্তি আবেদন';
+
+  @override
+  String get notificationAdmissionDesc =>
+      'মো. রাকিব মোল্লা দশম শ্রেণির জন্য একটি নতুন ভর্তির ফর্ম জমা দিয়েছেন।';
+
+  @override
+  String get notificationTime2HoursAgo => '২ ঘন্টা আগে';
+
+  @override
+  String get notificationFeePaymentTitle => 'ফি পেমেন্ট গৃহীত';
+
+  @override
+  String get notificationFeePaymentDesc =>
+      'ইনভয়েস #INV-2026-0045 SSLCommerz-এর মাধ্যমে পরিশোধ করা হয়েছে।';
+
+  @override
+  String get notificationTimeYesterday430 => 'গতকাল, ০৪:৩০ পিএম';
+
+  @override
+  String get notificationLeaveRequestTitle => 'ছুটির আবেদন';
+
+  @override
+  String get notificationLeaveRequestDesc =>
+      'শিক্ষক আসাদুজ্জামান ২ দিনের নৈমিত্তিক ছুটির আবেদন করেছেন।';
+
+  @override
+  String get notificationTimeYesterday915 => 'গতকাল, ০৯:১৫ এএম';
+
+  @override
+  String get notificationInventoryAlertTitle => 'ইনভেন্টরি অ্যালার্ট';
+
+  @override
+  String get notificationInventoryAlertDesc =>
+      '\'A4 প্রিন্ট পেপার\'-এর স্টক কমে আসছে (বর্তমান: ৫ রিম)।';
+
+  @override
+  String get notificationTimeOct01 => '০১ অক্টো ২০২৬';
 }

@@ -1,10 +1,13 @@
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/onboarding/presentation/pages/role_selection_page.dart';
+import 'package:schoolmate/features/onboarding/presentation/pages/splash_page.dart';
 import 'package:schoolmate/features/settings/presentation/pages/change_password_page.dart';
 
 class AppRoutes {
   // === Auth & Initial Routes ===
   static const String initial = SplashPage.routeName;
   static const String login = '/login';
+  static const String onboarding = OnboardingPage.routeName;
   static const String roleSelection = RoleSelectionPage.routeName;
   static const String more = MorePage.routeName;
   static const String settings = SettingsPage.routeName;

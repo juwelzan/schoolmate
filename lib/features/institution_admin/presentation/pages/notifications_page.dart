@@ -9,6 +9,8 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
@@ -35,7 +37,7 @@ class NotificationsPage extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Notifications",
+                          l10n.notificationsPageTitle,
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
@@ -43,7 +45,7 @@ class NotificationsPage extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          "Your recent alerts and messages",
+                          l10n.notificationsPageSubtitle,
                           style: TextStyle(
                             fontSize: 12,
                             color:
@@ -60,7 +62,7 @@ class NotificationsPage extends StatelessWidget {
                   TextButton(
                     onPressed: () {},
                     child: Text(
-                      "Mark all as read",
+                      l10n.notificationsMarkAllRead,
                       style: TextStyle(
                         color: AppColors.primaryPurple,
                         fontSize: 13,
@@ -79,9 +81,9 @@ class NotificationsPage extends StatelessWidget {
                 children: [
                   _buildNotificationItem(
                     context: context,
-                    title: "System Update",
-                    description: "SchoolMate v2.4 has been successfully installed. Check out the new Finance reports feature.",
-                    time: "10 mins ago",
+                    title: l10n.notificationSystemUpdateTitle,
+                    description: l10n.notificationSystemUpdateDesc,
+                    time: l10n.notificationTime10MinsAgo,
                     icon: Icons.system_update_alt,
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkBadgeTealBg
@@ -91,30 +93,33 @@ class NotificationsPage extends StatelessWidget {
                   ),
                   _buildNotificationItem(
                     context: context,
-                    title: "New Admission Application",
-                    description: "Md Rakib Molla has submitted a new admission form for Class 10.",
-                    time: "2 hours ago",
+                    title: l10n.notificationAdmissionTitle,
+                    description: l10n.notificationAdmissionDesc,
+                    time: l10n.notificationTime2HoursAgo,
                     icon: Icons.person_add_alt,
-                    iconBg: AppColors.softPurple,
+                    iconBg: (Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkBadgePurpleBg
+                        : AppColors.softPurple),
                     iconColor: AppColors.primaryPurple,
                     isUnread: true,
                   ),
                   _buildNotificationItem(
                     context: context,
-                    title: "Fee Payment Received",
-                    description:
-                        "Invoice #INV-2026-0045 has been paid via SSLCommerz.",
-                    time: "Yesterday, 04:30 PM",
+                    title: l10n.notificationFeePaymentTitle,
+                    description: l10n.notificationFeePaymentDesc,
+                    time: l10n.notificationTimeYesterday430,
                     icon: Icons.account_balance_wallet_outlined,
-                    iconBg: Color(0xFFE6F7F0), // Light Green
+                    iconBg: (Theme.of(context).brightness == Brightness.dark
+                        ? const Color(0xFF0D2D20)
+                        : const Color(0xFFE6F7F0)), // Light Green
                     iconColor: AppColors.successGreen,
                     isUnread: false,
                   ),
                   _buildNotificationItem(
                     context: context,
-                    title: "Leave Request",
-                    description: "Teacher Asaduzzaman applied for 2 days of casual leave.",
-                    time: "Yesterday, 09:15 AM",
+                    title: l10n.notificationLeaveRequestTitle,
+                    description: l10n.notificationLeaveRequestDesc,
+                    time: l10n.notificationTimeYesterday915,
                     icon: Icons.event_busy_outlined,
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkBadgeGoldBg
@@ -124,11 +129,13 @@ class NotificationsPage extends StatelessWidget {
                   ),
                   _buildNotificationItem(
                     context: context,
-                    title: "Inventory Alert",
-                    description: "Stock for 'A4 Print Paper' is running low (Current: 5 reams).",
-                    time: "01 Oct 2026",
+                    title: l10n.notificationInventoryAlertTitle,
+                    description: l10n.notificationInventoryAlertDesc,
+                    time: l10n.notificationTimeOct01,
                     icon: Icons.warning_amber_rounded,
-                    iconBg: Color(0xFFFFEBEE), // Light Red
+                    iconBg: (Theme.of(context).brightness == Brightness.dark
+                        ? const Color(0xFF3B1518)
+                        : const Color(0xFFFFEBEE)), // Light Red
                     iconColor: Color(0xFFD32F2F), // Red
                     isUnread: false,
                   ),
@@ -156,7 +163,9 @@ class NotificationsPage extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: isUnread
-            ? AppColors.white
+            ? (Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.darkSurface
+                  : AppColors.white)
             : Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(

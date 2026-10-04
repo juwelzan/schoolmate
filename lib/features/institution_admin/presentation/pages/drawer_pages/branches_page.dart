@@ -8,11 +8,12 @@ class BranchesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Branch Management",
-        subtitle: "Manage Institution Branches",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.branchTitle,
+        subtitle: l10n.branchSubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -30,30 +31,30 @@ class BranchesPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          const Icon(
+                          Icon(
                             Icons.call_split,
-                            color: AppColors.textPrimary,
+                            color: Theme.of(context).colorScheme.onSurface,
                             size: 24,
                           ),
                           const SizedBox(width: 8),
-                          const Expanded(
+                          Expanded(
                             child: Text(
                               "Branch Management",
                               style: TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w700,
-                                color: AppColors.textPrimary,
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        "Manage branches of this institution",
+                      Text(
+                        l10n.branchDesc,
                         style: TextStyle(
                           fontSize: 14,
-                          color: AppColors.textSecondary,
+                          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -63,8 +64,8 @@ class BranchesPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                  label: const Text(
-                    "Add Branch",
+                  label: Text(
+                    l10n.branchAddBtn,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -90,11 +91,11 @@ class BranchesPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryPurple.withOpacity(0.04),
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -105,8 +106,8 @@ class BranchesPage extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(20),
-                      decoration: const BoxDecoration(
-                        color: AppColors.surfaceVerySoftPurple,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -116,20 +117,20 @@ class BranchesPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    const Text(
-                      "No branches yet",
+                    Text(
+                      l10n.branchNoData,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "Add your first branch to get started",
+                    Text(
+                      l10n.branchEmptyDesc,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                       ),
                     ),
                   ],

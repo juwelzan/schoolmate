@@ -13,8 +13,7 @@ export 'package:schoolmate/core/routes/app_routes.dart';
 export 'package:schoolmate/core/widgets/dashed_border_painter.dart';
 export 'package:schoolmate/core/theme/app_colors.dart';
 export 'package:schoolmate/features/auth/auth_placeholder.dart';
-export 'package:schoolmate/features/auth/presentation/pages/role_selection_page.dart';
-export 'package:schoolmate/features/auth/presentation/pages/splash_page.dart';
+
 export 'package:schoolmate/features/dashboard/presentation/pages/more_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/account_page.dart';
@@ -184,3 +183,5 @@ export '../features/settings/presentation/widgets/settings_section_header.dart';
 
 export '../features/settings/presentation/widgets/theme_dialog.dart';
 export 'widgets/custom_text_style.dart';
+
+export 'package:schoolmate/features/onboarding/presentation/pages/onboarding_page.dart';

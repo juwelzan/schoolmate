@@ -8,11 +8,12 @@ class BoardAffiliationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Board Affiliations",
-        subtitle: "Manage Institution Boards",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.boardAffiliationsTitle,
+        subtitle: l10n.boardAffiliationsSubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -23,19 +24,19 @@ class BoardAffiliationsPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  "Rakib School",
+                Text(
+                  l10n.drawerSchoolName,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: AppColors.textSecondary,
+                    color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                   ),
                 ),
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                  label: const Text(
-                    "Add Affiliation",
+                  label: Text(
+                    l10n.boardAffiliationsAdd,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -58,7 +59,7 @@ class BoardAffiliationsPage extends StatelessWidget {
             // Dashed Empty State Container
             CustomPaint(
               painter: DashedBorderPainter(
-                color: AppColors.primaryPurple.withOpacity(0.3),
+                color: AppColors.primaryPurple.withValues(alpha: 0.3),
                 strokeWidth: 1.5,
                 dashLength: 8.0,
                 dashGap: 6.0,
@@ -71,8 +72,8 @@ class BoardAffiliationsPage extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(16),
-                      decoration: const BoxDecoration(
-                        color: AppColors.surfaceVerySoftPurple,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -82,21 +83,21 @@ class BoardAffiliationsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    const Text(
-                      "No board affiliations configured.",
+                    Text(
+                      l10n.boardAffiliationsNoData,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 12),
-                    const Text(
-                      "Add a board here to set its regional center, subject code prefix, and result import format for board-format mark sheets and admit cards.",
+                    Text(
+                      l10n.boardAffiliationsEmptyDesc,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                         height: 1.4,
                       ),
                     ),

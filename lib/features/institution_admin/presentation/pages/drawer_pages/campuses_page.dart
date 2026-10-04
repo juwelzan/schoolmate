@@ -8,11 +8,12 @@ class CampusesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Campus Management",
-        subtitle: "Manage Institution Campuses",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.campusTitle,
+        subtitle: l10n.campusSubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -32,28 +33,28 @@ class CampusesPage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.business,
-                            color: AppColors.textPrimary,
+                            color: Theme.of(context).colorScheme.onSurface,
                             size: 24,
                           ),
                           const SizedBox(width: 8),
-                          const Expanded(
+                          Expanded(
                             child: Text(
                               "Campus Management",
                             style: TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.w700,
-                              color: AppColors.textPrimary,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                           ),
                           ),
                         ],
                       ),
                       const SizedBox(height: 4),
-                      const Text(
-                        "Manage physical campuses of this institution",
+                      Text(
+                        l10n.campusDesc,
                         style: TextStyle(
                           fontSize: 14,
-                          color: AppColors.textSecondary,
+                          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -62,8 +63,8 @@ class CampusesPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                  label: const Text(
-                    "Add Campus",
+                  label: Text(
+                    l10n.campusAddBtn,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -89,11 +90,11 @@ class CampusesPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryPurple.withOpacity(0.04),
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -105,7 +106,7 @@ class CampusesPage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: AppColors.surfaceVerySoftPurple,
+                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -115,20 +116,20 @@ class CampusesPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    const Text(
-                      "No campuses yet",
+                    Text(
+                      l10n.campusNoData,
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    const Text(
-                      "Add your first campus to get started",
+                    Text(
+                      l10n.campusEmptyDesc,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                       ),
                     ),
                   ],

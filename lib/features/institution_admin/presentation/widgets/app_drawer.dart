@@ -1,11 +1,32 @@
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-class AppDrawer extends StatelessWidget {
+class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});
 
   @override
+  State<AppDrawer> createState() => _AppDrawerState();
+}
+
+class _AppDrawerState extends State<AppDrawer> {
+  String _searchQuery = '';
+
+  bool _matches(String text) {
+    if (_searchQuery.isEmpty) return true;
+    return text.toLowerCase().contains(_searchQuery.toLowerCase());
+  }
+
+  bool _expandableMatches(String title, List<String> childTitles) {
+    if (_matches(title)) return true;
+    for (var child in childTitles) {
+      if (_matches(child)) return true;
+    }
+    return false;
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final String currentRoute = GoRouterState.of(context).uri.toString();
     return Drawer(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -65,7 +86,7 @@ class AppDrawer extends StatelessWidget {
                     ),
                     SizedBox(height: 16),
                     Text(
-                      "Dhaka Public School",
+                      l10n.drawerSchoolName,
                       style: CustomTextStyles.inter(
                         fontSize: 18,
                         fontWeight: FontWeight.w700,
@@ -77,7 +98,7 @@ class AppDrawer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "View Institution Profile",
+                          l10n.drawerViewInstitutionProfile,
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
@@ -116,11 +137,12 @@ class AppDrawer extends StatelessWidget {
                   ],
                 ),
                 child: TextField(
+                  onChanged: (val) => setState(() => _searchQuery = val),
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onSurface,
                   ),
                   decoration: InputDecoration(
-                    hintText: "Find a page...",
+                    hintText: l10n.drawerFindAPage,
                     hintStyle: TextStyle(
                       color: (Theme.of(context).brightness == Brightness.dark
                           ? AppColors.darkTextMuted
@@ -148,7 +170,7 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.bar_chart,
-                    title: "Dashboard",
+                    title: l10n.drawerDashboard,
                     iconColor: Theme.of(context).primaryColor,
                     iconBgColor:
                         (Theme.of(context).brightness == Brightness.dark
@@ -160,47 +182,65 @@ class AppDrawer extends StatelessWidget {
                         context.push(AppRoutes.institutionAdminDashboard),
                   ),
 
-                  _buildSectionHeader(context, "INSTITUTION SETUP"),
+                  _buildSectionHeader(context, l10n.drawerInstitutionSetup),
 
                   _buildDrawerItem(
                     context,
                     icon: Icons.layers_outlined,
-                    title: "Multi-Track",
+                    title: l10n.drawerMultitrack,
                     isSelected: currentRoute == AppRoutes.multiTrack,
                     onTap: () => context.push(AppRoutes.multiTrack),
                   ),
                   _buildDrawerItem(
                     context,
                     icon: Icons.account_balance,
-                    title: "Board Affiliations",
+                    title: l10n.drawerBoardAffiliations,
                     isSelected: currentRoute == AppRoutes.boardAffiliations,
                     onTap: () => context.push(AppRoutes.boardAffiliations),
                   ),
                   _buildDrawerItem(
                     context,
                     icon: Icons.people_outline,
-                    title: "SMC / Governing Body",
+                    title: l10n.drawerSmcGoverningBody,
                     isSelected: currentRoute == AppRoutes.smcGoverningBody,
                     onTap: () => context.push(AppRoutes.smcGoverningBody),
                   ),
                   _buildDrawerItem(
                     context,
                     icon: Icons.location_on_outlined,
-                    title: "Campuses",
+                    title: l10n.drawerCampuses,
                     isSelected: currentRoute == AppRoutes.campuses,
                     onTap: () => context.push(AppRoutes.campuses),
                   ),
                   _buildDrawerItem(
                     context,
                     icon: Icons.account_tree_outlined,
-                    title: "Branches",
+                    title: l10n.drawerBranches,
                     isSelected: currentRoute == AppRoutes.branches,
                     onTap: () => context.push(AppRoutes.branches),
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerAcademic, [
+                      l10n.drawerYears,
+                      l10n.drawerCalendar,
+                      l10n.drawerShifts,
+                      l10n.drawerProgramStructures,
+                      l10n.drawerGradingScales,
+                      l10n.drawerComponentTypes,
+                      l10n.drawerClassesSections,
+                      l10n.drawerGroupsStreams,
+                      l10n.drawerSubjects,
+                      l10n.drawerSubjectAssignments,
+                      l10n.drawerPreprimary,
+                      l10n.drawerLessonPlans,
+                      l10n.drawerCurriculum,
+                      l10n.drawerSyllabus,
+                      l10n.drawerStudyPlans,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.calendar_today_outlined,
-                    title: "Academic",
+                    title: l10n.drawerAcademic,
                     isInitiallyExpanded:
                         currentRoute.contains('/academic') ||
                         currentRoute == AppRoutes.years ||
@@ -225,91 +265,91 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Years",
+                              l10n.drawerYears,
                               AppRoutes.years,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Calendar",
+                              l10n.drawerCalendar,
                               AppRoutes.calendar,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Shifts",
+                              l10n.drawerShifts,
                               AppRoutes.shifts,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Program Structures",
+                              l10n.drawerProgramStructures,
                               AppRoutes.programStructures,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Grading Scales",
+                              l10n.drawerGradingScales,
                               AppRoutes.gradingScales,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Component Types",
+                              l10n.drawerComponentTypes,
                               AppRoutes.componentTypes,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Classes & Sections",
+                              l10n.drawerClassesSections,
                               AppRoutes.classesSections,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Groups / Streams",
+                              l10n.drawerGroupsStreams,
                               AppRoutes.groupsStreams,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Subjects",
+                              l10n.drawerSubjects,
                               AppRoutes.subjects,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Subject Assignments",
+                              l10n.drawerSubjectAssignments,
                               AppRoutes.subjectAssignments,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Pre-Primary",
+                              l10n.drawerPreprimary,
                               AppRoutes.prePrimary,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Lesson Plans",
+                              l10n.drawerLessonPlans,
                               AppRoutes.lessonPlans,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Curriculum",
+                              l10n.drawerCurriculum,
                               AppRoutes.curriculum,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Syllabus",
+                              l10n.drawerSyllabus,
                               AppRoutes.syllabus,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Study Plans",
+                              l10n.drawerStudyPlans,
                               AppRoutes.studyPlans,
                               currentRoute,
                             ),
@@ -320,8 +360,23 @@ class AppDrawer extends StatelessWidget {
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerTimetable, [
+                      l10n.drawerPeriodSlots,
+                      l10n.drawerRooms,
+                      l10n.drawerClassTimetable,
+                      l10n.drawerShiftTimetable,
+                      l10n.drawerTeacherTimetable,
+                      l10n.drawerRoomTimetable,
+                      l10n.drawerSubjectDistributionRules,
+                      l10n.drawerTeacherAvailability,
+                      l10n.drawerPublish,
+                      l10n.drawerSubstituteAssignment,
+                      l10n.drawerRevisions,
+                      l10n.drawerPeriodSwap,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.access_time,
-                    title: "Timetable",
+                    title: l10n.drawerTimetable,
                     isInitiallyExpanded:
                         currentRoute.contains('/timetable') ||
                         currentRoute == AppRoutes.periodSlots ||
@@ -343,73 +398,73 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Period Slots",
+                              l10n.drawerPeriodSlots,
                               AppRoutes.periodSlots,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Rooms",
+                              l10n.drawerRooms,
                               AppRoutes.rooms,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Class Timetable",
+                              l10n.drawerClassTimetable,
                               AppRoutes.classTimetable,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Shift Timetable",
+                              l10n.drawerShiftTimetable,
                               AppRoutes.shiftTimetable,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Teacher Timetable",
+                              l10n.drawerTeacherTimetable,
                               AppRoutes.teacherTimetable,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Room Timetable",
+                              l10n.drawerRoomTimetable,
                               AppRoutes.roomTimetable,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Subject Distribution Rules",
+                              l10n.drawerSubjectDistributionRules,
                               AppRoutes.subjectDistributionRules,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Teacher Availability",
+                              l10n.drawerTeacherAvailability,
                               AppRoutes.teacherAvailability,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Publish",
+                              l10n.drawerPublish,
                               AppRoutes.publish,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Substitute Assignment",
+                              l10n.drawerSubstituteAssignment,
                               AppRoutes.substituteAssignment,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Revisions",
+                              l10n.drawerRevisions,
                               AppRoutes.revisions,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Period Swap",
+                              l10n.drawerPeriodSwap,
                               AppRoutes.periodSwap,
                               currentRoute,
                             ),
@@ -421,23 +476,33 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.description_outlined,
-                    title: "Document Templates",
+                    title: l10n.drawerDocumentTemplates,
                     isSelected: currentRoute == AppRoutes.documentTemplates,
                     onTap: () => context.push(AppRoutes.documentTemplates),
                   ),
 
-                  _buildSectionHeader(context, "PEOPLE"),
+                  _buildSectionHeader(context, l10n.drawerPeople),
                   _buildDrawerItem(
                     context,
                     icon: Icons.people_alt_outlined,
-                    title: "Students",
+                    title: l10n.drawerStudents,
                     isSelected: currentRoute == AppRoutes.students,
                     onTap: () => context.push(AppRoutes.students),
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerTeachersStaff, [
+                      l10n.drawerTeachers,
+                      l10n.drawerStaff,
+                      l10n.drawerRecruitment,
+                      l10n.drawerLeaveTypes,
+                      l10n.drawerAcademicDesignations,
+                      l10n.drawerBulkImportAssignments,
+                      l10n.drawerSubjectAssignmentMatrix,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.person_outline,
-                    title: "Teachers & Staff",
+                    title: l10n.drawerTeachersStaff,
                     isInitiallyExpanded:
                         currentRoute.contains('/teachers-staff') ||
                         currentRoute == AppRoutes.teachers ||
@@ -454,43 +519,43 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Teachers",
+                              l10n.drawerTeachers,
                               AppRoutes.teachers,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Staff",
+                              l10n.drawerStaff,
                               AppRoutes.staff,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Recruitment",
+                              l10n.drawerRecruitment,
                               AppRoutes.recruitment,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Leave Types",
+                              l10n.drawerLeaveTypes,
                               AppRoutes.leaveTypes,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Academic Designations",
+                              l10n.drawerAcademicDesignations,
                               AppRoutes.academicDesignations,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Bulk Import Assignments",
+                              l10n.drawerBulkImportAssignments,
                               AppRoutes.bulkImportAssignments,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Subject Assignment Matrix",
+                              l10n.drawerSubjectAssignmentMatrix,
                               AppRoutes.subjectAssignmentMatrix,
                               currentRoute,
                             ),
@@ -502,16 +567,37 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.manage_accounts_outlined,
-                    title: "Users",
+                    title: l10n.drawerUsers,
                     isSelected: currentRoute == AppRoutes.users,
                     onTap: () => context.push(AppRoutes.users),
                   ),
 
-                  _buildSectionHeader(context, "ACADEMICS"),
+                  _buildSectionHeader(context, l10n.drawerAcademics),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerExamination, [
+                      l10n.drawerExams,
+                      l10n.drawerExamTerms,
+                      l10n.drawerExamTypes,
+                      l10n.drawerBoardSubjectCombinations,
+                      l10n.drawerBacklogimprovementRules,
+                      l10n.drawerQuestionBank,
+                      l10n.drawerQuestionPapers,
+                      l10n.drawerMarksEntry,
+                      l10n.drawerMarksApprovalQueue,
+                      l10n.drawerResultCompositions,
+                      l10n.drawerWeightProfiles,
+                      l10n.drawerRankingProfiles,
+                      l10n.drawerGraceMarkPolicies,
+                      l10n.drawerCompartmentalEligibilityPolicies,
+                      l10n.drawerAssessmentDomains,
+                      l10n.drawerPreprimaryAssessment,
+                      l10n.drawerDevelopmentalMilestones,
+                      l10n.drawerMilestoneTracker,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.assignment_outlined,
-                    title: "Examination",
+                    title: l10n.drawerExamination,
                     isInitiallyExpanded:
                         currentRoute.contains('/examination') ||
                         currentRoute == AppRoutes.exams ||
@@ -540,109 +626,109 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Exams",
+                              l10n.drawerExams,
                               AppRoutes.exams,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Exam Terms",
+                              l10n.drawerExamTerms,
                               AppRoutes.examTerms,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Exam Types",
+                              l10n.drawerExamTypes,
                               AppRoutes.examTypes,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Board Subject Combinations",
+                              l10n.drawerBoardSubjectCombinations,
                               AppRoutes.boardSubjectCombinations,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Backlog/Improvement Rules",
+                              l10n.drawerBacklogimprovementRules,
                               AppRoutes.backlogImprovementRules,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Question Bank",
+                              l10n.drawerQuestionBank,
                               AppRoutes.questionBank,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Question Papers",
+                              l10n.drawerQuestionPapers,
                               AppRoutes.questionPapers,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Marks Entry",
+                              l10n.drawerMarksEntry,
                               AppRoutes.marksEntry,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Marks Approval Queue",
+                              l10n.drawerMarksApprovalQueue,
                               AppRoutes.marksApprovalQueue,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Result Compositions",
+                              l10n.drawerResultCompositions,
                               AppRoutes.resultCompositions,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Weight Profiles",
+                              l10n.drawerWeightProfiles,
                               AppRoutes.weightProfiles,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Ranking Profiles",
+                              l10n.drawerRankingProfiles,
                               AppRoutes.rankingProfiles,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Grace Mark Policies",
+                              l10n.drawerGraceMarkPolicies,
                               AppRoutes.graceMarkPolicies,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Compartmental Eligibility Policies",
+                              l10n.drawerCompartmentalEligibilityPolicies,
                               AppRoutes.compartmentalEligibilityPolicies,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Assessment Domains",
+                              l10n.drawerAssessmentDomains,
                               AppRoutes.assessmentDomains,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Pre-Primary Assessment",
+                              l10n.drawerPreprimaryAssessment,
                               AppRoutes.prePrimaryAssessment,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Developmental Milestones",
+                              l10n.drawerDevelopmentalMilestones,
                               AppRoutes.developmentalMilestones,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Milestone Tracker",
+                              l10n.drawerMilestoneTracker,
                               AppRoutes.milestoneTracker,
                               currentRoute,
                             ),
@@ -653,8 +739,26 @@ class AppDrawer extends StatelessWidget {
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerAttendance, [
+                      l10n.drawerDailySummary,
+                      l10n.drawerShiftAttendance,
+                      l10n.drawerMonthlyAttendance,
+                      l10n.drawerAttendanceEligibility,
+                      l10n.drawerTeacherAttendance,
+                      l10n.drawerStaffAttendance,
+                      l10n.drawerTeacherMonthlyReport,
+                      l10n.drawerSubjectCoverageReport,
+                      l10n.drawerAttendanceAnalytics,
+                      l10n.drawerAttendanceDevices,
+                      l10n.drawerInstituteGateAttendance,
+                      l10n.drawerAttendanceEvents,
+                      l10n.drawerPracticalLabAttendance,
+                      l10n.drawerPracticalLabSummary,
+                      l10n.drawerCombinedEligibility,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.fact_check_outlined,
-                    title: "Attendance",
+                    title: l10n.drawerAttendance,
                     isInitiallyExpanded:
                         currentRoute.contains('/attendance') ||
                         currentRoute == AppRoutes.dailySummary ||
@@ -679,91 +783,91 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Daily Summary",
+                              l10n.drawerDailySummary,
                               AppRoutes.dailySummary,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Shift Attendance",
+                              l10n.drawerShiftAttendance,
                               AppRoutes.shiftAttendance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Monthly Attendance",
+                              l10n.drawerMonthlyAttendance,
                               AppRoutes.monthlyAttendance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Attendance Eligibility",
+                              l10n.drawerAttendanceEligibility,
                               AppRoutes.attendanceEligibility,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Teacher Attendance",
+                              l10n.drawerTeacherAttendance,
                               AppRoutes.teacherAttendance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Staff Attendance",
+                              l10n.drawerStaffAttendance,
                               AppRoutes.staffAttendance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Teacher Monthly Report",
+                              l10n.drawerTeacherMonthlyReport,
                               AppRoutes.teacherMonthlyReport,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Subject Coverage Report",
+                              l10n.drawerSubjectCoverageReport,
                               AppRoutes.subjectCoverageReport,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Attendance Analytics",
+                              l10n.drawerAttendanceAnalytics,
                               AppRoutes.attendanceAnalytics,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Attendance Devices",
+                              l10n.drawerAttendanceDevices,
                               AppRoutes.attendanceDevices,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Institute Gate Attendance",
+                              l10n.drawerInstituteGateAttendance,
                               AppRoutes.instituteGateAttendance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Attendance Events",
+                              l10n.drawerAttendanceEvents,
                               AppRoutes.attendanceEvents,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Practical Lab Attendance",
+                              l10n.drawerPracticalLabAttendance,
                               AppRoutes.practicalLabAttendance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Practical Lab Summary",
+                              l10n.drawerPracticalLabSummary,
                               AppRoutes.practicalLabSummary,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Combined Eligibility",
+                              l10n.drawerCombinedEligibility,
                               AppRoutes.combinedEligibility,
                               currentRoute,
                             ),
@@ -774,8 +878,13 @@ class AppDrawer extends StatelessWidget {
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerCertificates, [
+                      l10n.drawerIssueCertificates,
+                      l10n.drawerTemplates,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.workspace_premium_outlined,
-                    title: "Certificates",
+                    title: l10n.drawerCertificates,
                     isInitiallyExpanded:
                         currentRoute.contains('/certificates') ||
                         currentRoute == AppRoutes.issueCertificates ||
@@ -787,13 +896,13 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Issue Certificates",
+                              l10n.drawerIssueCertificates,
                               AppRoutes.issueCertificates,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Templates",
+                              l10n.drawerTemplates,
                               AppRoutes.templates,
                               currentRoute,
                             ),
@@ -803,11 +912,28 @@ class AppDrawer extends StatelessWidget {
                     ],
                   ),
 
-                  _buildSectionHeader(context, "FINANCE"),
+                  _buildSectionHeader(context, l10n.drawerFinance),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerFee, [
+                      l10n.drawerFeeHeads,
+                      l10n.drawerFeeStructure,
+                      l10n.drawerLateFeeRules,
+                      l10n.drawerInstalmentPlans,
+                      l10n.drawerShiftFeeStructure,
+                      l10n.drawerInvoices,
+                      l10n.drawerDueTracking,
+                      l10n.drawerDefaulterList,
+                      l10n.drawerCollectPayment,
+                      l10n.drawerOnlinePayments,
+                      l10n.drawerDuesbasedAccess,
+                      l10n.drawerGovernmentStipend,
+                      l10n.drawerFeeReports,
+                      l10n.drawerStudentLedger,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.account_balance_wallet_outlined,
-                    title: "Fee",
+                    title: l10n.drawerFee,
                     isInitiallyExpanded:
                         currentRoute.contains('/fee') ||
                         currentRoute == AppRoutes.feeHeads ||
@@ -831,85 +957,85 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Fee Heads",
+                              l10n.drawerFeeHeads,
                               AppRoutes.feeHeads,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Fee Structure",
+                              l10n.drawerFeeStructure,
                               AppRoutes.feeStructure,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Late Fee Rules",
+                              l10n.drawerLateFeeRules,
                               AppRoutes.lateFeeRules,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Instalment Plans",
+                              l10n.drawerInstalmentPlans,
                               AppRoutes.instalmentPlans,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Shift Fee Structure",
+                              l10n.drawerShiftFeeStructure,
                               AppRoutes.shiftFeeStructure,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Invoices",
+                              l10n.drawerInvoices,
                               AppRoutes.invoices,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Due Tracking",
+                              l10n.drawerDueTracking,
                               AppRoutes.dueTracking,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Defaulter List",
+                              l10n.drawerDefaulterList,
                               AppRoutes.defaulterList,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Collect Payment",
+                              l10n.drawerCollectPayment,
                               AppRoutes.collectPayment,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Online Payments",
+                              l10n.drawerOnlinePayments,
                               AppRoutes.onlinePayments,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Dues-Based Access",
+                              l10n.drawerDuesbasedAccess,
                               AppRoutes.duesBasedAccess,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Government Stipend",
+                              l10n.drawerGovernmentStipend,
                               AppRoutes.governmentStipend,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Fee Reports",
+                              l10n.drawerFeeReports,
                               AppRoutes.feeReports,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Student Ledger",
+                              l10n.drawerStudentLedger,
                               AppRoutes.studentLedger,
                               currentRoute,
                             ),
@@ -920,6 +1046,26 @@ class AppDrawer extends StatelessWidget {
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches("Finance", [
+                      l10n.drawerChartOfAccounts,
+                      l10n.drawerVouchers,
+                      l10n.drawerNewVoucher,
+                      l10n.drawerNewDebitcreditNote,
+                      l10n.drawerExpenses,
+                      l10n.drawerNewExpense,
+                      l10n.drawerIncome,
+                      l10n.drawerNewIncome,
+                      l10n.drawerAutopostingSettings,
+                      l10n.drawerGeneralLedger,
+                      l10n.drawerTrialBalance,
+                      l10n.drawerIncomeStatement,
+                      l10n.drawerBalanceSheet,
+                      l10n.drawerCashBook,
+                      l10n.drawerBankBook,
+                      l10n.drawerBudgets,
+                      l10n.drawerBudgetVsActual,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.calculate_outlined,
                     title: "Finance",
                     isInitiallyExpanded:
@@ -948,103 +1094,103 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Chart of Accounts",
+                              l10n.drawerChartOfAccounts,
                               AppRoutes.chartOfAccounts,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Vouchers",
+                              l10n.drawerVouchers,
                               AppRoutes.vouchers,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "New Voucher",
+                              l10n.drawerNewVoucher,
                               AppRoutes.newVoucher,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "New Debit/Credit Note",
+                              l10n.drawerNewDebitcreditNote,
                               AppRoutes.newDebitCreditNote,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Expenses",
+                              l10n.drawerExpenses,
                               AppRoutes.expenses,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "New Expense",
+                              l10n.drawerNewExpense,
                               AppRoutes.newExpense,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Income",
+                              l10n.drawerIncome,
                               AppRoutes.income,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "New Income",
+                              l10n.drawerNewIncome,
                               AppRoutes.newIncome,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Auto-Posting Settings",
+                              l10n.drawerAutopostingSettings,
                               AppRoutes.autoPostingSettings,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "General Ledger",
+                              l10n.drawerGeneralLedger,
                               AppRoutes.generalLedger,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Trial Balance",
+                              l10n.drawerTrialBalance,
                               AppRoutes.trialBalance,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Income Statement",
+                              l10n.drawerIncomeStatement,
                               AppRoutes.incomeStatement,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Balance Sheet",
+                              l10n.drawerBalanceSheet,
                               AppRoutes.balanceSheet,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Cash Book",
+                              l10n.drawerCashBook,
                               AppRoutes.cashBook,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Bank Book",
+                              l10n.drawerBankBook,
                               AppRoutes.bankBook,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Budgets",
+                              l10n.drawerBudgets,
                               AppRoutes.budgets,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Budget vs Actual",
+                              l10n.drawerBudgetVsActual,
                               AppRoutes.budgetVsActual,
                               currentRoute,
                             ),
@@ -1056,23 +1202,33 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.credit_card,
-                    title: "Payment Gateways",
+                    title: l10n.drawerPaymentGateways,
                     isSelected: currentRoute == AppRoutes.paymentGateways,
                     onTap: () => context.push(AppRoutes.paymentGateways),
                   ),
 
-                  _buildSectionHeader(context, "OPERATIONS"),
+                  _buildSectionHeader(context, l10n.drawerOperations),
                   _buildDrawerItem(
                     context,
                     icon: Icons.article_outlined,
-                    title: "Online Admission",
+                    title: l10n.drawerOnlineAdmission,
                     isSelected: currentRoute == AppRoutes.onlineAdmission,
                     onTap: () => context.push(AppRoutes.onlineAdmission),
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerInventory, [
+                      l10n.drawerAssets,
+                      l10n.drawerStockItems,
+                      l10n.drawerWarehouses,
+                      l10n.drawerVendors,
+                      l10n.drawerProcurementRequests,
+                      l10n.drawerPurchaseOrders,
+                      l10n.drawerGoodsReceipts,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.inventory_2_outlined,
-                    title: "Inventory",
+                    title: l10n.drawerInventory,
                     isInitiallyExpanded:
                         currentRoute.contains('/inventory') ||
                         currentRoute == AppRoutes.assets ||
@@ -1089,43 +1245,43 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Assets",
+                              l10n.drawerAssets,
                               AppRoutes.assets,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Stock Items",
+                              l10n.drawerStockItems,
                               AppRoutes.stockItems,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Warehouses",
+                              l10n.drawerWarehouses,
                               AppRoutes.warehouses,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Vendors",
+                              l10n.drawerVendors,
                               AppRoutes.vendors,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Procurement Requests",
+                              l10n.drawerProcurementRequests,
                               AppRoutes.procurementRequests,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Purchase Orders",
+                              l10n.drawerPurchaseOrders,
                               AppRoutes.purchaseOrders,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Goods Receipts",
+                              l10n.drawerGoodsReceipts,
                               AppRoutes.goodsReceipts,
                               currentRoute,
                             ),
@@ -1136,8 +1292,19 @@ class AppDrawer extends StatelessWidget {
                   ),
 
                   ExpandableDrawerItem(
+                    isVisible: _expandableMatches(l10n.drawerCommunication, [
+                      l10n.drawerBulkSms,
+                      l10n.drawerBulkEmail,
+                      l10n.drawerSmsGateways,
+                      l10n.drawerEmailSettings,
+                      l10n.drawerAnnouncements,
+                      l10n.drawerNoticeBoard,
+                      l10n.drawerEmergencyBroadcast,
+                      l10n.drawerMessages,
+                    ]),
+                    forceExpand: _searchQuery.isNotEmpty,
                     icon: Icons.chat_bubble_outline,
-                    title: "Communication",
+                    title: l10n.drawerCommunication,
                     isInitiallyExpanded:
                         currentRoute.contains('/communication') ||
                         currentRoute == AppRoutes.bulkSms ||
@@ -1155,49 +1322,49 @@ class AppDrawer extends StatelessWidget {
                           children: [
                             _buildSubMenuItem(
                               context,
-                              "Bulk SMS",
+                              l10n.drawerBulkSms,
                               AppRoutes.bulkSms,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Bulk Email",
+                              l10n.drawerBulkEmail,
                               AppRoutes.bulkEmail,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "SMS Gateways",
+                              l10n.drawerSmsGateways,
                               AppRoutes.smsGateways,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Email Settings",
+                              l10n.drawerEmailSettings,
                               AppRoutes.emailSettings,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Announcements",
+                              l10n.drawerAnnouncements,
                               AppRoutes.announcements,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Notice Board",
+                              l10n.drawerNoticeBoard,
                               AppRoutes.noticeBoard,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Emergency Broadcast",
+                              l10n.drawerEmergencyBroadcast,
                               AppRoutes.emergencyBroadcast,
                               currentRoute,
                             ),
                             _buildSubMenuItem(
                               context,
-                              "Messages",
+                              l10n.drawerMessages,
                               AppRoutes.messages,
                               currentRoute,
                             ),
@@ -1209,7 +1376,7 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.language,
-                    title: "Website",
+                    title: l10n.drawerWebsite,
                     isSelected: currentRoute == AppRoutes.website,
                     onTap: () => context.push(AppRoutes.website),
                   ),
@@ -1226,7 +1393,7 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.history,
-                    title: "Activity Log",
+                    title: l10n.drawerActivityLog,
                     isSelected: currentRoute == AppRoutes.activityLog,
                     onTap: () => context.push(AppRoutes.activityLog),
                   ),
@@ -1243,7 +1410,7 @@ class AppDrawer extends StatelessWidget {
                   _buildDrawerItem(
                     context,
                     icon: Icons.logout,
-                    title: "Logout",
+                    title: l10n.drawerLogout,
                     iconColor: Colors.redAccent,
                     iconBgColor:
                         (Theme.of(context).brightness == Brightness.dark
@@ -1260,6 +1427,7 @@ class AppDrawer extends StatelessWidget {
   }
 
   Widget _buildSectionHeader(BuildContext context, String title) {
+    if (_searchQuery.isNotEmpty) return const SizedBox.shrink();
     return Padding(
       padding: const EdgeInsets.only(left: 12.0, top: 24.0, bottom: 8.0),
       child: Text(
@@ -1280,8 +1448,12 @@ class AppDrawer extends StatelessWidget {
     BuildContext context,
     String title,
     String route,
-    String currentRoute,
-  ) {
+    String currentRoute, [
+    String? parentQuery,
+  ]) {
+    final query = parentQuery ?? _searchQuery;
+    if (query.isNotEmpty && !title.toLowerCase().contains(query.toLowerCase()))
+      return const SizedBox.shrink();
     final isSelected = currentRoute == route;
     return ListTile(
       dense: true,
@@ -1318,6 +1490,9 @@ class AppDrawer extends StatelessWidget {
     Color? iconColor,
     Color? iconBgColor,
   }) {
+    if (_searchQuery.isNotEmpty &&
+        !title.toLowerCase().contains(_searchQuery.toLowerCase()))
+      return const SizedBox.shrink();
     final defaultIconColor = isSelected
         ? Theme.of(context).primaryColor
         : (Theme.of(context).textTheme.bodyMedium?.color ??
@@ -1406,12 +1581,16 @@ class ExpandableDrawerItem extends StatefulWidget {
   final String title;
   final List<Widget> children;
   final bool isInitiallyExpanded;
+  final bool isVisible;
+  final bool forceExpand;
 
   const ExpandableDrawerItem({
     super.key,
     required this.icon,
     required this.title,
     required this.children,
+    required this.isVisible,
+    required this.forceExpand,
     this.isInitiallyExpanded = false,
   });
 
@@ -1461,11 +1640,13 @@ class _ExpandableDrawerItemState extends State<ExpandableDrawerItem>
 
   @override
   Widget build(BuildContext context) {
-    final iconColor = _isExpanded
+    if (!widget.isVisible) return const SizedBox.shrink();
+    final bool displayExpanded = _isExpanded || widget.forceExpand;
+    final iconColor = displayExpanded
         ? Theme.of(context).primaryColor
         : (Theme.of(context).textTheme.bodyMedium?.color ??
               AppColors.textSecondary);
-    final textColor = _isExpanded
+    final textColor = displayExpanded
         ? Theme.of(context).primaryColor
         : (Theme.of(context).textTheme.bodyMedium?.color ??
               AppColors.textSecondary);
@@ -1482,7 +1663,7 @@ class _ExpandableDrawerItemState extends State<ExpandableDrawerItem>
             color: Colors.transparent,
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
-              onTap: _handleTap,
+              onTap: widget.forceExpand ? null : _handleTap,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 16.0,
@@ -1503,7 +1684,9 @@ class _ExpandableDrawerItemState extends State<ExpandableDrawerItem>
                       ),
                     ),
                     RotationTransition(
-                      turns: _iconTurns,
+                      turns: widget.forceExpand
+                          ? const AlwaysStoppedAnimation(0.5)
+                          : _iconTurns,
                       child: Icon(
                         Icons.keyboard_arrow_down,
                         color: AppColors.inactiveIcon,
@@ -1518,7 +1701,9 @@ class _ExpandableDrawerItemState extends State<ExpandableDrawerItem>
         ),
         ClipRect(
           child: AnimatedBuilder(
-            animation: _controller.view,
+            animation: widget.forceExpand
+                ? const AlwaysStoppedAnimation(1.0)
+                : _controller.view,
             builder: _buildChildren,
             child: Column(children: widget.children),
           ),

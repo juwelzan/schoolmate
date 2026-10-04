@@ -22,19 +22,33 @@ class LanguageToggleButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () => context.read<AppBloc>().add(const ChangeLocaleEvent(Locale('en'))),
+                onTap: () => context.read<AppBloc>().add(
+                  const ChangeLocaleEvent(Locale('en')),
+                ),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 0,
+                  ),
                   decoration: BoxDecoration(
-                    color: isEnglish ? AppColors.primaryPurple : Colors.transparent,
+                    color: isEnglish
+                        ? AppColors.primaryPurple
+                        : Colors.transparent,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Center(
                     child: Text(
                       "EN",
                       style: TextStyle(
-                        color: isEnglish ? Colors.white : (isDark ? Colors.white70 : (Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary)),
+                        color: isEnglish
+                            ? Colors.white
+                            : (isDark
+                                  ? Colors.white70
+                                  : (Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.color ??
+                                        AppColors.textSecondary)),
                         fontWeight: FontWeight.w700,
                         fontSize: 12,
                       ),
@@ -43,19 +57,33 @@ class LanguageToggleButton extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: () => context.read<AppBloc>().add(const ChangeLocaleEvent(Locale('bn'))),
+                onTap: () => context.read<AppBloc>().add(
+                  const ChangeLocaleEvent(Locale('bn')),
+                ),
                 child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 0,
+                  ),
                   decoration: BoxDecoration(
-                    color: !isEnglish ? AppColors.primaryPurple : Colors.transparent,
+                    color: !isEnglish
+                        ? AppColors.primaryPurple
+                        : Colors.transparent,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Center(
                     child: Text(
                       "বাং",
                       style: TextStyle(
-                        color: !isEnglish ? Colors.white : (isDark ? Colors.white70 : (Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary)),
+                        color: !isEnglish
+                            ? Colors.white
+                            : (isDark
+                                  ? Colors.white70
+                                  : (Theme.of(context)
+                                            .textTheme
+                                            .bodyMedium
+                                            ?.color ??
+                                        AppColors.textSecondary)),
                         fontWeight: FontWeight.w700,
                         fontSize: 12,
                       ),

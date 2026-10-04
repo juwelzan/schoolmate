@@ -8,11 +8,12 @@ class PaymentGatewaysPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Payment Gateways",
-        subtitle: "Manage Online Payments",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.payGatewayTitle,
+        subtitle: l10n.payGatewaySubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -25,12 +26,12 @@ class PaymentGatewaysPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Expanded(
+                Expanded(
                   child: Text(
                     "Configure how your institution collects online fees — SSLCommerz (bKash / Nagad / Rocket / card in one checkout), a direct bKash or ShurjoPay account, a custom API-based gateway, or any manual option confirmed by staff.",
                     style: TextStyle(
                       fontSize: 14,
-                      color: AppColors.textSecondary,
+                      color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                       height: 1.4,
                     ),
                   ),
@@ -39,8 +40,8 @@ class PaymentGatewaysPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                  label: const Text(
-                    "Add Gateway",
+                  label: Text(
+                    l10n.payGatewayAddBtn,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -65,17 +66,17 @@ class PaymentGatewaysPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryPurple.withOpacity(0.04),
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-                child: const Center(
+                child: Center(
                   child: Padding(
                     padding: EdgeInsets.all(32.0),
                     child: Text(
@@ -83,7 +84,7 @@ class PaymentGatewaysPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                         height: 1.5,
                       ),
                     ),

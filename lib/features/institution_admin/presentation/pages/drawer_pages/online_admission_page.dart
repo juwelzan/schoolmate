@@ -8,11 +8,12 @@ class OnlineAdmissionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Online Admission",
-        subtitle: "Admission Cycles & Quotas",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.onlineAdmissionTitle,
+        subtitle: l10n.onlineAdmissionSubtitle,
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
@@ -30,11 +31,11 @@ class OnlineAdmissionPage extends StatelessWidget {
                     children: [
                       SizedBox(
                         width: constraints.maxWidth > 600 ? 450 : constraints.maxWidth,
-                        child: const Text(
-                          "Configure admission cycles, application windows, fees, and seat allocation per class.",
+                        child: Text(
+                          l10n.onlineAdmissionDesc,
                           style: TextStyle(
                             fontSize: 14,
-                            color: AppColors.textSecondary,
+                            color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                             height: 1.4,
                           ),
                         ),
@@ -43,14 +44,14 @@ class OnlineAdmissionPage extends StatelessWidget {
                         spacing: 8,
                         runSpacing: 8,
                         children: [
-                          _buildOutlinedBtn(Icons.grid_view_outlined, "Dashboard"),
-                          _buildOutlinedBtn(Icons.shield_outlined, "Quota Types"),
-                          _buildPrimaryBtn(Icons.add, "New Cycle"),
+                          _buildOutlinedBtn(context, Icons.grid_view_outlined, l10n.dashboard),
+                          _buildOutlinedBtn(context, Icons.shield_outlined, l10n.onlineAdmissionBtnQuota),
+                          _buildPrimaryBtn(context, Icons.add, l10n.onlineAdmissionBtnNewCycle),
                         ],
                       ),
                     ],
                   ),
-                  const Expanded(
+                  Expanded(
                     child: Center(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +66,7 @@ class OnlineAdmissionPage extends StatelessWidget {
                             "No admission cycles configured yet.",
                             style: TextStyle(
                               fontSize: 15,
-                              color: AppColors.textSecondary,
+                              color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                             ),
                           ),
                         ],
@@ -81,16 +82,16 @@ class OnlineAdmissionPage extends StatelessWidget {
     );
   }
 
-  Widget _buildOutlinedBtn(IconData icon, String label) {
+  Widget _buildOutlinedBtn(BuildContext context, IconData icon, String label) {
     return OutlinedButton.icon(
       onPressed: () {},
       icon: Icon(icon, size: 16, color: AppColors.textSecondary),
       label: Text(
         label,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w600,
-          color: AppColors.textSecondary,
+          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
         ),
       ),
       style: OutlinedButton.styleFrom(
@@ -103,7 +104,7 @@ class OnlineAdmissionPage extends StatelessWidget {
     );
   }
 
-  Widget _buildPrimaryBtn(IconData icon, String label) {
+  Widget _buildPrimaryBtn(BuildContext context, IconData icon, String label) {
     return ElevatedButton.icon(
       onPressed: () {},
       icon: Icon(icon, size: 18, color: AppColors.white),

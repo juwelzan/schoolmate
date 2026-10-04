@@ -8,11 +8,12 @@ class ActivityLogPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Activity Log",
-        subtitle: "Audit trail of all create, update, and delete actions",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.activityLogTitle,
+        subtitle: l10n.activityLogSubtitle,
       ),
       drawer: const AppDrawer(),
       body: SafeArea(
@@ -26,9 +27,9 @@ class ActivityLogPage extends StatelessWidget {
                 spacing: 16,
                 runSpacing: 16,
                 children: [
-                  _buildDropdown(),
-                  _buildSearchField(),
-                  _buildDateField(),
+                  _buildDropdown(context, l10n),
+                  _buildSearchField(context, l10n),
+                  _buildDateField(context, l10n),
                 ],
               ),
               const SizedBox(height: 24),
@@ -38,15 +39,15 @@ class ActivityLogPage extends StatelessWidget {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: AppColors.divider),
                   ),
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
-                      _buildActivityItem(
-                        badgeText: "Deleted",
+                      _buildActivityItem(context, 
+                        badgeText: l10n.activityLogDeleted,
                         badgeColor: const Color(0xFFFF6B6B), // Red
                         badgeTextColor: AppColors.white,
                         title: "InstitutionBoardAffiliation",
@@ -55,7 +56,7 @@ class ActivityLogPage extends StatelessWidget {
                         time: "03 Oct 2026, 10:47 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(
+                      _buildActivityItem(context, 
                         badgeText: "Super Admin Superadmin@School.Test Signed In...",
                         badgeColor: const Color(0xFFF0F2F5), // Light gray
                         badgeTextColor: AppColors.textPrimary,
@@ -65,36 +66,36 @@ class ActivityLogPage extends StatelessWidget {
                         time: "03 Oct 2026, 09:34 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(
-                        badgeText: "Updated",
+                      _buildActivityItem(context, 
+                        badgeText: l10n.activityLogUpdated,
                         badgeColor: const Color(0xFFE9EBF2), // Gray
                         badgeTextColor: AppColors.textPrimary,
                         title: "WebsiteSection",
                         id: "#01a10025",
                         subtitle: "by Md Rakib Molla",
-                        fieldsChanged: "1 field(s) changed",
+                        fieldsChanged: l10n.activityLogFieldsChanged("1"),
                         time: "03 Oct 2026, 05:19 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(
-                        badgeText: "Created",
+                      _buildActivityItem(context, 
+                        badgeText: l10n.activityLogCreated,
                         badgeColor: const Color(0xFF17212B), // Black/Dark
                         badgeTextColor: AppColors.white,
                         title: "WebsiteSection",
                         id: "#01a10025",
                         subtitle: "by Md Rakib Molla",
-                        fieldsChanged: "6 field(s) changed",
+                        fieldsChanged: l10n.activityLogFieldsChanged("6"),
                         time: "03 Oct 2026, 05:03 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(
-                        badgeText: "Created",
+                      _buildActivityItem(context, 
+                        badgeText: l10n.activityLogCreated,
                         badgeColor: const Color(0xFF17212B), // Black/Dark
                         badgeTextColor: AppColors.white,
                         title: "WebsiteSection",
                         id: "#01a10025",
                         subtitle: "by Md Rakib Molla",
-                        fieldsChanged: "6 field(s) changed",
+                        fieldsChanged: l10n.activityLogFieldsChanged("6"),
                         time: "03 Oct 2026, 05:03 am",
                       ),
                     ],
@@ -108,22 +109,22 @@ class ActivityLogPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDropdown() {
+  Widget _buildDropdown(BuildContext context, AppLocalizations l10n) {
     return Container(
       width: 200,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: const Color(0xFFF9FAFB),
+        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.divider),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-          value: "All events",
+          value: l10n.activityLogAllEvents,
           isExpanded: true,
           icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.textSecondary),
-          items: ["All events", "Created", "Updated", "Deleted"]
-              .map((e) => DropdownMenuItem(value: e, child: Text(e, style: const TextStyle(color: AppColors.textSecondary, fontSize: 14))))
+          items: [l10n.activityLogAllEvents, l10n.activityLogCreated, l10n.activityLogUpdated, l10n.activityLogDeleted]
+              .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 14))))
               .toList(),
           onChanged: (val) {},
         ),
@@ -131,16 +132,16 @@ class ActivityLogPage extends StatelessWidget {
     );
   }
 
-  Widget _buildSearchField() {
+  Widget _buildSearchField(BuildContext context, AppLocalizations l10n) {
     return SizedBox(
       width: 250,
       child: TextField(
         decoration: InputDecoration(
-          hintText: "Filter by user ID",
+          hintText: l10n.activityLogFilterUserId,
           hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
           prefixIcon: const Icon(Icons.search, size: 20, color: AppColors.textMuted),
           filled: true,
-          fillColor: const Color(0xFFF9FAFB),
+          fillColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
@@ -155,16 +156,16 @@ class ActivityLogPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDateField() {
+  Widget _buildDateField(BuildContext context, AppLocalizations l10n) {
     return SizedBox(
       width: 200,
       child: TextField(
         decoration: InputDecoration(
-          hintText: "dd/mm/yyyy",
+          hintText: l10n.activityLogDateFormat,
           hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
           suffixIcon: const Icon(Icons.calendar_today_outlined, size: 18, color: AppColors.textMuted),
           filled: true,
-          fillColor: const Color(0xFFF9FAFB),
+          fillColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
           contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
@@ -179,7 +180,7 @@ class ActivityLogPage extends StatelessWidget {
     );
   }
 
-  Widget _buildActivityItem({
+  Widget _buildActivityItem(BuildContext context, {
     required String badgeText,
     required Color badgeColor,
     required Color badgeTextColor,
@@ -224,17 +225,17 @@ class ActivityLogPage extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     text: "$title ",
-                    style: const TextStyle(color: AppColors.textPrimary, fontSize: 15, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15, fontWeight: FontWeight.bold),
                     children: [
                       TextSpan(
                         text: id,
-                        style: const TextStyle(color: AppColors.textSecondary, fontSize: 15, fontWeight: FontWeight.normal),
+                        style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 15, fontWeight: FontWeight.normal),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(subtitle, style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+                Text(subtitle, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 13)),
                 
                 if (fieldsChanged != null) ...[
                   const SizedBox(height: 8),
@@ -242,7 +243,7 @@ class ActivityLogPage extends StatelessWidget {
                     children: [
                       const Icon(Icons.arrow_right, size: 16, color: AppColors.textSecondary),
                       Expanded(
-                        child: Text(fieldsChanged, style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+                        child: Text(fieldsChanged, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 13)),
                       ),
                     ],
                   ),
@@ -253,7 +254,7 @@ class ActivityLogPage extends StatelessWidget {
           
           // Time
           const SizedBox(width: 16),
-          Text(time, style: const TextStyle(color: AppColors.textSecondary, fontSize: 13)),
+          Text(time, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 13)),
         ],
       ),
     );

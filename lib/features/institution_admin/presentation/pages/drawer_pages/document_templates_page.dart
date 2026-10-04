@@ -11,21 +11,23 @@ class DocumentTemplatesPage extends StatefulWidget {
 }
 
 class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
-  final List<String> _tabs = [
-    "Admit Card",
-    "Board Admit Card",
-    "Seat Plan",
-    "ID Card"
-  ];
+
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final List<String> tabs = [
+      l10n.docTempAdmitCard,
+      l10n.docTempBoardAdmitCard,
+      l10n.docTempSeatPlan,
+      l10n.docTempIdCard
+    ];
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Document Templates",
-        subtitle: "Manage Institution Documents",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.docTempTitle,
+        subtitle: l10n.docTempSubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -34,11 +36,11 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Description Text
-            const Text(
-              "Pick a layout and an optional background for the Admit Card, Board Admit Card, Seat Plan and ID Card documents this institution prints.",
+            Text(
+              l10n.docTempDesc,
               style: TextStyle(
                 fontSize: 14,
-                color: AppColors.textSecondary,
+                color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                 height: 1.4,
               ),
             ),
@@ -48,8 +50,8 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
             ElevatedButton.icon(
               onPressed: () {},
               icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-              label: const Text(
-                "New Template",
+              label: Text(
+                l10n.docTempAddBtn,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -71,11 +73,11 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
             Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primaryPurple.withOpacity(0.04),
+                    color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -85,7 +87,7 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  children: List.generate(_tabs.length, (index) {
+                  children: List.generate(tabs.length, (index) {
                     final isSelected = _selectedIndex == index;
                     return GestureDetector(
                       onTap: () {
@@ -97,11 +99,11 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                         margin: const EdgeInsets.only(right: 4),
                         decoration: BoxDecoration(
-                          color: isSelected ? AppColors.surfaceVerySoftPurple : Colors.transparent,
+                          color: isSelected ? (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple) : Colors.transparent,
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
-                          _tabs[index],
+                          tabs[index],
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
@@ -121,11 +123,11 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryPurple.withOpacity(0.04),
+                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -135,11 +137,11 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(24.0),
                     child: Text(
-                      "No custom template yet — ${_tabs[_selectedIndex]} prints with the default classic layout and no background.",
+                      l10n.docTempNoDataMsg(tabs[_selectedIndex]),
                       textAlign: TextAlign.center,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                         height: 1.5,
                       ),
                     ),

@@ -8,11 +8,12 @@ class StudentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "Students",
-        subtitle: "Student Management",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.studentsTitle,
+        subtitle: l10n.studentsSubtitle,
       ),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(
@@ -25,19 +26,19 @@ class StudentsPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  _buildOutlinedButton(Icons.school_outlined, "Promotion"),
+                  _buildOutlinedButton(Icons.school_outlined, l10n.studentsBtnPromotion),
                   const SizedBox(width: 8),
-                  _buildOutlinedButton(Icons.badge_outlined, "Print ID Cards"),
+                  _buildOutlinedButton(Icons.badge_outlined, l10n.studentsBtnPrintID),
                   const SizedBox(width: 8),
-                  _buildOutlinedButton(Icons.request_page_outlined, "Stipend Roll"),
+                  _buildOutlinedButton(Icons.request_page_outlined, l10n.studentsBtnStipend),
                   const SizedBox(width: 8),
-                  _buildOutlinedButton(Icons.file_upload_outlined, "Import from Excel"),
+                  _buildOutlinedButton(Icons.file_upload_outlined, l10n.studentsBtnImport),
                   const SizedBox(width: 16),
                   ElevatedButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                    label: const Text(
-                      "Admit Student",
+                    label: Text(
+                      l10n.studentsBtnAdmit,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
@@ -58,11 +59,11 @@ class StudentsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             
-            const Text(
-              "Search, filter, and manage enrolled students",
+            Text(
+              l10n.studentsDesc,
               style: TextStyle(
                 fontSize: 14,
-                color: AppColors.textSecondary,
+                color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
               ),
             ),
             const SizedBox(height: 24),
@@ -80,9 +81,9 @@ class StudentsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: AppColors.divider),
                     ),
-                    child: const TextField(
+                    child: TextField(
                       decoration: InputDecoration(
-                        hintText: "Search by name, BRC, or phone...",
+                        hintText: l10n.studentsSearchHint,
                         hintStyle: TextStyle(color: AppColors.inactiveIcon, fontSize: 13),
                         prefixIcon: Icon(Icons.search, color: AppColors.inactiveIcon, size: 18),
                         border: InputBorder.none,
@@ -91,13 +92,13 @@ class StudentsPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  _buildDropdown("All classes"),
+                  _buildDropdown(context, l10n.studentsFilterClasses),
                   const SizedBox(width: 12),
-                  _buildDropdown("All sections"),
+                  _buildDropdown(context, l10n.studentsFilterSections),
                   const SizedBox(width: 12),
-                  _buildDropdown("All statuses"),
+                  _buildDropdown(context, l10n.studentsFilterStatuses),
                   const SizedBox(width: 12),
-                  _buildDropdown("NSID: All"),
+                  _buildDropdown(context, l10n.studentsFilterNSID),
                 ],
               ),
             ),
@@ -108,7 +109,7 @@ class StudentsPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(color: AppColors.divider),
                 ),
@@ -122,19 +123,19 @@ class StudentsPage extends StatelessWidget {
                         decoration: const BoxDecoration(
                           border: Border(bottom: BorderSide(color: AppColors.divider)),
                         ),
-                        child: const Row(
+                        child: Row(
                           children: [
-                            Expanded(flex: 2, child: Text("Student", style: _headerStyle)),
-                            Expanded(flex: 3, child: Text("BRC", style: _headerStyle)),
-                            Expanded(flex: 2, child: Text("Class / Section", style: _headerStyle)),
-                            Expanded(flex: 2, child: Text("Guardian Mobile", style: _headerStyle)),
-                            Expanded(flex: 1, child: Text("Status", style: _headerStyle)),
-                            Expanded(flex: 2, child: Text("Actions", style: _headerStyle, textAlign: TextAlign.right)),
+                            Expanded(flex: 2, child: Text(l10n.studentsTableStudent, style: _headerStyle(context))),
+                            Expanded(flex: 3, child: Text(l10n.studentsTableBRC, style: _headerStyle(context))),
+                            Expanded(flex: 2, child: Text(l10n.studentsTableClassSec, style: _headerStyle(context))),
+                            Expanded(flex: 2, child: Text(l10n.studentsTableGuardian, style: _headerStyle(context))),
+                            Expanded(flex: 1, child: Text(l10n.studentsTableStatus, style: _headerStyle(context))),
+                            Expanded(flex: 2, child: Text(l10n.studentsTableActions, style: _headerStyle(context), textAlign: TextAlign.right)),
                           ],
                         ),
                       ),
                       // Data Row 1
-                      _buildDataRow(),
+                      _buildDataRow(context, l10n),
                     ],
                   ),
                 ),
@@ -146,10 +147,10 @@ class StudentsPage extends StatelessWidget {
     );
   }
 
-  static const TextStyle _headerStyle = TextStyle(
+  TextStyle _headerStyle(BuildContext context) => TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w600,
-    color: AppColors.textSecondary,
+    color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
   );
 
   Widget _buildOutlinedButton(IconData icon, String label) {
@@ -168,12 +169,12 @@ class StudentsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDropdown(String hint) {
+  Widget _buildDropdown(BuildContext context, String hint) {
     return Container(
       height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.divider),
       ),
@@ -188,7 +189,7 @@ class StudentsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDataRow() {
+  Widget _buildDataRow(BuildContext context, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       child: Row(
@@ -206,7 +207,7 @@ class StudentsPage extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       "Mamun",
                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textPrimary),
                     ),
@@ -223,7 +224,7 @@ class StudentsPage extends StatelessWidget {
             flex: 3,
             child: Row(
               children: [
-                const Flexible(
+                Flexible(
                   child: Text(
                     "12345678964654645",
                     style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
@@ -237,22 +238,22 @@ class StudentsPage extends StatelessWidget {
                     border: Border.all(color: AppColors.warmGold),
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: const Text(
-                    "NSID Pending",
+                  child: Text(
+                    l10n.statusNsidPending,
                     style: TextStyle(fontSize: 11, color: AppColors.warmGold, fontWeight: FontWeight.w600),
                   ),
                 ),
               ],
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 2,
             child: Text(
               "Baby Class / A",
               style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
             ),
           ),
-          const Expanded(
+          Expanded(
             flex: 2,
             child: Text(
               "01755300722",
@@ -269,8 +270,8 @@ class StudentsPage extends StatelessWidget {
                   color: AppColors.successGreen,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: const Text(
-                  "active",
+                child: Text(
+                  l10n.statusActive,
                   style: TextStyle(fontSize: 11, color: AppColors.white, fontWeight: FontWeight.w600),
                 ),
               ),
@@ -281,11 +282,11 @@ class StudentsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _buildActionBtn("View", isRed: false),
+                _buildActionBtn(l10n.actionView, isRed: false),
                 const SizedBox(width: 8),
-                _buildActionBtn("Edit", isRed: false),
+                _buildActionBtn(l10n.actionEdit, isRed: false),
                 const SizedBox(width: 8),
-                _buildActionBtn("Delete", isRed: true),
+                _buildActionBtn(l10n.actionDelete, isRed: true),
               ],
             ),
           ),

@@ -8,11 +8,12 @@ class SmcGoverningBodyPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: const SchoolMateAppBar(
-        title: "SMC / Governing Body",
-        subtitle: "Manage Committees",
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: l10n.smcBodyTitle,
+        subtitle: l10n.smcBodySubtitle,
       ),
       drawer: const AppDrawer(),
       body: Padding(
@@ -25,7 +26,7 @@ class SmcGoverningBodyPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Expanded(
+                Expanded(
                   child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -34,7 +35,7 @@ class SmcGoverningBodyPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w700,
-                        color: AppColors.textPrimary,
+                        color: Theme.of(context).colorScheme.onSurface,
                       ),
                     ),
                     SizedBox(height: 4),
@@ -42,7 +43,7 @@ class SmcGoverningBodyPage extends StatelessWidget {
                       "Rakib School",
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                       ),
                     ),
                   ],
@@ -52,8 +53,8 @@ class SmcGoverningBodyPage extends StatelessWidget {
                 ElevatedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.add, size: 18, color: AppColors.white),
-                  label: const Text(
-                    "New SMC Body",
+                  label: Text(
+                    l10n.smcBodyAdd,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -81,7 +82,7 @@ class SmcGoverningBodyPage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: AppColors.surfaceVerySoftPurple,
+                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -91,12 +92,12 @@ class SmcGoverningBodyPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    const Text(
-                      "No governing body configured yet.",
+                    Text(
+                      l10n.smcBodyNoData,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: AppColors.textSecondary,
+                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
                       ),
                     ),
                   ],

@@ -9,6 +9,7 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/widgets/language_toggle_button.dart';
 
 class OnboardingPage extends StatefulWidget {
+  static const String routeName = '/onboarding';
   const OnboardingPage({Key? key}) : super(key: key);
 
   @override
@@ -71,7 +72,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         Container(
                           padding: const EdgeInsets.all(6),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF0EFFF),
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? AppColors.darkBadgePurpleBg
+                                : const Color(0xFFF0EFFF),
                             borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Icon(
@@ -81,12 +85,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        const Text(
+                        Text(
                           'Schoolmate',
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                       ],
@@ -99,7 +103,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         padding: const EdgeInsets.all(8),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.grey.shade100,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? AppColors.darkSurface
+                              : Colors.grey.shade100,
                         ),
                         child: Icon(
                           Icons.chevron_left,
@@ -136,7 +142,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
-  String _localizedText(BuildContext context, String english, {String? bangla}) {
+  String _localizedText(
+    BuildContext context,
+    String english, {
+    String? bangla,
+  }) {
     final locale = AppLocalizations.of(context)?.localeName ?? 'en';
     return locale.startsWith('bn') ? (bangla ?? english) : english;
   }
@@ -262,7 +272,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: const Color(0xFFF0EFFF),
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? AppColors.darkBadgePurpleBg
+                                : const Color(0xFFF0EFFF),
                             borderRadius: BorderRadius.circular(16),
                           ),
                           child: Row(
@@ -325,7 +338,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             height: 6,
                             width: isActive ? 24 : 6,
                             decoration: BoxDecoration(
-                              color: isActive ? dotColor : Colors.grey.shade300,
+                              color: isActive
+                                  ? dotColor
+                                  : (Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? AppColors.darkBorder
+                                        : Colors.grey.shade300),
                               borderRadius: BorderRadius.circular(3),
                             ),
                           );
@@ -423,8 +441,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         Container(
           width: 140,
           height: 140,
-          decoration: const BoxDecoration(
-            color: Color(0xFFC7E0F4),
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF0F2B40)
+                : const Color(0xFFC7E0F4),
             shape: BoxShape.circle,
           ),
           child: const Center(
@@ -468,11 +488,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             context,
             Icons.assignment,
             _localizedText(context, 'Homework', bangla: 'হোমওয়ার্ক'),
-            _localizedText(
-              context,
-              'Assignments due',
-              bangla: 'নির্ধারিত কাজ',
-            ),
+            _localizedText(context, 'Assignments due', bangla: 'নির্ধারিত কাজ'),
             const Color(0xFFDD6B20),
           ),
         ),
@@ -481,11 +497,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.darkSurface
+                  : Colors.white,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.transparent
+                      : Colors.black.withValues(alpha: 0.05),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -512,8 +532,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         Container(
           width: 140,
           height: 140,
-          decoration: const BoxDecoration(
-            color: Color(0xFFC6F6D5),
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF133824)
+                : const Color(0xFFC6F6D5),
             shape: BoxShape.circle,
           ),
           child: const Center(
@@ -530,7 +552,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
           child: _buildFloatingBadge(
             context,
             Icons.fact_check,
-            _localizedText(context, 'Digital attendance', bangla: 'ডিজিটাল হাজিরা'),
+            _localizedText(
+              context,
+              'Digital attendance',
+              bangla: 'ডিজিটাল হাজিরা',
+            ),
             _localizedText(
               context,
               'Live student tracking',
@@ -561,11 +587,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             context,
             Icons.message,
             _localizedText(context, 'Messages', bangla: 'বার্তা'),
-            _localizedText(
-              context,
-              'School updates',
-              bangla: 'স্কুল আপডেট',
-            ),
+            _localizedText(context, 'School updates', bangla: 'স্কুল আপডেট'),
             const Color(0xFF2B6CB0),
           ),
         ),
@@ -580,8 +602,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
         Container(
           width: 150,
           height: 150,
-          decoration: const BoxDecoration(
-            color: Color(0xFFE9D8FD),
+          decoration: BoxDecoration(
+            color: Theme.of(context).brightness == Brightness.dark
+                ? const Color(0xFF2B1A4A)
+                : const Color(0xFFE9D8FD),
             shape: BoxShape.circle,
           ),
           child: const Center(
@@ -629,11 +653,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
             context,
             Icons.account_balance_wallet,
             _localizedText(context, 'Fees', bangla: 'ফি'),
-            _localizedText(
-              context,
-              'Due & payments',
-              bangla: 'বকেয়া ও পরিশোধ',
-            ),
+            _localizedText(context, 'Due & payments', bangla: 'বকেয়া ও পরিশোধ'),
             const Color(0xFF38B2AC),
           ),
         ),
@@ -651,11 +671,15 @@ class _OnboardingPageState extends State<OnboardingPage> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : Colors.white,
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.transparent
+                : Colors.black.withValues(alpha: 0.06),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -667,7 +691,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
           Container(
             padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? iconColor.withValues(alpha: 0.2)
+                  : iconColor.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, size: 14, color: iconColor),
