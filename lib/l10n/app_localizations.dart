@@ -296,6 +296,18 @@ abstract class AppLocalizations {
   /// **'If you haven\'t received an ID, please contact your school admin or class teacher.'**
   String get roleInfoText;
 
+  /// No description provided for @appTitleMain.
+  ///
+  /// In en, this message translates to:
+  /// **'SchoolMate'**
+  String get appTitleMain;
+
+  /// No description provided for @appTitleSub.
+  ///
+  /// In en, this message translates to:
+  /// **'SchoolMate'**
+  String get appTitleSub;
+
   /// No description provided for @continueButton.
   ///
   /// In en, this message translates to:
@@ -313,6 +325,348 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Get help'**
   String get getHelp;
+
+  /// No description provided for @settingsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settingsTitle;
+
+  /// No description provided for @settingsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Preferences & Account'**
+  String get settingsSubtitle;
+
+  /// No description provided for @settingsGeneral.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get settingsGeneral;
+
+  /// No description provided for @settingsLanguage.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get settingsLanguage;
+
+  /// No description provided for @settingsLanguageDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Change app language (English / Bengali)'**
+  String get settingsLanguageDesc;
+
+  /// No description provided for @settingsTheme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get settingsTheme;
+
+  /// No description provided for @settingsThemeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Light / Dark mode'**
+  String get settingsThemeDesc;
+
+  /// No description provided for @settingsAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Account'**
+  String get settingsAccount;
+
+  /// No description provided for @settingsChangePassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Change Password'**
+  String get settingsChangePassword;
+
+  /// No description provided for @settingsChangePasswordDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Update your login password'**
+  String get settingsChangePasswordDesc;
+
+  /// No description provided for @settingsNotifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get settingsNotifications;
+
+  /// No description provided for @settingsNotificationsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage alert preferences'**
+  String get settingsNotificationsDesc;
+
+  /// No description provided for @settingsSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Support'**
+  String get settingsSupport;
+
+  /// No description provided for @settingsHelpSupport.
+  ///
+  /// In en, this message translates to:
+  /// **'Help & Support'**
+  String get settingsHelpSupport;
+
+  /// No description provided for @settingsHelpSupportDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact our support team'**
+  String get settingsHelpSupportDesc;
+
+  /// No description provided for @settingsAbout.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get settingsAbout;
+
+  /// No description provided for @settingsAboutDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'App version and info'**
+  String get settingsAboutDesc;
+
+  /// No description provided for @settingsLogOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Log Out'**
+  String get settingsLogOut;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light Mode'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark Mode'**
+  String get themeDark;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System Default'**
+  String get themeSystem;
+
+  /// No description provided for @institutionProfileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Institution Profile'**
+  String get institutionProfileTitle;
+
+  /// No description provided for @instIdentity.
+  ///
+  /// In en, this message translates to:
+  /// **'Identity'**
+  String get instIdentity;
+
+  /// No description provided for @instEIIN.
+  ///
+  /// In en, this message translates to:
+  /// **'EIIN'**
+  String get instEIIN;
+
+  /// No description provided for @instReportLang.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Language'**
+  String get instReportLang;
+
+  /// No description provided for @instBoth.
+  ///
+  /// In en, this message translates to:
+  /// **'Both'**
+  String get instBoth;
+
+  /// No description provided for @instEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get instEnglish;
+
+  /// No description provided for @instBangla.
+  ///
+  /// In en, this message translates to:
+  /// **'Bangla'**
+  String get instBangla;
+
+  /// No description provided for @instContact.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact'**
+  String get instContact;
+
+  /// No description provided for @instEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get instEmail;
+
+  /// No description provided for @instPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get instPhone;
+
+  /// No description provided for @instWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get instWebsite;
+
+  /// No description provided for @instEnterWebsite.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter website URL'**
+  String get instEnterWebsite;
+
+  /// No description provided for @instAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Address'**
+  String get instAddress;
+
+  /// No description provided for @instDivision.
+  ///
+  /// In en, this message translates to:
+  /// **'Division'**
+  String get instDivision;
+
+  /// No description provided for @instSelectDivision.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Division'**
+  String get instSelectDivision;
+
+  /// No description provided for @instDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'District'**
+  String get instDistrict;
+
+  /// No description provided for @instSelectDistrict.
+  ///
+  /// In en, this message translates to:
+  /// **'Select District'**
+  String get instSelectDistrict;
+
+  /// No description provided for @instUpazila.
+  ///
+  /// In en, this message translates to:
+  /// **'Upazila'**
+  String get instUpazila;
+
+  /// No description provided for @instSelectUpazila.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Upazila'**
+  String get instSelectUpazila;
+
+  /// No description provided for @instUnionName.
+  ///
+  /// In en, this message translates to:
+  /// **'Union Name'**
+  String get instUnionName;
+
+  /// No description provided for @instEnterUnion.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Union Name'**
+  String get instEnterUnion;
+
+  /// No description provided for @instVillage.
+  ///
+  /// In en, this message translates to:
+  /// **'Village'**
+  String get instVillage;
+
+  /// No description provided for @instEnterVillage.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Village'**
+  String get instEnterVillage;
+
+  /// No description provided for @instPostCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Post Code'**
+  String get instPostCode;
+
+  /// No description provided for @instEnterPostCode.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Post Code'**
+  String get instEnterPostCode;
+
+  /// No description provided for @instCertSignature.
+  ///
+  /// In en, this message translates to:
+  /// **'Certificate Signature Block'**
+  String get instCertSignature;
+
+  /// No description provided for @instCertSignatureDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Printed on the signature line of every generated certificate (character certificate, testimonial, etc.).'**
+  String get instCertSignatureDesc;
+
+  /// No description provided for @instHeadName.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal / Head of Institution Name'**
+  String get instHeadName;
+
+  /// No description provided for @instHeadNameHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional — printed above the signature line'**
+  String get instHeadNameHint;
+
+  /// No description provided for @instDesignation.
+  ///
+  /// In en, this message translates to:
+  /// **'Designation'**
+  String get instDesignation;
+
+  /// No description provided for @instPrincipalHead.
+  ///
+  /// In en, this message translates to:
+  /// **'Principal / Head of Institution'**
+  String get instPrincipalHead;
+
+  /// No description provided for @instLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Institution Logo'**
+  String get instLogo;
+
+  /// No description provided for @instUploadLogo.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Logo'**
+  String get instUploadLogo;
+
+  /// No description provided for @instStamp.
+  ///
+  /// In en, this message translates to:
+  /// **'Institution Stamp'**
+  String get instStamp;
+
+  /// No description provided for @instUploadStamp.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Stamp'**
+  String get instUploadStamp;
+
+  /// No description provided for @instSaveChanges.
+  ///
+  /// In en, this message translates to:
+  /// **'Save Changes'**
+  String get instSaveChanges;
 }
 
 class _AppLocalizationsDelegate

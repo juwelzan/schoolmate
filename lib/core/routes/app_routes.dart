@@ -1,21 +1,21 @@
 import 'package:schoolmate/core/file_path.dart';
-
+import 'package:schoolmate/features/settings/presentation/pages/change_password_page.dart';
 
 class AppRoutes {
-    // === Auth & Initial Routes ===
+  // === Auth & Initial Routes ===
   static const String initial = SplashPage.routeName;
   static const String login = '/login';
   static const String roleSelection = RoleSelectionPage.routeName;
-    static const String more = MorePage.routeName;
+  static const String more = MorePage.routeName;
   static const String settings = SettingsPage.routeName;
 
   // === Core Dashboards ===
-  static const String institutionAdminDashboard = InstitutionAdminDashboardPage.routeName;
+  static const String institutionAdminDashboard =
+      InstitutionAdminDashboardPage.routeName;
   static const String teacherDashboard = TeacherDashboardPage.routeName;
   static const String studentDashboard = StudentDashboardPage.routeName;
-  
 
-    // === Institution Admin Drawer Pages ===
+  // === Institution Admin Drawer Pages ===
   static const String institutionProfile = InstitutionProfilePage.routeName;
   static const String multiTrack = MultiTrackPage.routeName;
   static const String boardAffiliations = BoardAffiliationsPage.routeName;
@@ -40,6 +40,7 @@ class AppRoutes {
   static const String website = WebsitePage.routeName;
   static const String activityLog = ActivityLogPage.routeName;
   static const String account = AccountPage.routeName;
+  static const String changePassword = ChangePasswordPage.routeName;
 
   // === Academic Sub-pages ===
   static const String years = YearsPage.routeName;
@@ -65,7 +66,8 @@ class AppRoutes {
   static const String shiftTimetable = ShiftTimetablePage.routeName;
   static const String teacherTimetable = TeacherTimetablePage.routeName;
   static const String roomTimetable = RoomTimetablePage.routeName;
-  static const String subjectDistributionRules = SubjectDistributionRulesPage.routeName;
+  static const String subjectDistributionRules =
+      SubjectDistributionRulesPage.routeName;
   static const String teacherAvailability = TeacherAvailabilityPage.routeName;
   static const String publish = PublishPage.routeName;
   static const String substituteAssignment = SubstituteAssignmentPage.routeName;
@@ -78,15 +80,19 @@ class AppRoutes {
   static const String recruitment = RecruitmentPage.routeName;
   static const String leaveTypes = LeaveTypesPage.routeName;
   static const String academicDesignations = AcademicDesignationsPage.routeName;
-  static const String bulkImportAssignments = BulkImportAssignmentsPage.routeName;
-  static const String subjectAssignmentMatrix = SubjectAssignmentMatrixPage.routeName;
+  static const String bulkImportAssignments =
+      BulkImportAssignmentsPage.routeName;
+  static const String subjectAssignmentMatrix =
+      SubjectAssignmentMatrixPage.routeName;
 
   // === Examination Sub-pages ===
   static const String exams = ExamsPage.routeName;
   static const String examTerms = ExamTermsPage.routeName;
   static const String examTypes = ExamTypesPage.routeName;
-  static const String boardSubjectCombinations = BoardSubjectCombinationsPage.routeName;
-  static const String backlogImprovementRules = BacklogImprovementRulesPage.routeName;
+  static const String boardSubjectCombinations =
+      BoardSubjectCombinationsPage.routeName;
+  static const String backlogImprovementRules =
+      BacklogImprovementRulesPage.routeName;
   static const String questionBank = QuestionBankPage.routeName;
   static const String questionPapers = QuestionPapersPage.routeName;
   static const String marksEntry = MarksEntryPage.routeName;
@@ -95,26 +101,32 @@ class AppRoutes {
   static const String weightProfiles = WeightProfilesPage.routeName;
   static const String rankingProfiles = RankingProfilesPage.routeName;
   static const String graceMarkPolicies = GraceMarkPoliciesPage.routeName;
-  static const String compartmentalEligibilityPolicies = CompartmentalEligibilityPoliciesPage.routeName;
+  static const String compartmentalEligibilityPolicies =
+      CompartmentalEligibilityPoliciesPage.routeName;
   static const String assessmentDomains = AssessmentDomainsPage.routeName;
   static const String prePrimaryAssessment = PrePrimaryAssessmentPage.routeName;
-  static const String developmentalMilestones = DevelopmentalMilestonesPage.routeName;
+  static const String developmentalMilestones =
+      DevelopmentalMilestonesPage.routeName;
   static const String milestoneTracker = MilestoneTrackerPage.routeName;
 
   // === Attendance Sub-pages ===
   static const String dailySummary = DailySummaryPage.routeName;
   static const String shiftAttendance = ShiftAttendancePage.routeName;
   static const String monthlyAttendance = MonthlyAttendancePage.routeName;
-  static const String attendanceEligibility = AttendanceEligibilityPage.routeName;
+  static const String attendanceEligibility =
+      AttendanceEligibilityPage.routeName;
   static const String teacherAttendance = TeacherAttendancePage.routeName;
   static const String staffAttendance = StaffAttendancePage.routeName;
   static const String teacherMonthlyReport = TeacherMonthlyReportPage.routeName;
-  static const String subjectCoverageReport = SubjectCoverageReportPage.routeName;
+  static const String subjectCoverageReport =
+      SubjectCoverageReportPage.routeName;
   static const String attendanceAnalytics = AttendanceAnalyticsPage.routeName;
   static const String attendanceDevices = AttendanceDevicesPage.routeName;
-  static const String instituteGateAttendance = InstituteGateAttendancePage.routeName;
+  static const String instituteGateAttendance =
+      InstituteGateAttendancePage.routeName;
   static const String attendanceEvents = AttendanceEventsPage.routeName;
-  static const String practicalLabAttendance = PracticalLabAttendancePage.routeName;
+  static const String practicalLabAttendance =
+      PracticalLabAttendancePage.routeName;
   static const String practicalLabSummary = PracticalLabSummaryPage.routeName;
   static const String combinedEligibility = CombinedEligibilityPage.routeName;
 
@@ -177,4 +189,3 @@ class AppRoutes {
   static const String messages = MessagesPage.routeName;
   static const String notifications = NotificationsPage.routeName;
 }
-

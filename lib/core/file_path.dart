@@ -174,3 +174,13 @@ export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/communication/messages_page.dart';
 
 export 'package:schoolmate/features/institution_admin/presentation/pages/notifications_page.dart';
+
+export 'widgets/language_toggle_button.dart';
+export 'widgets/custom_text_field.dart';
+
+export 'widgets/settings_tile.dart';
+
+export '../features/settings/presentation/widgets/settings_section_header.dart';
+
+export '../features/settings/presentation/widgets/theme_dialog.dart';
+export 'widgets/custom_text_style.dart';

@@ -10,21 +10,27 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
             // Custom Header with Back Button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 12.0,
+              ),
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                     onPressed: () => context.pop(),
                   ),
-                  const SizedBox(width: 8),
-                  const Expanded(
+                  SizedBox(width: 8),
+                  Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -33,14 +39,19 @@ class NotificationsPage extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w700,
-                            color: AppColors.textPrimary,
+                            color: Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                         Text(
                           "Your recent alerts and messages",
                           style: TextStyle(
                             fontSize: 12,
-                            color: AppColors.textSecondary,
+                            color:
+                                (Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.color ??
+                                AppColors.textSecondary),
                           ),
                         ),
                       ],
@@ -48,27 +59,38 @@ class NotificationsPage extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text("Mark all as read", style: TextStyle(color: AppColors.primaryPurple, fontSize: 13, fontWeight: FontWeight.w600)),
+                    child: Text(
+                      "Mark all as read",
+                      style: TextStyle(
+                        color: AppColors.primaryPurple,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            
+
             // Notifications List
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.all(16.0),
                 children: [
                   _buildNotificationItem(
+                    context: context,
                     title: "System Update",
                     description: "SchoolMate v2.4 has been successfully installed. Check out the new Finance reports feature.",
                     time: "10 mins ago",
                     icon: Icons.system_update_alt,
-                    iconBg: AppColors.surfaceSoftTeal,
+                    iconBg: (Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkBadgeTealBg
+                        : AppColors.surfaceSoftTeal),
                     iconColor: AppColors.primaryTeal,
                     isUnread: true,
                   ),
                   _buildNotificationItem(
+                    context: context,
                     title: "New Admission Application",
                     description: "Md Rakib Molla has submitted a new admission form for Class 10.",
                     time: "2 hours ago",
@@ -78,30 +100,36 @@ class NotificationsPage extends StatelessWidget {
                     isUnread: true,
                   ),
                   _buildNotificationItem(
+                    context: context,
                     title: "Fee Payment Received",
-                    description: "Invoice #INV-2026-0045 has been paid via SSLCommerz.",
+                    description:
+                        "Invoice #INV-2026-0045 has been paid via SSLCommerz.",
                     time: "Yesterday, 04:30 PM",
                     icon: Icons.account_balance_wallet_outlined,
-                    iconBg: const Color(0xFFE6F7F0), // Light Green
+                    iconBg: Color(0xFFE6F7F0), // Light Green
                     iconColor: AppColors.successGreen,
                     isUnread: false,
                   ),
                   _buildNotificationItem(
+                    context: context,
                     title: "Leave Request",
                     description: "Teacher Asaduzzaman applied for 2 days of casual leave.",
                     time: "Yesterday, 09:15 AM",
                     icon: Icons.event_busy_outlined,
-                    iconBg: AppColors.softWarmGold,
+                    iconBg: (Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkBadgeGoldBg
+                        : AppColors.softWarmGold),
                     iconColor: AppColors.warmGold,
                     isUnread: false,
                   ),
                   _buildNotificationItem(
+                    context: context,
                     title: "Inventory Alert",
                     description: "Stock for 'A4 Print Paper' is running low (Current: 5 reams).",
                     time: "01 Oct 2026",
                     icon: Icons.warning_amber_rounded,
-                    iconBg: const Color(0xFFFFEBEE), // Light Red
-                    iconColor: const Color(0xFFD32F2F), // Red
+                    iconBg: Color(0xFFFFEBEE), // Light Red
+                    iconColor: Color(0xFFD32F2F), // Red
                     isUnread: false,
                   ),
                 ],
@@ -114,6 +142,7 @@ class NotificationsPage extends StatelessWidget {
   }
 
   Widget _buildNotificationItem({
+    required BuildContext context,
     required String title,
     required String description,
     required String time,
@@ -126,13 +155,25 @@ class NotificationsPage extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isUnread ? AppColors.white : AppColors.background,
+        color: isUnread
+            ? AppColors.white
+            : Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: isUnread ? AppColors.primaryPurple.withOpacity(0.3) : AppColors.divider,
+          color: isUnread
+              ? AppColors.primaryPurple.withValues(alpha: 0.3)
+              : (Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.darkBorder
+                    : AppColors.divider),
         ),
         boxShadow: isUnread
-            ? [BoxShadow(color: AppColors.primaryPurple.withOpacity(0.05), blurRadius: 10, offset: const Offset(0, 4))]
+            ? [
+                BoxShadow(
+                  color: AppColors.primaryPurple.withValues(alpha: 0.05),
+                  blurRadius: 10,
+                  offset: const Offset(0, 4),
+                ),
+              ]
             : null,
       ),
       child: Row(
@@ -140,13 +181,10 @@ class NotificationsPage extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: iconBg,
-              shape: BoxShape.circle,
-            ),
+            decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
             child: Icon(icon, color: iconColor, size: 20),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -159,8 +197,10 @@ class NotificationsPage extends StatelessWidget {
                         title,
                         style: TextStyle(
                           fontSize: 15,
-                          fontWeight: isUnread ? FontWeight.bold : FontWeight.w600,
-                          color: AppColors.textPrimary,
+                          fontWeight: isUnread
+                              ? FontWeight.bold
+                              : FontWeight.w600,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                     ),
@@ -175,21 +215,27 @@ class NotificationsPage extends StatelessWidget {
                       ),
                   ],
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: 6),
                 Text(
                   description,
                   style: TextStyle(
                     fontSize: 13,
-                    color: isUnread ? AppColors.textPrimary.withOpacity(0.9) : AppColors.textSecondary,
+                    color: isUnread
+                        ? Theme.of(context).colorScheme.onSurface
+                              .withValues(alpha: 0.9)
+                        : (Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary),
                     height: 1.4,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: 8),
                 Text(
                   time,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
-                    color: AppColors.textMuted,
+                    color: (Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkTextMuted
+                        : AppColors.textMuted),
                   ),
                 ),
               ],

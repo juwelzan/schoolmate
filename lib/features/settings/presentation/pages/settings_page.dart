@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolmate/core/file_path.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -7,37 +10,48 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           children: [
             // Custom Header with Back Button
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
               child: Row(
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back, color: AppColors.textPrimary),
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: Theme.of(context).colorScheme.onSurface,
+                    ),
                     onPressed: () => context.pop(),
                   ),
                   const SizedBox(width: 8),
-                  const Column(
+                  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Settings",
+                        l10n.settingsTitle,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.textPrimary,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       Text(
-                        "Preferences & Account",
+                        l10n.settingsSubtitle,
                         style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.textSecondary,
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -45,7 +59,11 @@ class SettingsPage extends StatelessWidget {
                 ],
               ),
             ),
-            const Divider(color: AppColors.divider, height: 1, thickness: 1),
+            Divider(
+              color: isDark ? AppColors.darkBorder : AppColors.divider,
+              height: 1,
+              thickness: 1,
+            ),
             // Scrollable Content
             Expanded(
               child: SingleChildScrollView(
@@ -53,47 +71,79 @@ class SettingsPage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _buildSectionHeader("General"),
-                    _buildSettingsTile(
+                    SettingsSectionHeader(title: l10n.settingsGeneral),
+                    SettingsTile(
                       icon: Icons.language,
-                      title: "Language",
-                      subtitle: "Change app language (English / Bengali)",
-                      onTap: () {
-                        // Language change logic
+                      title: l10n.settingsLanguage,
+                      subtitle: l10n.settingsLanguageDesc,
+                      trailing: const LanguageToggleButton(),
+                      onTap: () {},
+                    ),
+                    BlocBuilder<AppBloc, AppState>(
+                      builder: (context, state) {
+                        String themeName = l10n.themeSystem;
+                        if (state.themeMode == ThemeMode.light) {
+                          themeName = l10n.themeLight;
+                        } else if (state.themeMode == ThemeMode.dark) {
+                          themeName = l10n.themeDark;
+                        }
+
+                        return SettingsTile(
+                          icon: Icons.dark_mode_outlined,
+                          title: l10n.settingsTheme,
+                          subtitle: l10n.settingsThemeDesc,
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                themeName,
+                                style: TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600,
+                                  color: state.themeMode == ThemeMode.light
+                                      ? AppColors.primaryPurple
+                                      : AppColors.white,
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              Icon(
+                                Icons.chevron_right,
+                                color: isDark
+                                    ? AppColors.darkTextMuted
+                                    : AppColors.inactiveIcon,
+                              ),
+                            ],
+                          ),
+                          onTap: () => showThemeDialog(context),
+                        );
                       },
                     ),
-                    _buildSettingsTile(
-                      icon: Icons.dark_mode_outlined,
-                      title: "Theme",
-                      subtitle: "Light / Dark mode",
-                      onTap: () {},
-                    ),
                     const SizedBox(height: 24),
-                    _buildSectionHeader("Account"),
-                    _buildSettingsTile(
+                    SettingsSectionHeader(title: l10n.settingsAccount),
+                    SettingsTile(
                       icon: Icons.lock_outline,
-                      title: "Change Password",
-                      subtitle: "Update your login password",
-                      onTap: () {},
+                      title: l10n.settingsChangePassword,
+                      subtitle: l10n.settingsChangePasswordDesc,
+                      onTap: () => context.push(AppRoutes.changePassword),
                     ),
-                    _buildSettingsTile(
+                    SettingsTile(
                       icon: Icons.notifications_outlined,
-                      title: "Notifications",
-                      subtitle: "Manage alert preferences",
+                      title: l10n.settingsNotifications,
+                      subtitle: l10n.settingsNotificationsDesc,
                       onTap: () => context.push(AppRoutes.notifications),
                     ),
                     const SizedBox(height: 24),
-                    _buildSectionHeader("Support"),
-                    _buildSettingsTile(
+                    SettingsSectionHeader(title: l10n.settingsSupport),
+                    SettingsTile(
                       icon: Icons.help_outline,
-                      title: "Help & Support",
-                      subtitle: "Contact our support team",
+                      title: l10n.settingsHelpSupport,
+                      subtitle: l10n.settingsHelpSupportDesc,
                       onTap: () {},
                     ),
-                    _buildSettingsTile(
+                    SettingsTile(
                       icon: Icons.info_outline,
-                      title: "About",
-                      subtitle: "App version and info",
+                      title: l10n.settingsAbout,
+                      subtitle: l10n.settingsAboutDesc,
                       onTap: () {},
                     ),
                     const SizedBox(height: 32),
@@ -103,13 +153,19 @@ class SettingsPage extends StatelessWidget {
                           context.go(AppRoutes.login);
                         },
                         icon: const Icon(Icons.logout, color: Colors.white),
-                        label: const Text(
-                          "Log Out",
-                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+                        label: Text(
+                          l10n.settingsLogOut,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.redAccent,
-                          padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 32,
+                            vertical: 12,
+                          ),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
@@ -122,72 +178,6 @@ class SettingsPage extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSectionHeader(String title) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0, left: 4.0),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-          color: AppColors.primaryPurple,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSettingsTile({
-    required IconData icon,
-    required String title,
-    required String subtitle,
-    required VoidCallback onTap,
-  }) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 8.0),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.primaryPurple.withOpacity(0.04),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: ListTile(
-        leading: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: const BoxDecoration(
-            color: AppColors.surfaceVerySoftPurple,
-            shape: BoxShape.circle,
-          ),
-          child: Icon(icon, color: AppColors.primaryPurple, size: 22),
-        ),
-        title: Text(
-          title,
-          style: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
-          ),
-        ),
-        subtitle: Text(
-          subtitle,
-          style: const TextStyle(
-            fontSize: 12,
-            color: AppColors.textSecondary,
-          ),
-        ),
-        trailing: const Icon(Icons.chevron_right, color: AppColors.inactiveIcon),
-        onTap: onTap,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
         ),
       ),
     );

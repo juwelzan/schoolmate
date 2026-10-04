@@ -111,6 +111,12 @@ class AppLocalizationsBn extends AppLocalizations {
       'প্রতিষ্ঠান থেকে আইডি না পেয়ে থাকলে আপনার স্কুল অ্যাডমিন বা শ্রেণি শিক্ষকের সাথে যোগাযোগ করুন।';
 
   @override
+  String get appTitleMain => 'SchoolMate';
+
+  @override
+  String get appTitleSub => 'স্কুলমেট';
+
+  @override
   String get continueButton => 'চালিয়ে যান';
 
   @override
@@ -118,4 +124,178 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get getHelp => 'সাহায্য নিন';
+
+  @override
+  String get settingsTitle => 'সেটিংস';
+
+  @override
+  String get settingsSubtitle => 'পছন্দ এবং একাউন্ট';
+
+  @override
+  String get settingsGeneral => 'সাধারণ';
+
+  @override
+  String get settingsLanguage => 'ভাষা';
+
+  @override
+  String get settingsLanguageDesc =>
+      'অ্যাপের ভাষা পরিবর্তন করুন (ইংরেজি / বাংলা)';
+
+  @override
+  String get settingsTheme => 'থিম';
+
+  @override
+  String get settingsThemeDesc => 'লাইট / ডার্ক মোড';
+
+  @override
+  String get settingsAccount => 'একাউন্ট';
+
+  @override
+  String get settingsChangePassword => 'পাসওয়ার্ড পরিবর্তন করুন';
+
+  @override
+  String get settingsChangePasswordDesc => 'আপনার লগইন পাসওয়ার্ড আপডেট করুন';
+
+  @override
+  String get settingsNotifications => 'নোটিফিকেশন';
+
+  @override
+  String get settingsNotificationsDesc => 'অ্যালার্ট পছন্দ পরিচালনা করুন';
+
+  @override
+  String get settingsSupport => 'সাপোর্ট';
+
+  @override
+  String get settingsHelpSupport => 'সাহায্য ও সাপোর্ট';
+
+  @override
+  String get settingsHelpSupportDesc =>
+      'আমাদের সাপোর্ট টিমের সাথে যোগাযোগ করুন';
+
+  @override
+  String get settingsAbout => 'অ্যাপ সম্পর্কে';
+
+  @override
+  String get settingsAboutDesc => 'অ্যাপ ভার্সন এবং তথ্য';
+
+  @override
+  String get settingsLogOut => 'লগ আউট';
+
+  @override
+  String get themeLight => 'লাইট মোড';
+
+  @override
+  String get themeDark => 'ডার্ক মোড';
+
+  @override
+  String get themeSystem => 'সিস্টেম ডিফল্ট';
+
+  @override
+  String get institutionProfileTitle => 'প্রতিষ্ঠানের প্রোফাইল';
+
+  @override
+  String get instIdentity => 'পরিচয়';
+
+  @override
+  String get instEIIN => 'ইআইআইএন (EIIN)';
+
+  @override
+  String get instReportLang => 'রিপোর্টের ভাষা';
+
+  @override
+  String get instBoth => 'উভয়ই';
+
+  @override
+  String get instEnglish => 'ইংরেজি';
+
+  @override
+  String get instBangla => 'বাংলা';
+
+  @override
+  String get instContact => 'যোগাযোগ';
+
+  @override
+  String get instEmail => 'ইমেইল';
+
+  @override
+  String get instPhone => 'ফোন';
+
+  @override
+  String get instWebsite => 'ওয়েবসাইট';
+
+  @override
+  String get instEnterWebsite => 'ওয়েবসাইট ইউআরএল লিখুন';
+
+  @override
+  String get instAddress => 'ঠিকানা';
+
+  @override
+  String get instDivision => 'বিভাগ';
+
+  @override
+  String get instSelectDivision => 'বিভাগ নির্বাচন করুন';
+
+  @override
+  String get instDistrict => 'জেলা';
+
+  @override
+  String get instSelectDistrict => 'জেলা নির্বাচন করুন';
+
+  @override
+  String get instUpazila => 'উপজেলা';
+
+  @override
+  String get instSelectUpazila => 'উপজেলা নির্বাচন করুন';
+
+  @override
+  String get instUnionName => 'ইউনিয়নের নাম';
+
+  @override
+  String get instEnterUnion => 'ইউনিয়নের নাম লিখুন';
+
+  @override
+  String get instVillage => 'গ্রাম';
+
+  @override
+  String get instEnterVillage => 'গ্রাম লিখুন';
+
+  @override
+  String get instPostCode => 'পোস্ট কোড';
+
+  @override
+  String get instEnterPostCode => 'পোস্ট কোড লিখুন';
+
+  @override
+  String get instCertSignature => 'সার্টিফিকেট স্বাক্ষর ব্লক';
+
+  @override
+  String get instCertSignatureDesc =>
+      'প্রতিটি জেনারেট করা সার্টিফিকেটের স্বাক্ষরের লাইনে এটি প্রিন্ট হবে (চারিত্রিক সনদপত্র, প্রশংসাপত্র ইত্যাদি)।';
+
+  @override
+  String get instHeadName => 'অধ্যক্ষ / প্রতিষ্ঠান প্রধানের নাম';
+
+  @override
+  String get instHeadNameHint => 'ঐচ্ছিক — স্বাক্ষরের লাইনের উপরে প্রিন্ট হবে';
+
+  @override
+  String get instDesignation => 'পদবী';
+
+  @override
+  String get instPrincipalHead => 'অধ্যক্ষ / প্রতিষ্ঠান প্রধান';
+
+  @override
+  String get instLogo => 'প্রতিষ্ঠানের লোগো';
+
+  @override
+  String get instUploadLogo => 'লোগো আপলোড করুন';
+
+  @override
+  String get instStamp => 'প্রতিষ্ঠানের স্ট্যাম্প';
+
+  @override
+  String get instUploadStamp => 'স্ট্যাম্প আপলোড করুন';
+
+  @override
+  String get instSaveChanges => 'পরিবর্তন সংরক্ষণ করুন';
 }

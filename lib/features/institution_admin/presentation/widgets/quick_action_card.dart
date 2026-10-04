@@ -1,22 +1,13 @@
-import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
 
 
 
-TextStyle _bengaliStyle({
-  double fontSize = 14,
-  FontWeight fontWeight = FontWeight.normal,
-  Color color = AppColors.textPrimary,
-}) {
-  return TextStyle(
-    fontFamily: 'Noto Sans Bengali',
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    color: color,
-  );
-}
+
+
+
 
 class QuickActionCard extends StatelessWidget {
   final IconData icon;
@@ -38,11 +29,11 @@ class QuickActionCard extends StatelessWidget {
       margin: const EdgeInsets.only(right: 12),
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       decoration: BoxDecoration(
-        color: AppColors.white,
+        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF141B2D).withOpacity(0.04),
+            color: Color(0xFF141B2D).withValues(alpha: 0.04),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -59,10 +50,10 @@ class QuickActionCard extends StatelessWidget {
             ),
             child: Icon(icon, size: 16, color: iconColor),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12),
           Text(
             label,
-            style: _bengaliStyle(fontSize: 13, fontWeight: FontWeight.w600),
+            style: CustomTextStyles.bengali(fontSize: 13, fontWeight: FontWeight.w600, color: Theme.of(context).colorScheme.onSurface),
           ),
         ],
       ),

@@ -35,4 +35,27 @@ class AppColors {
   static const Color white = Color(0xFFFFFFFF);
   static const Color divider = Color(0xFFE9EBF2);
   static const Color inactiveIcon = Color(0xFF9296A3);
+
+  // ================= Dark Mode Colors =================
+  static const Color darkBackground = Color(0xFF0F1523);
+  static const Color darkSurface = Color(0xFF1B2336);
+  static const Color darkSurfaceHighlight = Color(0xFF273149);
+  
+  static const Color darkTextPrimary = Color(0xFFFFFFFF);
+  static const Color darkTextSecondary = Color(0xFF9AA4B8);
+  static const Color darkTextMuted = Color(0xFF6B758E);
+  
+  static const Color darkPrimaryPurple = Color(0xFFAC7EFC); // Lavender/Light Purple for dark mode
+  static const Color darkBorder = Color(0xFF2A344A);
+  
+  // Specific Badge Colors for Dark Mode
+  static const Color darkBadgePurpleBg = Color(0xFF2A2045);
+  static const Color darkBadgePurpleText = Color(0xFFCBB2FF);
+  
+  static const Color darkBadgeTealBg = Color(0xFF123438);
+  static const Color darkBadgeTealText = Color(0xFF4EE3D2);
+  
+  static const Color darkBadgeGoldBg = Color(0xFF3F2B14);
+  static const Color darkBadgeGoldText = Color(0xFFFFCC66);
+
 }

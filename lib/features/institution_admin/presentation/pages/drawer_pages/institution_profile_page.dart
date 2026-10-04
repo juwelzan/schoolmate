@@ -9,8 +9,10 @@ class InstitutionProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
 
       body: SafeArea(
         child: Column(
@@ -25,47 +27,50 @@ class InstitutionProfilePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.arrow_back,
-                      color: AppColors.textPrimary,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                     onPressed: () => context.pop(),
                   ),
-                  const Text(
-                    "Institution Profile",
+                  Text(
+                    l10n.institutionProfileTitle,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.textPrimary,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.settings,
-                      color: AppColors.textPrimary,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
-                    onPressed: () { context.push(AppRoutes.settings); },
+                    onPressed: () {
+                      context.push(AppRoutes.settings);
+                    },
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             // Profile Image / Icon
             Container(
               width: 100,
               height: 100,
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: isDark ? AppColors.darkSurface : AppColors.white,
                 shape: BoxShape.circle,
                 boxShadow: [
-                  BoxShadow(
-                    color: AppColors.primaryPurple.withOpacity(0.1),
-                    blurRadius: 15,
-                    offset: const Offset(0, 5),
-                  ),
+                  if (!isDark)
+                    BoxShadow(
+                      color: AppColors.primaryPurple.withValues(alpha: 0.1),
+                      blurRadius: 15,
+                      offset: const Offset(0, 5),
+                    ),
                 ],
                 border: Border.all(
-                  color: AppColors.primaryPurple.withOpacity(0.2),
+                  color: AppColors.primaryPurple.withValues(alpha: 0.2),
                   width: 3,
                 ),
               ),
@@ -77,7 +82,7 @@ class InstitutionProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
 
             // The Form inside Expanded
             Expanded(
@@ -85,174 +90,220 @@ class InstitutionProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: isDark ? AppColors.darkSurface : AppColors.white,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
-                      BoxShadow(
-                        color: AppColors.primaryPurple.withOpacity(0.04),
-                        blurRadius: 10,
-                        offset: const Offset(0, 4),
-                      ),
+                      if (!isDark)
+                        BoxShadow(
+                          color: AppColors.primaryPurple.withValues(
+                            alpha: 0.04,
+                          ),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
                     ],
                   ),
                   padding: const EdgeInsets.all(24.0),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildSectionHeader("Identity"),
-                      const SizedBox(height: 16),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _buildTextField("EIIN", "12345678912345678"),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: _buildDropdownField("Report Language", [
-                              "Both",
-                              "English",
-                              "Bangla",
-                            ]),
-                          ),
-                        ],
-                      ),
-
-                      const SizedBox(height: 32),
-                      _buildSectionHeader("Contact"),
-                      const SizedBox(height: 16),
+                      _buildSectionHeader(context, l10n.instIdentity),
+                      SizedBox(height: 16),
                       Row(
                         children: [
                           Expanded(
                             child: _buildTextField(
-                              "Email",
+                              context,
+                              l10n.instEIIN,
+                              "12345678912345678",
+                            ),
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: _buildDropdownField(
+                              context,
+                              l10n.instReportLang,
+                              [
+                                l10n.instBoth,
+                                l10n.instEnglish,
+                                l10n.instBangla,
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      SizedBox(height: 32),
+                      _buildSectionHeader(context, l10n.instContact),
+                      SizedBox(height: 16),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _buildTextField(
+                              context,
+                              l10n.instEmail,
                               "rakibmail1997@gmail.com",
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Expanded(
-                            child: _buildTextField("Phone", "01974013593"),
+                            child: _buildTextField(
+                              context,
+                              l10n.instPhone,
+                              "01974013593",
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
-                      _buildTextField("Website", "Enter website URL"),
+                      SizedBox(height: 16),
+                      _buildTextField(
+                        context,
+                        l10n.instWebsite,
+                        l10n.instEnterWebsite,
+                      ),
 
-                      const SizedBox(height: 32),
-                      _buildSectionHeader("Address"),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 32),
+                      _buildSectionHeader(context, l10n.instAddress),
+                      SizedBox(height: 16),
                       Row(
                         children: [
                           Expanded(
                             child: _buildTextField(
-                              "Division",
-                              "Select Division",
+                              context,
+                              l10n.instDivision,
+                              l10n.instSelectDivision,
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Expanded(
                             child: _buildTextField(
-                              "District",
-                              "Select District",
+                              context,
+                              l10n.instDistrict,
+                              l10n.instSelectDistrict,
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Expanded(
-                            child: _buildTextField("Upazila", "Select Upazila"),
+                            child: _buildTextField(
+                              context,
+                              l10n.instUpazila,
+                              l10n.instSelectUpazila,
+                            ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16),
                       Row(
                         children: [
                           Expanded(
                             child: _buildTextField(
-                              "Union Name",
-                              "Enter Union Name",
+                              context,
+                              l10n.instUnionName,
+                              l10n.instEnterUnion,
                             ),
                           ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: _buildTextField("Village", "Enter Village"),
-                          ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Expanded(
                             child: _buildTextField(
-                              "Post Code",
-                              "Enter Post Code",
+                              context,
+                              l10n.instVillage,
+                              l10n.instEnterVillage,
+                            ),
+                          ),
+                          SizedBox(width: 16),
+                          Expanded(
+                            child: _buildTextField(
+                              context,
+                              l10n.instPostCode,
+                              l10n.instEnterPostCode,
                             ),
                           ),
                         ],
                       ),
 
-                      const SizedBox(height: 32),
-                      _buildSectionHeader("Certificate Signature Block"),
-                      const SizedBox(height: 8),
-                      const Text(
-                        "Printed on the signature line of every generated certificate (character certificate, testimonial, etc.).",
+                      SizedBox(height: 32),
+                      _buildSectionHeader(context, l10n.instCertSignature),
+                      SizedBox(height: 8),
+                      Text(
+                        l10n.instCertSignatureDesc,
                         style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.textSecondary,
+                          color:
+                              (Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary),
                         ),
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16),
                       Row(
                         children: [
                           Expanded(
                             child: _buildTextField(
-                              "Principal / Head of Institution Name",
-                              "Optional — printed above the signature line",
+                              context,
+                              l10n.instHeadName,
+                              l10n.instHeadNameHint,
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Expanded(
                             child: _buildTextField(
-                              "Designation",
-                              "Principal / Head of Institution",
+                              context,
+                              l10n.instDesignation,
+                              l10n.instPrincipalHead,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
+                      SizedBox(height: 16),
                       Row(
                         children: [
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  "Institution Logo",
+                                Text(
+                                  l10n.instLogo,
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColors.textPrimary,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface,
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                _buildUploadButton("Upload Logo"),
+                                SizedBox(height: 8),
+                                _buildUploadButton(
+                                  context,
+                                  l10n.instUploadLogo,
+                                ),
                               ],
                             ),
                           ),
-                          const SizedBox(width: 16),
+                          SizedBox(width: 16),
                           Expanded(
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Text(
-                                  "Institution Stamp",
+                                Text(
+                                  l10n.instStamp,
                                   style: TextStyle(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w600,
-                                    color: AppColors.textPrimary,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface,
                                   ),
                                 ),
-                                const SizedBox(height: 8),
-                                _buildUploadButton("Upload Stamp"),
+                                SizedBox(height: 8),
+                                _buildUploadButton(
+                                  context,
+                                  l10n.instUploadStamp,
+                                ),
                               ],
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 32),
+                      SizedBox(height: 32),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
@@ -261,12 +312,12 @@ class InstitutionProfilePage extends StatelessWidget {
                             backgroundColor: AppColors.primaryPurple,
                             padding: const EdgeInsets.symmetric(vertical: 16),
                           ),
-                          child: const Text(
-                            "Save Changes",
+                          child: Text(
+                            l10n.instSaveChanges,
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: AppColors.white,
+                              color: isDark ? AppColors.white : AppColors.white,
                             ),
                           ),
                         ),
@@ -282,70 +333,84 @@ class InstitutionProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildSectionHeader(String title) {
+  Widget _buildSectionHeader(BuildContext context, String title) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary, // Or a specific slate color
+            color: Theme.of(context)
+                .colorScheme
+                .onSurface, // Or a specific slate color
           ),
         ),
-        const SizedBox(height: 8),
-        const Divider(color: AppColors.divider, height: 1, thickness: 1),
+        SizedBox(height: 8),
+        Divider(
+          color: isDark ? AppColors.darkBorder : AppColors.divider,
+          height: 1,
+          thickness: 1,
+        ),
       ],
     );
   }
 
-  Widget _buildTextField(String label, String hint) {
+  Widget _buildTextField(BuildContext context, String label, String hint) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         TextFormField(
           readOnly: true,
           initialValue: hint,
-          style: const TextStyle(
-            color: AppColors.textPrimary,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
           decoration: InputDecoration(
             // hintText: hint,
-            hintStyle: const TextStyle(
+            hintStyle: TextStyle(
               fontSize: 13,
-              color: AppColors.textMuted,
+              color: isDark ? AppColors.darkTextMuted : AppColors.textMuted,
             ),
             filled: true,
-            fillColor: const Color(
-              0xFFF9FAFB,
-            ), // Very light grey like the image
+            fillColor: isDark
+                ? AppColors.darkBackground
+                : const Color(0xFFF9FAFB), // Very light grey like the image
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 14,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Color(0xFFE5E7EB), width: 1),
+              borderSide: BorderSide(
+                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                width: 1,
+              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Color(0xFFE5E7EB), width: 1),
+              borderSide: BorderSide(
+                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                width: 1,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
                 color: AppColors.primaryPurple,
                 width: 1.5,
               ),
@@ -356,44 +421,55 @@ class InstitutionProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildDropdownField(String label, List<String> items) {
+  Widget _buildDropdownField(
+    BuildContext context,
+    String label,
+    List<String> items,
+  ) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: AppColors.textPrimary,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         DropdownButtonFormField<String>(
-          style: const TextStyle(
-            color: AppColors.textPrimary,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
           value: items.first,
           decoration: InputDecoration(
             filled: true,
-            fillColor: const Color(0xFFF9FAFB),
+            fillColor: isDark ? AppColors.darkBackground : Color(0xFFF9FAFB),
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 12,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Color(0xFFE5E7EB), width: 1),
+              borderSide: BorderSide(
+                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                width: 1,
+              ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: Color(0xFFE5E7EB), width: 1),
+              borderSide: BorderSide(
+                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                width: 1,
+              ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
                 color: AppColors.primaryPurple,
                 width: 1.5,
               ),
@@ -404,9 +480,9 @@ class InstitutionProfilePage extends StatelessWidget {
               value: value,
               child: Text(
                 value,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 13,
-                  color: AppColors.textPrimary,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             );
@@ -417,25 +493,29 @@ class InstitutionProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _buildUploadButton(String text) {
+  Widget _buildUploadButton(BuildContext context, String text) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return OutlinedButton.icon(
       onPressed: null,
-      icon: const Icon(
+      icon: Icon(
         Icons.upload_file,
         size: 18,
-        color: AppColors.textPrimary,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
       label: Text(
         text,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w600,
-          color: AppColors.textPrimary,
+          color: Theme.of(context).colorScheme.onSurface,
         ),
       ),
       style: OutlinedButton.styleFrom(
-        backgroundColor: const Color(0xFFF9FAFB),
-        side: const BorderSide(color: Color(0xFFE5E7EB), width: 1),
+        backgroundColor: isDark ? AppColors.darkBackground : Color(0xFFF9FAFB),
+        side: BorderSide(
+          color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+          width: 1,
+        ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),

@@ -1,19 +1,10 @@
-import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-TextStyle _bengaliStyle({
-  double fontSize = 14,
-  FontWeight fontWeight = FontWeight.normal,
-  Color color = AppColors.textPrimary,
-}) {
-  return TextStyle(
-    fontFamily: 'Noto Sans Bengali',
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    color: color,
-  );
-}
+
+
+
 
 class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -28,7 +19,7 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.background,
+      color: Theme.of(context).scaffoldBackgroundColor,
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top + 12,
         bottom: 12,
@@ -42,21 +33,21 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Row(
               children: [
                 IconButton(
-                  icon: const Icon(Icons.menu, color: AppColors.textPrimary),
+                  icon: Icon(Icons.menu, color: Theme.of(context).colorScheme.onSurface),
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
                 ),
-                const SizedBox(width: 4),
+                SizedBox(width: 4),
                 Container(
                   width: 44,
                   height: 44,
                   decoration: BoxDecoration(
-                    color: AppColors.white,
+                    color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.primaryPurple.withOpacity(0.08),
+                        color: AppColors.primaryPurple.withValues(alpha: 0.08),
                         blurRadius: 10,
                         offset: const Offset(0, 4),
                       ),
@@ -70,7 +61,7 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,17 +69,16 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
                     children: [
                       Text(title,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontFamily: 'Inter',
+                        style: CustomTextStyles.inter(
                           fontSize: 18,
                           fontWeight: FontWeight.w700,
-                          color: AppColors.textPrimary,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       Text(
                         subtitle,
                         overflow: TextOverflow.ellipsis,
-                        style: _bengaliStyle(
+                        style: CustomTextStyles.bengali(
                           fontSize: 12,
                           color: AppColors.primaryPurple,
                           fontWeight: FontWeight.w600,
@@ -100,7 +90,7 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
           ),
-          const SizedBox(width: 16),
+          SizedBox(width: 16),
 
           // Notifications Icon
           GestureDetector(
@@ -109,11 +99,11 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primaryPurple.withOpacity(0.08),
+                    color: AppColors.primaryPurple.withValues(alpha: 0.08),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -122,9 +112,9 @@ class SchoolMateAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: Stack(
                 alignment: Alignment.center,
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.notifications_outlined,
-                    color: AppColors.textPrimary,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 22,
                   ),
                   Positioned(

@@ -1,11 +1,16 @@
+import 'package:schoolmate/core/theme/app_theme.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final prefs = await SharedPreferences.getInstance();
+
   runApp(
     BlocProvider(
-      create: (context) => AppBloc(),
+      create: (context) => AppBloc(prefs),
       child: const MyApp(),
     ),
   );
@@ -28,7 +33,9 @@ class MyApp extends StatelessWidget {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: const [Locale('en'), Locale('bn')],
-          theme: ThemeData(useMaterial3: true),
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: state.themeMode,
           routerConfig: AppRouter.router,
           debugShowCheckedModeBanner: false,
         );

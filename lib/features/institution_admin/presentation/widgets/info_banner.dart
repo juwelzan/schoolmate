@@ -1,22 +1,13 @@
-import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
 
 
 
-TextStyle _bengaliStyle({
-  double fontSize = 14,
-  FontWeight fontWeight = FontWeight.normal,
-  Color color = AppColors.textPrimary,
-}) {
-  return TextStyle(
-    fontFamily: 'Noto Sans Bengali',
-    fontSize: fontSize,
-    fontWeight: fontWeight,
-    color: color,
-  );
-}
+
+
+
 
 class InfoBanner extends StatelessWidget {
   const InfoBanner({super.key});
@@ -27,8 +18,9 @@ class InfoBanner extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: AppColors.infoBlueBg,
+        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.infoBlueBg),
         borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkBorder : Colors.transparent),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,31 +34,31 @@ class InfoBanner extends StatelessWidget {
                   color: AppColors.primaryPurple,
                   shape: BoxShape.circle,
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.info_outline,
-                  color: AppColors.white,
+                  color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
                   size: 14,
                 ),
               ),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Expanded(
                 child: Text(
                   "আপনি Md Rakib Molla হিসেবে প্রতিষ্ঠানে প্রবেশ করেছেন। এখানে করা পরিবর্তন প্রতিষ্ঠানের আসল ডাটায় প্রয়োগ হবে।",
-                  style: _bengaliStyle(
+                  style: CustomTextStyles.bengali(
                     fontSize: 12,
-                    color: AppColors.textPrimary,
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w500,
                   ).copyWith(height: 1.4),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 12),
+          SizedBox(height: 12),
           Align(
             alignment: Alignment.centerRight,
             child: Text(
               "Super Admin-এ ফিরুন",
-              style: _bengaliStyle(
+              style: CustomTextStyles.bengali(
                 fontSize: 12,
                 color: AppColors.primaryPurple,
                 fontWeight: FontWeight.w700,

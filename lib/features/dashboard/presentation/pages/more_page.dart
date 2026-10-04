@@ -17,8 +17,7 @@ class MorePage extends StatelessWidget {
           ),
           child: Text(
             title,
-            style: const TextStyle(
-              fontFamily: 'Noto Sans Bengali',
+            style: CustomTextStyles.bengali(
               fontSize: 18,
               fontWeight: FontWeight.w700,
               color: AppColors.textPrimary,
@@ -97,10 +96,9 @@ class MorePage extends StatelessWidget {
         backgroundColor: AppColors.background,
         elevation: 0,
         centerTitle: true,
-        title: const Text(
+        title: Text(
           "আরও",
-          style: TextStyle(
-            fontFamily: 'Noto Sans Bengali',
+          style: CustomTextStyles.bengali(
             fontSize: 20,
             fontWeight: FontWeight.w700,
             color: AppColors.textPrimary,

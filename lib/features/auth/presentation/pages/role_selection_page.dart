@@ -1,7 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
 enum UserRole { student, teacher, admin }
 
 class RoleSelectionPage extends StatefulWidget {
@@ -33,7 +32,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    
+
     return Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
@@ -41,7 +40,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
           children: [
             // Top App Bar Area (Logo + Language Toggle)
             _buildTopBar(context),
-            
+
             Expanded(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -51,7 +50,10 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                     const SizedBox(height: 16),
                     // Badge
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
                       decoration: BoxDecoration(
                         color: AppColors.surfaceVerySoftPurple,
                         borderRadius: BorderRadius.circular(20),
@@ -59,7 +61,11 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.assignment_ind, size: 14, color: AppColors.primaryPurple),
+                          const Icon(
+                            Icons.assignment_ind,
+                            size: 14,
+                            color: AppColors.primaryPurple,
+                          ),
                           const SizedBox(width: 6),
                           Text(
                             l10n.roleSelectionBadge,
@@ -73,12 +79,11 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    
+
                     // Title & Subtitle
                     Text(
                       l10n.roleSelectionTitle,
-                      style: const TextStyle(
-                        fontFamily: 'Noto Sans Bengali',
+                      style: CustomTextStyles.bengali(
                         fontSize: 28,
                         fontWeight: FontWeight.w700,
                         color: AppColors.textPrimary,
@@ -88,15 +93,14 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                     const SizedBox(height: 8),
                     Text(
                       l10n.roleSelectionSubtitle,
-                      style: const TextStyle(
-                        fontFamily: 'Noto Sans Bengali',
+                      style: CustomTextStyles.bengali(
                         fontSize: 14,
                         color: AppColors.textSecondary,
                         height: 1.4,
                       ),
                     ),
                     const SizedBox(height: 32),
-                    
+
                     // Role Options
                     _buildRoleCard(
                       role: UserRole.student,
@@ -108,7 +112,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       iconBgColor: AppColors.surfaceVerySoftPurple,
                     ),
                     const SizedBox(height: 16),
-                    
+
                     _buildRoleCard(
                       role: UserRole.teacher,
                       title: l10n.roleTeacher,
@@ -119,7 +123,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       iconBgColor: AppColors.surfaceSoftTeal,
                     ),
                     const SizedBox(height: 16),
-                    
+
                     _buildRoleCard(
                       role: UserRole.admin,
                       title: l10n.roleAdmin,
@@ -129,9 +133,9 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       iconColor: AppColors.warmGold,
                       iconBgColor: AppColors.softWarmGold,
                     ),
-                    
+
                     const SizedBox(height: 32),
-                    
+
                     // Info Box
                     Container(
                       padding: const EdgeInsets.all(16),
@@ -142,13 +146,16 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Icon(Icons.info, size: 20, color: AppColors.primaryPurple),
+                          const Icon(
+                            Icons.info,
+                            size: 20,
+                            color: AppColors.primaryPurple,
+                          ),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
                               l10n.roleInfoText,
-                              style: const TextStyle(
-                                fontFamily: 'Noto Sans Bengali',
+                              style: CustomTextStyles.bengali(
                                 fontSize: 13,
                                 color: AppColors.textSecondary,
                                 height: 1.4,
@@ -163,7 +170,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                 ),
               ),
             ),
-            
+
             // Bottom Sticky Section
             Padding(
               padding: const EdgeInsets.all(24.0),
@@ -193,7 +200,11 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                             ),
                           ),
                           const SizedBox(width: 8),
-                          const Icon(Icons.arrow_forward, color: AppColors.white, size: 20),
+                          const Icon(
+                            Icons.arrow_forward,
+                            color: AppColors.white,
+                            size: 20,
+                          ),
                         ],
                       ),
                     ),
@@ -252,17 +263,20 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                   ],
                 ),
                 child: const Center(
-                  child: Icon(Icons.school, color: AppColors.primaryTeal, size: 20),
+                  child: Icon(
+                    Icons.school,
+                    color: AppColors.primaryTeal,
+                    size: 20,
+                  ),
                 ),
               ),
               const SizedBox(width: 12),
-              const Column(
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     "SchoolMate",
-                    style: TextStyle(
-                      fontFamily: 'Inter',
+                    style: CustomTextStyles.inter(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                       color: AppColors.textPrimary,
@@ -270,8 +284,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                   ),
                   Text(
                     "স্কুলমেট",
-                    style: TextStyle(
-                      fontFamily: 'Noto Sans Bengali',
+                    style: CustomTextStyles.bengali(
                       fontSize: 12,
                       color: AppColors.primaryPurple,
                       fontWeight: FontWeight.w600,
@@ -293,25 +306,36 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
             child: Row(
               children: [
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 12,
+                    vertical: 6,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColors.primaryTeal,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Text(
                     "বাংলা",
-                    style: TextStyle(color: AppColors.white, fontSize: 12, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      color: AppColors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 8),
                 const Text(
                   "EN",
-                  style: TextStyle(color: AppColors.textSecondary, fontSize: 12, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(width: 4),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
@@ -327,7 +351,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
     required Color iconBgColor,
   }) {
     final bool isSelected = _selectedRole == role;
-    
+
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -340,14 +364,16 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
         decoration: BoxDecoration(
           color: isSelected ? AppColors.white : AppColors.background,
           borderRadius: BorderRadius.circular(16),
-          border: isSelected ? Border.all(color: AppColors.primaryPurple, width: 1.5) : Border.all(color: Colors.transparent, width: 1.5),
+          border: isSelected
+              ? Border.all(color: AppColors.primaryPurple, width: 1.5)
+              : Border.all(color: Colors.transparent, width: 1.5),
           boxShadow: isSelected
               ? [
                   BoxShadow(
                     color: AppColors.primaryPurple.withOpacity(0.08),
                     blurRadius: 16,
                     offset: const Offset(0, 8),
-                  )
+                  ),
                 ]
               : [],
         ),
@@ -360,9 +386,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                 color: iconBgColor,
                 shape: BoxShape.circle,
               ),
-              child: Center(
-                child: Icon(icon, color: iconColor, size: 28),
-              ),
+              child: Center(child: Icon(icon, color: iconColor, size: 28)),
             ),
             const SizedBox(width: 16),
             Expanded(
@@ -373,8 +397,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
-                          fontFamily: 'Noto Sans Bengali',
+                        style: CustomTextStyles.bengali(
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: AppColors.textPrimary,
@@ -382,7 +405,10 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       ),
                       const SizedBox(width: 8),
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 2,
+                        ),
                         decoration: BoxDecoration(
                           color: AppColors.surfaceVerySoftPurple,
                           borderRadius: BorderRadius.circular(12),
@@ -401,8 +427,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                   const SizedBox(height: 4),
                   Text(
                     description,
-                    style: const TextStyle(
-                      fontFamily: 'Noto Sans Bengali',
+                    style: CustomTextStyles.bengali(
                       fontSize: 12,
                       color: AppColors.textSecondary,
                     ),
@@ -415,7 +440,9 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
               width: 24,
               height: 24,
               decoration: BoxDecoration(
-                color: isSelected ? AppColors.primaryPurple : AppColors.divider.withOpacity(0.5),
+                color: isSelected
+                    ? AppColors.primaryPurple
+                    : AppColors.divider.withOpacity(0.5),
                 shape: BoxShape.circle,
               ),
               child: isSelected

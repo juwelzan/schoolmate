@@ -16,3 +16,12 @@ class ChangeLocaleEvent extends AppEvent {
   @override
   List<Object?> get props => [locale];
 }
+
+class ChangeThemeEvent extends AppEvent {
+  final ThemeMode themeMode;
+
+  const ChangeThemeEvent(this.themeMode);
+
+  @override
+  List<Object?> get props => [themeMode];
+}

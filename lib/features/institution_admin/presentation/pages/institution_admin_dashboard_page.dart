@@ -9,7 +9,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: const SchoolMateAppBar(),
       drawer: const AppDrawer(),
       body: SingleChildScrollView(
@@ -33,22 +33,21 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                       vertical: 4,
                     ),
                     decoration: BoxDecoration(
-                      color: AppColors.surfaceVerySoftPurple,
+                      color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple),
                       borderRadius: BorderRadius.circular(999),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(
+                        Icon(
                           Icons.admin_panel_settings,
                           size: 14,
                           color: AppColors.primaryPurple,
                         ),
-                        const SizedBox(width: 6),
+                        SizedBox(width: 6),
                         Text(
                           l10n.institutionAdmin,
-                          style: const TextStyle(
-                            fontFamily: 'Noto Sans Bengali',
+                          style: CustomTextStyles.bengali(
                             fontSize: 12,
                             color: AppColors.primaryPurple,
                             fontWeight: FontWeight.w600,
@@ -57,30 +56,28 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 12),
+                  SizedBox(height: 12),
                   Text(
                     l10n.dashboard,
-                    style: const TextStyle(
-                      fontFamily: 'Noto Sans Bengali',
+                    style: CustomTextStyles.bengali(
                       fontSize: 28,
                       fontWeight: FontWeight.w700,
-                      color: AppColors.textPrimary,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  const Text(
+                  SizedBox(height: 4),
+                  Text(
                     "আজকের প্রতিষ্ঠান কার্যক্রম এক নজরে দেখুন",
-                    style: TextStyle(
-                      fontFamily: 'Noto Sans Bengali',
+                    style: CustomTextStyles.bengali(
                       fontSize: 14,
-                      color: AppColors.textSecondary,
+                      color: (Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary),
                     ),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
 
             // Quick Actions
             SectionHeader(title: l10n.quickActions),
@@ -93,37 +90,37 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     icon: Icons.person_add,
                     label: l10n.addStudent,
                     iconColor: AppColors.primaryPurple,
-                    iconBgColor: AppColors.surfaceVerySoftPurple,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple),
                   ),
                   QuickActionCard(
                     icon: Icons.person_add_alt_1,
                     label: l10n.addTeacher,
                     iconColor: AppColors.primaryTeal,
-                    iconBgColor: AppColors.surfaceSoftTeal,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeTealBg : AppColors.surfaceSoftTeal),
                   ),
                   QuickActionCard(
                     icon: Icons.account_balance_wallet,
                     label: l10n.collectFee,
                     iconColor: AppColors.warmGold,
-                    iconBgColor: AppColors.softWarmGold,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeGoldBg : AppColors.softWarmGold),
                   ),
                   QuickActionCard(
                     icon: Icons.edit_document,
                     label: l10n.enterMarks,
                     iconColor: AppColors.primaryPurple,
-                    iconBgColor: AppColors.surfaceVerySoftPurple,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple),
                   ),
                   QuickActionCard(
                     icon: Icons.campaign,
                     label: l10n.makeAnnouncement,
                     iconColor: AppColors.primaryTeal,
-                    iconBgColor: AppColors.surfaceSoftTeal,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeTealBg : AppColors.surfaceSoftTeal),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
 
             // Primary Stat Cards
             Padding(
@@ -150,7 +147,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     subtitle: "আজ কোনো ক্লাস পিরিয়ড নির্ধারিত নেই",
                     icon: Icons.fact_check,
                     iconColor: AppColors.primaryTeal,
-                    iconBgColor: AppColors.surfaceSoftTeal,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeTealBg : AppColors.surfaceSoftTeal),
                   ),
                   MetricCard(
                     title: l10n.presentTeachers,
@@ -158,7 +155,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     subtitle: "কোনো সক্রিয় রেকর্ড নেই",
                     icon: Icons.co_present,
                     iconColor: Colors.blue,
-                    iconBgColor: AppColors.paleBlueSurface,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.paleBlueSurface),
                   ),
                   MetricCard(
                     title: l10n.presentStaff,
@@ -166,7 +163,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     subtitle: "কোনো সক্রিয় রেকর্ড নেই",
                     icon: Icons.business_center,
                     iconColor: AppColors.warmGold,
-                    iconBgColor: AppColors.softWarmGold,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeGoldBg : AppColors.softWarmGold),
                   ),
                   MetricCard(
                     title: l10n.gateArrivals,
@@ -174,7 +171,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     subtitle: "0 জন বের হয়েছে · 0 জন ভিতরে",
                     icon: Icons.door_front_door,
                     iconColor: AppColors.primaryTeal,
-                    iconBgColor: AppColors.surfaceSoftTeal,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeTealBg : AppColors.surfaceSoftTeal),
                   ),
                   MetricCard(
                     title: l10n.feeCollectionThisMonth,
@@ -182,13 +179,13 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     subtitle: "৳0 ইনভয়েসের মধ্যে",
                     icon: Icons.account_balance_wallet,
                     iconColor: AppColors.warmGold,
-                    iconBgColor: AppColors.softWarmGold,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeGoldBg : AppColors.softWarmGold),
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24),
 
             // Students Chart Placeholder
             SectionHeader(title: l10n.studentsByClass),
@@ -208,8 +205,8 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: List.generate(
                                   5,
-                                  (index) => const Divider(
-                                    color: AppColors.divider,
+                                  (index) => Divider(
+                                    color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBorder : AppColors.divider),
                                     height: 1,
                                   ),
                                 ),
@@ -222,7 +219,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                                   margin: const EdgeInsets.symmetric(
                                     horizontal: 50,
                                   ),
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: AppColors.primaryPurple,
                                     borderRadius: BorderRadius.vertical(
                                       top: Radius.circular(6),
@@ -233,17 +230,17 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                             ],
                           ),
                         ),
-                        const Divider(
-                          color: AppColors.divider,
+                        Divider(
+                          color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBorder : AppColors.divider),
                           height: 1,
                           thickness: 1,
                         ),
-                        const SizedBox(height: 12),
-                        const Text(
+                        SizedBox(height: 12),
+                        Text(
                           "Baby Class",
                           style: TextStyle(
                             fontSize: 12,
-                            color: AppColors.textMuted,
+                            color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.textMuted),
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -266,31 +263,30 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
-                          color: AppColors.paleBlueSurface,
+                          color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.paleBlueSurface),
                           shape: BoxShape.circle,
                         ),
-                        child: const Icon(
+                        child: Icon(
                           Icons.bar_chart,
                           size: 28,
-                          color: AppColors.textMuted,
+                          color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.textMuted),
                         ),
                       ),
-                      const SizedBox(height: 12),
-                      const Text(
+                      SizedBox(height: 12),
+                      Text(
                         "এখনও কোনো তথ্য নেই",
-                        style: TextStyle(
-                          fontFamily: 'Noto Sans Bengali',
+                        style: CustomTextStyles.bengali(
                           fontSize: 14,
-                          color: AppColors.textMuted,
+                          color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.textMuted),
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 4),
-                      const Text(
+                      SizedBox(height: 4),
+                      Text(
                         "গত ১২ মাস",
                         style: TextStyle(
                           fontSize: 12,
-                          color: AppColors.textMuted,
+                          color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.textMuted),
                         ),
                       ),
                     ],
@@ -307,22 +303,21 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(12),
-                      decoration: const BoxDecoration(
-                        color: AppColors.surfaceVerySoftPurple,
+                      decoration: BoxDecoration(
+                        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple),
                         shape: BoxShape.circle,
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.event_note,
                         color: AppColors.primaryPurple,
                       ),
                     ),
-                    const SizedBox(height: 12),
-                    const Text(
+                    SizedBox(height: 12),
+                    Text(
                       "কোনো আসন্ন পরীক্ষা নির্ধারিত নেই",
-                      style: TextStyle(
-                        fontFamily: 'Noto Sans Bengali',
+                      style: CustomTextStyles.bengali(
                         fontSize: 14,
-                        color: AppColors.textSecondary,
+                        color: (Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary),
                         fontWeight: FontWeight.w500,
                       ),
                     ),
@@ -333,7 +328,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
 
             // Pending Approvals
             SectionHeader(title: l10n.pendingApprovals),
-            const DashboardSectionCard(
+            DashboardSectionCard(
               child: Column(
                 children: [
                   ApprovalRow(
@@ -342,7 +337,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     count: "0",
                     icon: Icons.checklist,
                     iconColor: AppColors.primaryPurple,
-                    iconBgColor: AppColors.surfaceVerySoftPurple,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple),
                   ),
                   ApprovalRow(
                     title: "ছুটির আবেদন",
@@ -350,7 +345,7 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     count: "0",
                     icon: Icons.event_busy,
                     iconColor: AppColors.primaryTeal,
-                    iconBgColor: AppColors.surfaceSoftTeal,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeTealBg : AppColors.surfaceSoftTeal),
                   ),
                   ApprovalRow(
                     title: "ফি ছাড়",
@@ -358,14 +353,14 @@ class InstitutionAdminDashboardPage extends StatelessWidget {
                     count: "0",
                     icon: Icons.volunteer_activism,
                     iconColor: AppColors.warmGold,
-                    iconBgColor: AppColors.softWarmGold,
+                    iconBgColor: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgeGoldBg : AppColors.softWarmGold),
                     showDivider: false,
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 32),
+            SizedBox(height: 32),
           ],
         ),
       ),

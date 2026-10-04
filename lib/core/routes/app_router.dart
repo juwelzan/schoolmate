@@ -1,6 +1,7 @@
 // === Core & Feature Imports ===
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/settings/presentation/pages/change_password_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -15,7 +16,7 @@ class AppRouter {
         path: AppRoutes.settings,
         builder: (context, state) => const SettingsPage(),
       ),
-      
+
       // === Academic Sub-pages ===
       GoRoute(
         path: AppRoutes.years,
@@ -77,7 +78,7 @@ class AppRouter {
         path: AppRoutes.studyPlans,
         builder: (context, state) => const StudyPlansPage(),
       ),
-      
+
       // === Timetable Sub-pages ===
       GoRoute(
         path: AppRoutes.periodSlots,
@@ -127,7 +128,7 @@ class AppRouter {
         path: AppRoutes.periodSwap,
         builder: (context, state) => const PeriodSwapPage(),
       ),
-      
+
       // === Teachers & Staff Sub-pages ===
       GoRoute(
         path: AppRoutes.teachers,
@@ -157,7 +158,7 @@ class AppRouter {
         path: AppRoutes.subjectAssignmentMatrix,
         builder: (context, state) => const SubjectAssignmentMatrixPage(),
       ),
-      
+
       // === Examination Sub-pages ===
       GoRoute(
         path: AppRoutes.exams,
@@ -213,7 +214,8 @@ class AppRouter {
       ),
       GoRoute(
         path: AppRoutes.compartmentalEligibilityPolicies,
-        builder: (context, state) => const CompartmentalEligibilityPoliciesPage(),
+        builder: (context, state) =>
+            const CompartmentalEligibilityPoliciesPage(),
       ),
       GoRoute(
         path: AppRoutes.assessmentDomains,
@@ -231,7 +233,7 @@ class AppRouter {
         path: AppRoutes.milestoneTracker,
         builder: (context, state) => const MilestoneTrackerPage(),
       ),
-      
+
       // === Attendance Sub-pages ===
       GoRoute(
         path: AppRoutes.dailySummary,
@@ -293,7 +295,7 @@ class AppRouter {
         path: AppRoutes.combinedEligibility,
         builder: (context, state) => const CombinedEligibilityPage(),
       ),
-      
+
       // === Certificates Sub-pages ===
       GoRoute(
         path: AppRoutes.issueCertificates,
@@ -303,7 +305,7 @@ class AppRouter {
         path: AppRoutes.templates,
         builder: (context, state) => const TemplatesPage(),
       ),
-      
+
       // === Fee Sub-pages ===
       GoRoute(
         path: AppRoutes.feeHeads,
@@ -361,7 +363,7 @@ class AppRouter {
         path: AppRoutes.studentLedger,
         builder: (context, state) => const StudentLedgerPage(),
       ),
-      
+
       // === Finance Sub-pages ===
       GoRoute(
         path: AppRoutes.chartOfAccounts,
@@ -431,7 +433,7 @@ class AppRouter {
         path: AppRoutes.budgetVsActual,
         builder: (context, state) => const BudgetVsActualPage(),
       ),
-      
+
       // === Inventory Sub-pages ===
       GoRoute(
         path: AppRoutes.assets,
@@ -461,7 +463,7 @@ class AppRouter {
         path: AppRoutes.goodsReceipts,
         builder: (context, state) => const GoodsReceiptsPage(),
       ),
-      
+
       // === Communication Sub-pages ===
       GoRoute(
         path: AppRoutes.bulkSms,
@@ -593,6 +595,10 @@ class AppRouter {
         builder: (context, state) => const AccountPage(),
       ),
 
+      GoRoute(
+        path: AppRoutes.changePassword,
+        builder: (context, state) => const ChangePasswordPage(),
+      ),
       // === Initial & Auth Routes ===
       GoRoute(
         path: AppRoutes.initial,
@@ -627,9 +633,7 @@ class AppRouter {
       ),
     ],
     errorBuilder: (context, state) => Scaffold(
-      body: Center(
-        child: Text('No route defined for ${state.uri.toString()}'),
-      ),
+      body: Center(child: Text('No route defined for ${state.uri.toString()}')),
     ),
   );
 }
