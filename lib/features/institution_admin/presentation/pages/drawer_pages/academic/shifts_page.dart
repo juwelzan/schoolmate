@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
@@ -17,7 +17,6 @@ class ShiftsPage extends StatelessWidget {
     final Color mutedTextColor = isDark
         ? AppColors.darkTextSecondary
         : Theme.of(context).colorScheme.onSurfaceVariant;
-    final Color btnBgColor = Theme.of(context).colorScheme.primary;
 
     return Scaffold(
       backgroundColor: bgColor,
@@ -31,51 +30,14 @@ class ShiftsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Header: Description and Button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Text(
-                    l10n.shiftsPageDescription,
-                    style: CustomTextStyles.inter(
-                      color: mutedTextColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      color: btnBgColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.add, color: AppColors.white, size: 18),
-                        const SizedBox(width: 8),
-                        Text(
-                          l10n.shiftsPageNewShift,
-                          style: CustomTextStyles.inter(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            AcademicHeaderCard(
+              title: l10n.shiftsPageTitle,
+              description: l10n.shiftsPageDescription,
+              action: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.add),
+                label: Text(l10n.shiftsPageNewShift),
+              ),
             ),
 
             const Expanded(child: SizedBox(height: 24)),

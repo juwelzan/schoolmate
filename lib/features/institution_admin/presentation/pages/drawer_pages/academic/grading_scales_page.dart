@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
@@ -17,7 +17,15 @@ class GradingScalesPage extends StatelessWidget {
     final Color mutedTextColor = isDark
         ? AppColors.darkTextSecondary
         : Theme.of(context).colorScheme.onSurfaceVariant;
-    final Color btnBgColor = Theme.of(context).colorScheme.primary;
+    final Color cardBackground = isDark
+        ? const Color(0xFF111827)
+        : Theme.of(context).colorScheme.surface;
+    final Color tableBackground = isDark
+        ? const Color(0xFF0B1220)
+        : Theme.of(context).colorScheme.surfaceContainerLow;
+    final Color cardBorder = isDark
+        ? const Color(0xFF253044)
+        : Theme.of(context).colorScheme.outlineVariant;
 
     final dummyScales = [
       {
@@ -92,51 +100,14 @@ class GradingScalesPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Header: Description and Button
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Text(
-                    l10n.gradingScalesDescription,
-                    style: CustomTextStyles.inter(
-                      color: mutedTextColor,
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 16),
-                InkWell(
-                  onTap: () {},
-                  borderRadius: BorderRadius.circular(8),
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 16,
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      color: btnBgColor,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.add, color: AppColors.white, size: 18),
-                        const SizedBox(width: 8),
-                        Text(
-                          l10n.gradingScalesNew,
-                          style: CustomTextStyles.inter(
-                            color: AppColors.white,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
+            AcademicHeaderCard(
+              title: l10n.gradingScalesTitle,
+              description: l10n.gradingScalesDescription,
+              action: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.add),
+                label: Text(l10n.gradingScalesNew),
+              ),
             ),
             const SizedBox(height: 24),
 
@@ -156,17 +127,9 @@ class GradingScalesPage extends StatelessWidget {
                       width: cardWidth,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.surface,
-                        borderRadius: BorderRadius.circular(12),
-                        boxShadow: isDark
-                            ? null
-                            : [
-                                BoxShadow(
-                                  color: Colors.black.withOpacity(0.04),
-                                  blurRadius: 10,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
+                        color: cardBackground,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: cardBorder),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -187,7 +150,7 @@ class GradingScalesPage extends StatelessWidget {
                                         color: isDark
                                             ? AppColors.white
                                             : AppColors.textPrimary,
-                                        fontSize: 16,
+                                        fontSize: 17,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
@@ -206,7 +169,9 @@ class GradingScalesPage extends StatelessWidget {
                                         ),
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                            color: Theme.of(context).colorScheme.outlineVariant,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .outlineVariant,
                                           ),
                                           borderRadius: BorderRadius.circular(
                                             16,
@@ -268,7 +233,7 @@ class GradingScalesPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 12),
+                          const SizedBox(height: 14),
                           // Description
                           Text(
                             scale['desc'] as String,
@@ -277,32 +242,23 @@ class GradingScalesPage extends StatelessWidget {
                               fontSize: 14,
                             ),
                           ),
-                          const SizedBox(height: 16),
-                          // Grades Wrap
-                          Wrap(
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: (scale['grades'] as List).map((g) {
-                              final grade = g as Map<String, dynamic>;
-                              return Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 6,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: grade['color'] as Color,
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                                child: Text(
-                                  grade['label'] as String,
-                                  style: CustomTextStyles.inter(
-                                    color: AppColors.white,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              );
-                            }).toList(),
+                          const SizedBox(height: 14),
+                          _buildCutoffSummary(
+                            context,
+                            scale['grades'] as List,
+                            tableBackground,
+                            cardBorder,
+                            mutedTextColor,
+                            isDark,
+                          ),
+                          const SizedBox(height: 14),
+                          _buildGradeMatrix(
+                            context,
+                            scale['grades'] as List,
+                            tableBackground,
+                            cardBorder,
+                            mutedTextColor,
+                            isDark,
                           ),
                         ],
                       ),
@@ -315,5 +271,238 @@ class GradingScalesPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Widget _buildCutoffSummary(
+    BuildContext context,
+    List grades,
+    Color surface,
+    Color borderColor,
+    Color mutedTextColor,
+    bool isDark,
+  ) {
+    final passGrade = grades.cast<Map<String, dynamic>>().firstWhere(
+      (grade) => !(grade['label'] as String).startsWith('F '),
+    );
+    final passLabel = passGrade['label'] as String;
+    final passMarks = passLabel.split('(').last.split('·').first.trim();
+    final colors = grades
+        .cast<Map<String, dynamic>>()
+        .map((grade) => grade['color'] as Color)
+        .toList();
+
+    return Container(
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: surface,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: borderColor),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Wrap(
+            alignment: WrapAlignment.spaceBetween,
+            runSpacing: 8,
+            children: [
+              Text(
+                '0% Fail',
+                style: CustomTextStyles.inter(
+                  color: mutedTextColor,
+                  fontSize: 11,
+                ),
+              ),
+              Text(
+                '$passMarks Pass Bar',
+                style: CustomTextStyles.inter(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                'Grade scale',
+                style: CustomTextStyles.inter(
+                  color: mutedTextColor,
+                  fontSize: 11,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: SizedBox(
+              height: 8,
+              child: Row(
+                children: colors
+                    .map((color) => Expanded(child: ColoredBox(color: color)))
+                    .toList(),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGradeMatrix(
+    BuildContext context,
+    List grades,
+    Color surface,
+    Color borderColor,
+    Color mutedTextColor,
+    bool isDark,
+  ) {
+    final headingStyle = CustomTextStyles.inter(
+      color: mutedTextColor,
+      fontSize: 10,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 0.7,
+    );
+    return Container(
+      decoration: BoxDecoration(
+        color: surface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: borderColor),
+      ),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 11),
+            child: Row(
+              children: [
+                Expanded(flex: 2, child: Text('GRADE', style: headingStyle)),
+                Expanded(flex: 3, child: Text('MARKS', style: headingStyle)),
+                Expanded(flex: 1, child: Text('GPA', style: headingStyle)),
+                Expanded(
+                  flex: 2,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text('REMARKS', style: headingStyle),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Divider(height: 1, color: borderColor),
+          ...grades.cast<Map<String, dynamic>>().map((grade) {
+            final label = grade['label'] as String;
+            final parsed = _parseGrade(label);
+            final color = grade['color'] as Color;
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: borderColor)),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 9,
+                          vertical: 5,
+                        ),
+                        decoration: BoxDecoration(
+                          color: color,
+                          borderRadius: BorderRadius.circular(7),
+                        ),
+                        child: Text(
+                          parsed.$1,
+                          style: CustomTextStyles.inter(
+                            color: AppColors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 3,
+                    child: Text(
+                      parsed.$2,
+                      style: CustomTextStyles.inter(
+                        color: isDark ? AppColors.white : AppColors.textPrimary,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      parsed.$3,
+                      style: CustomTextStyles.inter(
+                        color: color,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        _gradeRemark(parsed.$1),
+                        textAlign: TextAlign.right,
+                        style: CustomTextStyles.inter(
+                          color: color,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 10,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }),
+        ],
+      ),
+    );
+  }
+
+  (String, String, String) _parseGrade(String label) {
+    final openParenthesis = label.indexOf('(');
+    final closeParenthesis = label.lastIndexOf(')');
+    if (openParenthesis < 0 || closeParenthesis < openParenthesis) {
+      return (label, '', '');
+    }
+    final grade = label.substring(0, openParenthesis).trim();
+    final values = label
+        .substring(openParenthesis + 1, closeParenthesis)
+        .split('·')
+        .map((value) => value.trim())
+        .toList();
+    return (grade, values.first, values.length > 1 ? values[1] : '');
+  }
+
+  String _gradeRemark(String grade) {
+    switch (grade) {
+      case 'A+':
+        return 'Outstanding';
+      case 'A':
+        return 'Excellent';
+      case 'A-':
+        return 'Very Good';
+      case 'B':
+      case 'B+':
+      case 'B-':
+        return 'Good';
+      case 'C':
+      case 'C+':
+        return 'Satisfactory';
+      case 'D':
+        return 'Pass';
+      case 'F':
+        return 'Fail / Retake';
+      default:
+        return grade;
+    }
   }
 }

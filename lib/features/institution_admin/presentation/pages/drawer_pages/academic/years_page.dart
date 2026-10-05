@@ -1,6 +1,7 @@
 import 'package:schoolmate/core/file_path.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
+import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
 
 class YearsPage extends StatefulWidget {
   static String routeName = '/years';
@@ -41,188 +42,27 @@ class _YearsPageState extends State<YearsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Active Cycle Card
-            Container(
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: cardColor,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: borderColor),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Wrap(
-                    alignment: WrapAlignment.spaceBetween,
-                    runSpacing: 12,
-                    children: [
-                      Wrap(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 10,
-                              vertical: 6,
-                            ),
-                            decoration: BoxDecoration(
-                              color: isDark
-                                  ? Color(0xFF1A3330)
-                                  : AppColors.surfaceVerySoftPurple,
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(
-                                color: (isDark
-                                    ? const Color(0xFF2E5950)
-                                    : Theme.of(context).colorScheme.primary.withValues(
-                                        alpha: 0.3,
-                                      )),
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Icon(Icons.circle, size: 8, color: greenAccent),
-                                SizedBox(width: 6),
-                                Text(
-                                  l10n.yearsActiveCycle,
-                                  style: CustomTextStyles.inter(
-                                    color: greenAccent,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(width: 12),
-                          Text(
-                            l10n.yearsDay114Of365,
-                            style: CustomTextStyles.inter(
-                              color: textSecondary,
-                              fontSize: 14,
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: cyanAccent.withValues(alpha: 0.9),
-                          borderRadius: BorderRadius.circular(20),
-                          boxShadow: [
-                            BoxShadow(
-                              color: cyanAccent.withValues(alpha: 0.3),
-                              blurRadius: 10,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          children: [
-                            Icon(Icons.add, size: 18, color: AppColors.white),
-                            SizedBox(width: 4),
-                            Text(
-                              l10n.yearsNewYear,
-                              style: CustomTextStyles.inter(
-                                color: AppColors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 16),
-                  Text(
-                    l10n.yearsManageTerms,
-                    style: CustomTextStyles.inter(
-                      color: textPrimary,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      height: 1.3,
-                    ),
-                  ),
-                  SizedBox(height: 32),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        l10n.yearsTermElapsed,
-                        style: CustomTextStyles.inter(
-                          color: textSecondary,
-                          fontSize: 12,
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            l10n.yearsPercent31,
-                            style: CustomTextStyles.inter(
-                              color: cyanAccent,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(width: 32),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                l10n.yearsQuarter,
-                                style: CustomTextStyles.inter(
-                                  color: textSecondary,
-                                  fontSize: 10,
-                                  letterSpacing: 1,
-                                ),
-                              ),
-                              Text(
-                                l10n.yearsQ2Spring,
-                                style: CustomTextStyles.inter(
-                                  color: textPrimary,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8),
-                  // Progress bar
-                  Container(
-                    height: 6,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: (isDark
-                          ? AppColors.darkBorder
-                          : AppColors.divider),
-                      borderRadius: BorderRadius.circular(3),
-                    ),
-                    child: FractionallySizedBox(
-                      alignment: Alignment.centerLeft,
-                      widthFactor: 0.312,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: cyanAccent,
-                          borderRadius: BorderRadius.circular(3),
-                          boxShadow: [
-                            BoxShadow(
-                              color: cyanAccent.withValues(alpha: 0.5),
-                              blurRadius: 8,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+            AcademicHeaderCard(
+              title: l10n.academicYears,
+              description: l10n.academicYearsDesc,
+              badge: l10n.academicManagement,
+              icon: Icons.calendar_today_outlined,
+              details: [
+                AcademicHeaderMetric(
+                  label: l10n.yearsActiveCycle,
+                  isPositive: true,
+                ),
+                AcademicHeaderMetric(label: l10n.yearsDay114Of365),
+                AcademicHeaderMetric(label: l10n.yearsPercent31),
+                AcademicHeaderMetric(label: l10n.yearsQ2Spring),
+              ],
+              action: FilledButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.add),
+                label: Text(l10n.yearsNewYear),
               ),
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
 
             // 2026 Card
             Container(

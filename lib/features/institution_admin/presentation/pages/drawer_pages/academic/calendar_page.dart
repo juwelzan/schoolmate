@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:schoolmate/core/file_path.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/add_event_dialog.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
+import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
 
 class CalendarPage extends StatefulWidget {
   static const String routeName = '/calendar';
@@ -107,7 +107,9 @@ class _CalendarPageState extends State<CalendarPage> {
             width: 24,
             height: 24,
             decoration: BoxDecoration(
-              color: isHighlight ? theme.colorScheme.primary : Colors.transparent,
+              color: isHighlight
+                  ? theme.colorScheme.primary
+                  : Colors.transparent,
               shape: BoxShape.circle,
             ),
             alignment: Alignment.center,
@@ -133,8 +135,10 @@ class _CalendarPageState extends State<CalendarPage> {
     final l10n = AppLocalizations.of(context)!;
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final theme = Theme.of(context);
-    final Color cardColor = theme.colorScheme.surface;
     final Color borderColor = theme.colorScheme.outlineVariant;
+    final Color calendarViewBackground = isDark
+        ? theme.colorScheme.surfaceContainerHighest
+        : theme.colorScheme.primary.withValues(alpha: 0.04);
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -148,120 +152,13 @@ class _CalendarPageState extends State<CalendarPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Top Actions Row
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: [
-                  Text(
-                    l10n.calendarAcademicYear,
-                    style: CustomTextStyles.inter(
-                      color: isDark
-                          ? AppColors.darkTextSecondary
-                          : AppColors.textSecondary,
-                      fontSize: 14,
-                    ),
-                  ),
-                  const SizedBox(width: 12),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: borderColor),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          '2026',
-                          style: CustomTextStyles.inter(
-                            color: isDark
-                                ? AppColors.white
-                                : AppColors.textPrimary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 6,
-                            vertical: 2,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.successGreen,
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Text(
-                            l10n.yearsLowercaseActive,
-                            style: CustomTextStyles.inter(
-                              color: AppColors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Icon(
-                          Icons.keyboard_arrow_down,
-                          size: 16,
-                          color: isDark
-                              ? AppColors.darkTextSecondary
-                              : AppColors.textSecondary,
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  InkWell(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AddEventDialog(
-                          initialStartDate: _rangeStart ?? _selectedDay,
-                          initialEndDate: _rangeEnd ?? _selectedDay,
-                        ),
-                      );
-                    },
-                    borderRadius: BorderRadius.circular(8),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 10,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primary,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.add,
-                            color: AppColors.white,
-                            size: 18,
-                          ),
-                          const SizedBox(width: 8),
-                          Text(
-                            l10n.calendarAddEvent,
-                            style: CustomTextStyles.inter(
-                              color: AppColors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 24),
-
-            // Legends
-            Wrap(
-              children: [
+            AcademicHeaderCard(
+              title: l10n.calendarTitle,
+              description: l10n.calendarSubtitle,
+              badge: l10n.academicManagement,
+              icon: Icons.calendar_month_outlined,
+              details: [
+                _buildAcademicYearSelector(context, l10n, isDark, borderColor),
                 _buildLegendItem(
                   l10n.calendarHoliday,
                   const Color(0xFFD32F2F),
@@ -288,20 +185,33 @@ class _CalendarPageState extends State<CalendarPage> {
                   const Color(0xFFFFE0B2),
                 ),
               ],
+              action: ElevatedButton.icon(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => AddEventDialog(
+                      initialStartDate: _rangeStart ?? _selectedDay,
+                      initialEndDate: _rangeEnd ?? _selectedDay,
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.add),
+                label: Text(l10n.calendarAddEvent),
+              ),
             ),
-            const SizedBox(height: 24),
-
+            const SizedBox(height: 20),
             // Month Navigator & Calendar Grid Container
             Container(
               decoration: BoxDecoration(
-                color: cardColor,
+                color: calendarViewBackground,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: borderColor),
                 boxShadow: [
                   BoxShadow(
                     color: isDark
                         ? Colors.black26
-                        : Theme.of(context).colorScheme.primary.withValues(alpha: 0.04),
+                        : Theme.of(context).colorScheme.primary
+                              .withValues(alpha: 0.04),
                     blurRadius: 15,
                     offset: const Offset(0, 4),
                   ),
@@ -412,9 +322,7 @@ class _CalendarPageState extends State<CalendarPage> {
                         final text = DateFormat.E().format(day);
                         return Container(
                           decoration: BoxDecoration(
-                            color: isDark
-                                ? AppColors.darkSurface
-                                : const Color(0xFFF4F6F9),
+                            color: calendarViewBackground,
                             border: Border(
                               bottom: BorderSide(
                                 color: borderColor,
@@ -485,6 +393,69 @@ class _CalendarPageState extends State<CalendarPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildAcademicYearSelector(
+    BuildContext context,
+    AppLocalizations l10n,
+    bool isDark,
+    Color borderColor,
+  ) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: borderColor),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            l10n.calendarAcademicYear,
+            style: CustomTextStyles.inter(
+              color: isDark
+                  ? AppColors.darkTextSecondary
+                  : AppColors.textSecondary,
+              fontSize: 14,
+            ),
+          ),
+          const SizedBox(width: 12),
+          Text(
+            '2026',
+            style: CustomTextStyles.inter(
+              color: theme.colorScheme.onSurface,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+            decoration: BoxDecoration(
+              color: AppColors.successGreen,
+              borderRadius: BorderRadius.circular(4),
+            ),
+            child: Text(
+              l10n.yearsLowercaseActive,
+              style: CustomTextStyles.inter(
+                color: AppColors.white,
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8),
+          Icon(
+            Icons.keyboard_arrow_down,
+            size: 16,
+            color: isDark
+                ? AppColors.darkTextSecondary
+                : AppColors.textSecondary,
+          ),
+        ],
       ),
     );
   }

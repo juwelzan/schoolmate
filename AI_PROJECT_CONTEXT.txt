@@ -312,6 +312,8 @@ Current feature widgets:
   cards and rows, info banner, section header, AddEventDialog and dashed painter.
 - settings/presentation/widgets/: CustomTextField, SettingsTile,
   SettingsSectionHeader and theme dialog.
+- institution_admin/presentation/pages/drawer_pages/academic/widgets/:
+  AcademicHeaderCard shared by every academic management page.
 - institution_admin/presentation/widgets/dashboard_widgets.dart exports the
   admin dashboard widget set and the shared core bottom navigation.
 
@@ -428,6 +430,13 @@ Before modification:
 
 ARCHITECTURE CHANGE LOG
 =======================
+
+Date: 2026-10-05
+Change: Added a configurable AcademicHeaderCard and applied it across all
+        academic management pages.
+Reason: Give the academic pages a consistent theme-aware header treatment and
+        one shared implementation.
+Affected files: academic/widgets/academic_header_card.dart, all academic pages.
 
 Date: 2026-10-05
 Change: Added this project context document describing the inspected current

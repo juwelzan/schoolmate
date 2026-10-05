@@ -1,4 +1,5 @@
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
@@ -124,9 +125,7 @@ class _ClassesSectionsPageState extends State<ClassesSectionsPage> {
     final l10n = AppLocalizations.of(context)!;
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final Color bgColor = Theme.of(context).scaffoldBackgroundColor;
-    final Color surfaceColor = Theme.of(context).colorScheme.surface;
     final Color primaryColor = Theme.of(context).colorScheme.primary;
-    final Color borderColor = isDark ? AppColors.darkBorder : AppColors.divider;
 
     bool anyExpanded = _classes.any((c) => c.isExpanded);
     final Color primary = primaryColor;
@@ -142,167 +141,13 @@ class _ClassesSectionsPageState extends State<ClassesSectionsPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
-                color: isDark
-                    ? AppColors.darkSurfaceHighlight
-                    : primary.withValues(alpha: 0.04),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: isDark
-                      ? AppColors.darkBorder
-                      : primary.withValues(alpha: 0.1),
-                ),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // Badge
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 6,
-                    ),
-                    decoration: BoxDecoration(
-                      color: primary.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Container(
-                          width: 8,
-                          height: 8,
-                          decoration: BoxDecoration(
-                            color: primary,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Text(
-                          l10n.componentTypesHeaderBadge,
-                          style: CustomTextStyles.inter(
-                            color: primary,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 13,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  // Description
-                  Text(
-                    l10n.componentTypesHeaderDesc,
-                    style: CustomTextStyles.inter(
-                      color: isDark ? AppColors.white : AppColors.textPrimary,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      height: 1.4,
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  // Stats & Button Row
-                  Wrap(
-                    spacing: 12,
-                    runSpacing: 12,
-                    crossAxisAlignment: WrapCrossAlignment.center,
-                    children: [
-                      // Total Pill
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: surfaceColor,
-                          border: Border.all(color: borderColor),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          l10n.componentTypesTotalCount(6),
-                          style: CustomTextStyles.inter(
-                            color: isDark
-                                ? AppColors.white
-                                : AppColors.textPrimary,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      // Active Pill
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: isDark
-                              ? const Color(0xFF123A2C)
-                              : const Color(0xFFE6F4EA),
-                          border: Border.all(
-                            color: isDark
-                                ? const Color(0xFF1D6044)
-                                : const Color(0xFFC3E6CB),
-                          ),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          l10n.componentTypesActiveCountValue(6),
-                          style: CustomTextStyles.inter(
-                            color: AppColors.successGreen,
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-                      // Spacer (will push button to end if on wide screen)
-                      const SizedBox(width: 24),
-                      // New Component Button
-                      InkWell(
-                        onTap: () {},
-                        borderRadius: BorderRadius.circular(12),
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 20,
-                            vertical: 12,
-                          ),
-                          decoration: BoxDecoration(
-                            color: primary,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: primary.withValues(alpha: 0.3),
-                                blurRadius: 10,
-                                offset: const Offset(0, 4),
-                              ),
-                            ],
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.add,
-                                color: AppColors.white,
-                                size: 20,
-                              ),
-                              const SizedBox(width: 8),
-                              Text(
-                                l10n.classesSectionsAddClass,
-                                style: CustomTextStyles.inter(
-                                  color: AppColors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 14,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+            AcademicHeaderCard(
+              title: l10n.classesSectionsTitle,
+              description: l10n.classesSectionsSubtitle,
+              action: ElevatedButton.icon(
+                onPressed: () {},
+                icon: const Icon(Icons.add),
+                label: Text(l10n.classesSectionsAddClass),
               ),
             ),
             // Top Action Row
@@ -524,7 +369,9 @@ class _ClassesSectionsPageState extends State<ClassesSectionsPage> {
                             size: 18,
                             color: isDark
                                 ? AppColors.darkTextPrimary
-                                : Theme.of(context).colorScheme.onSurfaceVariant,
+                                : Theme.of(context)
+                                      .colorScheme
+                                      .onSurfaceVariant,
                           ),
                           padding: EdgeInsets.zero,
                         ),

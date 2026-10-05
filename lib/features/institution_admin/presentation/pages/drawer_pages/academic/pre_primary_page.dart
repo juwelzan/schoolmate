@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
@@ -17,10 +18,23 @@ class PrePrimaryPage extends StatelessWidget {
         subtitle: "Academic Management",
       ),
       drawer: const AppDrawer(),
-      body: Center(
-        child: Text(
-          "Pre-Primary Page - Coming Soon",
-          style: Theme.of(context).textTheme.bodyLarge,
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            AcademicHeaderCard(
+              title: "Pre-Primary",
+              description: "Academic Management",
+            ),
+            const SizedBox(height: 24),
+            Center(
+              child: Text(
+                "Pre-Primary Page - Coming Soon",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            ),
+          ],
         ),
       ),
     );

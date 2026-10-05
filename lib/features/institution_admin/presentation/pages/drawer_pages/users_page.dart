@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
@@ -11,6 +10,7 @@ class UsersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: SchoolMateAppBar(
@@ -45,9 +45,7 @@ class UsersPage extends StatelessWidget {
                         l10n.usersDesc,
                         style: TextStyle(
                           fontSize: 14,
-                          color:
-                              Theme.of(context).textTheme.bodyMedium?.color ??
-                              AppColors.textSecondary,
+                          color: colorScheme.onSurfaceVariant,
                           height: 1.4,
                         ),
                       ),
@@ -57,17 +55,18 @@ class UsersPage extends StatelessWidget {
                 const SizedBox(width: 8),
                 ElevatedButton.icon(
                   onPressed: () {},
-                  icon: const Icon(Icons.add, size: 18, color: AppColors.white),
+                  icon: const Icon(Icons.add, size: 18),
                   label: Text(
                     l10n.usersAddBtn,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: AppColors.white,
+                      color: colorScheme.onPrimary,
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.primaryPurple,
+                    backgroundColor: colorScheme.primary,
+                    foregroundColor: colorScheme.onPrimary,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 20,
                       vertical: 12,
@@ -87,28 +86,53 @@ class UsersPage extends StatelessWidget {
               spacing: 12,
               runSpacing: 12,
               children: [
-                Container(
+                SizedBox(
                   width: 300,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
-                    borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
-                  ),
+                  height: 44,
                   child: TextField(
+                    cursorColor: colorScheme.primary,
+                    style: TextStyle(
+                      color: colorScheme.onSurface,
+                      fontSize: 13,
+                    ),
                     decoration: InputDecoration(
                       hintText: l10n.usersSearchHint,
                       hintStyle: TextStyle(
-                        color: AppColors.inactiveIcon,
+                        color: colorScheme.onSurfaceVariant,
                         fontSize: 13,
                       ),
+                      isDense: true,
+                      filled: true,
+                      fillColor: colorScheme.surface,
                       prefixIcon: Icon(
                         Icons.search,
-                        color: AppColors.inactiveIcon,
+                        color: colorScheme.onSurfaceVariant,
                         size: 18,
                       ),
-                      border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(vertical: 12),
+                      prefixIconConstraints: const BoxConstraints(
+                        minWidth: 40,
+                        minHeight: 44,
+                      ),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          color: colorScheme.outlineVariant,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          color: colorScheme.outlineVariant,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide(
+                          color: colorScheme.primary,
+                          width: 1.5,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -116,9 +140,9 @@ class UsersPage extends StatelessWidget {
                   height: 40,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.surface,
+                    color: colorScheme.surface,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+                    border: Border.all(color: colorScheme.outlineVariant),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
@@ -126,12 +150,12 @@ class UsersPage extends StatelessWidget {
                         l10n.usersFilterRoles,
                         style: TextStyle(
                           fontSize: 13,
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: colorScheme.onSurface,
                         ),
                       ),
-                      icon: const Icon(
+                      icon: Icon(
                         Icons.keyboard_arrow_down,
-                        color: AppColors.inactiveIcon,
+                        color: colorScheme.onSurfaceVariant,
                         size: 16,
                       ),
                       items: const [],
@@ -183,15 +207,21 @@ class UsersPage extends StatelessWidget {
     required String status,
     required String date,
   }) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final isActive = status == l10n.statusActive;
+
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+        border: Border.all(color: colorScheme.outlineVariant),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.03),
+            color: isDark
+                ? Colors.transparent
+                : colorScheme.primary.withValues(alpha: 0.03),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -213,7 +243,7 @@ class UsersPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w700,
-                          color: Theme.of(context).colorScheme.onSurface,
+                          color: colorScheme.onSurface,
                         ),
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -224,16 +254,14 @@ class UsersPage extends StatelessWidget {
                         l10n.usersIsYou,
                         style: TextStyle(
                           fontSize: 13,
-                          color:
-                              Theme.of(context).textTheme.bodyMedium?.color ??
-                              Theme.of(context).colorScheme.onSurfaceVariant,
+                          color: colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ],
                   ],
                 ),
               ),
-              const Icon(Icons.more_horiz, color: AppColors.inactiveIcon),
+              Icon(Icons.more_horiz, color: colorScheme.onSurfaceVariant),
             ],
           ),
           const SizedBox(height: 6),
@@ -241,12 +269,7 @@ class UsersPage extends StatelessWidget {
           // Row 2: Email
           Text(
             email,
-            style: TextStyle(
-              fontSize: 13,
-              color:
-                  Theme.of(context).textTheme.bodyMedium?.color ??
-                  Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
+            style: TextStyle(fontSize: 13, color: colorScheme.onSurfaceVariant),
           ),
           const SizedBox(height: 16),
 
@@ -261,16 +284,16 @@ class UsersPage extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
+                  color: colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
+                  border: Border.all(color: colorScheme.outlineVariant),
                 ),
                 child: Text(
                   role,
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: Theme.of(context).colorScheme.onSurface,
+                    color: colorScheme.onSurface,
                   ),
                 ),
               ),
@@ -280,11 +303,11 @@ class UsersPage extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: status == 'Active'
-                      ? (Theme.of(context).brightness == Brightness.dark
+                  color: isActive
+                      ? (isDark
                             ? AppColors.darkBadgePurpleBg
                             : AppColors.surfaceVerySoftPurple)
-                      : Theme.of(context).colorScheme.outlineVariant,
+                      : colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
@@ -292,9 +315,11 @@ class UsersPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: status == 'Active'
-                        ? Theme.of(context).colorScheme.primary
-                        : Theme.of(context).colorScheme.onSurfaceVariant,
+                    color: isActive
+                        ? (isDark
+                              ? AppColors.darkBadgePurpleText
+                              : colorScheme.primary)
+                        : colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),
@@ -311,14 +336,14 @@ class UsersPage extends StatelessWidget {
                   Icon(
                     Icons.phone_outlined,
                     size: 14,
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    color: colorScheme.onSurfaceVariant,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     phone,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      color: colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],
@@ -328,14 +353,14 @@ class UsersPage extends StatelessWidget {
                   Icon(
                     Icons.calendar_today_outlined,
                     size: 14,
-                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    color: colorScheme.onSurfaceVariant,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     date,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                      color: colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],
