@@ -68,7 +68,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                             size: 14,
                             color: isDark
                                 ? AppColors.darkPrimaryPurple
-                                : AppColors.primaryPurple,
+                                : Theme.of(context).colorScheme.primary,
                           ),
                           const SizedBox(width: 6),
                           Text(
@@ -77,7 +77,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                               fontSize: 12,
                               color: isDark
                                   ? AppColors.darkPrimaryPurple
-                                  : AppColors.primaryPurple,
+                                  : Theme.of(context).colorScheme.primary,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -118,7 +118,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       icon: Icons.school,
                       iconColor: isDark
                           ? AppColors.darkPrimaryPurple
-                          : AppColors.primaryPurple,
+                          : Theme.of(context).colorScheme.primary,
                       iconBgColor: isDark
                           ? AppColors.darkBadgePurpleBg
                           : AppColors.surfaceVerySoftPurple,
@@ -133,10 +133,10 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       icon: Icons.person,
                       iconColor: isDark
                           ? const Color(0xFF2DD4BF)
-                          : AppColors.primaryTeal,
+                          : Theme.of(context).colorScheme.primary,
                       iconBgColor: isDark
                           ? const Color(0xFF134E4A)
-                          : AppColors.surfaceSoftTeal,
+                          : AppColors.surfaceVerySoftPurple,
                     ),
                     const SizedBox(height: 16),
 
@@ -173,7 +173,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                             size: 20,
                             color: isDark
                                 ? AppColors.darkPrimaryPurple
-                                : AppColors.primaryPurple,
+                                : Theme.of(context).colorScheme.primary,
                           ),
                           const SizedBox(width: 12),
                           Expanded(
@@ -213,7 +213,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: isDark
                             ? AppColors.darkPrimaryPurple
-                            : AppColors.primaryPurple,
+                            : Theme.of(context).colorScheme.primary,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(28),
                         ),
@@ -227,13 +227,13 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
-                              color: AppColors.white,
+                              color: Theme.of(context).colorScheme.onPrimary,
                             ),
                           ),
                           const SizedBox(width: 8),
                           Icon(
                             Icons.arrow_forward,
-                            color: AppColors.white,
+                            color: Theme.of(context).colorScheme.onPrimary,
                             size: 20,
                           ),
                         ],
@@ -261,7 +261,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                           fontWeight: FontWeight.w600,
                           color: isDark
                               ? AppColors.darkPrimaryPurple
-                              : AppColors.primaryPurple,
+                              : Theme.of(context).colorScheme.primary,
                         ),
                       ),
                     ],
@@ -296,16 +296,16 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                     BoxShadow(
                       color: isDark
                           ? Colors.transparent
-                          : AppColors.primaryPurple.withOpacity(0.08),
+                          : Theme.of(context).colorScheme.primary.withOpacity(0.08),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
                   ],
                 ),
-                child: const Center(
+                child: Center(
                   child: Icon(
                     Icons.school,
-                    color: AppColors.primaryTeal,
+                    color: Theme.of(context).colorScheme.primary,
                     size: 20,
                   ),
                 ),
@@ -328,7 +328,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       fontSize: 12,
                       color: isDark
                           ? AppColors.darkPrimaryPurple
-                          : AppColors.primaryPurple,
+                          : Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -372,7 +372,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
               ? Border.all(
                   color: isDark
                       ? const Color(0xFF9F7AEA)
-                      : AppColors.primaryPurple,
+                      : Theme.of(context).colorScheme.primary,
                   width: 1.5,
                 )
               : Border.all(
@@ -384,7 +384,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                   BoxShadow(
                     color: isDark
                         ? Colors.transparent
-                        : AppColors.primaryPurple.withOpacity(0.08),
+                        : Theme.of(context).colorScheme.primary.withOpacity(0.08),
                     blurRadius: 16,
                     offset: const Offset(0, 8),
                   ),
@@ -435,7 +435,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                             fontSize: 10,
                             color: isDark
                                 ? AppColors.darkPrimaryPurple
-                                : AppColors.primaryPurple,
+                                : Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -463,14 +463,14 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                 color: isSelected
                     ? (isDark
                           ? const Color(0xFF9F7AEA)
-                          : AppColors.primaryPurple)
+                          : Theme.of(context).colorScheme.primary)
                     : (isDark
                           ? AppColors.darkBorder
                           : AppColors.divider.withOpacity(0.5)),
                 shape: BoxShape.circle,
               ),
               child: isSelected
-                  ? Icon(Icons.check, color: AppColors.white, size: 16)
+                  ? Icon(Icons.check, color: Theme.of(context).colorScheme.onPrimary, size: 16)
                   : null,
             ),
           ],

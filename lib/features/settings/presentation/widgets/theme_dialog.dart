@@ -18,6 +18,7 @@ class ThemeDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
     return Dialog(
@@ -26,11 +27,11 @@ class ThemeDialogWidget extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: isDark ? AppColors.darkSurface : AppColors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: AppColors.primaryPurple.withOpacity(isDark ? 0.0 : 0.1),
+              color: colorScheme.primary.withValues(alpha: isDark ? 0.0 : 0.1),
               blurRadius: 20,
               offset: const Offset(0, 10),
             ),
@@ -112,6 +113,7 @@ class ThemeDialogWidget extends StatelessWidget {
     required bool isDark,
   }) {
     final isSelected = mode == currentMode;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return InkWell(
       onTap: () {
@@ -130,7 +132,7 @@ class ThemeDialogWidget extends StatelessWidget {
               : Colors.transparent,
           border: Border.all(
             color: isSelected
-                ? AppColors.primaryPurple
+                ? colorScheme.primary
                 : (isDark ? AppColors.darkBorder : AppColors.divider),
             width: isSelected ? 1.5 : 1,
           ),
@@ -141,7 +143,7 @@ class ThemeDialogWidget extends StatelessWidget {
             Icon(
               icon,
               color: isSelected
-                  ? AppColors.primaryPurple
+                  ? colorScheme.primary
                   : (isDark ? AppColors.white : AppColors.textSecondary),
               size: 24,
             ),
@@ -154,8 +156,8 @@ class ThemeDialogWidget extends StatelessWidget {
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                   color: isSelected
                       ? (isDark
-                            ? AppColors.softPurple
-                            : AppColors.primaryPurple)
+                            ? AppColors.darkBadgePurpleText
+                            : colorScheme.primary)
                       : (isDark ? AppColors.white : (AppColors.textSecondary)),
                 ),
               ),

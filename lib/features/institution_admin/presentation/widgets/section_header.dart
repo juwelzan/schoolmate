@@ -2,13 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
-
-
-
-
-
-
 class SectionHeader extends StatelessWidget {
   final String title;
   final String? actionLabel;
@@ -24,7 +17,10 @@ class SectionHeader extends StatelessWidget {
         children: [
           Text(
             title,
-            style: CustomTextStyles.bengali(fontSize: 18, fontWeight: FontWeight.w700),
+            style: CustomTextStyles.bengali(
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
           ),
           if (actionLabel != null)
             Text(

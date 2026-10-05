@@ -43,7 +43,9 @@ class UsersPage extends StatelessWidget {
                         l10n.usersDesc,
                         style: TextStyle(
                           fontSize: 14,
-                          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
                           height: 1.4,
                         ),
                       ),
@@ -64,7 +66,10 @@ class UsersPage extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -84,15 +89,24 @@ class UsersPage extends StatelessWidget {
                   width: 300,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkSurface
+                        : AppColors.white,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: AppColors.divider),
                   ),
                   child: TextField(
                     decoration: InputDecoration(
                       hintText: l10n.usersSearchHint,
-                      hintStyle: TextStyle(color: AppColors.inactiveIcon, fontSize: 13),
-                      prefixIcon: Icon(Icons.search, color: AppColors.inactiveIcon, size: 18),
+                      hintStyle: TextStyle(
+                        color: AppColors.inactiveIcon,
+                        fontSize: 13,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: AppColors.inactiveIcon,
+                        size: 18,
+                      ),
                       border: InputBorder.none,
                       contentPadding: EdgeInsets.symmetric(vertical: 12),
                     ),
@@ -102,14 +116,26 @@ class UsersPage extends StatelessWidget {
                   height: 40,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkSurface
+                        : AppColors.white,
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: AppColors.divider),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
-                      hint: Text(l10n.usersFilterRoles, style: TextStyle(fontSize: 13, color: AppColors.textPrimary)),
-                      icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.inactiveIcon, size: 16),
+                      hint: Text(
+                        l10n.usersFilterRoles,
+                        style: TextStyle(
+                          fontSize: 13,
+                          color: AppColors.textPrimary,
+                        ),
+                      ),
+                      icon: const Icon(
+                        Icons.keyboard_arrow_down,
+                        color: AppColors.inactiveIcon,
+                        size: 16,
+                      ),
                       items: const [],
                       onChanged: (val) {},
                     ),
@@ -162,7 +188,9 @@ class UsersPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : AppColors.white,
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: AppColors.divider),
         boxShadow: [
@@ -200,7 +228,9 @@ class UsersPage extends StatelessWidget {
                         l10n.usersIsYou,
                         style: TextStyle(
                           fontSize: 13,
-                          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -211,24 +241,29 @@ class UsersPage extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 6),
-          
+
           // Row 2: Email
           Text(
             email,
             style: TextStyle(
               fontSize: 13,
-              color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+              color:
+                  Theme.of(context).textTheme.bodyMedium?.color ??
+                  AppColors.textSecondary,
             ),
           ),
           const SizedBox(height: 16),
-          
+
           // Row 3: Role & Status Badges
           Wrap(
             spacing: 8,
             runSpacing: 8,
             children: [
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -244,9 +279,14 @@ class UsersPage extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 10,
+                  vertical: 4,
+                ),
                 decoration: BoxDecoration(
-                  color: status == 'Active' ? AppColors.surfaceSoftTeal : AppColors.divider,
+                  color: status == 'Active'
+                      ? AppColors.surfaceVerySoftPurple
+                      : AppColors.divider,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
@@ -254,35 +294,51 @@ class UsersPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
-                    color: status == 'Active' ? AppColors.primaryTeal : AppColors.textSecondary,
+                    color: status == 'Active'
+                        ? AppColors.primaryPurple
+                        : AppColors.textSecondary,
                   ),
                 ),
               ),
             ],
           ),
           const SizedBox(height: 16),
-          
+
           // Row 4: Phone & Date
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Row(
                 children: [
-                  const Icon(Icons.phone_outlined, size: 14, color: AppColors.textSecondary),
+                  const Icon(
+                    Icons.phone_outlined,
+                    size: 14,
+                    color: AppColors.textSecondary,
+                  ),
                   const SizedBox(width: 4),
                   Text(
                     phone,
-                    style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  const Icon(Icons.calendar_today_outlined, size: 14, color: AppColors.textSecondary),
+                  const Icon(
+                    Icons.calendar_today_outlined,
+                    size: 14,
+                    color: AppColors.textSecondary,
+                  ),
                   const SizedBox(width: 4),
                   Text(
                     date,
-                    style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: AppColors.textSecondary,
+                    ),
                   ),
                 ],
               ),

@@ -1174,4 +1174,376 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get notificationTimeOct01 => '01 Oct 2026';
+
+  @override
+  String get academicYears => 'Years';
+
+  @override
+  String get academicManagement => 'Academic Management';
+
+  @override
+  String get academicYearsDesc =>
+      'Manage academic years, activate the current one, and configure sessions within each year';
+
+  @override
+  String get newAcademicYear => 'New Academic Year';
+
+  @override
+  String get currentYear => 'Current year';
+
+  @override
+  String get sessionLabel => 'Session';
+
+  @override
+  String get sessionYear => 'Session 2026';
+
+  @override
+  String get exampleYear2026 => '2026';
+
+  @override
+  String get exampleYear2026Bn => '২০২৬';
+
+  @override
+  String get exampleDateRange => '01 Jan 2026 → 31 Dec 2026';
+
+  @override
+  String get exampleSessionBn => 'সেশন ২০২৬';
+
+  @override
+  String get yearsActiveCycle => 'Active Cycle';
+
+  @override
+  String get yearsActiveCycleBn => 'সক্রিয় চক্র';
+
+  @override
+  String get years2026 => '2026';
+
+  @override
+  String get years2026Bn => '২০২৬';
+
+  @override
+  String get yearsSetAsCurrent => 'Set 2026 as current year';
+
+  @override
+  String get yearsEditYear => 'Edit Year';
+
+  @override
+  String get yearsDelete => 'Delete';
+
+  @override
+  String get yearsSessionsIn2026 => 'Sessions in 2026';
+
+  @override
+  String get yearsSession2026 => 'Session 2026';
+
+  @override
+  String get yearsSession2026Bn => 'সেশন ২০২৬';
+
+  @override
+  String get yearsActive => 'Active';
+
+  @override
+  String get years01Jan2026 => '01 Jan 2026';
+
+  @override
+  String get years31Dec2026 => '31 Dec 2026';
+
+  @override
+  String get yearsEnrolledStats => '1,240 enrolled • 8 classes';
+
+  @override
+  String get yearsAddAnotherSession => 'Add another session to 2026';
+
+  @override
+  String get years2025 => '2025';
+
+  @override
+  String get years2025Bn => '২০২৫';
+
+  @override
+  String get years2025Duration => '01 Jan 2025 - 31 Dec\n2025';
+
+  @override
+  String get years3 => '3';
+
+  @override
+  String get yearsSessions => 'Sessions';
+
+  @override
+  String get yearsArchived => 'Archived';
+
+  @override
+  String get yearsDay114Of365 => 'Day 114 of 365';
+
+  @override
+  String get yearsNewYear => 'New Year';
+
+  @override
+  String get yearsManageTerms => 'Manage terms, active calendar\n& sessions';
+
+  @override
+  String get yearsTermElapsed => '2026 Term Elapsed';
+
+  @override
+  String get yearsPercent31 => '31.2%';
+
+  @override
+  String get yearsQuarter => 'QUARTER';
+
+  @override
+  String get yearsQ2Spring => 'Q2 • Spring';
+
+  @override
+  String get yearsLowercaseActive => 'active';
+
+  @override
+  String get yearsCurrentYear => 'Current year';
+
+  @override
+  String get yearsSessionSingle => 'Session';
+
+  @override
+  String get yearsEdit => 'Edit';
+
+  @override
+  String get yearsAssociatedSessions => 'ASSOCIATED SESSIONS';
+
+  @override
+  String get years1Total => '1 Total';
+
+  @override
+  String get calendarTitle => 'Calendar';
+
+  @override
+  String get calendarSubtitle => 'Holidays, exam periods, vacations and events';
+
+  @override
+  String get calendarAcademicYear => 'Academic Year';
+
+  @override
+  String get calendarAddEvent => 'Add Event';
+
+  @override
+  String get calendarHoliday => 'Holiday';
+
+  @override
+  String get calendarExamPeriod => 'Exam Period';
+
+  @override
+  String get calendarVacation => 'Vacation';
+
+  @override
+  String get calendarEvent => 'Event';
+
+  @override
+  String get calendarTimetableSkip => 'Timetable Skip';
+
+  @override
+  String get addEventDialogTitle => 'Add Calendar Event';
+
+  @override
+  String get addEventTitleEnglish => 'Title (English)';
+
+  @override
+  String get addEventTitleBangla => 'Title (Bangla)';
+
+  @override
+  String get addEventType => 'Type';
+
+  @override
+  String get addEventStartDate => 'Start Date';
+
+  @override
+  String get addEventEndDate => 'End Date';
+
+  @override
+  String get addEventDateFormat => 'dd/mm/yyyy';
+
+  @override
+  String get addEventDescription => 'Description (optional)';
+
+  @override
+  String get addEventCancel => 'Cancel';
+
+  @override
+  String get addEventSave => 'Save';
+
+  @override
+  String get shiftsPageTitle => 'Shifts';
+
+  @override
+  String get shiftsPageSubtitle => 'Academic Management';
+
+  @override
+  String get shiftsPageDescription =>
+      'Define morning, day, evening and custom shifts with period schedules';
+
+  @override
+  String get shiftsPageNewShift => 'New Shift';
+
+  @override
+  String get shiftsPageEmptyState =>
+      'No shifts configured. Add one to get started.';
+
+  @override
+  String get programStructuresTitle => 'Program Structures';
+
+  @override
+  String get programStructuresSubtitle => 'Academic Management';
+
+  @override
+  String get programStructuresDescription =>
+      'Define program types (year-based, semester-based, BTEB diploma, etc.)';
+
+  @override
+  String get programStructuresNew => 'New Structure';
+
+  @override
+  String get programStructuresEmpty => 'No program structures defined yet.';
+
+  @override
+  String get gradingScalesTitle => 'Grading Scales';
+
+  @override
+  String get gradingScalesSubtitle => 'Academic Management';
+
+  @override
+  String get gradingScalesDescription =>
+      'Define grade bands (letter, point, mark range) and assign a scale to each class';
+
+  @override
+  String get gradingScalesNew => 'New Grading Scale';
+
+  @override
+  String get gradingScalePreset => 'Preset';
+
+  @override
+  String get componentTypesTitle => 'Component Types';
+
+  @override
+  String get componentTypesSubtitle => 'Academic Management';
+
+  @override
+  String get componentTypesDescription =>
+      'The mark buckets (Written/CQ, MCQ, Practical, ...) used when building a subject\'s paper components';
+
+  @override
+  String get componentTypesNew => 'New Component';
+
+  @override
+  String get componentTypesColName => 'Name';
+
+  @override
+  String get componentTypesColShortLabel => 'Short Label';
+
+  @override
+  String get componentTypesColStatus => 'Status';
+
+  @override
+  String get classesSectionsTitle => 'Classes & Sections';
+
+  @override
+  String get classesSectionsSubtitle =>
+      'Manage class hierarchy and shift-based sections';
+
+  @override
+  String get classesSectionsAddClass => 'Add Class';
+
+  @override
+  String get classesSectionsTree => 'Class Tree';
+
+  @override
+  String get classesSectionsAddSection => 'Section';
+
+  @override
+  String get classesSectionsCollapseAll => 'Collapse All';
+
+  @override
+  String get classesSectionsExpandAll => 'Expand All';
+
+  @override
+  String get classesSectionsStudents => 'Students';
+
+  @override
+  String get classesSectionsTeacher => 'Teacher';
+
+  @override
+  String get componentTypesHeaderBadge => 'Mark Distribution Configuration';
+
+  @override
+  String get componentTypesHeaderDesc =>
+      'Define and organize subject-based mark buckets (Written/CQ, MCQ, Lab, etc.).';
+
+  @override
+  String get componentTypesTotal => 'Total';
+
+  @override
+  String get componentTypesActiveCount => 'Active';
+
+  @override
+  String get componentTypesSearchHint =>
+      'Search component or code (e.g. CQ, MCQ)...';
+
+  @override
+  String get componentTypesFilterAll => 'All Buckets';
+
+  @override
+  String get componentTypesFilterTheory => 'Theory / Written';
+
+  @override
+  String get componentTypesFilterObjective => 'Objective';
+
+  @override
+  String get componentTypesFilterPractical => 'Practical / Lab';
+
+  @override
+  String get componentTypesListTitle => 'Component List';
+
+  @override
+  String get componentTypesSortOrder => 'Sort Serial';
+
+  @override
+  String get componentTypesCodeLabel => 'Code';
+
+  @override
+  String get componentTypesActiveBadge => 'Active';
+
+  @override
+  String get componentTypesStandardWeight => 'Standard weight';
+
+  @override
+  String componentTypesTotalCount(int count) {
+    return 'Total: $count';
+  }
+
+  @override
+  String componentTypesActiveCountValue(int count) {
+    return 'Active: $count';
+  }
+
+  @override
+  String componentTypesFilterAllCount(int count) {
+    return 'All Buckets ($count)';
+  }
+
+  @override
+  String componentTypesListTitleCount(int count) {
+    return 'Component List ($count)';
+  }
+
+  @override
+  String get componentTypesTheoryBucket => 'Theory Bucket';
+
+  @override
+  String get componentTypesObjectiveBucket => 'Objective Bucket';
+
+  @override
+  String componentTypesWeightText(int percent) {
+    return 'Standard weight: $percent%';
+  }
+
+  @override
+  String componentTypesOmrText(int percent) {
+    return 'OMR Evaluation • $percent%';
+  }
 }

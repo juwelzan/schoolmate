@@ -7,12 +7,18 @@ class TeachersStaffPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: SchoolMateAppBar(title: "Teachers & Staff", subtitle: "Institution Dashboard"),
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: "Teachers & Staff",
+        subtitle: "Institution Dashboard",
+      ),
       drawer: AppDrawer(),
       body: Center(
-        child: Text("Teachers & Staff Page - Coming Soon", style: TextStyle(fontSize: 16, color: AppColors.textSecondary)),
+        child: Text(
+          "Teachers & Staff Page - Coming Soon",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

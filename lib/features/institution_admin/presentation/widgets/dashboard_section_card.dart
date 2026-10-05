@@ -2,11 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
-
-
-
-
 class DashboardSectionCard extends StatelessWidget {
   final Widget child;
   DashboardSectionCard({super.key, required this.child});
@@ -17,7 +12,9 @@ class DashboardSectionCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
+        color: (Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : AppColors.white),
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(

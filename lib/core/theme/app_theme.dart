@@ -92,25 +92,85 @@ class AppTypography {
 
   // Dark Theme Text Styles (Colors adapted for Dark Mode)
   static const TextTheme darkTextTheme = TextTheme(
-    displayLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.darkTextPrimary),
-    displayMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: AppColors.darkTextPrimary),
-    displaySmall: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: AppColors.darkTextPrimary),
-    
-    headlineLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: AppColors.darkTextPrimary),
-    headlineMedium: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: AppColors.darkTextPrimary),
-    headlineSmall: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.darkTextPrimary),
-    
-    titleLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: AppColors.darkTextPrimary),
-    titleMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.darkTextPrimary),
-    titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.darkTextPrimary),
-    
-    bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: AppColors.darkTextPrimary),
-    bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: AppColors.darkTextSecondary),
-    bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: AppColors.darkTextSecondary),
-    
-    labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.white),
-    labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.darkTextSecondary),
-    labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: AppColors.darkTextSecondary),
+    displayLarge: TextStyle(
+      fontSize: 32,
+      fontWeight: FontWeight.bold,
+      color: AppColors.darkTextPrimary,
+    ),
+    displayMedium: TextStyle(
+      fontSize: 28,
+      fontWeight: FontWeight.bold,
+      color: AppColors.darkTextPrimary,
+    ),
+    displaySmall: TextStyle(
+      fontSize: 24,
+      fontWeight: FontWeight.w700,
+      color: AppColors.darkTextPrimary,
+    ),
+
+    headlineLarge: TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.w700,
+      color: AppColors.darkTextPrimary,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkTextPrimary,
+    ),
+    headlineSmall: TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkTextPrimary,
+    ),
+
+    titleLarge: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkTextPrimary,
+    ),
+    titleMedium: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkTextPrimary,
+    ),
+    titleSmall: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w500,
+      color: AppColors.darkTextPrimary,
+    ),
+
+    bodyLarge: TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.normal,
+      color: AppColors.darkTextPrimary,
+    ),
+    bodyMedium: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      color: AppColors.darkTextSecondary,
+    ),
+    bodySmall: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      color: AppColors.darkTextSecondary,
+    ),
+
+    labelLarge: TextStyle(
+      fontSize: 14,
+      fontWeight: FontWeight.w600,
+      color: AppColors.white,
+    ),
+    labelMedium: TextStyle(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      color: AppColors.darkTextSecondary,
+    ),
+    labelSmall: TextStyle(
+      fontSize: 10,
+      fontWeight: FontWeight.w500,
+      color: AppColors.darkTextSecondary,
+    ),
   );
 }
 
@@ -127,7 +187,7 @@ class AppTheme {
     colorScheme: const ColorScheme.light(
       primary: AppColors.primaryPurple,
       onPrimary: Colors.white,
-      secondary: AppColors.primaryTeal,
+      secondary: AppColors.primaryPurple,
       onSecondary: Colors.white,
       background: AppColors.background,
       onBackground: AppColors.textPrimary,
@@ -190,24 +250,24 @@ class AppTheme {
     primaryColor: AppColors.darkPrimaryPurple,
     fontFamily: AppTypography.primaryFontFamily,
     textTheme: AppTypography.darkTextTheme,
-    
+
     colorScheme: const ColorScheme.dark(
       primary: AppColors.darkPrimaryPurple,
-      onPrimary: AppColors.darkBackground,
-      secondary: AppColors.primaryTeal,
+      onPrimary: Colors.white,
+      secondary: AppColors.darkPrimaryPurple,
       onSecondary: Colors.white,
       surface: AppColors.darkSurface,
       onSurface: AppColors.darkTextPrimary,
       error: Colors.redAccent,
       onError: Colors.white,
     ),
-    
+
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkSurface,
       selectedItemColor: AppColors.darkPrimaryPurple,
       unselectedItemColor: AppColors.darkTextMuted,
     ),
-    
+
     cardTheme: CardThemeData(
       color: AppColors.darkSurface,
       elevation: 0,
@@ -216,21 +276,35 @@ class AppTheme {
         side: const BorderSide(color: AppColors.darkBorder, width: 1),
       ),
     ),
-    
+
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.darkBackground,
       elevation: 0,
       iconTheme: IconThemeData(color: AppColors.darkTextPrimary),
-      titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.darkTextPrimary),
+      titleTextStyle: TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.w600,
+        color: AppColors.darkTextPrimary,
+      ),
     ),
-    
+
     dialogTheme: DialogThemeData(
       backgroundColor: AppColors.darkSurface,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      titleTextStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppColors.darkTextPrimary),
-      contentTextStyle: const TextStyle(fontSize: 14, color: AppColors.darkTextSecondary),
+      titleTextStyle: const TextStyle(
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+        color: AppColors.darkTextPrimary,
+      ),
+      contentTextStyle: const TextStyle(
+        fontSize: 14,
+        color: AppColors.darkTextSecondary,
+      ),
     ),
-    dividerTheme: const DividerThemeData(color: AppColors.darkBorder, thickness: 1),
+    dividerTheme: const DividerThemeData(
+      color: AppColors.darkBorder,
+      thickness: 1,
+    ),
     listTileTheme: const ListTileThemeData(
       iconColor: AppColors.darkTextPrimary,
       textColor: AppColors.darkTextPrimary,

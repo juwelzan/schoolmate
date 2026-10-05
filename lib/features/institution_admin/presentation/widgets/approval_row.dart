@@ -2,13 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
-
-
-
-
-
-
 class ApprovalRow extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -62,7 +55,9 @@ class ApprovalRow extends StatelessWidget {
                       subtitle,
                       style: CustomTextStyles.bengali(
                         fontSize: 12,
-                        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.textMuted),
+                        color: (Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.darkTextMuted
+                            : AppColors.textMuted),
                       ),
                     ),
                   ],
@@ -74,7 +69,9 @@ class ApprovalRow extends StatelessWidget {
                   vertical: 6,
                 ),
                 decoration: BoxDecoration(
-                  color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple),
+                  color: (Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkBadgePurpleBg
+                      : AppColors.surfaceVerySoftPurple),
                   borderRadius: BorderRadius.circular(999),
                 ),
                 child: Text(
@@ -89,7 +86,13 @@ class ApprovalRow extends StatelessWidget {
             ],
           ),
         ),
-        if (showDivider) Divider(color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBorder : AppColors.divider), height: 1),
+        if (showDivider)
+          Divider(
+            color: (Theme.of(context).brightness == Brightness.dark
+                ? AppColors.darkBorder
+                : AppColors.divider),
+            height: 1,
+          ),
       ],
     );
   }

@@ -26,17 +26,37 @@ class StudentsPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  _buildOutlinedButton(Icons.school_outlined, l10n.studentsBtnPromotion),
+                  _buildOutlinedButton(
+                    context,
+                    Icons.school_outlined,
+                    l10n.studentsBtnPromotion,
+                  ),
                   const SizedBox(width: 8),
-                  _buildOutlinedButton(Icons.badge_outlined, l10n.studentsBtnPrintID),
+                  _buildOutlinedButton(
+                    context,
+                    Icons.badge_outlined,
+                    l10n.studentsBtnPrintID,
+                  ),
                   const SizedBox(width: 8),
-                  _buildOutlinedButton(Icons.request_page_outlined, l10n.studentsBtnStipend),
+                  _buildOutlinedButton(
+                    context,
+                    Icons.request_page_outlined,
+                    l10n.studentsBtnStipend,
+                  ),
                   const SizedBox(width: 8),
-                  _buildOutlinedButton(Icons.file_upload_outlined, l10n.studentsBtnImport),
+                  _buildOutlinedButton(
+                    context,
+                    Icons.file_upload_outlined,
+                    l10n.studentsBtnImport,
+                  ),
                   const SizedBox(width: 16),
                   ElevatedButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.add, size: 18, color: AppColors.white),
+                    icon: const Icon(
+                      Icons.add,
+                      size: 18,
+                      color: Theme.of(context).colorScheme.surface,
+                    ),
                     label: Text(
                       l10n.studentsBtnAdmit,
                       style: TextStyle(
@@ -47,7 +67,10 @@ class StudentsPage extends StatelessWidget {
                     ),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.primaryPurple,
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -58,12 +81,14 @@ class StudentsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            
+
             Text(
               l10n.studentsDesc,
               style: TextStyle(
                 fontSize: 14,
-                color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                color:
+                    Theme.of(context).textTheme.bodyMedium?.color ??
+                    AppColors.textSecondary,
               ),
             ),
             const SizedBox(height: 24),
@@ -79,13 +104,20 @@ class StudentsPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: AppColors.white,
                       borderRadius: BorderRadius.circular(8),
-                      border: Border.all(color: AppColors.divider),
+                      border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                     ),
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: l10n.studentsSearchHint,
-                        hintStyle: TextStyle(color: AppColors.inactiveIcon, fontSize: 13),
-                        prefixIcon: Icon(Icons.search, color: AppColors.inactiveIcon, size: 18),
+                        hintStyle: TextStyle(
+                          color: AppColors.inactiveIcon,
+                          fontSize: 13,
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search,
+                          color: AppColors.inactiveIcon,
+                          size: 18,
+                        ),
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.symmetric(vertical: 12),
                       ),
@@ -109,9 +141,11 @@ class StudentsPage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkSurface
+                      : Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.divider),
+                  border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                 ),
                 child: SizedBox(
                   width: 1200,
@@ -119,18 +153,60 @@ class StudentsPage extends StatelessWidget {
                     children: [
                       // Header
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-                        decoration: const BoxDecoration(
-                          border: Border(bottom: BorderSide(color: AppColors.divider)),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 12,
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
+                          ),
                         ),
                         child: Row(
                           children: [
-                            Expanded(flex: 2, child: Text(l10n.studentsTableStudent, style: _headerStyle(context))),
-                            Expanded(flex: 3, child: Text(l10n.studentsTableBRC, style: _headerStyle(context))),
-                            Expanded(flex: 2, child: Text(l10n.studentsTableClassSec, style: _headerStyle(context))),
-                            Expanded(flex: 2, child: Text(l10n.studentsTableGuardian, style: _headerStyle(context))),
-                            Expanded(flex: 1, child: Text(l10n.studentsTableStatus, style: _headerStyle(context))),
-                            Expanded(flex: 2, child: Text(l10n.studentsTableActions, style: _headerStyle(context), textAlign: TextAlign.right)),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                l10n.studentsTableStudent,
+                                style: _headerStyle(context),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 3,
+                              child: Text(
+                                l10n.studentsTableBRC,
+                                style: _headerStyle(context),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                l10n.studentsTableClassSec,
+                                style: _headerStyle(context),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                l10n.studentsTableGuardian,
+                                style: _headerStyle(context),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 1,
+                              child: Text(
+                                l10n.studentsTableStatus,
+                                style: _headerStyle(context),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 2,
+                              child: Text(
+                                l10n.studentsTableActions,
+                                style: _headerStyle(context),
+                                textAlign: TextAlign.right,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -150,20 +226,22 @@ class StudentsPage extends StatelessWidget {
   TextStyle _headerStyle(BuildContext context) => TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w600,
-    color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+    color:
+        Theme.of(context).textTheme.bodyMedium?.color ??
+        AppColors.textSecondary,
   );
 
-  Widget _buildOutlinedButton(IconData icon, String label) {
+  Widget _buildOutlinedButton(BuildContext context, IconData icon, String label) {
     return OutlinedButton.icon(
       onPressed: () {},
-      icon: Icon(icon, size: 16, color: AppColors.textSecondary),
+      icon: Icon(icon, size: 16, color: Theme.of(context).colorScheme.onSurfaceVariant),
       label: Text(
         label,
-        style: const TextStyle(fontSize: 13, color: AppColors.textSecondary),
+        style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.onSurfaceVariant),
       ),
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        side: const BorderSide(color: AppColors.divider),
+        side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );
@@ -174,14 +252,21 @@ class StudentsPage extends StatelessWidget {
       height: 40,
       padding: const EdgeInsets.symmetric(horizontal: 12),
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.divider),
+        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
-          hint: Text(hint, style: const TextStyle(fontSize: 13, color: AppColors.textPrimary)),
-          icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.inactiveIcon, size: 16),
+          hint: Text(
+            hint,
+            style: TextStyle(fontSize: 13, color: Theme.of(context).colorScheme.onSurface),
+          ),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: AppColors.inactiveIcon,
+            size: 16,
+          ),
           items: const [],
           onChanged: (val) {},
         ),
@@ -201,7 +286,11 @@ class StudentsPage extends StatelessWidget {
                 CircleAvatar(
                   radius: 16,
                   backgroundColor: AppColors.surfaceVerySoftPurple,
-                  child: const Icon(Icons.person, size: 18, color: AppColors.primaryPurple),
+                  child: const Icon(
+                    Icons.person,
+                    size: 18,
+                    color: AppColors.primaryPurple,
+                  ),
                 ),
                 const SizedBox(width: 8),
                 Column(
@@ -209,11 +298,18 @@ class StudentsPage extends StatelessWidget {
                   children: [
                     Text(
                       "Mamun",
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textPrimary),
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textPrimary,
+                      ),
                     ),
                     Text(
                       "মামুন",
-                      style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                   ],
                 ),
@@ -227,20 +323,30 @@ class StudentsPage extends StatelessWidget {
                 Flexible(
                   child: Text(
                     "12345678964654645",
-                    style: TextStyle(fontSize: 13, color: AppColors.textSecondary),
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: AppColors.textSecondary,
+                    ),
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
                 const SizedBox(width: 8),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 2,
+                  ),
                   decoration: BoxDecoration(
                     border: Border.all(color: AppColors.warmGold),
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Text(
                     l10n.statusNsidPending,
-                    style: TextStyle(fontSize: 11, color: AppColors.warmGold, fontWeight: FontWeight.w600),
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: AppColors.warmGold,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ],
@@ -272,7 +378,11 @@ class StudentsPage extends StatelessWidget {
                 ),
                 child: Text(
                   l10n.statusActive,
-                  style: TextStyle(fontSize: 11, color: AppColors.white, fontWeight: FontWeight.w600),
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: AppColors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
@@ -282,11 +392,11 @@ class StudentsPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                _buildActionBtn(l10n.actionView, isRed: false),
+                _buildActionBtn(context, l10n.actionView, isRed: false),
                 const SizedBox(width: 8),
-                _buildActionBtn(l10n.actionEdit, isRed: false),
+                _buildActionBtn(context, l10n.actionEdit, isRed: false),
                 const SizedBox(width: 8),
-                _buildActionBtn(l10n.actionDelete, isRed: true),
+                _buildActionBtn(context, l10n.actionDelete, isRed: true),
               ],
             ),
           ),
@@ -295,11 +405,11 @@ class StudentsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildActionBtn(String label, {required bool isRed}) {
+  Widget _buildActionBtn(BuildContext context, String label, {required bool isRed}) {
     return Container(
       decoration: BoxDecoration(
         color: isRed ? Colors.redAccent : Colors.transparent,
-        border: Border.all(color: isRed ? Colors.redAccent : AppColors.divider),
+        border: Border.all(color: isRed ? Colors.redAccent : Theme.of(context).colorScheme.outlineVariant),
         borderRadius: BorderRadius.circular(6),
       ),
       child: InkWell(
@@ -312,7 +422,7 @@ class StudentsPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
-              color: isRed ? AppColors.white : AppColors.textSecondary,
+              color: isRed ? AppColors.white : Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
         ),

@@ -46,7 +46,7 @@ class AppRoutes {
   static const String changePassword = ChangePasswordPage.routeName;
 
   // === Academic Sub-pages ===
-  static const String years = YearsPage.routeName;
+  static final String years = YearsPage.routeName;
   static const String calendar = CalendarPage.routeName;
   static const String shifts = ShiftsPage.routeName;
   static const String programStructures = ProgramStructuresPage.routeName;

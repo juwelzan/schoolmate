@@ -10,6 +10,7 @@ class NotificationsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -64,7 +65,7 @@ class NotificationsPage extends StatelessWidget {
                     child: Text(
                       l10n.notificationsMarkAllRead,
                       style: TextStyle(
-                        color: AppColors.primaryPurple,
+                        color: colorScheme.primary,
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                       ),
@@ -87,8 +88,8 @@ class NotificationsPage extends StatelessWidget {
                     icon: Icons.system_update_alt,
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkBadgeTealBg
-                        : AppColors.surfaceSoftTeal),
-                    iconColor: AppColors.primaryTeal,
+                        : AppColors.surfaceVerySoftPurple),
+                    iconColor: colorScheme.primary,
                     isUnread: true,
                   ),
                   _buildNotificationItem(
@@ -100,7 +101,7 @@ class NotificationsPage extends StatelessWidget {
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkBadgePurpleBg
                         : AppColors.softPurple),
-                    iconColor: AppColors.primaryPurple,
+                    iconColor: colorScheme.primary,
                     isUnread: true,
                   ),
                   _buildNotificationItem(
@@ -112,7 +113,9 @@ class NotificationsPage extends StatelessWidget {
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? const Color(0xFF0D2D20)
                         : const Color(0xFFE6F7F0)), // Light Green
-                    iconColor: AppColors.successGreen,
+                    iconColor: Theme.of(context).brightness == Brightness.dark
+                        ? const Color(0xFF55D69E)
+                        : AppColors.successGreen,
                     isUnread: false,
                   ),
                   _buildNotificationItem(
@@ -124,7 +127,9 @@ class NotificationsPage extends StatelessWidget {
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkBadgeGoldBg
                         : AppColors.softWarmGold),
-                    iconColor: AppColors.warmGold,
+                    iconColor: Theme.of(context).brightness == Brightness.dark
+                        ? const Color(0xFFFFCC66)
+                        : AppColors.warmGold,
                     isUnread: false,
                   ),
                   _buildNotificationItem(
@@ -136,7 +141,9 @@ class NotificationsPage extends StatelessWidget {
                     iconBg: (Theme.of(context).brightness == Brightness.dark
                         ? const Color(0xFF3B1518)
                         : const Color(0xFFFFEBEE)), // Light Red
-                    iconColor: Color(0xFFD32F2F), // Red
+                    iconColor: Theme.of(context).brightness == Brightness.dark
+                        ? const Color(0xFFFF8585)
+                        : const Color(0xFFD32F2F),
                     isUnread: false,
                   ),
                 ],

@@ -12,6 +12,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final colorScheme = Theme.of(context).colorScheme;
 
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -100,9 +101,7 @@ class SettingsPage extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w600,
-                                  color: state.themeMode == ThemeMode.light
-                                      ? AppColors.primaryPurple
-                                      : AppColors.white,
+                                  color: colorScheme.onSurface,
                                 ),
                               ),
                               const SizedBox(width: 8),

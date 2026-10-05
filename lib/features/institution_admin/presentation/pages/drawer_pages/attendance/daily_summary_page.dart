@@ -9,14 +9,17 @@ class DailySummaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: const SchoolMateAppBar(
         title: "Daily Summary",
         subtitle: "Attendance Management",
       ),
       drawer: const AppDrawer(),
-      body: const Center(
-        child: Text("Daily Summary Page - Coming Soon", style: TextStyle(color: AppColors.textSecondary, fontSize: 16)),
+      body: Center(
+        child: Text(
+          "Daily Summary Page - Coming Soon",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

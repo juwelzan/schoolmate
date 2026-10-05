@@ -7,12 +7,15 @@ class FeePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.background,
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: SchoolMateAppBar(title: "Fee", subtitle: "Institution Dashboard"),
       drawer: AppDrawer(),
       body: Center(
-        child: Text("Fee Page - Coming Soon", style: TextStyle(fontSize: 16, color: AppColors.textSecondary)),
+        child: Text(
+          "Fee Page - Coming Soon",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

@@ -30,12 +30,16 @@ class OnlineAdmissionPage extends StatelessWidget {
                     alignment: WrapAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        width: constraints.maxWidth > 600 ? 450 : constraints.maxWidth,
+                        width: constraints.maxWidth > 600
+                            ? 450
+                            : constraints.maxWidth,
                         child: Text(
                           l10n.onlineAdmissionDesc,
                           style: TextStyle(
                             fontSize: 14,
-                            color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                            color:
+                                Theme.of(context).textTheme.bodyMedium?.color ??
+                                AppColors.textSecondary,
                             height: 1.4,
                           ),
                         ),
@@ -44,9 +48,21 @@ class OnlineAdmissionPage extends StatelessWidget {
                         spacing: 8,
                         runSpacing: 8,
                         children: [
-                          _buildOutlinedBtn(context, Icons.grid_view_outlined, l10n.dashboard),
-                          _buildOutlinedBtn(context, Icons.shield_outlined, l10n.onlineAdmissionBtnQuota),
-                          _buildPrimaryBtn(context, Icons.add, l10n.onlineAdmissionBtnNewCycle),
+                          _buildOutlinedBtn(
+                            context,
+                            Icons.grid_view_outlined,
+                            l10n.dashboard,
+                          ),
+                          _buildOutlinedBtn(
+                            context,
+                            Icons.shield_outlined,
+                            l10n.onlineAdmissionBtnQuota,
+                          ),
+                          _buildPrimaryBtn(
+                            context,
+                            Icons.add,
+                            l10n.onlineAdmissionBtnNewCycle,
+                          ),
                         ],
                       ),
                     ],
@@ -66,7 +82,12 @@ class OnlineAdmissionPage extends StatelessWidget {
                             "No admission cycles configured yet.",
                             style: TextStyle(
                               fontSize: 15,
-                              color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                              color:
+                                  Theme.of(context)
+                                      .textTheme
+                                      .bodyMedium
+                                      ?.color ??
+                                  AppColors.textSecondary,
                             ),
                           ),
                         ],
@@ -75,7 +96,7 @@ class OnlineAdmissionPage extends StatelessWidget {
                   ),
                 ],
               );
-            }
+            },
           ),
         ),
       ),
@@ -91,15 +112,15 @@ class OnlineAdmissionPage extends StatelessWidget {
         style: TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w600,
-          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+          color:
+              Theme.of(context).textTheme.bodyMedium?.color ??
+              AppColors.textSecondary,
         ),
       ),
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         side: const BorderSide(color: AppColors.divider),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       ),
     );
   }
@@ -119,9 +140,7 @@ class OnlineAdmissionPage extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primaryPurple,
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
         elevation: 0,
       ),
     );

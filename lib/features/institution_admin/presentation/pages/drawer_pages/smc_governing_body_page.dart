@@ -28,26 +28,28 @@ class SmcGoverningBodyPage extends StatelessWidget {
               children: [
                 Expanded(
                   child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "SMC / Governing Body",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.w700,
-                        color: Theme.of(context).colorScheme.onSurface,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "SMC / Governing Body",
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: Theme.of(context).colorScheme.onSurface,
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 4),
-                    Text(
-                      "Rakib School",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                      SizedBox(height: 4),
+                      Text(
+                        "Rakib School",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
                 ),
                 const SizedBox(width: 8),
                 ElevatedButton.icon(
@@ -63,7 +65,10 @@ class SmcGoverningBodyPage extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -72,7 +77,7 @@ class SmcGoverningBodyPage extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             // Centered Empty State
             Expanded(
               child: Center(
@@ -82,7 +87,9 @@ class SmcGoverningBodyPage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.darkSurface
+                            : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -97,7 +104,9 @@ class SmcGoverningBodyPage extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                        color:
+                            Theme.of(context).textTheme.bodyMedium?.color ??
+                            AppColors.textSecondary,
                       ),
                     ),
                   ],

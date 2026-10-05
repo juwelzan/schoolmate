@@ -9,14 +9,17 @@ class EmailSettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: const SchoolMateAppBar(
         title: "Email Settings",
         subtitle: "Communication Management",
       ),
       drawer: const AppDrawer(),
-      body: const Center(
-        child: Text("Email Settings Page - Coming Soon", style: TextStyle(color: AppColors.textSecondary, fontSize: 16)),
+      body: Center(
+        child: Text(
+          "Email Settings Page - Coming Soon",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

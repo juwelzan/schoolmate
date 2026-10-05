@@ -9,14 +9,17 @@ class GovernmentStipendPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: const SchoolMateAppBar(
         title: "Government Stipend",
         subtitle: "Fee Management",
       ),
       drawer: const AppDrawer(),
-      body: const Center(
-        child: Text("Government Stipend Page - Coming Soon", style: TextStyle(color: AppColors.textSecondary, fontSize: 16)),
+      body: Center(
+        child: Text(
+          "Government Stipend Page - Coming Soon",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

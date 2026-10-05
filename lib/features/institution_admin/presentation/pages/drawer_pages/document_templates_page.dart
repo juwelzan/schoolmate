@@ -11,7 +11,6 @@ class DocumentTemplatesPage extends StatefulWidget {
 }
 
 class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
-
   int _selectedIndex = 0;
 
   @override
@@ -21,7 +20,7 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
       l10n.docTempAdmitCard,
       l10n.docTempBoardAdmitCard,
       l10n.docTempSeatPlan,
-      l10n.docTempIdCard
+      l10n.docTempIdCard,
     ];
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -40,12 +39,14 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
               l10n.docTempDesc,
               style: TextStyle(
                 fontSize: 14,
-                color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                color:
+                    Theme.of(context).textTheme.bodyMedium?.color ??
+                    AppColors.textSecondary,
                 height: 1.4,
               ),
             ),
             const SizedBox(height: 16),
-            
+
             // New Template Button
             ElevatedButton.icon(
               onPressed: () {},
@@ -60,7 +61,10 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primaryPurple,
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),
                 ),
@@ -73,11 +77,15 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
             Container(
               padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.darkSurface
+                    : AppColors.white,
                 borderRadius: BorderRadius.circular(8),
                 boxShadow: [
                   BoxShadow(
-                    color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? Colors.transparent
+                        : AppColors.primaryPurple.withValues(alpha: 0.04),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   ),
@@ -96,18 +104,29 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
                         });
                       },
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
                         margin: const EdgeInsets.only(right: 4),
                         decoration: BoxDecoration(
-                          color: isSelected ? (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple) : Colors.transparent,
+                          color: isSelected
+                              ? (Theme.of(context).brightness == Brightness.dark
+                                    ? AppColors.darkSurface
+                                    : AppColors.surfaceVerySoftPurple)
+                              : Colors.transparent,
                           borderRadius: BorderRadius.circular(6),
                         ),
                         child: Text(
                           tabs[index],
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                            color: isSelected ? AppColors.primaryPurple : AppColors.textSecondary,
+                            fontWeight: isSelected
+                                ? FontWeight.w600
+                                : FontWeight.w500,
+                            color: isSelected
+                                ? AppColors.primaryPurple
+                                : AppColors.textSecondary,
                           ),
                         ),
                       ),
@@ -123,11 +142,15 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkSurface
+                      : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.transparent
+                          : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -141,7 +164,9 @@ class _DocumentTemplatesPageState extends State<DocumentTemplatesPage> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                        color:
+                            Theme.of(context).textTheme.bodyMedium?.color ??
+                            AppColors.textSecondary,
                         height: 1.5,
                       ),
                     ),

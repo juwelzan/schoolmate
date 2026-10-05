@@ -29,7 +29,9 @@ class BoardAffiliationsPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
-                    color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                    color:
+                        Theme.of(context).textTheme.bodyMedium?.color ??
+                        AppColors.textSecondary,
                   ),
                 ),
                 ElevatedButton.icon(
@@ -45,7 +47,10 @@ class BoardAffiliationsPage extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -67,13 +72,18 @@ class BoardAffiliationsPage extends StatelessWidget {
               ),
               child: Container(
                 width: double.infinity,
-                padding: const EdgeInsets.symmetric(vertical: 60.0, horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 60.0,
+                  horizontal: 24.0,
+                ),
                 child: Column(
                   children: [
                     Container(
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.darkSurface
+                            : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -97,7 +107,9 @@ class BoardAffiliationsPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                        color:
+                            Theme.of(context).textTheme.bodyMedium?.color ??
+                            AppColors.textSecondary,
                         height: 1.4,
                       ),
                     ),

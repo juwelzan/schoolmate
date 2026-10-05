@@ -9,42 +9,42 @@ class MorePage extends StatelessWidget {
   Widget _buildGroupSection(String title, List<Widget> items) {
     return Builder(
       builder: (context) => Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 20,
-            right: 20,
-            top: 24,
-            bottom: 8,
-          ),
-          child: Text(
-            title,
-            style: CustomTextStyles.bengali(
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              color: Theme.of(context).colorScheme.onSurface,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 24,
+              bottom: 8,
+            ),
+            child: Text(
+              title,
+              style: CustomTextStyles.bengali(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
             ),
           ),
-        ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 20),
-          decoration: BoxDecoration(
-            color: (Theme.of(context).brightness == Brightness.dark
-                ? AppColors.darkSurface
-                : AppColors.white),
-            borderRadius: BorderRadius.circular(22),
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xFF141B2D).withValues(alpha: 0.04),
-                blurRadius: 18,
-                offset: const Offset(0, 6),
-              ),
-            ],
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              color: (Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.darkSurface
+                  : AppColors.white),
+              borderRadius: BorderRadius.circular(22),
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xFF141B2D).withValues(alpha: 0.04),
+                  blurRadius: 18,
+                  offset: const Offset(0, 6),
+                ),
+              ],
+            ),
+            child: Column(children: items),
           ),
-          child: Column(children: items),
-        ),
-      ],
+        ],
       ),
     );
   }
@@ -58,42 +58,42 @@ class MorePage extends StatelessWidget {
   }) {
     return Builder(
       builder: (context) => Column(
-      children: [
-        ListTile(
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 16,
-            vertical: 4,
-          ),
-          leading: Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
-            child: Icon(icon, size: 20, color: iconColor),
-          ),
-          title: Text(
-            label,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).colorScheme.onSurface,
+        children: [
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 4,
             ),
+            leading: Container(
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
+              child: Icon(icon, size: 20, color: iconColor),
+            ),
+            title: Text(
+              label,
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+            trailing: Icon(
+              Icons.chevron_right,
+              color: AppColors.inactiveIcon,
+              size: 20,
+            ),
+            onTap: () {},
           ),
-          trailing: Icon(
-            Icons.chevron_right,
-            color: AppColors.inactiveIcon,
-            size: 20,
-          ),
-          onTap: () {},
-        ),
-        if (showDivider)
-          Divider(
-            color: (Theme.of(context).brightness == Brightness.dark
-                ? AppColors.darkBorder
-                : AppColors.divider),
-            height: 1,
-            indent: 64,
-            endIndent: 16,
-          ),
-      ],
+          if (showDivider)
+            Divider(
+              color: (Theme.of(context).brightness == Brightness.dark
+                  ? AppColors.darkBorder
+                  : AppColors.divider),
+              height: 1,
+              indent: 64,
+              endIndent: 16,
+            ),
+        ],
       ),
     );
   }
@@ -147,7 +147,9 @@ class MorePage extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: isBn ? AppColors.primaryTeal : Colors.transparent,
+                      color: isBn
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.transparent,
                       borderRadius: BorderRadius.circular(999),
                     ),
                     child: Text(
@@ -157,7 +159,7 @@ class MorePage extends StatelessWidget {
                         color: isBn
                             ? AppColors.white
                             : (Theme.of(context).textTheme.bodyMedium?.color ??
-                                  AppColors.textSecondary),
+                                  Theme.of(context).colorScheme.onSurfaceVariant),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -173,7 +175,9 @@ class MorePage extends StatelessWidget {
                       vertical: 6,
                     ),
                     decoration: BoxDecoration(
-                      color: isEn ? AppColors.primaryTeal : Colors.transparent,
+                      color: isEn
+                          ? Theme.of(context).colorScheme.primary
+                          : Colors.transparent,
                       borderRadius: BorderRadius.circular(999),
                     ),
                     child: Text(
@@ -183,7 +187,7 @@ class MorePage extends StatelessWidget {
                         color: isEn
                             ? AppColors.white
                             : (Theme.of(context).textTheme.bodyMedium?.color ??
-                                  AppColors.textSecondary),
+                                  Theme.of(context).colorScheme.onSurfaceVariant),
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -224,7 +228,7 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Multi-Track",
@@ -239,8 +243,8 @@ class MorePage extends StatelessWidget {
                 Icons.account_tree,
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgeTealBg
-                    : AppColors.surfaceSoftTeal),
-                AppColors.primaryTeal,
+                    : AppColors.surfaceVerySoftPurple),
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "SMC / Governing Body",
@@ -256,15 +260,15 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Branches",
                 Icons.store,
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgeTealBg
-                    : AppColors.surfaceSoftTeal),
-                AppColors.primaryTeal,
+                    : AppColors.surfaceVerySoftPurple),
+                Theme.of(context).colorScheme.primary,
                 showDivider: false,
               ),
             ]),
@@ -276,7 +280,7 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Timetable",
@@ -300,15 +304,15 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Attendance",
                 Icons.fact_check,
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgeTealBg
-                    : AppColors.surfaceSoftTeal),
-                AppColors.primaryTeal,
+                    : AppColors.surfaceVerySoftPurple),
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Certificates",
@@ -328,15 +332,15 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Teachers & Staff",
                 Icons.badge,
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgeTealBg
-                    : AppColors.surfaceSoftTeal),
-                AppColors.primaryTeal,
+                    : AppColors.surfaceVerySoftPurple),
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Users",
@@ -372,7 +376,7 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
                 showDivider: false,
               ),
             ]),
@@ -383,8 +387,8 @@ class MorePage extends StatelessWidget {
                 Icons.laptop_chromebook,
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgeTealBg
-                    : AppColors.surfaceSoftTeal),
-                AppColors.primaryTeal,
+                    : AppColors.surfaceVerySoftPurple),
+                Theme.of(context).colorScheme.primary,
               ),
               _buildMenuRow(
                 "Inventory",
@@ -408,7 +412,7 @@ class MorePage extends StatelessWidget {
                 (Theme.of(context).brightness == Brightness.dark
                     ? AppColors.darkBadgePurpleBg
                     : AppColors.surfaceVerySoftPurple),
-                AppColors.primaryPurple,
+                Theme.of(context).colorScheme.primary,
                 showDivider: false,
               ),
             ]),
@@ -455,7 +459,7 @@ class MorePage extends StatelessWidget {
                     (Theme.of(context).brightness == Brightness.dark
                         ? AppColors.darkBadgePurpleBg
                         : AppColors.surfaceVerySoftPurple),
-                    AppColors.primaryPurple,
+                    Theme.of(context).colorScheme.primary,
                   ),
                   _buildMenuRow(
                     "Logout",

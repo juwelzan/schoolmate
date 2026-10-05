@@ -17,10 +17,25 @@ class _WebsitePageState extends State<WebsitePage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final List<String> tabs = [
-      l10n.webTabSettings, l10n.webTabHero, l10n.webTabAbout, l10n.webTabPrincipalMsg, l10n.webTabNotices,
-      l10n.webTabGallery, l10n.webTabContact, l10n.webTabMission, l10n.webTabWhyChoose,
-      l10n.webTabClasses, l10n.webTabEvents, l10n.webTabTestimonials, l10n.webTabVideos, l10n.webTabFaq,
-      l10n.webTabTeachers, l10n.webTabCommittee, l10n.webTabAdmissions, l10n.webTabResults, l10n.webTabInbox
+      l10n.webTabSettings,
+      l10n.webTabHero,
+      l10n.webTabAbout,
+      l10n.webTabPrincipalMsg,
+      l10n.webTabNotices,
+      l10n.webTabGallery,
+      l10n.webTabContact,
+      l10n.webTabMission,
+      l10n.webTabWhyChoose,
+      l10n.webTabClasses,
+      l10n.webTabEvents,
+      l10n.webTabTestimonials,
+      l10n.webTabVideos,
+      l10n.webTabFaq,
+      l10n.webTabTeachers,
+      l10n.webTabCommittee,
+      l10n.webTabAdmissions,
+      l10n.webTabResults,
+      l10n.webTabInbox,
     ];
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -34,29 +49,47 @@ class _WebsitePageState extends State<WebsitePage> {
           children: [
             // Top Actions
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16.0),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24.0,
+                vertical: 16.0,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.open_in_new, size: 16, color: AppColors.primaryPurple),
-                    label: Text(l10n.websiteLiveSiteBtn, style: TextStyle(color: AppColors.primaryPurple, fontWeight: FontWeight.w600)),
+                    icon: const Icon(
+                      Icons.open_in_new,
+                      size: 16,
+                      color: AppColors.primaryPurple,
+                    ),
+                    label: Text(
+                      l10n.websiteLiveSiteBtn,
+                      style: TextStyle(
+                        color: AppColors.primaryPurple,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
                   OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
                       foregroundColor: AppColors.textPrimary,
                       side: const BorderSide(color: AppColors.divider),
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                     ),
                     child: Text(l10n.websiteUnpublishBtn),
                   ),
                 ],
               ),
             ),
-            
+
             // Tabs
             SizedBox(
               height: 48,
@@ -78,13 +111,25 @@ class _WebsitePageState extends State<WebsitePage> {
                         });
                       },
                       labelStyle: TextStyle(
-                        color: isSelected ? AppColors.textPrimary : AppColors.textSecondary,
-                        fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                        color: isSelected
+                            ? AppColors.textPrimary
+                            : AppColors.textSecondary,
+                        fontWeight: isSelected
+                            ? FontWeight.w600
+                            : FontWeight.normal,
                       ),
-                      backgroundColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
-                      selectedColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                      backgroundColor:
+                          Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.darkSurface
+                          : AppColors.white,
+                      selectedColor:
+                          Theme.of(context).brightness == Brightness.dark
+                          ? AppColors.darkSurface
+                          : AppColors.white,
                       side: BorderSide(
-                        color: isSelected ? AppColors.primaryPurple : AppColors.divider,
+                        color: isSelected
+                            ? AppColors.primaryPurple
+                            : AppColors.divider,
                         width: isSelected ? 1.5 : 1.0,
                       ),
                       shape: RoundedRectangleBorder(
@@ -95,7 +140,7 @@ class _WebsitePageState extends State<WebsitePage> {
                 },
               ),
             ),
-            
+
             // Main Content Area
             Expanded(
               child: Padding(
@@ -103,13 +148,21 @@ class _WebsitePageState extends State<WebsitePage> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkSurface
+                        : AppColors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: AppColors.divider),
                   ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(32.0),
-                    child: _selectedTabIndex == 1 ? _buildHeroForm(l10n) : _buildComingSoon(context, l10n, tabs[_selectedTabIndex]),
+                    child: _selectedTabIndex == 1
+                        ? _buildHeroForm(l10n)
+                        : _buildComingSoon(
+                            context,
+                            l10n,
+                            tabs[_selectedTabIndex],
+                          ),
                   ),
                 ),
               ),
@@ -120,15 +173,31 @@ class _WebsitePageState extends State<WebsitePage> {
     );
   }
 
-  Widget _buildComingSoon(BuildContext context, AppLocalizations l10n, String tabName) {
+  Widget _buildComingSoon(
+    BuildContext context,
+    AppLocalizations l10n,
+    String tabName,
+  ) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(64.0),
         child: Column(
           children: [
-            const Icon(Icons.build_circle_outlined, size: 64, color: AppColors.inactiveIcon),
+            const Icon(
+              Icons.build_circle_outlined,
+              size: 64,
+              color: AppColors.inactiveIcon,
+            ),
             const SizedBox(height: 16),
-            Text(l10n.webSettingsComingSoon(tabName), style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 16)),
+            Text(
+              l10n.webSettingsComingSoon(tabName),
+              style: TextStyle(
+                color:
+                    Theme.of(context).textTheme.bodyMedium?.color ??
+                    AppColors.textSecondary,
+                fontSize: 16,
+              ),
+            ),
           ],
         ),
       ),
@@ -141,7 +210,11 @@ class _WebsitePageState extends State<WebsitePage> {
       children: [
         Text(
           l10n.webTabHero,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: AppColors.textPrimary,
+          ),
         ),
         const SizedBox(height: 4),
         Text(
@@ -149,22 +222,22 @@ class _WebsitePageState extends State<WebsitePage> {
           style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
         ),
         const SizedBox(height: 32),
-        
+
         _buildTextFieldLabel(l10n.webHeroHeadlineLbl),
         const SizedBox(height: 8),
         _buildTextField(hint: l10n.webHeroHeadlineHint),
         const SizedBox(height: 24),
-        
+
         _buildTextFieldLabel(l10n.webHeroSubheadlineLbl),
         const SizedBox(height: 8),
         _buildTextField(maxLines: 4),
         const SizedBox(height: 24),
-        
+
         _buildTextFieldLabel(l10n.webHeroCtaLbl),
         const SizedBox(height: 8),
         _buildTextField(hint: l10n.webHeroCtaHint),
         const SizedBox(height: 24),
-        
+
         _buildTextFieldLabel(l10n.webHeroBgLbl),
         const SizedBox(height: 8),
         OutlinedButton.icon(
@@ -174,12 +247,14 @@ class _WebsitePageState extends State<WebsitePage> {
           style: OutlinedButton.styleFrom(
             foregroundColor: AppColors.textPrimary,
             side: const BorderSide(color: AppColors.divider),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
         const SizedBox(height: 24),
-        
+
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -187,24 +262,39 @@ class _WebsitePageState extends State<WebsitePage> {
               value: true,
               onChanged: (val) {},
               activeColor: AppColors.primaryPurple,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
             ),
             Expanded(
-              child: Text(l10n.webHeroShowSection, style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 14)),
+              child: Text(
+                l10n.webHeroShowSection,
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 14,
+                ),
+              ),
             ),
           ],
         ),
         const SizedBox(height: 24),
-        
+
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF17212B), // Dark filled button like in image
+            backgroundColor: const Color(
+              0xFF17212B,
+            ), // Dark filled button like in image
             foregroundColor: AppColors.white,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
           ),
-          child: Text(l10n.webHeroSaveBtn, style: TextStyle(fontWeight: FontWeight.w600)),
+          child: Text(
+            l10n.webHeroSaveBtn,
+            style: TextStyle(fontWeight: FontWeight.w600),
+          ),
         ),
       ],
     );
@@ -213,7 +303,11 @@ class _WebsitePageState extends State<WebsitePage> {
   Widget _buildTextFieldLabel(String label) {
     return Text(
       label,
-      style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: AppColors.textPrimary),
+      style: const TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w600,
+        color: AppColors.textPrimary,
+      ),
     );
   }
 
@@ -224,8 +318,13 @@ class _WebsitePageState extends State<WebsitePage> {
         hintText: hint,
         hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
         filled: true,
-        fillColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+        fillColor: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : const Color(0xFFF9FAFB),
+        contentPadding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 14,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: AppColors.divider),

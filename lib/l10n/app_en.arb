@@ -403,5 +403,164 @@
   "notificationTimeYesterday915": "Yesterday, 09:15 AM",
   "notificationInventoryAlertTitle": "Inventory Alert",
   "notificationInventoryAlertDesc": "Stock for 'A4 Print Paper' is running low (Current: 5 reams).",
-  "notificationTimeOct01": "01 Oct 2026"
+  "notificationTimeOct01": "01 Oct 2026",
+  "academicYears": "Years",
+  "academicManagement": "Academic Management",
+  "academicYearsDesc": "Manage academic years, activate the current one, and configure sessions within each year",
+  "newAcademicYear": "New Academic Year",
+  "currentYear": "Current year",
+  "sessionLabel": "Session",
+  "sessionYear": "Session 2026",
+  "exampleYear2026": "2026",
+  "exampleYear2026Bn": "২০২৬",
+  "exampleDateRange": "01 Jan 2026 → 31 Dec 2026",
+  "exampleSessionBn": "সেশন ২০২৬",
+  "yearsActiveCycle": "Active Cycle",
+  "yearsActiveCycleBn": "সক্রিয় চক্র",
+  "years2026": "2026",
+  "years2026Bn": "২০২৬",
+  "yearsSetAsCurrent": "Set 2026 as current year",
+  "yearsEditYear": "Edit Year",
+  "yearsDelete": "Delete",
+  "yearsSessionsIn2026": "Sessions in 2026",
+  "yearsSession2026": "Session 2026",
+  "yearsSession2026Bn": "সেশন ২০২৬",
+  "yearsActive": "Active",
+  "years01Jan2026": "01 Jan 2026",
+  "years31Dec2026": "31 Dec 2026",
+  "yearsEnrolledStats": "1,240 enrolled • 8 classes",
+  "yearsAddAnotherSession": "Add another session to 2026",
+  "years2025": "2025",
+  "years2025Bn": "২০২৫",
+  "years2025Duration": "01 Jan 2025 - 31 Dec\n2025",
+  "years3": "3",
+  "yearsSessions": "Sessions",
+  "yearsArchived": "Archived",
+  "yearsDay114Of365": "Day 114 of 365",
+  "yearsNewYear": "New Year",
+  "yearsManageTerms": "Manage terms, active calendar\n& sessions",
+  "yearsTermElapsed": "2026 Term Elapsed",
+  "yearsPercent31": "31.2%",
+  "yearsQuarter": "QUARTER",
+  "yearsQ2Spring": "Q2 • Spring",
+  "yearsLowercaseActive": "active",
+  "yearsCurrentYear": "Current year",
+  "yearsSessionSingle": "Session",
+  "yearsEdit": "Edit",
+  "yearsAssociatedSessions": "ASSOCIATED SESSIONS",
+  "years1Total": "1 Total",
+  "calendarTitle": "Calendar",
+  "calendarSubtitle": "Holidays, exam periods, vacations and events",
+  "calendarAcademicYear": "Academic Year",
+  "calendarAddEvent": "Add Event",
+  "calendarHoliday": "Holiday",
+  "calendarExamPeriod": "Exam Period",
+  "calendarVacation": "Vacation",
+  "calendarEvent": "Event",
+  "calendarTimetableSkip": "Timetable Skip",
+  "addEventDialogTitle": "Add Calendar Event",
+  "addEventTitleEnglish": "Title (English)",
+  "addEventTitleBangla": "Title (Bangla)",
+  "addEventType": "Type",
+  "addEventStartDate": "Start Date",
+  "addEventEndDate": "End Date",
+  "addEventDateFormat": "dd/mm/yyyy",
+  "addEventDescription": "Description (optional)",
+  "addEventCancel": "Cancel",
+  "addEventSave": "Save",
+  "shiftsPageTitle": "Shifts",
+  "shiftsPageSubtitle": "Academic Management",
+  "shiftsPageDescription": "Define morning, day, evening and custom shifts with period schedules",
+  "shiftsPageNewShift": "New Shift",
+  "shiftsPageEmptyState": "No shifts configured. Add one to get started.",
+  "programStructuresTitle": "Program Structures",
+  "programStructuresSubtitle": "Academic Management",
+  "programStructuresDescription": "Define program types (year-based, semester-based, BTEB diploma, etc.)",
+  "programStructuresNew": "New Structure",
+  "programStructuresEmpty": "No program structures defined yet.",
+  "gradingScalesTitle": "Grading Scales",
+  "gradingScalesSubtitle": "Academic Management",
+  "gradingScalesDescription": "Define grade bands (letter, point, mark range) and assign a scale to each class",
+  "gradingScalesNew": "New Grading Scale",
+  "gradingScalePreset": "Preset",
+  "componentTypesTitle": "Component Types",
+  "componentTypesSubtitle": "Academic Management",
+  "componentTypesDescription": "The mark buckets (Written/CQ, MCQ, Practical, ...) used when building a subject's paper components",
+  "componentTypesNew": "New Component",
+  "componentTypesColName": "Name",
+  "componentTypesColShortLabel": "Short Label",
+  "componentTypesColStatus": "Status",
+  "classesSectionsTitle": "Classes & Sections",
+  "classesSectionsSubtitle": "Manage class hierarchy and shift-based sections",
+  "classesSectionsAddClass": "Add Class",
+  "classesSectionsTree": "Class Tree",
+  "classesSectionsAddSection": "Section",
+  "classesSectionsCollapseAll": "Collapse All",
+  "classesSectionsExpandAll": "Expand All",
+  "classesSectionsStudents": "Students",
+  "classesSectionsTeacher": "Teacher",
+  "componentTypesHeaderBadge": "Mark Distribution Configuration",
+  "componentTypesHeaderDesc": "Define and organize subject-based mark buckets (Written/CQ, MCQ, Lab, etc.).",
+  "componentTypesTotal": "Total",
+  "componentTypesActiveCount": "Active",
+  "componentTypesSearchHint": "Search component or code (e.g. CQ, MCQ)...",
+  "componentTypesFilterAll": "All Buckets",
+  "componentTypesFilterTheory": "Theory / Written",
+  "componentTypesFilterObjective": "Objective",
+  "componentTypesFilterPractical": "Practical / Lab",
+  "componentTypesListTitle": "Component List",
+  "componentTypesSortOrder": "Sort Serial",
+  "componentTypesCodeLabel": "Code",
+  "componentTypesActiveBadge": "Active",
+  "componentTypesStandardWeight": "Standard weight",
+  "componentTypesTotalCount": "Total: {count}",
+  "@componentTypesTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "componentTypesActiveCountValue": "Active: {count}",
+  "@componentTypesActiveCountValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "componentTypesFilterAllCount": "All Buckets ({count})",
+  "@componentTypesFilterAllCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "componentTypesListTitleCount": "Component List ({count})",
+  "@componentTypesListTitleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "componentTypesTheoryBucket": "Theory Bucket",
+  "componentTypesObjectiveBucket": "Objective Bucket",
+  "componentTypesWeightText": "Standard weight: {percent}%",
+  "@componentTypesWeightText": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "componentTypesOmrText": "OMR Evaluation • {percent}%",
+  "@componentTypesOmrText": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  }
 }

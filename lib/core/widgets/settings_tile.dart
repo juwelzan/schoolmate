@@ -27,26 +27,30 @@ class SettingsTile extends StatelessWidget {
         boxShadow: [
           if (!isDark)
             BoxShadow(
-              color: AppColors.primaryPurple.withOpacity(0.04),
+              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.04),
               blurRadius: 10,
               offset: const Offset(0, 4),
             ),
         ],
       ),
       child: Material(
-        color: isDark ? AppColors.darkSurface : AppColors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
         clipBehavior: Clip.antiAlias,
         child: ListTile(
           leading: Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: isDark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple,
+              color: isDark
+                  ? AppColors.darkBadgePurpleBg
+                  : AppColors.surfaceVerySoftPurple,
               shape: BoxShape.circle,
             ),
-            child: Icon(icon,
-                color: isDark ? AppColors.darkPrimaryPurple : AppColors.primaryPurple,
-                size: 22),
+            child: Icon(
+              icon,
+              color: Theme.of(context).colorScheme.primary,
+              size: 22,
+            ),
           ),
           title: Text(
             title,
@@ -60,12 +64,19 @@ class SettingsTile extends StatelessWidget {
             subtitle,
             style: TextStyle(
               fontSize: 12,
-              color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+              color:
+                  Theme.of(context).textTheme.bodyMedium?.color ??
+                  AppColors.textSecondary,
             ),
           ),
-          trailing: trailing ??
-              Icon(Icons.chevron_right,
-                  color: isDark ? AppColors.darkTextMuted : AppColors.inactiveIcon),
+          trailing:
+              trailing ??
+              Icon(
+                Icons.chevron_right,
+                color: isDark
+                    ? AppColors.darkTextMuted
+                    : AppColors.inactiveIcon,
+              ),
           onTap: onTap,
         ),
       ),

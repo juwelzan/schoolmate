@@ -31,7 +31,9 @@ class PaymentGatewaysPage extends StatelessWidget {
                     "Configure how your institution collects online fees — SSLCommerz (bKash / Nagad / Rocket / card in one checkout), a direct bKash or ShurjoPay account, a custom API-based gateway, or any manual option confirmed by staff.",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                      color:
+                          Theme.of(context).textTheme.bodyMedium?.color ??
+                          AppColors.textSecondary,
                       height: 1.4,
                     ),
                   ),
@@ -50,7 +52,10 @@ class PaymentGatewaysPage extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -66,11 +71,15 @@ class PaymentGatewaysPage extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkSurface
+                      : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.transparent
+                          : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -84,7 +93,9 @@ class PaymentGatewaysPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                        color:
+                            Theme.of(context).textTheme.bodyMedium?.color ??
+                            AppColors.textSecondary,
                         height: 1.5,
                       ),
                     ),

@@ -33,20 +33,23 @@ class ActivityLogPage extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 24),
-              
+
               // Activity List Card
               Expanded(
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                    color: Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkSurface
+                        : AppColors.white,
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: AppColors.divider),
                   ),
                   child: ListView(
                     padding: EdgeInsets.zero,
                     children: [
-                      _buildActivityItem(context, 
+                      _buildActivityItem(
+                        context,
                         badgeText: l10n.activityLogDeleted,
                         badgeColor: const Color(0xFFFF6B6B), // Red
                         badgeTextColor: AppColors.white,
@@ -56,8 +59,10 @@ class ActivityLogPage extends StatelessWidget {
                         time: "03 Oct 2026, 10:47 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(context, 
-                        badgeText: "Super Admin Superadmin@School.Test Signed In...",
+                      _buildActivityItem(
+                        context,
+                        badgeText:
+                            "Super Admin Superadmin@School.Test Signed In...",
                         badgeColor: const Color(0xFFF0F2F5), // Light gray
                         badgeTextColor: AppColors.textPrimary,
                         title: "User",
@@ -66,7 +71,8 @@ class ActivityLogPage extends StatelessWidget {
                         time: "03 Oct 2026, 09:34 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(context, 
+                      _buildActivityItem(
+                        context,
                         badgeText: l10n.activityLogUpdated,
                         badgeColor: const Color(0xFFE9EBF2), // Gray
                         badgeTextColor: AppColors.textPrimary,
@@ -77,7 +83,8 @@ class ActivityLogPage extends StatelessWidget {
                         time: "03 Oct 2026, 05:19 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(context, 
+                      _buildActivityItem(
+                        context,
                         badgeText: l10n.activityLogCreated,
                         badgeColor: const Color(0xFF17212B), // Black/Dark
                         badgeTextColor: AppColors.white,
@@ -88,7 +95,8 @@ class ActivityLogPage extends StatelessWidget {
                         time: "03 Oct 2026, 05:03 am",
                       ),
                       const Divider(height: 1, color: AppColors.divider),
-                      _buildActivityItem(context, 
+                      _buildActivityItem(
+                        context,
                         badgeText: l10n.activityLogCreated,
                         badgeColor: const Color(0xFF17212B), // Black/Dark
                         badgeTextColor: AppColors.white,
@@ -114,7 +122,9 @@ class ActivityLogPage extends StatelessWidget {
       width: 200,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
+        color: Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : const Color(0xFFF9FAFB),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: AppColors.divider),
       ),
@@ -122,10 +132,32 @@ class ActivityLogPage extends StatelessWidget {
         child: DropdownButton<String>(
           value: l10n.activityLogAllEvents,
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down, color: AppColors.textSecondary),
-          items: [l10n.activityLogAllEvents, l10n.activityLogCreated, l10n.activityLogUpdated, l10n.activityLogDeleted]
-              .map((e) => DropdownMenuItem(value: e, child: Text(e, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 14))))
-              .toList(),
+          icon: const Icon(
+            Icons.keyboard_arrow_down,
+            color: AppColors.textSecondary,
+          ),
+          items:
+              [
+                    l10n.activityLogAllEvents,
+                    l10n.activityLogCreated,
+                    l10n.activityLogUpdated,
+                    l10n.activityLogDeleted,
+                  ]
+                  .map(
+                    (e) => DropdownMenuItem(
+                      value: e,
+                      child: Text(
+                        e,
+                        style: TextStyle(
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  )
+                  .toList(),
           onChanged: (val) {},
         ),
       ),
@@ -139,10 +171,19 @@ class ActivityLogPage extends StatelessWidget {
         decoration: InputDecoration(
           hintText: l10n.activityLogFilterUserId,
           hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
-          prefixIcon: const Icon(Icons.search, size: 20, color: AppColors.textMuted),
+          prefixIcon: const Icon(
+            Icons.search,
+            size: 20,
+            color: AppColors.textMuted,
+          ),
           filled: true,
-          fillColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          fillColor: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.darkSurface
+              : const Color(0xFFF9FAFB),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 14,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: AppColors.divider),
@@ -163,10 +204,19 @@ class ActivityLogPage extends StatelessWidget {
         decoration: InputDecoration(
           hintText: l10n.activityLogDateFormat,
           hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
-          suffixIcon: const Icon(Icons.calendar_today_outlined, size: 18, color: AppColors.textMuted),
+          suffixIcon: const Icon(
+            Icons.calendar_today_outlined,
+            size: 18,
+            color: AppColors.textMuted,
+          ),
           filled: true,
-          fillColor: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : const Color(0xFFF9FAFB),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          fillColor: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.darkSurface
+              : const Color(0xFFF9FAFB),
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 14,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8),
             borderSide: const BorderSide(color: AppColors.divider),
@@ -180,7 +230,8 @@ class ActivityLogPage extends StatelessWidget {
     );
   }
 
-  Widget _buildActivityItem(BuildContext context, {
+  Widget _buildActivityItem(
+    BuildContext context, {
     required String badgeText,
     required Color badgeColor,
     required Color badgeTextColor,
@@ -199,7 +250,9 @@ class ActivityLogPage extends StatelessWidget {
           Flexible(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              constraints: const BoxConstraints(maxWidth: 300), // In case badge text is long
+              constraints: const BoxConstraints(
+                maxWidth: 300,
+              ), // In case badge text is long
               decoration: BoxDecoration(
                 color: badgeColor,
                 borderRadius: BorderRadius.circular(20),
@@ -216,7 +269,7 @@ class ActivityLogPage extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 24),
-          
+
           // Details
           Expanded(
             child: Column(
@@ -225,36 +278,74 @@ class ActivityLogPage extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     text: "$title ",
-                    style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 15, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
                     children: [
                       TextSpan(
                         text: id,
-                        style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 15, fontWeight: FontWeight.normal),
+                        style: TextStyle(
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
+                          fontSize: 15,
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(height: 4),
-                Text(subtitle, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 13)),
-                
+                Text(
+                  subtitle,
+                  style: TextStyle(
+                    color:
+                        Theme.of(context).textTheme.bodyMedium?.color ??
+                        AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
+                ),
+
                 if (fieldsChanged != null) ...[
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      const Icon(Icons.arrow_right, size: 16, color: AppColors.textSecondary),
+                      const Icon(
+                        Icons.arrow_right,
+                        size: 16,
+                        color: AppColors.textSecondary,
+                      ),
                       Expanded(
-                        child: Text(fieldsChanged, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 13)),
+                        child: Text(
+                          fieldsChanged,
+                          style: TextStyle(
+                            color:
+                                Theme.of(context).textTheme.bodyMedium?.color ??
+                                AppColors.textSecondary,
+                            fontSize: 13,
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                ]
+                ],
               ],
             ),
           ),
-          
+
           // Time
           const SizedBox(width: 16),
-          Text(time, style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary, fontSize: 13)),
+          Text(
+            time,
+            style: TextStyle(
+              color:
+                  Theme.of(context).textTheme.bodyMedium?.color ??
+                  AppColors.textSecondary,
+              fontSize: 13,
+            ),
+          ),
         ],
       ),
     );

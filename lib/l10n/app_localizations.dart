@@ -2383,6 +2383,708 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'01 Oct 2026'**
   String get notificationTimeOct01;
+
+  /// No description provided for @academicYears.
+  ///
+  /// In en, this message translates to:
+  /// **'Years'**
+  String get academicYears;
+
+  /// No description provided for @academicManagement.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Management'**
+  String get academicManagement;
+
+  /// No description provided for @academicYearsDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage academic years, activate the current one, and configure sessions within each year'**
+  String get academicYearsDesc;
+
+  /// No description provided for @newAcademicYear.
+  ///
+  /// In en, this message translates to:
+  /// **'New Academic Year'**
+  String get newAcademicYear;
+
+  /// No description provided for @currentYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Current year'**
+  String get currentYear;
+
+  /// No description provided for @sessionLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get sessionLabel;
+
+  /// No description provided for @sessionYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Session 2026'**
+  String get sessionYear;
+
+  /// No description provided for @exampleYear2026.
+  ///
+  /// In en, this message translates to:
+  /// **'2026'**
+  String get exampleYear2026;
+
+  /// No description provided for @exampleYear2026Bn.
+  ///
+  /// In en, this message translates to:
+  /// **'২০২৬'**
+  String get exampleYear2026Bn;
+
+  /// No description provided for @exampleDateRange.
+  ///
+  /// In en, this message translates to:
+  /// **'01 Jan 2026 → 31 Dec 2026'**
+  String get exampleDateRange;
+
+  /// No description provided for @exampleSessionBn.
+  ///
+  /// In en, this message translates to:
+  /// **'সেশন ২০২৬'**
+  String get exampleSessionBn;
+
+  /// No description provided for @yearsActiveCycle.
+  ///
+  /// In en, this message translates to:
+  /// **'Active Cycle'**
+  String get yearsActiveCycle;
+
+  /// No description provided for @yearsActiveCycleBn.
+  ///
+  /// In en, this message translates to:
+  /// **'সক্রিয় চক্র'**
+  String get yearsActiveCycleBn;
+
+  /// No description provided for @years2026.
+  ///
+  /// In en, this message translates to:
+  /// **'2026'**
+  String get years2026;
+
+  /// No description provided for @years2026Bn.
+  ///
+  /// In en, this message translates to:
+  /// **'২০২৬'**
+  String get years2026Bn;
+
+  /// No description provided for @yearsSetAsCurrent.
+  ///
+  /// In en, this message translates to:
+  /// **'Set 2026 as current year'**
+  String get yearsSetAsCurrent;
+
+  /// No description provided for @yearsEditYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Year'**
+  String get yearsEditYear;
+
+  /// No description provided for @yearsDelete.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get yearsDelete;
+
+  /// No description provided for @yearsSessionsIn2026.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions in 2026'**
+  String get yearsSessionsIn2026;
+
+  /// No description provided for @yearsSession2026.
+  ///
+  /// In en, this message translates to:
+  /// **'Session 2026'**
+  String get yearsSession2026;
+
+  /// No description provided for @yearsSession2026Bn.
+  ///
+  /// In en, this message translates to:
+  /// **'সেশন ২০২৬'**
+  String get yearsSession2026Bn;
+
+  /// No description provided for @yearsActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get yearsActive;
+
+  /// No description provided for @years01Jan2026.
+  ///
+  /// In en, this message translates to:
+  /// **'01 Jan 2026'**
+  String get years01Jan2026;
+
+  /// No description provided for @years31Dec2026.
+  ///
+  /// In en, this message translates to:
+  /// **'31 Dec 2026'**
+  String get years31Dec2026;
+
+  /// No description provided for @yearsEnrolledStats.
+  ///
+  /// In en, this message translates to:
+  /// **'1,240 enrolled • 8 classes'**
+  String get yearsEnrolledStats;
+
+  /// No description provided for @yearsAddAnotherSession.
+  ///
+  /// In en, this message translates to:
+  /// **'Add another session to 2026'**
+  String get yearsAddAnotherSession;
+
+  /// No description provided for @years2025.
+  ///
+  /// In en, this message translates to:
+  /// **'2025'**
+  String get years2025;
+
+  /// No description provided for @years2025Bn.
+  ///
+  /// In en, this message translates to:
+  /// **'২০২৫'**
+  String get years2025Bn;
+
+  /// No description provided for @years2025Duration.
+  ///
+  /// In en, this message translates to:
+  /// **'01 Jan 2025 - 31 Dec\n2025'**
+  String get years2025Duration;
+
+  /// No description provided for @years3.
+  ///
+  /// In en, this message translates to:
+  /// **'3'**
+  String get years3;
+
+  /// No description provided for @yearsSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'Sessions'**
+  String get yearsSessions;
+
+  /// No description provided for @yearsArchived.
+  ///
+  /// In en, this message translates to:
+  /// **'Archived'**
+  String get yearsArchived;
+
+  /// No description provided for @yearsDay114Of365.
+  ///
+  /// In en, this message translates to:
+  /// **'Day 114 of 365'**
+  String get yearsDay114Of365;
+
+  /// No description provided for @yearsNewYear.
+  ///
+  /// In en, this message translates to:
+  /// **'New Year'**
+  String get yearsNewYear;
+
+  /// No description provided for @yearsManageTerms.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage terms, active calendar\n& sessions'**
+  String get yearsManageTerms;
+
+  /// No description provided for @yearsTermElapsed.
+  ///
+  /// In en, this message translates to:
+  /// **'2026 Term Elapsed'**
+  String get yearsTermElapsed;
+
+  /// No description provided for @yearsPercent31.
+  ///
+  /// In en, this message translates to:
+  /// **'31.2%'**
+  String get yearsPercent31;
+
+  /// No description provided for @yearsQuarter.
+  ///
+  /// In en, this message translates to:
+  /// **'QUARTER'**
+  String get yearsQuarter;
+
+  /// No description provided for @yearsQ2Spring.
+  ///
+  /// In en, this message translates to:
+  /// **'Q2 • Spring'**
+  String get yearsQ2Spring;
+
+  /// No description provided for @yearsLowercaseActive.
+  ///
+  /// In en, this message translates to:
+  /// **'active'**
+  String get yearsLowercaseActive;
+
+  /// No description provided for @yearsCurrentYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Current year'**
+  String get yearsCurrentYear;
+
+  /// No description provided for @yearsSessionSingle.
+  ///
+  /// In en, this message translates to:
+  /// **'Session'**
+  String get yearsSessionSingle;
+
+  /// No description provided for @yearsEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get yearsEdit;
+
+  /// No description provided for @yearsAssociatedSessions.
+  ///
+  /// In en, this message translates to:
+  /// **'ASSOCIATED SESSIONS'**
+  String get yearsAssociatedSessions;
+
+  /// No description provided for @years1Total.
+  ///
+  /// In en, this message translates to:
+  /// **'1 Total'**
+  String get years1Total;
+
+  /// No description provided for @calendarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calendar'**
+  String get calendarTitle;
+
+  /// No description provided for @calendarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Holidays, exam periods, vacations and events'**
+  String get calendarSubtitle;
+
+  /// No description provided for @calendarAcademicYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Year'**
+  String get calendarAcademicYear;
+
+  /// No description provided for @calendarAddEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Event'**
+  String get calendarAddEvent;
+
+  /// No description provided for @calendarHoliday.
+  ///
+  /// In en, this message translates to:
+  /// **'Holiday'**
+  String get calendarHoliday;
+
+  /// No description provided for @calendarExamPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Exam Period'**
+  String get calendarExamPeriod;
+
+  /// No description provided for @calendarVacation.
+  ///
+  /// In en, this message translates to:
+  /// **'Vacation'**
+  String get calendarVacation;
+
+  /// No description provided for @calendarEvent.
+  ///
+  /// In en, this message translates to:
+  /// **'Event'**
+  String get calendarEvent;
+
+  /// No description provided for @calendarTimetableSkip.
+  ///
+  /// In en, this message translates to:
+  /// **'Timetable Skip'**
+  String get calendarTimetableSkip;
+
+  /// No description provided for @addEventDialogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Calendar Event'**
+  String get addEventDialogTitle;
+
+  /// No description provided for @addEventTitleEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (English)'**
+  String get addEventTitleEnglish;
+
+  /// No description provided for @addEventTitleBangla.
+  ///
+  /// In en, this message translates to:
+  /// **'Title (Bangla)'**
+  String get addEventTitleBangla;
+
+  /// No description provided for @addEventType.
+  ///
+  /// In en, this message translates to:
+  /// **'Type'**
+  String get addEventType;
+
+  /// No description provided for @addEventStartDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Date'**
+  String get addEventStartDate;
+
+  /// No description provided for @addEventEndDate.
+  ///
+  /// In en, this message translates to:
+  /// **'End Date'**
+  String get addEventEndDate;
+
+  /// No description provided for @addEventDateFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'dd/mm/yyyy'**
+  String get addEventDateFormat;
+
+  /// No description provided for @addEventDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Description (optional)'**
+  String get addEventDescription;
+
+  /// No description provided for @addEventCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get addEventCancel;
+
+  /// No description provided for @addEventSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save'**
+  String get addEventSave;
+
+  /// No description provided for @shiftsPageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shifts'**
+  String get shiftsPageTitle;
+
+  /// No description provided for @shiftsPageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Management'**
+  String get shiftsPageSubtitle;
+
+  /// No description provided for @shiftsPageDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Define morning, day, evening and custom shifts with period schedules'**
+  String get shiftsPageDescription;
+
+  /// No description provided for @shiftsPageNewShift.
+  ///
+  /// In en, this message translates to:
+  /// **'New Shift'**
+  String get shiftsPageNewShift;
+
+  /// No description provided for @shiftsPageEmptyState.
+  ///
+  /// In en, this message translates to:
+  /// **'No shifts configured. Add one to get started.'**
+  String get shiftsPageEmptyState;
+
+  /// No description provided for @programStructuresTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Program Structures'**
+  String get programStructuresTitle;
+
+  /// No description provided for @programStructuresSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Management'**
+  String get programStructuresSubtitle;
+
+  /// No description provided for @programStructuresDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Define program types (year-based, semester-based, BTEB diploma, etc.)'**
+  String get programStructuresDescription;
+
+  /// No description provided for @programStructuresNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New Structure'**
+  String get programStructuresNew;
+
+  /// No description provided for @programStructuresEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No program structures defined yet.'**
+  String get programStructuresEmpty;
+
+  /// No description provided for @gradingScalesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grading Scales'**
+  String get gradingScalesTitle;
+
+  /// No description provided for @gradingScalesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Management'**
+  String get gradingScalesSubtitle;
+
+  /// No description provided for @gradingScalesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Define grade bands (letter, point, mark range) and assign a scale to each class'**
+  String get gradingScalesDescription;
+
+  /// No description provided for @gradingScalesNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New Grading Scale'**
+  String get gradingScalesNew;
+
+  /// No description provided for @gradingScalePreset.
+  ///
+  /// In en, this message translates to:
+  /// **'Preset'**
+  String get gradingScalePreset;
+
+  /// No description provided for @componentTypesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Component Types'**
+  String get componentTypesTitle;
+
+  /// No description provided for @componentTypesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Academic Management'**
+  String get componentTypesSubtitle;
+
+  /// No description provided for @componentTypesDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'The mark buckets (Written/CQ, MCQ, Practical, ...) used when building a subject\'s paper components'**
+  String get componentTypesDescription;
+
+  /// No description provided for @componentTypesNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New Component'**
+  String get componentTypesNew;
+
+  /// No description provided for @componentTypesColName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get componentTypesColName;
+
+  /// No description provided for @componentTypesColShortLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Short Label'**
+  String get componentTypesColShortLabel;
+
+  /// No description provided for @componentTypesColStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Status'**
+  String get componentTypesColStatus;
+
+  /// No description provided for @classesSectionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Classes & Sections'**
+  String get classesSectionsTitle;
+
+  /// No description provided for @classesSectionsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Manage class hierarchy and shift-based sections'**
+  String get classesSectionsSubtitle;
+
+  /// No description provided for @classesSectionsAddClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Class'**
+  String get classesSectionsAddClass;
+
+  /// No description provided for @classesSectionsTree.
+  ///
+  /// In en, this message translates to:
+  /// **'Class Tree'**
+  String get classesSectionsTree;
+
+  /// No description provided for @classesSectionsAddSection.
+  ///
+  /// In en, this message translates to:
+  /// **'Section'**
+  String get classesSectionsAddSection;
+
+  /// No description provided for @classesSectionsCollapseAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Collapse All'**
+  String get classesSectionsCollapseAll;
+
+  /// No description provided for @classesSectionsExpandAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Expand All'**
+  String get classesSectionsExpandAll;
+
+  /// No description provided for @classesSectionsStudents.
+  ///
+  /// In en, this message translates to:
+  /// **'Students'**
+  String get classesSectionsStudents;
+
+  /// No description provided for @classesSectionsTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get classesSectionsTeacher;
+
+  /// No description provided for @componentTypesHeaderBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark Distribution Configuration'**
+  String get componentTypesHeaderBadge;
+
+  /// No description provided for @componentTypesHeaderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Define and organize subject-based mark buckets (Written/CQ, MCQ, Lab, etc.).'**
+  String get componentTypesHeaderDesc;
+
+  /// No description provided for @componentTypesTotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get componentTypesTotal;
+
+  /// No description provided for @componentTypesActiveCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get componentTypesActiveCount;
+
+  /// No description provided for @componentTypesSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search component or code (e.g. CQ, MCQ)...'**
+  String get componentTypesSearchHint;
+
+  /// No description provided for @componentTypesFilterAll.
+  ///
+  /// In en, this message translates to:
+  /// **'All Buckets'**
+  String get componentTypesFilterAll;
+
+  /// No description provided for @componentTypesFilterTheory.
+  ///
+  /// In en, this message translates to:
+  /// **'Theory / Written'**
+  String get componentTypesFilterTheory;
+
+  /// No description provided for @componentTypesFilterObjective.
+  ///
+  /// In en, this message translates to:
+  /// **'Objective'**
+  String get componentTypesFilterObjective;
+
+  /// No description provided for @componentTypesFilterPractical.
+  ///
+  /// In en, this message translates to:
+  /// **'Practical / Lab'**
+  String get componentTypesFilterPractical;
+
+  /// No description provided for @componentTypesListTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Component List'**
+  String get componentTypesListTitle;
+
+  /// No description provided for @componentTypesSortOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Sort Serial'**
+  String get componentTypesSortOrder;
+
+  /// No description provided for @componentTypesCodeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Code'**
+  String get componentTypesCodeLabel;
+
+  /// No description provided for @componentTypesActiveBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get componentTypesActiveBadge;
+
+  /// No description provided for @componentTypesStandardWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard weight'**
+  String get componentTypesStandardWeight;
+
+  /// No description provided for @componentTypesTotalCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total: {count}'**
+  String componentTypesTotalCount(int count);
+
+  /// No description provided for @componentTypesActiveCountValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Active: {count}'**
+  String componentTypesActiveCountValue(int count);
+
+  /// No description provided for @componentTypesFilterAllCount.
+  ///
+  /// In en, this message translates to:
+  /// **'All Buckets ({count})'**
+  String componentTypesFilterAllCount(int count);
+
+  /// No description provided for @componentTypesListTitleCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Component List ({count})'**
+  String componentTypesListTitleCount(int count);
+
+  /// No description provided for @componentTypesTheoryBucket.
+  ///
+  /// In en, this message translates to:
+  /// **'Theory Bucket'**
+  String get componentTypesTheoryBucket;
+
+  /// No description provided for @componentTypesObjectiveBucket.
+  ///
+  /// In en, this message translates to:
+  /// **'Objective Bucket'**
+  String get componentTypesObjectiveBucket;
+
+  /// No description provided for @componentTypesWeightText.
+  ///
+  /// In en, this message translates to:
+  /// **'Standard weight: {percent}%'**
+  String componentTypesWeightText(int percent);
+
+  /// No description provided for @componentTypesOmrText.
+  ///
+  /// In en, this message translates to:
+  /// **'OMR Evaluation • {percent}%'**
+  String componentTypesOmrText(int percent);
 }
 
 class _AppLocalizationsDelegate

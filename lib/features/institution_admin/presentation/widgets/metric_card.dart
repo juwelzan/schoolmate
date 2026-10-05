@@ -2,13 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
-
-
-
-
-
-
 class MetricCard extends StatelessWidget {
   final String title;
   final String value;
@@ -34,11 +27,15 @@ class MetricCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: cardBgColor == AppColors.white ? (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white) : cardBgColor,
+        color: cardBgColor == AppColors.white
+            ? Theme.of(context).colorScheme.surface
+            : cardBgColor,
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF141B2D).withValues(alpha: 0.05),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.transparent
+                : const Color(0xFF141B2D).withValues(alpha: 0.05),
             blurRadius: 18,
             offset: const Offset(0, 6),
           ),
@@ -87,7 +84,12 @@ class MetricCard extends StatelessWidget {
           Expanded(
             child: Text(
               subtitle,
-              style: CustomTextStyles.bengali(fontSize: 11, color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.textMuted)),
+              style: CustomTextStyles.bengali(
+                fontSize: 11,
+                color: (Theme.of(context).brightness == Brightness.dark
+                    ? AppColors.darkTextMuted
+                    : AppColors.textMuted),
+              ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

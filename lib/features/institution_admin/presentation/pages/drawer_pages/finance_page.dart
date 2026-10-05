@@ -7,12 +7,18 @@ class FinancePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: SchoolMateAppBar(title: "Finance", subtitle: "Institution Dashboard"),
+    return Scaffold(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: SchoolMateAppBar(
+        title: "Finance",
+        subtitle: "Institution Dashboard",
+      ),
       drawer: AppDrawer(),
       body: Center(
-        child: Text("Finance Page - Coming Soon", style: TextStyle(fontSize: 16, color: AppColors.textSecondary)),
+        child: Text(
+          "Finance Page - Coming Soon",
+          style: Theme.of(context).textTheme.bodyLarge,
+        ),
       ),
     );
   }

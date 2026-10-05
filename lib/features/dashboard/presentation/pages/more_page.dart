@@ -91,9 +91,9 @@ class MorePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
         centerTitle: true,
         title: Text(
@@ -124,8 +124,8 @@ class MorePage extends StatelessWidget {
               _buildMenuRow(
                 "Board Affiliations",
                 Icons.account_tree,
-                AppColors.surfaceSoftTeal,
-                AppColors.primaryTeal,
+                AppColors.surfaceVerySoftPurple,
+                AppColors.primaryPurple,
               ),
               _buildMenuRow(
                 "SMC / Governing Body",
@@ -142,8 +142,8 @@ class MorePage extends StatelessWidget {
               _buildMenuRow(
                 "Branches",
                 Icons.store,
-                AppColors.surfaceSoftTeal,
-                AppColors.primaryTeal,
+                AppColors.surfaceVerySoftPurple,
+                AppColors.primaryPurple,
                 showDivider: false,
               ),
             ]),
@@ -176,8 +176,8 @@ class MorePage extends StatelessWidget {
               _buildMenuRow(
                 "Attendance",
                 Icons.fact_check,
-                AppColors.surfaceSoftTeal,
-                AppColors.primaryTeal,
+                AppColors.surfaceVerySoftPurple,
+                AppColors.primaryPurple,
               ),
               _buildMenuRow(
                 "Certificates",
@@ -198,8 +198,8 @@ class MorePage extends StatelessWidget {
               _buildMenuRow(
                 "Teachers & Staff",
                 Icons.badge,
-                AppColors.surfaceSoftTeal,
-                AppColors.primaryTeal,
+                AppColors.surfaceVerySoftPurple,
+                AppColors.primaryPurple,
               ),
               _buildMenuRow(
                 "Users",
@@ -236,8 +236,8 @@ class MorePage extends StatelessWidget {
               _buildMenuRow(
                 "Online Admission",
                 Icons.laptop_chromebook,
-                AppColors.surfaceSoftTeal,
-                AppColors.primaryTeal,
+                AppColors.surfaceVerySoftPurple,
+                AppColors.primaryPurple,
               ),
               _buildMenuRow(
                 "Inventory",

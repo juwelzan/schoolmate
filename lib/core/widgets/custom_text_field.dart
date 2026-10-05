@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmate/core/theme/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String label;
@@ -19,6 +18,7 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -27,7 +27,7 @@ class CustomTextField extends StatelessWidget {
           style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Theme.of(context).colorScheme.onSurface,
+            color: colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 8),
@@ -38,28 +38,31 @@ class CustomTextField extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: Theme.of(context).brightness == Brightness.dark ? Colors.white : Theme.of(context).colorScheme.onSurface,
+            color: colorScheme.onSurface,
           ),
           decoration: InputDecoration(
             hintText: hintText,
             filled: true,
-            fillColor: Theme.of(context).brightness == Brightness.dark ? Color(0xFF1F2228) : Color(0xFFF9FAFB),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            fillColor: colorScheme.surfaceContainerHighest,
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 14,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF333333) : Color(0xFFEAECF0)
+                color: colorScheme.outlineVariant,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: Theme.of(context).brightness == Brightness.dark ? Color(0xFF333333) : Color(0xFFEAECF0)
+                color: colorScheme.outlineVariant,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: const BorderSide(color: AppColors.primaryPurple),
+              borderSide: BorderSide(color: colorScheme.primary),
             ),
           ),
         ),

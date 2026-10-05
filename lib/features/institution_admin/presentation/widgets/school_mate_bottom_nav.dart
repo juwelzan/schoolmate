@@ -2,13 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
-
-
-
-
-
-
 class SchoolMateBottomNav extends StatelessWidget {
   const SchoolMateBottomNav({super.key});
 
@@ -16,7 +9,9 @@ class SchoolMateBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
+        color: (Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : AppColors.white),
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
@@ -76,7 +71,11 @@ class SchoolMateBottomNav extends StatelessWidget {
     bool isActive,
     String route,
   ) {
-    final color = isActive ? Theme.of(context).primaryColor : (Theme.of(context).brightness == Brightness.dark ? AppColors.darkTextMuted : AppColors.inactiveIcon);
+    final color = isActive
+        ? Theme.of(context).primaryColor
+        : (Theme.of(context).brightness == Brightness.dark
+              ? AppColors.darkTextMuted
+              : AppColors.inactiveIcon);
     return GestureDetector(
       onTap: () {
         // Handle navigation safely later
@@ -88,7 +87,9 @@ class SchoolMateBottomNav extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: isActive
-                  ? (Theme.of(context).brightness == Brightness.dark ? AppColors.darkBadgePurpleBg : AppColors.surfaceVerySoftPurple)
+                  ? (Theme.of(context).brightness == Brightness.dark
+                        ? AppColors.darkBadgePurpleBg
+                        : AppColors.surfaceVerySoftPurple)
                   : Colors.transparent,
               shape: BoxShape.circle,
             ),

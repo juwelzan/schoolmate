@@ -1180,4 +1180,378 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get notificationTimeOct01 => '০১ অক্টো ২০২৬';
+
+  @override
+  String get academicYears => 'বছরগুলি';
+
+  @override
+  String get academicManagement => 'একাডেমিক ম্যানেজমেন্ট';
+
+  @override
+  String get academicYearsDesc =>
+      'শিক্ষাবর্ষগুলি পরিচালনা করুন, বর্তমানটি সক্রিয় করুন এবং প্রতিটি বছরের মধ্যে সেশনগুলি কনফিগার করুন';
+
+  @override
+  String get newAcademicYear => 'নতুন শিক্ষাবর্ষ';
+
+  @override
+  String get currentYear => 'বর্তমান বছর';
+
+  @override
+  String get sessionLabel => 'সেশন';
+
+  @override
+  String get sessionYear => 'সেশন ২০২৬';
+
+  @override
+  String get exampleYear2026 => '2026';
+
+  @override
+  String get exampleYear2026Bn => '২০২৬';
+
+  @override
+  String get exampleDateRange => '01 Jan 2026 → 31 Dec 2026';
+
+  @override
+  String get exampleSessionBn => 'সেশন ২০২৬';
+
+  @override
+  String get yearsActiveCycle => 'সক্রিয় চক্র';
+
+  @override
+  String get yearsActiveCycleBn => 'সক্রিয় চক্র';
+
+  @override
+  String get years2026 => '২০২৬';
+
+  @override
+  String get years2026Bn => '২০২৬';
+
+  @override
+  String get yearsSetAsCurrent => '২০২৬-কে বর্তমান বছর হিসেবে সেট করুন';
+
+  @override
+  String get yearsEditYear => 'বছর সম্পাদনা করুন';
+
+  @override
+  String get yearsDelete => 'মুছুন';
+
+  @override
+  String get yearsSessionsIn2026 => '২০২৬ এর সেশনসমূহ';
+
+  @override
+  String get yearsSession2026 => 'সেশন ২০২৬';
+
+  @override
+  String get yearsSession2026Bn => 'সেশন ২০২৬';
+
+  @override
+  String get yearsActive => 'সক্রিয়';
+
+  @override
+  String get years01Jan2026 => '০১ জানু ২০২৬';
+
+  @override
+  String get years31Dec2026 => '৩১ ডিসে ২০২৬';
+
+  @override
+  String get yearsEnrolledStats => '১,২৪০ জন ভর্তি • ৮টি ক্লাস';
+
+  @override
+  String get yearsAddAnotherSession => '২০২৬-এ আরেকটি সেশন যুক্ত করুন';
+
+  @override
+  String get years2025 => '২০২৫';
+
+  @override
+  String get years2025Bn => '২০২৫';
+
+  @override
+  String get years2025Duration => '০১ জানু ২০২৫ - ৩১ ডিসে\n২০২৫';
+
+  @override
+  String get years3 => '৩';
+
+  @override
+  String get yearsSessions => 'সেশনসমূহ';
+
+  @override
+  String get yearsArchived => 'আর্কাইভ করা হয়েছে';
+
+  @override
+  String get yearsDay114Of365 => '৩৬৫ দিনের মধ্যে ১১৪তম দিন';
+
+  @override
+  String get yearsNewYear => 'নতুন বছর';
+
+  @override
+  String get yearsManageTerms =>
+      'টার্ম, সক্রিয় ক্যালেন্ডার\nও সেশন পরিচালনা করুন';
+
+  @override
+  String get yearsTermElapsed => '২০২৬ টার্ম অতিবাহিত';
+
+  @override
+  String get yearsPercent31 => '৩১.২%';
+
+  @override
+  String get yearsQuarter => 'কোয়ার্টার';
+
+  @override
+  String get yearsQ2Spring => 'Q2 • বসন্ত';
+
+  @override
+  String get yearsLowercaseActive => 'সক্রিয়';
+
+  @override
+  String get yearsCurrentYear => 'বর্তমান বছর';
+
+  @override
+  String get yearsSessionSingle => 'সেশন';
+
+  @override
+  String get yearsEdit => 'সম্পাদনা করুন';
+
+  @override
+  String get yearsAssociatedSessions => 'সংশ্লিষ্ট সেশনসমূহ';
+
+  @override
+  String get years1Total => 'মোট ১টি';
+
+  @override
+  String get calendarTitle => 'ক্যালেন্ডার';
+
+  @override
+  String get calendarSubtitle => 'ছুটির দিন, পরীক্ষার সময়কাল, ছুটি এবং ইভেন্ট';
+
+  @override
+  String get calendarAcademicYear => 'অ্যাকাডেমিক বছর';
+
+  @override
+  String get calendarAddEvent => 'ইভেন্ট যুক্ত করুন';
+
+  @override
+  String get calendarHoliday => 'ছুটির দিন';
+
+  @override
+  String get calendarExamPeriod => 'পরীক্ষার সময়কাল';
+
+  @override
+  String get calendarVacation => 'ছুটি';
+
+  @override
+  String get calendarEvent => 'ইভেন্ট';
+
+  @override
+  String get calendarTimetableSkip => 'টাইমটেবিল স্কিপ';
+
+  @override
+  String get addEventDialogTitle => 'ক্যালেন্ডার ইভেন্ট যুক্ত করুন';
+
+  @override
+  String get addEventTitleEnglish => 'শিরোনাম (ইংরেজি)';
+
+  @override
+  String get addEventTitleBangla => 'শিরোনাম (বাংলা)';
+
+  @override
+  String get addEventType => 'ধরন';
+
+  @override
+  String get addEventStartDate => 'শুরুর তারিখ';
+
+  @override
+  String get addEventEndDate => 'শেষের তারিখ';
+
+  @override
+  String get addEventDateFormat => 'দিন/মাস/বছর';
+
+  @override
+  String get addEventDescription => 'বিবরণ (ঐচ্ছিক)';
+
+  @override
+  String get addEventCancel => 'বাতিল';
+
+  @override
+  String get addEventSave => 'সংরক্ষণ করুন';
+
+  @override
+  String get shiftsPageTitle => 'শিফট';
+
+  @override
+  String get shiftsPageSubtitle => 'একাডেমিক ম্যানেজমেন্ট';
+
+  @override
+  String get shiftsPageDescription =>
+      'মর্নিং, ডে, ইভনিং এবং পিরিয়ড শিডিউল সহ কাস্টম শিফটগুলো তৈরি করুন';
+
+  @override
+  String get shiftsPageNewShift => 'নতুন শিফট';
+
+  @override
+  String get shiftsPageEmptyState =>
+      'কোনো শিফট কনফিগার করা নেই। শুরু করার জন্য একটি যুক্ত করুন।';
+
+  @override
+  String get programStructuresTitle => 'প্রোগ্রাম স্ট্রাকচার';
+
+  @override
+  String get programStructuresSubtitle => 'একাডেমিক ম্যানেজমেন্ট';
+
+  @override
+  String get programStructuresDescription =>
+      'প্রোগ্রামের ধরন (year-based, semester-based, BTEB diploma ইত্যাদি) সংজ্ঞায়িত করুন';
+
+  @override
+  String get programStructuresNew => 'নতুন স্ট্রাকচার';
+
+  @override
+  String get programStructuresEmpty =>
+      'এখনও কোনো প্রোগ্রাম স্ট্রাকচার তৈরি করা হয়নি।';
+
+  @override
+  String get gradingScalesTitle => 'গ্রেডিং স্কেল';
+
+  @override
+  String get gradingScalesSubtitle => 'একাডেমিক ম্যানেজমেন্ট';
+
+  @override
+  String get gradingScalesDescription =>
+      'গ্রেড ব্যান্ডগুলো (লেটার, পয়েন্ট, মার্ক রেঞ্জ) নির্ধারণ করুন এবং ক্লাসে অ্যাসাইন করুন';
+
+  @override
+  String get gradingScalesNew => 'নতুন গ্রেডিং স্কেল';
+
+  @override
+  String get gradingScalePreset => 'প্রিসেট';
+
+  @override
+  String get componentTypesTitle => 'কম্পোনেন্ট টাইপস';
+
+  @override
+  String get componentTypesSubtitle => 'একাডেমিক ম্যানেজমেন্ট';
+
+  @override
+  String get componentTypesDescription =>
+      'বিষয় ভিত্তিক মার্ক বাকেট (লিখিত/সৃজনশীল, বহুনির্বাচনি, ব্যবহারিক ইত্যাদি) সংজ্ঞায়িত করুন';
+
+  @override
+  String get componentTypesNew => 'নতুন কম্পোনেন্ট';
+
+  @override
+  String get componentTypesColName => 'নাম';
+
+  @override
+  String get componentTypesColShortLabel => 'শর্ট লেবেল';
+
+  @override
+  String get componentTypesColStatus => 'স্ট্যাটাস';
+
+  @override
+  String get classesSectionsTitle => 'ক্লাস ও সেকশন';
+
+  @override
+  String get classesSectionsSubtitle =>
+      'ক্লাস হায়ারার্কি ও শিফট-ভিত্তিক সেকশনগুলো পরিচালনা করুন';
+
+  @override
+  String get classesSectionsAddClass => 'ক্লাস যোগ করুন';
+
+  @override
+  String get classesSectionsTree => 'ক্লাস ট্রি (Class Tree)';
+
+  @override
+  String get classesSectionsAddSection => 'সেকশন';
+
+  @override
+  String get classesSectionsCollapseAll => 'সব সংকুচিত করুন';
+
+  @override
+  String get classesSectionsExpandAll => 'সব প্রসারিত করুন';
+
+  @override
+  String get classesSectionsStudents => 'শিক্ষার্থী';
+
+  @override
+  String get classesSectionsTeacher => 'শিক্ষক';
+
+  @override
+  String get componentTypesHeaderBadge => 'মার্ক বণ্টন কনফিগারেশন';
+
+  @override
+  String get componentTypesHeaderDesc =>
+      'বিষয় ভিত্তিক মার্ক বাকেট (লিখিত/সৃজনশীল, বহুনির্বাচনি, ল্যাব ইত্যাদি) সংজ্ঞায়িত ও বিন্যাস করুন।';
+
+  @override
+  String get componentTypesTotal => 'মোট';
+
+  @override
+  String get componentTypesActiveCount => 'সক্রিয়';
+
+  @override
+  String get componentTypesSearchHint =>
+      'কম্পোনেন্ট বা কোড খুঁজুন (e.g. CQ, MCQ)...';
+
+  @override
+  String get componentTypesFilterAll => 'সব বাকেট';
+
+  @override
+  String get componentTypesFilterTheory => 'থিওরি / লিখিত';
+
+  @override
+  String get componentTypesFilterObjective => 'অবজেক্টিভ';
+
+  @override
+  String get componentTypesFilterPractical => 'ব্যবহারিক / ল্যাব';
+
+  @override
+  String get componentTypesListTitle => 'কম্পোনেন্ট তালিকা';
+
+  @override
+  String get componentTypesSortOrder => 'সিরিয়াল সাজান';
+
+  @override
+  String get componentTypesCodeLabel => 'কোড';
+
+  @override
+  String get componentTypesActiveBadge => 'সক্রিয়';
+
+  @override
+  String get componentTypesStandardWeight => 'সাধারণ ওয়েট';
+
+  @override
+  String componentTypesTotalCount(int count) {
+    return 'মোট: $countটি';
+  }
+
+  @override
+  String componentTypesActiveCountValue(int count) {
+    return 'সক্রিয়: $countটি';
+  }
+
+  @override
+  String componentTypesFilterAllCount(int count) {
+    return 'সব বাকেট ($count)';
+  }
+
+  @override
+  String componentTypesListTitleCount(int count) {
+    return 'কম্পোনেন্ট তালিকা ($count)';
+  }
+
+  @override
+  String get componentTypesTheoryBucket => 'থিওরি বাকেট';
+
+  @override
+  String get componentTypesObjectiveBucket => 'অবজেক্টিভ বাকেট';
+
+  @override
+  String componentTypesWeightText(int percent) {
+    return 'সাধারণ ওয়েট: $percent%';
+  }
+
+  @override
+  String componentTypesOmrText(int percent) {
+    return 'OMR মূল্যায়ন • $percent%';
+  }
 }

@@ -13,15 +13,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   static AppState _loadInitialState(SharedPreferences prefs) {
     final languageCode = prefs.getString('language_code') ?? 'en';
     final themeModeStr = prefs.getString('theme_mode') ?? 'system';
-    
+
     ThemeMode themeMode = ThemeMode.system;
-    if (themeModeStr == 'light') themeMode = ThemeMode.light;
-    else if (themeModeStr == 'dark') themeMode = ThemeMode.dark;
-    
-    return AppState(
-      locale: Locale(languageCode),
-      themeMode: themeMode,
-    );
+    if (themeModeStr == 'light')
+      themeMode = ThemeMode.light;
+    else if (themeModeStr == 'dark')
+      themeMode = ThemeMode.dark;
+
+    return AppState(locale: Locale(languageCode), themeMode: themeMode);
   }
 
   void _onChangeLocale(ChangeLocaleEvent event, Emitter<AppState> emit) {

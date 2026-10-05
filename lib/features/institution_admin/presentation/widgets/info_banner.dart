@@ -2,13 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
-
-
-
-
-
-
-
 class InfoBanner extends StatelessWidget {
   const InfoBanner({super.key});
 
@@ -18,9 +11,15 @@ class InfoBanner extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.infoBlueBg),
+        color: (Theme.of(context).brightness == Brightness.dark
+            ? AppColors.darkSurface
+            : AppColors.infoBlueBg),
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkBorder : Colors.transparent),
+        border: Border.all(
+          color: Theme.of(context).brightness == Brightness.dark
+              ? AppColors.darkBorder
+              : Colors.transparent,
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,7 +35,9 @@ class InfoBanner extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.info_outline,
-                  color: (Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white),
+                  color: (Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkSurface
+                      : AppColors.white),
                   size: 14,
                 ),
               ),

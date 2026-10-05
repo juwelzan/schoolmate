@@ -40,12 +40,12 @@ class CampusesPage extends StatelessWidget {
                           Expanded(
                             child: Text(
                               "Campus Management",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w700,
-                              color: Theme.of(context).colorScheme.onSurface,
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w700,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
                             ),
-                          ),
                           ),
                         ],
                       ),
@@ -54,7 +54,9 @@ class CampusesPage extends StatelessWidget {
                         l10n.campusDesc,
                         style: TextStyle(
                           fontSize: 14,
-                          color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                          color:
+                              Theme.of(context).textTheme.bodyMedium?.color ??
+                              AppColors.textSecondary,
                         ),
                       ),
                     ],
@@ -73,7 +75,10 @@ class CampusesPage extends StatelessWidget {
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.primaryPurple,
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 12,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8),
                     ),
@@ -82,19 +87,23 @@ class CampusesPage extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 32),
-            
+
             // White Card Empty State
             Expanded(
               child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? AppColors.darkSurface
+                      : AppColors.white,
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : AppColors.primaryPurple.withValues(alpha: 0.04),
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.transparent
+                          : AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -106,7 +115,9 @@ class CampusesPage extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).brightness == Brightness.dark ? AppColors.darkSurface : AppColors.surfaceVerySoftPurple,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.darkSurface
+                            : AppColors.surfaceVerySoftPurple,
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
@@ -129,7 +140,9 @@ class CampusesPage extends StatelessWidget {
                       l10n.campusEmptyDesc,
                       style: TextStyle(
                         fontSize: 14,
-                        color: Theme.of(context).textTheme.bodyMedium?.color ?? AppColors.textSecondary,
+                        color:
+                            Theme.of(context).textTheme.bodyMedium?.color ??
+                            AppColors.textSecondary,
                       ),
                     ),
                   ],
