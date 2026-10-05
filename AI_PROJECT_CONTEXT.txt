@@ -1,0 +1,437 @@
+SCHOOLMATE - AI PROJECT CONTEXT
+Last inspected: 2026-10-05
+
+PROJECT OVERVIEW
+================
+
+Project/package: schoolmate
+Purpose: Flutter school/institution management application UI. The repository
+contains an institution-admin dashboard and many management pages, as well as
+student/teacher dashboard placeholders. Many management pages are UI prototypes;
+do not assume their displayed sample data is connected to a backend.
+Application type: Flutter app (Android, iOS and macOS platform folders exist).
+Language: Dart; pubspec.yaml requires Dart SDK ^3.13.4.
+Detected toolchain: Flutter 3.49.0-1.0.pre-83 (local environment, 2026-10-05).
+State management: flutter_bloc. AppBloc currently manages only locale and theme.
+Many interactive presentation pages use StatefulWidget/setState. There are no
+feature data Blocs/Cubits or repository flows in the current source files.
+Routing: go_router, configured as a flat GoRouter route list.
+Dependency injection: no registration/resolution framework found. main.dart
+manually creates SharedPreferences and passes it to AppBloc.
+Backend/API: no concrete backend integration found. ApiClient and NetworkInfo
+are interfaces/placeholders; NetworkInfoImpl always returns true. No configured
+base URL, endpoint implementations, repository implementations or API/domain
+DTO layer was found in lib/. Some pages define private presentation-only sample
+models; these are not wired as a shared data/domain layer.
+Local storage: shared_preferences, used for language_code and theme_mode only.
+Authentication: not implemented. Login route is a placeholder screen; there is
+no token/session storage, auth state or router guard.
+Localization: Flutter gen-l10n; English (en) and Bangla (bn).
+Theme: Material 3 ThemeData with light/dark themes, AppBloc ThemeMode switching.
+
+Notable dependencies (pubspec.yaml): flutter_bloc, equatable, go_router,
+shared_preferences, flutter_localizations, intl, google_fonts, table_calendar,
+cupertino_icons. No HTTP client dependency is currently declared.
+
+
+PROJECT STRUCTURE
+=================
+
+lib/main.dart
+  App entry point. Initializes Flutter and SharedPreferences, creates AppBloc,
+  and configures MaterialApp.router, localization delegates and themes.
+
+lib/core/
+  Cross-feature application infrastructure. Current subfolders:
+  - bloc/app_bloc: app-wide locale/theme preference events and state.
+  - errors: basic exception and Failure types (not wired into a repository flow).
+  - network: abstract ApiClient, NetworkInfo and placeholder implementation.
+  - routes: route strings and GoRouter route table.
+  - theme: AppColors and AppTheme light/dark ThemeData.
+  - widgets: globally used CustomTextStyles, LanguageToggleButton and
+    SchoolMateBottomNav. Keep feature-specific widgets out of this directory.
+  - constants, di, utils: directories exist but contain only .gitkeep files.
+  - file_path.dart: legacy, broad export barrel for Flutter/core and many page
+    files. Prefer direct imports for new feature widgets; avoid adding widget
+    feature dependencies to core.
+
+lib/features/
+  Feature-oriented UI organization. auth, dashboard, institution_admin,
+  onboarding, settings, student and teacher feature folders exist. The auth,
+  student and teacher data/domain folders are empty scaffolds; do not assume
+  repositories/models/auth logic exist there.
+
+  onboarding/presentation/pages:
+    SplashPage, OnboardingPage, RoleSelectionPage. Onboarding-specific
+    presentation widgets can live in onboarding/presentation/widgets.
+  institution_admin/presentation/pages:
+    InstitutionAdminDashboardPage, MorePage, NotificationsPage, plus drawer
+    landing pages and a large set of administration pages. Detailed pages are
+    grouped under drawer_pages/academic, attendance, certificates,
+    communication, examination, fee, finance, inventory, teachers_staff and
+    timetable.
+  institution_admin/presentation/widgets:
+    Institution-admin shell and dashboard widgets: AppDrawer,
+    SchoolMateAppBar, dashboard cards/rows/banner/section header, AddEventDialog
+    and DashedBorderPainter. dashboard_widgets.dart is a local export barrel.
+  settings/presentation/pages:
+    SettingsPage, AccountSecurityPage and ChangePasswordPage.
+  settings/presentation/widgets:
+    SettingsTile, SettingsSectionHeader, ThemeDialogWidget and CustomTextField.
+  dashboard/presentation/pages:
+    MorePage (separate from institution_admin MorePage).
+  student/presentation/pages and teacher/presentation/pages:
+    Dashboard pages currently display placeholders.
+
+lib/l10n/
+  Source ARB files and generated localization Dart files.
+
+test/
+  Contains widget_test.dart. Inspect it before changing or relying on test
+  coverage; no broad feature test suite was found in the top-level inventory.
+
+Platform folders android/, ios/ and macos/ contain platform runner/build files.
+
+
+ARCHITECTURE AND CURRENT IMPLEMENTATION
+=======================================
+
+The source is organized by feature and presentation responsibility, but this
+is currently primarily a UI prototype, not a fully implemented clean/data
+architecture. Do not infer implementations from empty data/domain directories.
+
+Current app configuration data flow:
+
+  main()
+    -> SharedPreferences.getInstance()
+    -> BlocProvider(AppBloc(prefs))
+    -> MyApp / BlocBuilder
+    -> MaterialApp.router(locale, themeMode, AppRouter.router)
+
+AppBloc reads language_code (default "en") and theme_mode (default "system")
+from SharedPreferences during construction. ChangeLocaleEvent and
+ChangeThemeEvent update the matching preference and emit AppState. AppState
+contains Locale and ThemeMode. AppState.initial() separately declares Bangla,
+but main uses AppBloc's preference loader, whose first-run locale is English.
+
+For most screen data there is no central data flow: pages use inline sample
+values, local widget state, static UI and/or placeholder content. ApiClient has
+get/post/put/delete method contracts only. NetworkInfoImpl reports connected
+unconditionally. No API-to-model-to-repository-to-feature-state path is wired.
+
+
+NAVIGATION FLOW
+===============
+
+Router: lib/core/routes/app_router.dart
+Route constants: lib/core/routes/app_routes.dart
+Router type: GoRouter with a flat list of GoRoute entries and an errorBuilder.
+Initial location: AppRoutes.initial, which is SplashPage.routeName ("/").
+No redirect/auth guard, nested route tree or deep-link configuration was found.
+
+Current onboarding path:
+
+  "/" SplashPage
+    -> waits about 2 seconds
+  "/onboarding" OnboardingPage
+    -> skip or finish onboarding
+  "/role-selection" RoleSelectionPage
+    -> "/student-dashboard"
+    -> "/teacher-dashboard"
+    -> "/institution-admin-dashboard"
+
+The login route "/login" exists as inline placeholder UI. It is not part of
+the automatic splash/onboarding route path. Settings logout navigates to it.
+Many institution-admin pages are individually registered in app_router.dart;
+app_routes.dart stores their route names. Most navigation calls use context.go,
+context.push or context.pop. Route definitions are flat, not nested.
+
+The shared bottom navigation is currently presentation-only; its onTap handler
+does not navigate. Verify behavior before assuming its displayed destinations
+work.
+
+
+SCREEN / PAGE MAP
+=================
+
+Entry and onboarding:
+- lib/features/onboarding/presentation/pages/splash_page.dart
+  Timed branded entry screen; local timer then routes to onboarding.
+- lib/features/onboarding/presentation/pages/onboarding_page.dart
+  Three-page PageView with local current-page state; skip/finish routes to role
+  selection. Uses LanguageToggleButton.
+- lib/features/onboarding/presentation/pages/role_selection_page.dart
+  Local selected-role state; continues directly to student, teacher or admin
+  dashboard. No authenticated role lookup.
+- Login is an inline placeholder builder in app_router.dart, not a login feature.
+
+Dashboards:
+- lib/features/institution_admin/presentation/pages/
+  institution_admin_dashboard_page.dart: institution admin overview with
+  dashboard widgets, drawer and bottom navigation.
+  more_page.dart: institution-admin menu page.
+  notifications_page.dart: notification list UI.
+- lib/features/student/presentation/pages/student_dashboard_page.dart and
+  lib/features/teacher/presentation/pages/teacher_dashboard_page.dart currently
+  show basic placeholder dashboard content.
+- lib/features/dashboard/presentation/pages/more_page.dart is a separate
+  dashboard feature MorePage; do not confuse it with institution-admin MorePage.
+
+Settings:
+- settings/presentation/pages/settings_page.dart: locale/theme controls,
+  account/support menu, change-password/notifications navigation and logout.
+- settings/presentation/pages/account_security_page.dart: local tab selection
+  and security UI; no connected account API found.
+- settings/presentation/pages/change_password_page.dart: password form UI;
+  submit callback is currently empty.
+
+Institution administration:
+- institution_admin/presentation/pages/drawer_pages/academic_page.dart and
+  sibling category pages provide category landing/placeholder UIs.
+- drawer_pages/academic/: years, calendar, shifts, program structures, grading
+  scales, component types, classes/sections, groups/streams, subjects,
+  assignments, pre-primary, lesson plans, curriculum, syllabus and study plans.
+- drawer_pages/attendance/ and attendance_page.dart: attendance overview and
+  analytics, devices, eligibility, event, daily/monthly, shift, staff, teacher,
+  gate and practical-lab pages.
+- drawer_pages/certificates/ and certificates_page.dart: templates and issue
+  certificate pages.
+- drawer_pages/communication/ and communication_page.dart: announcements,
+  email/SMS, gateways, emergency broadcast, messages and notice board.
+- drawer_pages/examination/ and examination_page.dart: exam setup, marks,
+  question bank/papers, result composition, ranking, assessment and policy pages.
+- drawer_pages/fee/ and fee_page.dart: payment collection, fee heads/structures,
+  invoices, dues, stipend, reports and student ledger pages.
+- drawer_pages/finance/ and finance_page.dart: accounts, vouchers, income,
+  expenses, ledgers, statements, balance sheet, cash/bank books and budgets.
+- drawer_pages/inventory/ and inventory_page.dart: assets, stock, warehouses,
+  vendors, procurement, purchase orders and goods receipts.
+- drawer_pages/teachers_staff/ and teachers_staff_page.dart: teachers, staff,
+  recruitment, leave types, designations and assignment pages.
+- drawer_pages/timetable/ and timetable_page.dart: periods, rooms, class/shift/
+  teacher timetables, availability, publishing, revisions and swaps.
+- Other institution-admin pages include profile, branches, campuses, board
+  affiliations, governing body, multi-track, online admission, payment
+  gateways, document templates, students, users, website, activity log and
+  account. These are UI pages; inspect each file before assuming backend data.
+
+The complete route-to-widget mapping is the GoRoute list in app_router.dart.
+Individual drawer subpages not highlighted above follow the file/folder names
+under institution_admin/presentation/pages/drawer_pages/.
+
+
+STATE MANAGEMENT
+================
+
+AppBloc
+  Location: lib/core/bloc/app_bloc/
+  Purpose: application locale and ThemeMode preferences only.
+  Events: ChangeLocaleEvent(Locale), ChangeThemeEvent(ThemeMode).
+  State: AppState(locale, themeMode), Equatable.
+  Persistence: SharedPreferences keys language_code and theme_mode.
+  Consumer: MyApp listens via BlocBuilder; language/theme controls dispatch
+  events through context.read<AppBloc>().
+
+Other current state is generally page-local StatefulWidget/setState (examples:
+onboarding page index, role selection, calendar selection/range and account
+security selected tab). Do not create another global state system without
+checking current feature needs and discussing the integration pattern in code.
+
+
+API, ERRORS, STORAGE AND AUTHENTICATION
+=======================================
+
+API/network:
+- lib/core/network/api_client.dart: abstract CRUD-like HTTP contract only.
+- lib/core/network/network_info.dart: interface and placeholder implementation
+  returning true; no connectivity package is declared.
+- No concrete API client, base URL, endpoint, repository, remote data source,
+  data model/DTO or API auth header handling found.
+- lib/core/errors defines Server/Cache/Network exceptions and Failure types,
+  but no feature repository conversion path is wired.
+
+Storage:
+- SharedPreferences is the only observed application persistence mechanism.
+- Stores language_code and theme_mode from AppBloc.
+- No token, user session or business records are persisted by current app code.
+- No SQLite/Hive/Isar/SecureStorage implementation found.
+
+Authentication:
+- Login is placeholder UI. There is no credential flow, token, secure storage,
+  session restoration or auth route guard in current implementation.
+- Role selection is a UI choice that navigates directly to a dashboard.
+
+Dependency injection:
+- No DI package or registration module exists. SharedPreferences is manually
+  obtained in main.dart and passed to AppBloc. Other UI dependencies are
+  imported/constructed directly.
+
+
+THEME SYSTEM
+============
+
+Files:
+- lib/core/theme/app_theme.dart: AppTheme.lightTheme and darkTheme; Material 3,
+  ColorScheme, TextTheme and component defaults.
+- lib/core/theme/app_colors.dart: current palette and semantic accent/status
+  colors.
+- lib/main.dart: assigns theme, darkTheme and Bloc-driven themeMode to
+  MaterialApp.router.
+- lib/core/bloc/app_bloc/: dispatch/persistence of ThemeMode preference.
+- lib/features/settings/presentation/widgets/theme_dialog.dart: UI for
+  light/dark/system mode selection.
+
+Primary brand purple is #6200E8 in light and dark themes. ThemeMode defaults to
+system if SharedPreferences has no theme_mode value. Theme-dependent screen
+colors should use Theme.of(context).colorScheme, textTheme, scaffold background
+and component themes. Keep explicit fixed colors only for intentional semantic
+status/data visualization or illustration colors, and verify dark contrast.
+Change shared defaults in AppTheme/AppColors rather than duplicating palette
+values throughout pages.
+
+
+WIDGET ORGANIZATION
+===================
+
+Apply actual usage scope:
+- One feature / multiple screens: feature presentation/widgets/.
+- One page-specific helper: keep local/private or in its owning page/feature
+  widgets directory, depending on size and reuse.
+- Multiple unrelated features: core/widgets/.
+- Do not create lib/widgets/ and do not move widgets to core solely because
+  their name sounds generic.
+- Core widgets must not import a feature-specific widget.
+
+Current core widgets:
+- lib/core/widgets/custom_text_style.dart: Google Fonts helpers used widely.
+- lib/core/widgets/language_toggle_button.dart: used by onboarding and settings.
+- lib/core/widgets/school_mate_bottom_nav.dart: shared by dashboard/admin pages.
+
+Current feature widgets:
+- institution_admin/presentation/widgets/: app drawer/app bar, admin dashboard
+  cards and rows, info banner, section header, AddEventDialog and dashed painter.
+- settings/presentation/widgets/: CustomTextField, SettingsTile,
+  SettingsSectionHeader and theme dialog.
+- institution_admin/presentation/widgets/dashboard_widgets.dart exports the
+  admin dashboard widget set and the shared core bottom navigation.
+
+Before moving/extracting any widget, search all Dart references and count the
+features/screens using it. Update imports and search for old paths afterward.
+
+
+LOCALIZATION
+============
+
+Configuration: l10n.yaml (arb-dir lib/l10n, template app_en.arb,
+output app_localizations.dart); pubspec.yaml enables Flutter generation.
+Languages: English (en) and Bangla (bn).
+Sources: lib/l10n/app_en.arb and app_bn.arb.
+Generated files: app_localizations.dart, app_localizations_en.dart and
+app_localizations_bn.dart. Access translations using
+AppLocalizations.of(context)!. Locale state is initialized/persisted by
+AppBloc/SharedPreferences; first-run loader currently defaults to English.
+Add/update messages in both ARB files and regenerate via Flutter localization
+generation. Avoid adding hardcoded user-facing text when an equivalent l10n key
+exists.
+
+
+IMPORTANT FILES
+===============
+
+lib/main.dart
+  Application setup, SharedPreferences and root BlocProvider.
+lib/core/file_path.dart
+  Legacy broad barrel imports/exports; inspect its contents before relying on
+  or extending it. Prefer direct imports for new dependencies.
+lib/core/routes/app_router.dart
+  Flat GoRouter table and error page.
+lib/core/routes/app_routes.dart
+  Route path constants.
+lib/core/bloc/app_bloc/app_bloc.dart
+  Locale/theme event handling and persistence.
+lib/core/theme/app_theme.dart
+  Light/dark Material ThemeData.
+lib/core/theme/app_colors.dart
+  Brand, neutral, dark surface and status palette.
+lib/features/institution_admin/presentation/widgets/dashboard_widgets.dart
+  Admin dashboard widget barrel.
+lib/l10n/app_en.arb, lib/l10n/app_bn.arb
+  Translation source files.
+pubspec.yaml
+  SDK constraint and package dependencies.
+l10n.yaml
+  Localization generator configuration.
+analysis_options.yaml
+  Flutter lint setup.
+
+
+DEVELOPMENT RULES / COMMON PITFALLS
+==================================
+
+1. Inspect the actual page, route, widget references and state before changing
+   architecture; many similarly named pages are distinct.
+2. Reuse existing widgets and AppBloc locale/theme state. Do not invent feature
+   Blocs, repositories, API endpoints, authentication or persistence as if they
+   already exist.
+3. Keep feature widgets with their owner; use core/widgets only for real
+   cross-feature widgets. Never create lib/widgets/.
+4. Keep core widgets independent of feature-specific UI.
+5. Use ThemeData/ColorScheme/TextTheme for theme-dependent colors.
+6. Keep status colors semantic and ensure readable light/dark contrast.
+7. Preserve navigation, UI and business behavior unless explicitly asked to
+   change them. Existing UI callbacks may be placeholders/no-ops; do not claim
+   functionality based only on labels.
+8. Prefer AppLocalizations where translations exist; keep English and Bangla
+   ARB entries aligned.
+9. Update GoRouter route table and AppRoutes constants when adding a page; check
+   whether the route needs to be discoverable from drawer/menu UI.
+10. Search references before moving a widget; update imports and verify no old
+    path remains. file_path.dart is a broad legacy barrel and can hide imports.
+11. Keep SharedPreferences usage limited to appropriate small preference data;
+    the current app only persists locale and theme.
+12. Run flutter analyze lib after structural edits. Run tests when requested or
+    when required by the task; inspect the existing test before assuming scope.
+
+
+HOW TO ADD A FEATURE (CURRENT PROJECT SHAPE)
+============================================
+
+1. Choose the existing feature folder (or create one under lib/features/).
+2. Put pages in that feature's presentation/pages/ and related UI in its
+   presentation/widgets/. Keep one-off helpers local where practical.
+3. Use core/widgets only if usage crosses unrelated features.
+4. If the page needs app-wide locale/theme, use the existing AppBloc. For new
+   business state, first establish the required data source and feature state
+   flow; none is currently wired for the existing admin sections.
+5. Add route path in AppRoutes and a GoRoute in AppRouter. There are no guards.
+6. Add user-facing translations to both ARB source files where appropriate.
+7. Use the existing ThemeData/ColorScheme and check both brightness modes.
+8. Verify imports, run flutter analyze lib, and update this document if folder,
+   routing, state, storage or dependency architecture changes.
+
+
+AI AGENT WORKFLOW
+=================
+
+Before modification:
+1. Read AI_PROJECT_CONTEXT.txt and inspect the target source files.
+2. Search all uses of relevant widgets/routes/events and inspect their owners.
+3. Confirm whether the screen is functional UI, local sample data or a
+   placeholder. Do not invent backend behavior.
+4. Check AppBloc, SharedPreferences usage, AppRouter/AppRoutes and localization
+   before creating replacements.
+5. Make the smallest change that matches existing ownership boundaries.
+6. Update this file after significant architecture changes.
+7. Run flutter analyze lib after structural changes and report remaining
+   warnings separately from errors.
+
+
+ARCHITECTURE CHANGE LOG
+=======================
+
+Date: 2026-10-05
+Change: Added this project context document describing the inspected current
+        implementation and the established feature/core widget ownership rules.
+Reason: Give future coding agents an accurate map of existing structure and
+        distinguish implemented infrastructure from placeholders.
+Affected files: AI_PROJECT_CONTEXT.txt

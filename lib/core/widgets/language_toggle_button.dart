@@ -10,12 +10,10 @@ class LanguageToggleButton extends StatelessWidget {
     return BlocBuilder<AppBloc, AppState>(
       builder: (context, state) {
         final isEnglish = state.locale.languageCode == 'en';
-        final isDark = Theme.of(context).brightness == Brightness.dark;
-
         return Container(
           height: 32,
           decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF2C2C2C) : const Color(0xFFF0F0F0),
+            color: Theme.of(context).colorScheme.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
@@ -41,14 +39,8 @@ class LanguageToggleButton extends StatelessWidget {
                       "EN",
                       style: TextStyle(
                         color: isEnglish
-                            ? Colors.white
-                            : (isDark
-                                  ? Colors.white70
-                                  : (Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium
-                                            ?.color ??
-                                        AppColors.textSecondary)),
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Theme.of(context).colorScheme.onSurfaceVariant,
                         fontWeight: FontWeight.w700,
                         fontSize: 12,
                       ),
@@ -76,14 +68,8 @@ class LanguageToggleButton extends StatelessWidget {
                       "বাং",
                       style: TextStyle(
                         color: !isEnglish
-                            ? Colors.white
-                            : (isDark
-                                  ? Colors.white70
-                                  : (Theme.of(context)
-                                            .textTheme
-                                            .bodyMedium
-                                            ?.color ??
-                                        AppColors.textSecondary)),
+                            ? Theme.of(context).colorScheme.onPrimary
+                            : Theme.of(context).colorScheme.onSurfaceVariant,
                         fontWeight: FontWeight.w700,
                         fontSize: 12,
                       ),

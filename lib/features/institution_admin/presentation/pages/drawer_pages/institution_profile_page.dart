@@ -59,7 +59,7 @@ class InstitutionProfilePage extends StatelessWidget {
               width: 100,
               height: 100,
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkSurface : AppColors.white,
+                color: Theme.of(context).colorScheme.surface,
                 shape: BoxShape.circle,
                 boxShadow: [
                   if (!isDark)
@@ -90,7 +90,7 @@ class InstitutionProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: isDark ? AppColors.darkSurface : AppColors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       if (!isDark)
@@ -317,7 +317,7 @@ class InstitutionProfilePage extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
-                              color: isDark ? AppColors.white : AppColors.white,
+                              color: Theme.of(context).colorScheme.onPrimary,
                             ),
                           ),
                         ),
@@ -387,9 +387,7 @@ class InstitutionProfilePage extends StatelessWidget {
               color: isDark ? AppColors.darkTextMuted : AppColors.textMuted,
             ),
             filled: true,
-            fillColor: isDark
-                ? AppColors.darkBackground
-                : const Color(0xFFF9FAFB), // Very light grey like the image
+            fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 14,
@@ -397,21 +395,21 @@ class InstitutionProfilePage extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                color: Theme.of(context).colorScheme.outlineVariant,
                 width: 1,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                color: Theme.of(context).colorScheme.outlineVariant,
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: AppColors.primaryPurple,
+                color: Theme.of(context).colorScheme.primary,
                 width: 1.5,
               ),
             ),
@@ -426,7 +424,6 @@ class InstitutionProfilePage extends StatelessWidget {
     String label,
     List<String> items,
   ) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -448,7 +445,7 @@ class InstitutionProfilePage extends StatelessWidget {
           value: items.first,
           decoration: InputDecoration(
             filled: true,
-            fillColor: isDark ? AppColors.darkBackground : Color(0xFFF9FAFB),
+            fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
             contentPadding: const EdgeInsets.symmetric(
               horizontal: 16,
               vertical: 12,
@@ -456,21 +453,21 @@ class InstitutionProfilePage extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                color: Theme.of(context).colorScheme.outlineVariant,
                 width: 1,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+                color: Theme.of(context).colorScheme.outlineVariant,
                 width: 1,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(
-                color: AppColors.primaryPurple,
+                color: Theme.of(context).colorScheme.primary,
                 width: 1.5,
               ),
             ),
@@ -494,7 +491,6 @@ class InstitutionProfilePage extends StatelessWidget {
   }
 
   Widget _buildUploadButton(BuildContext context, String text) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return OutlinedButton.icon(
       onPressed: null,
       icon: Icon(
@@ -511,9 +507,9 @@ class InstitutionProfilePage extends StatelessWidget {
         ),
       ),
       style: OutlinedButton.styleFrom(
-        backgroundColor: isDark ? AppColors.darkBackground : Color(0xFFF9FAFB),
+        backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         side: BorderSide(
-          color: isDark ? AppColors.darkBorder : Color(0xFFE5E7EB),
+          color: Theme.of(context).colorScheme.outlineVariant,
           width: 1,
         ),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),

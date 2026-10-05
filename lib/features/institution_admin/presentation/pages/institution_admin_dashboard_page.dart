@@ -1,4 +1,5 @@
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/dashboard_widgets.dart';
 
 class InstitutionAdminDashboardPage extends StatelessWidget {
   static const String routeName = '/institution-admin-dashboard';

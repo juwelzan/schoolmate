@@ -1,4 +1,5 @@
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/core/widgets/language_toggle_button.dart';
 
 enum UserRole { student, teacher, admin }
 
@@ -57,7 +58,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                       decoration: BoxDecoration(
                         color: isDark
                             ? AppColors.darkBadgePurpleBg
-                            : AppColors.surfaceVerySoftPurple,
+                            : Theme.of(context).colorScheme.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Row(
@@ -121,7 +122,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                           : Theme.of(context).colorScheme.primary,
                       iconBgColor: isDark
                           ? AppColors.darkBadgePurpleBg
-                          : AppColors.surfaceVerySoftPurple,
+                          : Theme.of(context).colorScheme.surfaceContainerHighest,
                     ),
                     const SizedBox(height: 16),
 
@@ -136,7 +137,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                           : Theme.of(context).colorScheme.primary,
                       iconBgColor: isDark
                           ? const Color(0xFF134E4A)
-                          : AppColors.surfaceVerySoftPurple,
+                          : Theme.of(context).colorScheme.surfaceContainerHighest,
                     ),
                     const SizedBox(height: 16),
 
@@ -290,7 +291,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                 width: 40,
                 height: 40,
                 decoration: BoxDecoration(
-                  color: isDark ? AppColors.darkSurface : AppColors.white,
+              color: Theme.of(context).colorScheme.surface,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -365,13 +366,17 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: isSelected
-              ? (isDark ? const Color(0xFF1E1B4B) : AppColors.white)
-              : (isDark ? AppColors.darkSurface : AppColors.background),
+              ? (isDark
+                    ? Theme.of(context).colorScheme.surfaceContainerHighest
+                    : Theme.of(context).colorScheme.surface)
+              : (isDark
+                    ? Theme.of(context).colorScheme.surface
+                    : Theme.of(context).scaffoldBackgroundColor),
           borderRadius: BorderRadius.circular(16),
           border: isSelected
               ? Border.all(
                   color: isDark
-                      ? const Color(0xFF9F7AEA)
+                      ? Theme.of(context).colorScheme.primary
                       : Theme.of(context).colorScheme.primary,
                   width: 1.5,
                 )
@@ -426,7 +431,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
                         decoration: BoxDecoration(
                           color: isDark
                               ? AppColors.darkBadgePurpleBg
-                              : AppColors.surfaceVerySoftPurple,
+                              : Theme.of(context).colorScheme.surfaceContainerHighest,
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
@@ -462,7 +467,7 @@ class _RoleSelectionPageState extends State<RoleSelectionPage> {
               decoration: BoxDecoration(
                 color: isSelected
                     ? (isDark
-                          ? const Color(0xFF9F7AEA)
+                          ? Theme.of(context).colorScheme.primary
                           : Theme.of(context).colorScheme.primary)
                     : (isDark
                           ? AppColors.darkBorder

@@ -10,11 +10,15 @@ export 'package:schoolmate/core/network/api_client.dart';
 export 'package:schoolmate/core/network/network_info.dart';
 export 'package:schoolmate/core/routes/app_router.dart';
 export 'package:schoolmate/core/routes/app_routes.dart';
-export 'package:schoolmate/core/widgets/dashed_border_painter.dart';
+export 'package:schoolmate/core/widgets/school_mate_bottom_nav.dart';
+export 'package:schoolmate/core/widgets/language_toggle_button.dart';
 export 'package:schoolmate/core/theme/app_colors.dart';
 export 'package:schoolmate/features/auth/auth_placeholder.dart';
 
 export 'package:schoolmate/features/dashboard/presentation/pages/more_page.dart';
+export 'package:schoolmate/features/institution_admin/presentation/pages/institution_admin_dashboard_page.dart';
+export 'package:schoolmate/features/settings/presentation/pages/settings_page.dart';
+export 'package:schoolmate/features/onboarding/presentation/pages/onboarding_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/account_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/activity_log_page.dart';
@@ -39,18 +43,6 @@ export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/timetable_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/users_page.dart';
 export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/website_page.dart';
-export 'package:schoolmate/features/institution_admin/presentation/pages/institution_admin_dashboard_page.dart';
-export 'package:schoolmate/features/settings/presentation/pages/settings_page.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/approval_row.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/dashboard_section_card.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/dashboard_widgets.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/info_banner.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/metric_card.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/quick_action_card.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_bottom_nav.dart';
-export 'package:schoolmate/features/institution_admin/presentation/widgets/section_header.dart';
 export 'package:schoolmate/features/student/presentation/pages/student_dashboard_page.dart';
 export 'package:schoolmate/features/teacher/presentation/pages/teacher_dashboard_page.dart';
 export 'package:schoolmate/l10n/app_localizations.dart';
@@ -174,14 +166,4 @@ export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_
 
 export 'package:schoolmate/features/institution_admin/presentation/pages/notifications_page.dart';
 
-export 'widgets/language_toggle_button.dart';
-export 'widgets/custom_text_field.dart';
-
-export 'widgets/settings_tile.dart';
-
-export '../features/settings/presentation/widgets/settings_section_header.dart';
-
-export '../features/settings/presentation/widgets/theme_dialog.dart';
 export 'widgets/custom_text_style.dart';
-
-export 'package:schoolmate/features/onboarding/presentation/pages/onboarding_page.dart';

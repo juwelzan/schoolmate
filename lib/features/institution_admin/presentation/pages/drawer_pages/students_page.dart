@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
 class StudentsPage extends StatelessWidget {
   static const String routeName = '/students';
@@ -52,17 +54,17 @@ class StudentsPage extends StatelessWidget {
                   const SizedBox(width: 16),
                   ElevatedButton.icon(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.add,
                       size: 18,
-                      color: Theme.of(context).colorScheme.surface,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                     label: Text(
                       l10n.studentsBtnAdmit,
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: AppColors.white,
+                        color: Theme.of(context).colorScheme.onPrimary,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
@@ -102,7 +104,7 @@ class StudentsPage extends StatelessWidget {
                     width: 300,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: AppColors.white,
+                      color: Theme.of(context).colorScheme.onPrimary,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                     ),
@@ -380,7 +382,7 @@ class StudentsPage extends StatelessWidget {
                   l10n.statusActive,
                   style: TextStyle(
                     fontSize: 11,
-                    color: AppColors.white,
+                      color: Theme.of(context).colorScheme.surface,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

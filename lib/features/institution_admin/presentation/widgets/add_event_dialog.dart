@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmate/core/file_path.dart';
+import 'package:flutter/material.dart';
+import 'package:schoolmate/core/theme/app_colors.dart';
+import 'package:schoolmate/core/widgets/custom_text_style.dart';
+import 'package:schoolmate/l10n/app_localizations.dart';
 
 class AddEventDialog extends StatefulWidget {
   final DateTime? initialStartDate;
@@ -279,10 +282,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                   firstDate: DateTime(2000),
                   lastDate: DateTime(2100),
                   builder: (context, child) {
-                    return Theme(
-                      data: Theme.of(context),
-                      child: child!,
-                    );
+                    return Theme(data: Theme.of(context), child: child!);
                   },
                 );
                 if (date != null) {
@@ -310,10 +310,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                   firstDate: DateTime(2000),
                   lastDate: DateTime(2100),
                   builder: (context, child) {
-                    return Theme(
-                      data: Theme.of(context),
-                      child: child!,
-                    );
+                    return Theme(data: Theme.of(context), child: child!);
                   },
                 );
                 if (date != null) {
@@ -358,9 +355,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     Navigator.of(context).pop();
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: isDark
-                        ? AppColors.darkBorder
-                        : const Color(0xFF17212B),
+                    backgroundColor: colorScheme.primary,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 24,
                       vertical: 14,
@@ -373,7 +368,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                   child: Text(
                     l10n.addEventSave,
                     style: CustomTextStyles.inter(
-                      color: AppColors.white,
+                      color: colorScheme.onPrimary,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

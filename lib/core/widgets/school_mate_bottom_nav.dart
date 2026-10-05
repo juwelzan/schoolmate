@@ -1,6 +1,6 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
-import 'package:schoolmate/core/file_path.dart';
+import 'package:flutter/material.dart';
+import 'package:schoolmate/core/theme/app_colors.dart';
+import 'package:schoolmate/core/widgets/custom_text_style.dart';
 
 class SchoolMateBottomNav extends StatelessWidget {
   const SchoolMateBottomNav({super.key});
@@ -9,13 +9,13 @@ class SchoolMateBottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: (Theme.of(context).brightness == Brightness.dark
-            ? AppColors.darkSurface
-            : AppColors.white),
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF141B2D).withValues(alpha: 0.08),
+            color: Theme.of(context).brightness == Brightness.dark
+                ? Colors.transparent
+                : const Color(0xFF141B2D).withValues(alpha: 0.08),
             blurRadius: 20,
             offset: const Offset(0, -4),
           ),

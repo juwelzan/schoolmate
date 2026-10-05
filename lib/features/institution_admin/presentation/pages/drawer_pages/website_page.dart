@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
 class WebsitePage extends StatefulWidget {
   static const String routeName = '/website';
@@ -74,8 +76,8 @@ class _WebsitePageState extends State<WebsitePage> {
                   OutlinedButton(
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
-                      foregroundColor: AppColors.textPrimary,
-                      side: const BorderSide(color: AppColors.divider),
+                      foregroundColor: Theme.of(context).colorScheme.onSurface,
+                      side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
@@ -112,8 +114,8 @@ class _WebsitePageState extends State<WebsitePage> {
                       },
                       labelStyle: TextStyle(
                         color: isSelected
-                            ? AppColors.textPrimary
-                            : AppColors.textSecondary,
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.onSurfaceVariant,
                         fontWeight: isSelected
                             ? FontWeight.w600
                             : FontWeight.normal,
@@ -122,14 +124,11 @@ class _WebsitePageState extends State<WebsitePage> {
                           Theme.of(context).brightness == Brightness.dark
                           ? AppColors.darkSurface
                           : AppColors.white,
-                      selectedColor:
-                          Theme.of(context).brightness == Brightness.dark
-                          ? AppColors.darkSurface
-                          : AppColors.white,
+                      selectedColor: Theme.of(context).colorScheme.primary.withValues(alpha: 0.12),
                       side: BorderSide(
                         color: isSelected
-                            ? AppColors.primaryPurple
-                            : AppColors.divider,
+                            ? Theme.of(context).colorScheme.primary
+                            : Theme.of(context).colorScheme.outlineVariant,
                         width: isSelected ? 1.5 : 1.0,
                       ),
                       shape: RoundedRectangleBorder(
@@ -148,11 +147,9 @@ class _WebsitePageState extends State<WebsitePage> {
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.darkSurface
-                        : AppColors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppColors.divider),
+                    border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                   ),
                   child: SingleChildScrollView(
                     padding: const EdgeInsets.all(32.0),
@@ -213,13 +210,13 @@ class _WebsitePageState extends State<WebsitePage> {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: AppColors.textPrimary,
+                color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
         const SizedBox(height: 4),
         Text(
           l10n.webHeroSubtitle,
-          style: TextStyle(fontSize: 14, color: AppColors.textSecondary),
+        style: TextStyle(fontSize: 14, color: Theme.of(context).colorScheme.onSurfaceVariant),
         ),
         const SizedBox(height: 32),
 
@@ -245,8 +242,8 @@ class _WebsitePageState extends State<WebsitePage> {
           icon: const Icon(Icons.upload_outlined, size: 18),
           label: Text(l10n.webHeroUploadBtn),
           style: OutlinedButton.styleFrom(
-            foregroundColor: AppColors.textPrimary,
-            side: const BorderSide(color: AppColors.divider),
+            foregroundColor: Theme.of(context).colorScheme.onSurface,
+            side: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
@@ -282,10 +279,8 @@ class _WebsitePageState extends State<WebsitePage> {
         ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(
-              0xFF17212B,
-            ), // Dark filled button like in image
-            foregroundColor: AppColors.white,
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            foregroundColor: Theme.of(context).colorScheme.onPrimary,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
@@ -303,10 +298,10 @@ class _WebsitePageState extends State<WebsitePage> {
   Widget _buildTextFieldLabel(String label) {
     return Text(
       label,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w600,
-        color: AppColors.textPrimary,
+        color: Theme.of(context).colorScheme.onSurface,
       ),
     );
   }
@@ -316,26 +311,24 @@ class _WebsitePageState extends State<WebsitePage> {
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: const TextStyle(color: AppColors.textMuted, fontSize: 14),
+        hintStyle: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 14),
         filled: true,
-        fillColor: Theme.of(context).brightness == Brightness.dark
-            ? AppColors.darkSurface
-            : const Color(0xFFF9FAFB),
+        fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,
         contentPadding: const EdgeInsets.symmetric(
           horizontal: 16,
           vertical: 14,
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.divider),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.divider),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.outlineVariant),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
-          borderSide: const BorderSide(color: AppColors.primaryPurple),
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.primary),
         ),
       ),
     );

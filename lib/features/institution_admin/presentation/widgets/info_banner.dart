@@ -1,6 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:schoolmate/core/file_path.dart';
+import 'package:flutter/material.dart';
+import 'package:schoolmate/core/theme/app_colors.dart';
+import 'package:schoolmate/core/widgets/custom_text_style.dart';
 
 class InfoBanner extends StatelessWidget {
   const InfoBanner({super.key});
@@ -35,9 +37,7 @@ class InfoBanner extends StatelessWidget {
                 ),
                 child: Icon(
                   Icons.info_outline,
-                  color: (Theme.of(context).brightness == Brightness.dark
-                      ? AppColors.darkSurface
-                      : AppColors.white),
+                  color: Theme.of(context).colorScheme.onPrimary,
                   size: 14,
                 ),
               ),

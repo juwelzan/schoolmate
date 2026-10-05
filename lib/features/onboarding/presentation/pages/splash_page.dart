@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.school, size: 80, color: Colors.blueAccent),
+            Icon(Icons.school, size: 80, color: Theme.of(context).colorScheme.primary),
             SizedBox(height: 24),
             Text(
               "Schoolmate",
@@ -50,12 +50,12 @@ class _SplashPageState extends State<SplashPage> {
               "Institution Management System",
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.deepPurpleAccent,
+                color: Theme.of(context).colorScheme.primary,
                 letterSpacing: 0.9,
               ),
             ),
             SizedBox(height: 48),
-            CircularProgressIndicator(color: Colors.blueAccent, strokeWidth: 3),
+            CircularProgressIndicator(color: Theme.of(context).colorScheme.primary, strokeWidth: 3),
           ],
         ),
       ),

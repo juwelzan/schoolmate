@@ -3,6 +3,8 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:schoolmate/core/file_path.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolmate/features/institution_admin/presentation/widgets/add_event_dialog.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
 class CalendarPage extends StatefulWidget {
   static const String routeName = '/calendar';
@@ -27,11 +29,12 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   Widget _buildLegendItem(String title, Color color, Color bgColor) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       margin: const EdgeInsets.only(right: 12, bottom: 8),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        color: bgColor,
+        color: isDark ? color.withValues(alpha: 0.16) : bgColor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -46,7 +49,7 @@ class _CalendarPageState extends State<CalendarPage> {
           Text(
             title,
             style: CustomTextStyles.inter(
-              color: color,
+              color: isDark ? Theme.of(context).colorScheme.onSurface : color,
               fontSize: 12,
               fontWeight: FontWeight.w600,
             ),

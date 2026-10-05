@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/settings/presentation/widgets/settings_section_header.dart';
+import 'package:schoolmate/features/settings/presentation/widgets/theme_dialog.dart';
+import 'package:schoolmate/features/settings/presentation/widgets/settings_tile.dart';
+import 'package:schoolmate/core/widgets/language_toggle_button.dart';
 
 class SettingsPage extends StatelessWidget {
   static const String routeName = '/settings';

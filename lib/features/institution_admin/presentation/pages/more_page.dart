@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/core/widgets/school_mate_bottom_nav.dart';
 
 class MorePage extends StatelessWidget {
   static const String routeName = '/more';
@@ -30,13 +31,13 @@ class MorePage extends StatelessWidget {
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              color: (Theme.of(context).brightness == Brightness.dark
-                  ? AppColors.darkSurface
-                  : AppColors.white),
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(22),
               boxShadow: [
                 BoxShadow(
-                  color: Color(0xFF141B2D).withValues(alpha: 0.04),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.transparent
+                      : Colors.black.withValues(alpha: 0.04),
                   blurRadius: 18,
                   offset: const Offset(0, 6),
                 ),
@@ -422,13 +423,13 @@ class MorePage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: (Theme.of(context).brightness == Brightness.dark
-                    ? AppColors.darkSurface
-                    : AppColors.white),
+              color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(22),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xFF141B2D).withValues(alpha: 0.04),
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.transparent
+                      : Colors.black.withValues(alpha: 0.04),
                     blurRadius: 18,
                     offset: const Offset(0, 6),
                   ),

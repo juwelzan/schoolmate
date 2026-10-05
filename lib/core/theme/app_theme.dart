@@ -193,6 +193,8 @@ class AppTheme {
       onBackground: AppColors.textPrimary,
       surface: AppColors.white,
       onSurface: AppColors.textPrimary,
+      outline: AppColors.divider,
+      outlineVariant: AppColors.divider,
       error: Colors.redAccent,
       onError: Colors.white,
     ),
@@ -201,6 +203,107 @@ class AppTheme {
       backgroundColor: AppColors.white,
       selectedItemColor: AppColors.primaryPurple,
       unselectedItemColor: AppColors.inactiveIcon,
+    ),
+
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      indicatorColor: AppColors.softPurple,
+      labelTextStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
+        color: states.contains(WidgetState.selected)
+            ? AppColors.primaryPurple
+            : AppColors.textSecondary,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      )),
+    ),
+
+    iconTheme: const IconThemeData(color: AppColors.textPrimary),
+    primaryIconTheme: const IconThemeData(color: Colors.white),
+
+    inputDecorationTheme: InputDecorationThemeData(
+      filled: true,
+      fillColor: AppColors.background,
+      hintStyle: const TextStyle(color: AppColors.textMuted),
+      labelStyle: const TextStyle(color: AppColors.textSecondary),
+      prefixIconColor: AppColors.textSecondary,
+      suffixIconColor: AppColors.textSecondary,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.divider),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.divider),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.primaryPurple, width: 1.5),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: Colors.redAccent),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: Colors.redAccent, width: 1.5),
+      ),
+    ),
+
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primaryPurple,
+        foregroundColor: Colors.white,
+        disabledBackgroundColor: AppColors.divider,
+        disabledForegroundColor: AppColors.textMuted,
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.textPrimary,
+        side: const BorderSide(color: AppColors.divider),
+      ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(foregroundColor: AppColors.primaryPurple),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColors.primaryPurple,
+      foregroundColor: Colors.white,
+    ),
+
+    chipTheme: ChipThemeData(
+      backgroundColor: AppColors.background,
+      selectedColor: AppColors.softPurple,
+      disabledColor: AppColors.background,
+      secondarySelectedColor: AppColors.softPurple,
+      labelStyle: const TextStyle(color: AppColors.textPrimary),
+      secondaryLabelStyle: const TextStyle(color: AppColors.primaryPurple),
+      side: const BorderSide(color: AppColors.divider),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? AppColors.primaryPurple
+              : Colors.transparent),
+      checkColor: const WidgetStatePropertyAll(Colors.white),
+      side: const BorderSide(color: AppColors.inactiveIcon),
+    ),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? AppColors.primaryPurple
+              : AppColors.inactiveIcon),
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? Colors.white
+              : AppColors.textMuted),
+      trackColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? AppColors.primaryPurple
+              : AppColors.divider),
     ),
 
     cardTheme: CardThemeData(
@@ -221,6 +324,12 @@ class AppTheme {
         fontSize: 14,
         color: AppColors.textSecondary,
       ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.white,
+      modalBackgroundColor: AppColors.white,
+      surfaceTintColor: Colors.transparent,
+      showDragHandle: true,
     ),
     dividerTheme: const DividerThemeData(
       color: AppColors.divider,
@@ -258,6 +367,8 @@ class AppTheme {
       onSecondary: Colors.white,
       surface: AppColors.darkSurface,
       onSurface: AppColors.darkTextPrimary,
+      outline: AppColors.darkBorder,
+      outlineVariant: AppColors.darkBorder,
       error: Colors.redAccent,
       onError: Colors.white,
     ),
@@ -266,6 +377,107 @@ class AppTheme {
       backgroundColor: AppColors.darkSurface,
       selectedItemColor: AppColors.darkPrimaryPurple,
       unselectedItemColor: AppColors.darkTextMuted,
+    ),
+
+    navigationBarTheme: NavigationBarThemeData(
+      backgroundColor: AppColors.darkSurface,
+      indicatorColor: AppColors.darkBadgePurpleBg,
+      labelTextStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
+        color: states.contains(WidgetState.selected)
+            ? AppColors.darkPrimaryPurple
+            : AppColors.darkTextMuted,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      )),
+    ),
+
+    iconTheme: const IconThemeData(color: AppColors.darkTextPrimary),
+    primaryIconTheme: const IconThemeData(color: Colors.white),
+
+    inputDecorationTheme: InputDecorationThemeData(
+      filled: true,
+      fillColor: AppColors.darkSurfaceHighlight,
+      hintStyle: const TextStyle(color: AppColors.darkTextMuted),
+      labelStyle: const TextStyle(color: AppColors.darkTextSecondary),
+      prefixIconColor: AppColors.darkTextSecondary,
+      suffixIconColor: AppColors.darkTextSecondary,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.darkBorder),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.darkBorder),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: AppColors.darkPrimaryPurple, width: 1.5),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: Colors.redAccent),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: Colors.redAccent, width: 1.5),
+      ),
+    ),
+
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.darkPrimaryPurple,
+        foregroundColor: Colors.white,
+        disabledBackgroundColor: AppColors.darkSurfaceHighlight,
+        disabledForegroundColor: AppColors.darkTextMuted,
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: AppColors.darkTextPrimary,
+        side: const BorderSide(color: AppColors.darkBorder),
+      ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(foregroundColor: AppColors.darkPrimaryPurple),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: AppColors.darkPrimaryPurple,
+      foregroundColor: Colors.white,
+    ),
+
+    chipTheme: ChipThemeData(
+      backgroundColor: AppColors.darkSurfaceHighlight,
+      selectedColor: AppColors.darkBadgePurpleBg,
+      disabledColor: AppColors.darkSurface,
+      secondarySelectedColor: AppColors.darkBadgePurpleBg,
+      labelStyle: const TextStyle(color: AppColors.darkTextPrimary),
+      secondaryLabelStyle: const TextStyle(color: AppColors.darkBadgePurpleText),
+      side: const BorderSide(color: AppColors.darkBorder),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? AppColors.darkPrimaryPurple
+              : Colors.transparent),
+      checkColor: const WidgetStatePropertyAll(Colors.white),
+      side: const BorderSide(color: AppColors.darkTextMuted),
+    ),
+    radioTheme: RadioThemeData(
+      fillColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? AppColors.darkPrimaryPurple
+              : AppColors.darkTextMuted),
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? Colors.white
+              : AppColors.darkTextMuted),
+      trackColor: WidgetStateProperty.resolveWith((states) =>
+          states.contains(WidgetState.selected)
+              ? AppColors.darkPrimaryPurple
+              : AppColors.darkSurfaceHighlight),
     ),
 
     cardTheme: CardThemeData(
@@ -300,6 +512,12 @@ class AppTheme {
         fontSize: 14,
         color: AppColors.darkTextSecondary,
       ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: AppColors.darkSurface,
+      modalBackgroundColor: AppColors.darkSurface,
+      surfaceTintColor: Colors.transparent,
+      showDragHandle: true,
     ),
     dividerTheme: const DividerThemeData(
       color: AppColors.darkBorder,

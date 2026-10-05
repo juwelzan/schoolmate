@@ -1,10 +1,11 @@
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/core/widgets/school_mate_bottom_nav.dart';
 
 class MorePage extends StatelessWidget {
   static const String routeName = '/more';
   const MorePage({super.key});
 
-  Widget _buildGroupSection(String title, List<Widget> items) {
+  Widget _buildGroupSection(BuildContext context, String title, List<Widget> items) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -20,18 +21,20 @@ class MorePage extends StatelessWidget {
             style: CustomTextStyles.bengali(
               fontSize: 18,
               fontWeight: FontWeight.w700,
-              color: AppColors.textPrimary,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
-            color: AppColors.white,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(22),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF141B2D).withOpacity(0.04),
+                color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.transparent
+                    : const Color(0xFF141B2D).withValues(alpha: 0.04),
                 blurRadius: 18,
                 offset: const Offset(0, 6),
               ),
@@ -44,12 +47,23 @@ class MorePage extends StatelessWidget {
   }
 
   Widget _buildMenuRow(
+    BuildContext context,
     String label,
     IconData icon,
     Color iconBg,
     Color iconColor, {
     bool showDivider = true,
   }) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final themedIconBg = !isDark
+        ? iconBg
+        : (iconColor == AppColors.warmGold
+              ? AppColors.darkBadgeGoldBg
+              : iconColor == Colors.blue
+                  ? AppColors.darkBadgeTealBg
+                  : iconColor == Colors.red
+                      ? Theme.of(context).colorScheme.error.withValues(alpha: 0.16)
+                      : AppColors.darkBadgePurpleBg);
     return Column(
       children: [
         ListTile(
@@ -59,15 +73,15 @@ class MorePage extends StatelessWidget {
           ),
           leading: Container(
             padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(color: iconBg, shape: BoxShape.circle),
+            decoration: BoxDecoration(color: themedIconBg, shape: BoxShape.circle),
             child: Icon(icon, size: 20, color: iconColor),
           ),
           title: Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w500,
-              color: AppColors.textPrimary,
+              color: Theme.of(context).colorScheme.onSurface,
             ),
           ),
           trailing: const Icon(
@@ -78,8 +92,8 @@ class MorePage extends StatelessWidget {
           onTap: () {},
         ),
         if (showDivider)
-          const Divider(
-            color: AppColors.divider,
+          Divider(
+            color: Theme.of(context).colorScheme.outlineVariant,
             height: 1,
             indent: 64,
             endIndent: 16,
@@ -101,45 +115,45 @@ class MorePage extends StatelessWidget {
           style: CustomTextStyles.bengali(
             fontSize: 20,
             fontWeight: FontWeight.w700,
-            color: AppColors.textPrimary,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildGroupSection("প্রতিষ্ঠান", [
-              _buildMenuRow(
+            _buildGroupSection(context, "প্রতিষ্ঠান", [
+              _buildMenuRow(context,
                 "Institution Profile",
                 Icons.account_balance,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Multi-Track",
                 Icons.schema,
                 AppColors.paleBlueSurface,
                 Colors.blue,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Board Affiliations",
                 Icons.account_tree,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "SMC / Governing Body",
                 Icons.groups,
                 AppColors.softWarmGold,
                 AppColors.warmGold,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Campuses",
                 Icons.domain,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Branches",
                 Icons.store,
                 AppColors.surfaceVerySoftPurple,
@@ -148,38 +162,38 @@ class MorePage extends StatelessWidget {
               ),
             ]),
 
-            _buildGroupSection("একাডেমিক", [
-              _buildMenuRow(
+            _buildGroupSection(context, "একাডেমিক", [
+              _buildMenuRow(context,
                 "Academic",
                 Icons.menu_book,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Timetable",
                 Icons.calendar_today,
                 AppColors.softWarmGold,
                 AppColors.warmGold,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Document Templates",
                 Icons.description,
                 AppColors.paleBlueSurface,
                 Colors.blue,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Examination",
                 Icons.assignment,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Attendance",
                 Icons.fact_check,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Certificates",
                 Icons.card_membership,
                 AppColors.softWarmGold,
@@ -188,20 +202,20 @@ class MorePage extends StatelessWidget {
               ),
             ]),
 
-            _buildGroupSection("ব্যবহারকারী", [
-              _buildMenuRow(
+            _buildGroupSection(context, "ব্যবহারকারী", [
+              _buildMenuRow(context,
                 "Students",
                 Icons.people,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Teachers & Staff",
                 Icons.badge,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Users",
                 Icons.person,
                 AppColors.paleBlueSurface,
@@ -210,20 +224,20 @@ class MorePage extends StatelessWidget {
               ),
             ]),
 
-            _buildGroupSection("অর্থ", [
-              _buildMenuRow(
+            _buildGroupSection(context, "অর্থ", [
+              _buildMenuRow(context,
                 "Fee",
                 Icons.payments,
                 AppColors.softWarmGold,
                 AppColors.warmGold,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Finance",
                 Icons.account_balance_wallet,
                 AppColors.paleBlueSurface,
                 Colors.blue,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Payment Gateways",
                 Icons.credit_card,
                 AppColors.surfaceVerySoftPurple,
@@ -232,26 +246,26 @@ class MorePage extends StatelessWidget {
               ),
             ]),
 
-            _buildGroupSection("অপারেশন", [
-              _buildMenuRow(
+            _buildGroupSection(context, "অপারেশন", [
+              _buildMenuRow(context,
                 "Online Admission",
                 Icons.laptop_chromebook,
                 AppColors.surfaceVerySoftPurple,
                 AppColors.primaryPurple,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Inventory",
                 Icons.inventory_2,
                 AppColors.softWarmGold,
                 AppColors.warmGold,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Communication",
                 Icons.campaign,
                 AppColors.paleBlueSurface,
                 Colors.blue,
               ),
-              _buildMenuRow(
+              _buildMenuRow(context,
                 "Website",
                 Icons.web,
                 AppColors.surfaceVerySoftPurple,
@@ -265,11 +279,13 @@ class MorePage extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: AppColors.white,
+                color: Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(22),
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF141B2D).withOpacity(0.04),
+                    color: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.transparent
+                    : const Color(0xFF141B2D).withValues(alpha: 0.04),
                     blurRadius: 18,
                     offset: const Offset(0, 6),
                   ),
@@ -277,19 +293,19 @@ class MorePage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  _buildMenuRow(
+                  _buildMenuRow(context,
                     "Activity Log",
                     Icons.history,
                     AppColors.paleBlueSurface,
                     Colors.blue,
                   ),
-                  _buildMenuRow(
+                  _buildMenuRow(context,
                     "Account",
                     Icons.manage_accounts,
                     AppColors.surfaceVerySoftPurple,
                     AppColors.primaryPurple,
                   ),
-                  _buildMenuRow(
+                  _buildMenuRow(context,
                     "Logout",
                     Icons.logout,
                     const Color(0xFFFFEBEE),

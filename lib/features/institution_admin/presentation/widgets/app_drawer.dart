@@ -1,5 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:schoolmate/core/file_path.dart';
+import 'package:flutter/material.dart';
+import 'package:schoolmate/core/routes/app_routes.dart';
+import 'package:schoolmate/core/theme/app_colors.dart';
+import 'package:schoolmate/core/widgets/custom_text_style.dart';
+import 'package:schoolmate/l10n/app_localizations.dart';
 
 class AppDrawer extends StatefulWidget {
   const AppDrawer({super.key});

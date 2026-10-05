@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
 class UsersPage extends StatelessWidget {
   static const String routeName = '/users';
@@ -89,11 +91,9 @@ class UsersPage extends StatelessWidget {
                   width: 300,
                   height: 40,
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.darkSurface
-                        : AppColors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColors.divider),
+                    border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                   ),
                   child: TextField(
                     decoration: InputDecoration(
@@ -116,11 +116,9 @@ class UsersPage extends StatelessWidget {
                   height: 40,
                   padding: const EdgeInsets.symmetric(horizontal: 12),
                   decoration: BoxDecoration(
-                    color: Theme.of(context).brightness == Brightness.dark
-                        ? AppColors.darkSurface
-                        : AppColors.white,
+                    color: Theme.of(context).colorScheme.surface,
                     borderRadius: BorderRadius.circular(8),
-                    border: Border.all(color: AppColors.divider),
+                    border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton<String>(
@@ -128,7 +126,7 @@ class UsersPage extends StatelessWidget {
                         l10n.usersFilterRoles,
                         style: TextStyle(
                           fontSize: 13,
-                          color: AppColors.textPrimary,
+                          color: Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                       icon: const Icon(
@@ -188,14 +186,12 @@ class UsersPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Theme.of(context).brightness == Brightness.dark
-            ? AppColors.darkSurface
-            : AppColors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.divider),
+        border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryPurple.withValues(alpha: 0.03),
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.03),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -230,7 +226,7 @@ class UsersPage extends StatelessWidget {
                           fontSize: 13,
                           color:
                               Theme.of(context).textTheme.bodyMedium?.color ??
-                              AppColors.textSecondary,
+                              Theme.of(context).colorScheme.onSurfaceVariant,
                         ),
                       ),
                     ],
@@ -249,7 +245,7 @@ class UsersPage extends StatelessWidget {
               fontSize: 13,
               color:
                   Theme.of(context).textTheme.bodyMedium?.color ??
-                  AppColors.textSecondary,
+                  Theme.of(context).colorScheme.onSurfaceVariant,
             ),
           ),
           const SizedBox(height: 16),
@@ -265,9 +261,9 @@ class UsersPage extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColors.white,
+                  color: Theme.of(context).colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(12),
-                  border: Border.all(color: AppColors.divider),
+                  border: Border.all(color: Theme.of(context).colorScheme.outlineVariant),
                 ),
                 child: Text(
                   role,
@@ -285,8 +281,10 @@ class UsersPage extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: status == 'Active'
-                      ? AppColors.surfaceVerySoftPurple
-                      : AppColors.divider,
+                      ? (Theme.of(context).brightness == Brightness.dark
+                            ? AppColors.darkBadgePurpleBg
+                            : AppColors.surfaceVerySoftPurple)
+                      : Theme.of(context).colorScheme.outlineVariant,
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Text(
@@ -295,8 +293,8 @@ class UsersPage extends StatelessWidget {
                     fontSize: 12,
                     fontWeight: FontWeight.w600,
                     color: status == 'Active'
-                        ? AppColors.primaryPurple
-                        : AppColors.textSecondary,
+                        ? Theme.of(context).colorScheme.primary
+                        : Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                 ),
               ),
@@ -310,34 +308,34 @@ class UsersPage extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.phone_outlined,
                     size: 14,
-                    color: AppColors.textSecondary,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     phone,
                     style: TextStyle(
                       fontSize: 13,
-                      color: AppColors.textSecondary,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],
               ),
               Row(
                 children: [
-                  const Icon(
+                  Icon(
                     Icons.calendar_today_outlined,
                     size: 14,
-                    color: AppColors.textSecondary,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
                   const SizedBox(width: 4),
                   Text(
                     date,
                     style: TextStyle(
                       fontSize: 13,
-                      color: AppColors.textSecondary,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],

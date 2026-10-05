@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
+import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
 class GradingScalesPage extends StatelessWidget {
   static const String routeName = '/grading-scales';
@@ -154,9 +156,7 @@ class GradingScalesPage extends StatelessWidget {
                       width: cardWidth,
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: isDark
-                            ? const Color(0xFF131923)
-                            : AppColors.white,
+                        color: Theme.of(context).colorScheme.surface,
                         borderRadius: BorderRadius.circular(12),
                         boxShadow: isDark
                             ? null
@@ -206,9 +206,7 @@ class GradingScalesPage extends StatelessWidget {
                                         ),
                                         decoration: BoxDecoration(
                                           border: Border.all(
-                                            color: isDark
-                                                ? const Color(0xFF2A3644)
-                                                : AppColors.divider,
+                                            color: Theme.of(context).colorScheme.outlineVariant,
                                           ),
                                           borderRadius: BorderRadius.circular(
                                             16,

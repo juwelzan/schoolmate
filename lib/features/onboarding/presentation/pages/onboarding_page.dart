@@ -6,7 +6,7 @@ import 'package:schoolmate/l10n/app_localizations.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/routes/app_routes.dart';
 
-import '../../../../core/widgets/language_toggle_button.dart';
+import 'package:schoolmate/core/widgets/language_toggle_button.dart';
 
 class OnboardingPage extends StatefulWidget {
   static const String routeName = '/onboarding';

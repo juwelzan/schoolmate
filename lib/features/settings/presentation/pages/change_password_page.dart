@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schoolmate/core/widgets/custom_text_field.dart';
+import 'package:schoolmate/features/settings/presentation/widgets/custom_text_field.dart';
 import 'package:schoolmate/core/file_path.dart';
 
 class ChangePasswordPage extends StatelessWidget {
@@ -73,8 +73,8 @@ class ChangePasswordPage extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF1F2228),
-                  foregroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                  foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
                     vertical: 14,
