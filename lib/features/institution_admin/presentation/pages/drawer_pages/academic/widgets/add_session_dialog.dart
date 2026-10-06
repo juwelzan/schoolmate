@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
 import '../models/academic_year_data.dart';
 
-class AddYearDialog extends StatefulWidget {
-  final AcademicYearData? initialData;
-  const AddYearDialog({super.key, this.initialData});
+class AddSessionDialog extends StatefulWidget {
+  final String? yearName;
+  final AcademicSessionData? initialData;
+
+  const AddSessionDialog({super.key, this.yearName, this.initialData});
 
   @override
-  State<AddYearDialog> createState() => _AddYearDialogState();
+  State<AddSessionDialog> createState() => _AddSessionDialogState();
 }
 
-class _AddYearDialogState extends State<AddYearDialog> {
+class _AddSessionDialogState extends State<AddSessionDialog> {
   late TextEditingController _nameEnController;
   late TextEditingController _nameBnController;
   late TextEditingController _startDateController;
@@ -115,7 +117,7 @@ class _AddYearDialogState extends State<AddYearDialog> {
     final iconColor = isDark ? AppColors.darkTextSecondary : AppColors.textSecondary;
 
     return AppFormDialog(
-      title: widget.initialData != null ? 'Edit Academic Year' : 'New Academic Year',
+      title: widget.initialData != null ? 'Edit Session' : 'New Session${widget.yearName != null ? " for ${widget.yearName}" : ""}', 
       cancelText: l10n.addEventCancel,
       saveText: l10n.addEventSave,
       onCancel: () => Navigator.of(context).pop(),
@@ -130,15 +132,14 @@ class _AddYearDialogState extends State<AddYearDialog> {
           return;
         }
 
-        final newYear = AcademicYearData(
+        final newSession = AcademicSessionData(
           nameEn: _nameEnController.text.trim(),
           nameBn: _nameBnController.text.trim(),
           status: widget.initialData?.status ?? 'Active',
           startDate: _start!,
           endDate: _end!,
-          sessions: widget.initialData?.sessions ?? [],
         );
-        Navigator.of(context).pop(newYear);
+        Navigator.of(context).pop(newSession);
       },
       content: SingleChildScrollView(
         child: Column(
@@ -149,8 +150,8 @@ class _AddYearDialogState extends State<AddYearDialog> {
                 Expanded(
                   child: _buildTextField(
                     context,
-                    'Name (English)',
-                    hint: 'e.g. 2024-2025',
+                    'Session Name (English)',
+                    hint: 'e.g. Session-2026',
                     controller: _nameEnController,
                   ),
                 ),
@@ -158,8 +159,8 @@ class _AddYearDialogState extends State<AddYearDialog> {
                 Expanded(
                   child: _buildTextField(
                     context,
-                    'Name (Bangla)',
-                    hint: 'যেমন: ২০২৪-২০২৫',
+                    'Session Name (Bangla)',
+                    hint: 'যেমন: সেশন-২০২৬',
                     controller: _nameBnController,
                   ),
                 ),
@@ -171,8 +172,8 @@ class _AddYearDialogState extends State<AddYearDialog> {
                 Expanded(
                   child: _buildTextField(
                     context,
-                    'Start Date', // Can use l10n.addEventStartDate
-                    hint: 'DD/MM/YYYY', // Can use l10n.addEventDateFormat
+                    'Start Date',
+                    hint: 'DD/MM/YYYY',
                     controller: _startDateController,
                     readOnly: true,
                     suffixIcon: Icon(
@@ -201,7 +202,7 @@ class _AddYearDialogState extends State<AddYearDialog> {
                 Expanded(
                   child: _buildTextField(
                     context,
-                    'End Date', // Can use l10n.addEventEndDate
+                    'End Date',
                     hint: 'DD/MM/YYYY',
                     controller: _endDateController,
                     readOnly: true,
