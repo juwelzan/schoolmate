@@ -189,8 +189,6 @@ class AppTheme {
       onPrimary: Colors.white,
       secondary: AppColors.primaryPurple,
       onSecondary: Colors.white,
-      background: AppColors.background,
-      onBackground: AppColors.textPrimary,
       surface: AppColors.white,
       onSurface: AppColors.textPrimary,
       outline: AppColors.divider,

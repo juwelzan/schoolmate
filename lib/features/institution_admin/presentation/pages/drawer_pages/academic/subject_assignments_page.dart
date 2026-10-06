@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
 import 'package:schoolmate/features/institution_admin/presentation/pages/drawer_pages/academic/widgets/academic_header_card.dart';
-import 'package:schoolmate/features/institution_admin/presentation/widgets/school_mate_app_bar.dart';
-import 'package:schoolmate/features/institution_admin/presentation/widgets/app_drawer.dart';
 
 class SubjectAssignmentsPage extends StatelessWidget {
   static const String routeName = '/subject-assignments';

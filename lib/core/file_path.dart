@@ -167,3 +167,13 @@ export 'package:schoolmate/features/institution_admin/presentation/pages/drawer_
 export 'package:schoolmate/features/institution_admin/presentation/pages/notifications_page.dart';
 
 export 'widgets/custom_text_style.dart';
+export 'widgets/app_form_dialog.dart';
+export 'widgets/metric_card.dart';
+export 'widgets/dashboard_section_card.dart';
+export 'widgets/info_banner.dart';
+export 'widgets/section_header.dart';
+export 'widgets/quick_action_card.dart';
+export 'widgets/dashed_border_painter.dart';
+export 'widgets/school_mate_app_bar.dart';
+export 'widgets/app_drawer.dart';
+export 'widgets/approval_row.dart';

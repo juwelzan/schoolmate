@@ -1456,8 +1456,9 @@ class _AppDrawerState extends State<AppDrawer> {
     String? parentQuery,
   ]) {
     final query = parentQuery ?? _searchQuery;
-    if (query.isNotEmpty && !title.toLowerCase().contains(query.toLowerCase()))
+    if (query.isNotEmpty && !title.toLowerCase().contains(query.toLowerCase())) {
       return const SizedBox.shrink();
+    }
     final isSelected = currentRoute == route;
     return ListTile(
       dense: true,
@@ -1495,8 +1496,9 @@ class _AppDrawerState extends State<AppDrawer> {
     Color? iconBgColor,
   }) {
     if (_searchQuery.isNotEmpty &&
-        !title.toLowerCase().contains(_searchQuery.toLowerCase()))
+        !title.toLowerCase().contains(_searchQuery.toLowerCase())) {
       return const SizedBox.shrink();
+    }
     final defaultIconColor = isSelected
         ? Theme.of(context).primaryColor
         : (Theme.of(context).textTheme.bodyMedium?.color ??

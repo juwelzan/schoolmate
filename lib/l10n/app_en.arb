@@ -490,6 +490,26 @@
   "componentTypesColName": "Name",
   "componentTypesColShortLabel": "Short Label",
   "componentTypesColStatus": "Status",
+  "classesSectionsHeaderBadge": "Class & Section Configuration",
+  "classesSectionsHeaderDesc": "Define the hierarchical structure of classes, sections, shifts, and assign responsible teachers.",
+  "classesSectionsTotalClasses": "Total Classes: {count}",
+  "@classesSectionsTotalClasses": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classesSectionsTotalSections": "Total Sections: {count}",
+  "@classesSectionsTotalSections": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+
+
   "classesSectionsTitle": "Classes & Sections",
   "classesSectionsSubtitle": "Manage class hierarchy and shift-based sections",
   "classesSectionsAddClass": "Add Class",

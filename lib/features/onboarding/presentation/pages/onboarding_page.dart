@@ -10,7 +10,7 @@ import 'package:schoolmate/core/widgets/language_toggle_button.dart';
 
 class OnboardingPage extends StatefulWidget {
   static const String routeName = '/onboarding';
-  const OnboardingPage({Key? key}) : super(key: key);
+  const OnboardingPage({super.key});
 
   @override
   State<OnboardingPage> createState() => _OnboardingPageState();

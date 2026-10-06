@@ -1,4 +1,3 @@
-import 'package:schoolmate/core/file_path.dart';
 
 class ServerException implements Exception {
   final String message;

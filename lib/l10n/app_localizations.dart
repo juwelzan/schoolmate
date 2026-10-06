@@ -2900,6 +2900,30 @@ abstract class AppLocalizations {
   /// **'Status'**
   String get componentTypesColStatus;
 
+  /// No description provided for @classesSectionsHeaderBadge.
+  ///
+  /// In en, this message translates to:
+  /// **'Class & Section Configuration'**
+  String get classesSectionsHeaderBadge;
+
+  /// No description provided for @classesSectionsHeaderDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Define the hierarchical structure of classes, sections, shifts, and assign responsible teachers.'**
+  String get classesSectionsHeaderDesc;
+
+  /// No description provided for @classesSectionsTotalClasses.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Classes: {count}'**
+  String classesSectionsTotalClasses(int count);
+
+  /// No description provided for @classesSectionsTotalSections.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Sections: {count}'**
+  String classesSectionsTotalSections(int count);
+
   /// No description provided for @classesSectionsTitle.
   ///
   /// In en, this message translates to:

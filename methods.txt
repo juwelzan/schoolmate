@@ -1,0 +1,416 @@
+                          : Icons.keyboard_arrow_down,
+                      color: cls.isExpanded ? activeColor : mutedTextColor,
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+
+                  // Class Info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          spacing: 8,
+                          runSpacing: 4,
+                          children: [
+                            Icon(
+                              Icons.account_balance,
+                              color: activeColor,
+                              size: 20,
+                            ),
+                            Text(
+                              cls.nameEn,
+                              style: CustomTextStyles.inter(
+                                color: isDark
+                                    ? AppColors.white
+                                    : AppColors.textPrimary,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              cls.nameBn,
+                              style: CustomTextStyles.inter(
+                                color: mutedTextColor,
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 12),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: [
+                            _buildPill(cls.grade, isDark, false),
+                            if (cls.tag != null)
+                              _buildPill(cls.tag!, isDark, true),
+                            _buildPill(
+                              '${cls.sections.length}টি সেকশন',
+                              isDark,
+                              false,
+                              highlight: true,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+
+                  // Actions
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: borderColor),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.edit_outlined,
+                            size: 18,
+                            color: isDark
+                                ? AppColors.darkTextPrimary
+                                : Theme.of(context)
+                                      .colorScheme
+                                      .onSurfaceVariant,
+                          ),
+                          padding: EdgeInsets.zero,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Container(
+                        width: 36,
+                        height: 36,
+                        decoration: BoxDecoration(
+                          border: Border.all(color: borderColor),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.delete_outline,
+                            size: 18,
+                            color: Color(0xFFF03E3E),
+                          ),
+                          padding: EdgeInsets.zero,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+
+          // Expanded Sections Area
+          if (cls.isExpanded) ...[
+            Divider(height: 1, color: borderColor),
+            Stack(
+              children: [
+                // Vertical Tree Line
+                Positioned(
+                  left: 31, // Align with the center of the 32px expand button (16 + 16 padding - 1 for line thickness)
+                  top: 0,
+                  bottom: 32, // don't go all the way to the bottom
+                  child: Container(
+                    width: 2,
+                    color: activeColor.withValues(alpha: 0.3),
+                  ),
+                ),
+
+                // The Sections List
+                Padding(
+                  padding: const EdgeInsets.only(
+                    left: 64,
+                    right: 16,
+                    top: 24,
+                    bottom: 24,
+                  ),
+                  child: Column(
+                    children: [
+                      ...cls.sections.map(
+                        (s) => _buildSectionCard(
+                          s,
+                          isDark,
+                          activeColor,
+                          borderColor,
+                          mutedTextColor,
+                          l10n,
+                        ),
+                      ),
+
+                      // Add Section Button (Dashed style but using border for simplicity if dashed isn't native)
+                      Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          Positioned(
+                            left: -33,
+                            top: 24,
+                            child: Container(
+                              width: 33,
+                              height: 2,
+                              color: activeColor.withValues(alpha: 0.3),
+                            ),
+                          ),
+                          Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.symmetric(vertical: 16),
+                            decoration: BoxDecoration(
+                              color: activeColor.withValues(alpha: 0.05),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: activeBorder,
+                                style: BorderStyle.solid,
+                              ),
+                            ),
+                            child: InkWell(
+                              onTap: () {},
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(Icons.add, color: activeColor, size: 18),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    '+ সেকশন যোগ করুন',
+                                    style: CustomTextStyles.inter(
+                                      color: activeColor,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 14,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSectionCard(
+    SectionModel section,
+    bool isDark,
+    Color activeColor,
+    Color borderColor,
+    Color mutedTextColor,
+    AppLocalizations l10n,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 16.0),
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          // Horizontal Tree Line to connect this card
+          Positioned(
+            left: -33,
+            top: 24,
+            child: Container(
+              width: 33,
+              height: 2,
+              color: activeColor.withValues(alpha: 0.3),
+            ),
+          ),
+
+          Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: borderColor),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Top Row
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 4),
+                      width: 10,
+                      height: 10,
+                      decoration: BoxDecoration(
+                        color: section.dotColor,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Wrap(
+                        crossAxisAlignment: WrapCrossAlignment.center,
+                        spacing: 8,
+                        runSpacing: 4,
+                        children: [
+                          Text(
+                            section.nameEn,
+                            style: CustomTextStyles.inter(
+                              color: isDark
+                                  ? AppColors.white
+                                  : AppColors.textPrimary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                          Text(
+                            section.nameBn,
+                            style: CustomTextStyles.inter(
+                              color: mutedTextColor,
+                              fontSize: 14,
+                            ),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 2,
+                            ),
+                            decoration: BoxDecoration(
+                              color: isDark
+                                  ? const Color(0xFF3B2B1C)
+                                  : const Color(0xFFFFF4E6),
+                              border: Border.all(
+                                color: isDark
+                                    ? const Color(0xFF674923)
+                                    : const Color(0xFFFFD8A8),
+                              ),
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Text(
+                              section.shift,
+                              style: CustomTextStyles.inter(
+                                color: isDark
+                                    ? const Color(0xFFFFB36B)
+                                    : const Color(0xFFD9480F),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.edit_outlined,
+                        size: 18,
+                        color: mutedTextColor,
+                      ),
+                      padding: EdgeInsets.zero,
+                      constraints: const BoxConstraints(),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 16),
+
+                // Bottom Info Row
+                Wrap(
+                  spacing: 24,
+                  runSpacing: 8,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.people_outline,
+                          size: 18,
+                          color: activeColor,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          '${section.students} জন ${l10n.classesSectionsStudents}',
+                          style: CustomTextStyles.inter(
+                            color: isDark
+                                ? AppColors.darkTextPrimary
+                                : AppColors.textPrimary,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Icon(
+                          Icons.person_outline,
+                          size: 18,
+                          color: mutedTextColor,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          '${l10n.classesSectionsTeacher}: ${section.teacher}',
+                          style: CustomTextStyles.inter(
+                            color: mutedTextColor,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPill(
+    String text,
+    bool isDark,
+    bool isPrimary, {
+    bool highlight = false,
+  }) {
+    Color bg;
+    Color border;
+    Color textCol;
+
+    if (isPrimary) {
+      bg = isDark ? const Color(0xFF4A152B) : const Color(0xFFFFDEEB);
+      border = bg;
+      textCol = isDark ? const Color(0xFFFF87AB) : const Color(0xFFD6336C);
+    } else if (highlight) {
+      final primaryColor = Theme.of(context).colorScheme.primary;
+      bg = primaryColor.withValues(alpha: 0.14);
+      border = primaryColor.withValues(alpha: 0.35);
+      textCol = primaryColor;
+    } else {
+      bg = isDark ? AppColors.darkSurfaceHighlight : const Color(0xFFF1F3F5);
+      border = isDark ? AppColors.darkBorder : const Color(0xFFDEE2E6);
+      textCol = isDark ? AppColors.darkTextPrimary : AppColors.textPrimary;
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: bg,
+        border: Border.all(color: border),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Text(
+        text,
+        style: CustomTextStyles.inter(
+          color: textCol,
+          fontSize: 12,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    );
+  }
+}

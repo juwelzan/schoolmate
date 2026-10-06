@@ -1,4 +1,3 @@
-import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
 class SplashPage extends StatefulWidget {

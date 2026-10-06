@@ -1,4 +1,3 @@
-import 'package:schoolmate/core/file_path.dart';
 
 // ignore_for_file: use_super_parameters
 

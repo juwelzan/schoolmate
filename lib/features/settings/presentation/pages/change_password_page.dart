@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:schoolmate/features/settings/presentation/widgets/custom_text_field.dart';
 import 'package:schoolmate/core/file_path.dart';
 
@@ -36,7 +35,7 @@ class ChangePasswordPage extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primaryPurple.withOpacity(0.04),
+                color: AppColors.primaryPurple.withValues(alpha: 0.04),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),

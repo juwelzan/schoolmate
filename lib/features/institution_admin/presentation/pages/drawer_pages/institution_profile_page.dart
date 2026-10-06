@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:schoolmate/core/file_path.dart';
 
 class InstitutionProfilePage extends StatelessWidget {
@@ -442,7 +440,7 @@ class InstitutionProfilePage extends StatelessWidget {
             fontSize: 13,
             fontWeight: FontWeight.w500,
           ),
-          value: items.first,
+          initialValue: items.first,
           decoration: InputDecoration(
             filled: true,
             fillColor: Theme.of(context).colorScheme.surfaceContainerHighest,

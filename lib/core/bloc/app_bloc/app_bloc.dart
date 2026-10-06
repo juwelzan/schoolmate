@@ -15,9 +15,9 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     final themeModeStr = prefs.getString('theme_mode') ?? 'system';
 
     ThemeMode themeMode = ThemeMode.system;
-    if (themeModeStr == 'light')
+    if (themeModeStr == 'light') {
       themeMode = ThemeMode.light;
-    else if (themeModeStr == 'dark')
+    } else if (themeModeStr == 'dark')
       themeMode = ThemeMode.dark;
 
     return AppState(locale: Locale(languageCode), themeMode: themeMode);

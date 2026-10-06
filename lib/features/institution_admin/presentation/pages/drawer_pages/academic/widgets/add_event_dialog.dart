@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart';
-import 'package:schoolmate/core/theme/app_colors.dart';
-import 'package:schoolmate/core/widgets/custom_text_style.dart';
-import 'package:schoolmate/l10n/app_localizations.dart';
+import 'package:schoolmate/core/file_path.dart';
+import '../models/calendar_event.dart';
 
 class AddEventDialog extends StatefulWidget {
   final DateTime? initialStartDate;
@@ -16,29 +14,40 @@ class AddEventDialog extends StatefulWidget {
 
 class _AddEventDialogState extends State<AddEventDialog> {
   String? _selectedType;
+  late TextEditingController _titleController;
   late TextEditingController _startDateController;
   late TextEditingController _endDateController;
+  DateTime? _start;
+  DateTime? _end;
 
   @override
   void initState() {
     super.initState();
+    _start = widget.initialStartDate ?? DateTime.now();
+    _end = widget.initialEndDate ?? DateTime.now();
+    _titleController = TextEditingController();
     _startDateController = TextEditingController(
-      text: widget.initialStartDate != null
-          ? "${widget.initialStartDate!.day.toString().padLeft(2, '0')}/${widget.initialStartDate!.month.toString().padLeft(2, '0')}/${widget.initialStartDate!.year}"
-          : '',
+      text: "${_start!.day.toString().padLeft(2, '0')}/${_start!.month.toString().padLeft(2, '0')}/${_start!.year}",
     );
     _endDateController = TextEditingController(
-      text: widget.initialEndDate != null
-          ? "${widget.initialEndDate!.day.toString().padLeft(2, '0')}/${widget.initialEndDate!.month.toString().padLeft(2, '0')}/${widget.initialEndDate!.year}"
-          : '',
+      text: "${_end!.day.toString().padLeft(2, '0')}/${_end!.month.toString().padLeft(2, '0')}/${_end!.year}",
     );
   }
 
   @override
   void dispose() {
+    _titleController.dispose();
     _startDateController.dispose();
     _endDateController.dispose();
     super.dispose();
+  }
+
+  Color _getColorForType(String type, AppLocalizations l10n) {
+    if (type == l10n.calendarHoliday) return const Color(0xFFD32F2F);
+    if (type == l10n.calendarExamPeriod) return Theme.of(context).colorScheme.primary;
+    if (type == l10n.calendarVacation) return const Color(0xFFFBC02D);
+    if (type == l10n.calendarTimetableSkip) return Colors.grey;
+    return const Color(0xFF4CAF50); // Event
   }
 
   Widget _buildTextField(
@@ -109,7 +118,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
     final l10n = AppLocalizations.of(context)!;
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
     final colorScheme = Theme.of(context).colorScheme;
-    final Color bgColor = colorScheme.surface;
     final Color borderColor = colorScheme.outlineVariant;
     final Color iconColor = isDark
         ? AppColors.darkTextSecondary
@@ -122,53 +130,36 @@ class _AddEventDialogState extends State<AddEventDialog> {
       l10n.calendarEvent,
       l10n.calendarTimetableSkip,
     ];
+    
+    _selectedType ??= eventTypes[3]; // default to Event
 
-    return Dialog(
-      backgroundColor: bgColor,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
-        width: 600,
-        padding: const EdgeInsets.all(24),
+    return AppFormDialog(
+      title: l10n.addEventDialogTitle,
+      cancelText: l10n.addEventCancel,
+      saveText: l10n.addEventSave,
+      onCancel: () => Navigator.of(context).pop(),
+      onSave: () {
+        if (_titleController.text.trim().isEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Please enter a title')),
+          );
+          return;
+        }
+        final event = CalendarEvent(
+          title: _titleController.text.trim(),
+          type: _selectedType!,
+          start: _start!,
+          end: _end!,
+          color: _getColorForType(_selectedType!, l10n),
+        );
+        Navigator.of(context).pop(event);
+      },
+      content: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  l10n.addEventDialogTitle,
-                  style: CustomTextStyles.inter(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: isDark ? AppColors.white : AppColors.textPrimary,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  icon: Icon(Icons.close, color: iconColor),
-                  splashRadius: 20,
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-
-            // Title Row
-            Row(
-              children: [
-                Expanded(
-                  child: _buildTextField(context, l10n.addEventTitleEnglish),
-                ),
-                const SizedBox(width: 16),
-                Expanded(
-                  child: _buildTextField(context, l10n.addEventTitleBangla),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-
-            // Type Dropdown
+            // Type Row
             Row(
               children: [
                 Expanded(
@@ -176,11 +167,9 @@ class _AddEventDialogState extends State<AddEventDialog> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        l10n.addEventType,
+                        'Type',
                         style: CustomTextStyles.inter(
-                          color: isDark
-                              ? AppColors.white
-                              : AppColors.textPrimary,
+                          color: colorScheme.onSurface,
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
@@ -199,15 +188,6 @@ class _AddEventDialogState extends State<AddEventDialog> {
                           child: DropdownButton<String>(
                             value: _selectedType,
                             isExpanded: true,
-                            hint: Text(
-                              'Select Type',
-                              style: CustomTextStyles.inter(
-                                color: isDark
-                                    ? AppColors.darkTextMuted
-                                    : AppColors.textMuted,
-                                fontSize: 14,
-                              ),
-                            ),
                             icon: Icon(
                               Icons.keyboard_arrow_down,
                               color: iconColor,
@@ -224,24 +204,7 @@ class _AddEventDialogState extends State<AddEventDialog> {
                             items: eventTypes.map((type) {
                               return DropdownMenuItem<String>(
                                 value: type,
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        type,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                    if (_selectedType == type)
-                                      Icon(
-                                        Icons.check,
-                                        size: 18,
-                                        color: isDark
-                                            ? AppColors.white
-                                            : AppColors.textPrimary,
-                                      ),
-                                  ],
-                                ),
+                                child: Text(type),
                               );
                             }).toList(),
                             onChanged: (val) {
@@ -258,8 +221,17 @@ class _AddEventDialogState extends State<AddEventDialog> {
                 const SizedBox(width: 16),
                 const Expanded(
                   child: SizedBox(),
-                ), // Empty space to match the screenshot
+                ), // Empty space
               ],
+            ),
+            const SizedBox(height: 16),
+            
+            // Title Field
+            _buildTextField(
+              context,
+              'Title',
+              hint: 'Event Title',
+              controller: _titleController,
             ),
             const SizedBox(height: 16),
 
@@ -278,16 +250,16 @@ class _AddEventDialogState extends State<AddEventDialog> {
               onTap: () async {
                 final date = await showDatePicker(
                   context: context,
-                  initialDate: widget.initialStartDate ?? DateTime.now(),
+                  initialDate: _start ?? DateTime.now(),
                   firstDate: DateTime(2000),
                   lastDate: DateTime(2100),
-                  builder: (context, child) {
-                    return Theme(data: Theme.of(context), child: child!);
-                  },
                 );
                 if (date != null) {
-                  _startDateController.text =
-                      "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}";
+                  setState(() {
+                    _start = date;
+                    _startDateController.text =
+                        "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}";
+                  });
                 }
               },
             ),
@@ -306,74 +278,18 @@ class _AddEventDialogState extends State<AddEventDialog> {
               onTap: () async {
                 final date = await showDatePicker(
                   context: context,
-                  initialDate: widget.initialEndDate ?? DateTime.now(),
+                  initialDate: _end ?? DateTime.now(),
                   firstDate: DateTime(2000),
                   lastDate: DateTime(2100),
-                  builder: (context, child) {
-                    return Theme(data: Theme.of(context), child: child!);
-                  },
                 );
                 if (date != null) {
-                  _endDateController.text =
-                      "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}";
+                  setState(() {
+                    _end = date;
+                    _endDateController.text =
+                        "${date.day.toString().padLeft(2, '0')}/${date.month.toString().padLeft(2, '0')}/${date.year}";
+                  });
                 }
               },
-            ),
-            const SizedBox(height: 16),
-            // Description
-            _buildTextField(context, l10n.addEventDescription, maxLines: 3),
-            const SizedBox(height: 32),
-
-            // Buttons
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                OutlinedButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  style: OutlinedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 14,
-                    ),
-                    side: BorderSide(color: borderColor),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Text(
-                    l10n.addEventCancel,
-                    style: CustomTextStyles.inter(
-                      color: isDark ? AppColors.white : AppColors.textPrimary,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                const SizedBox(width: 12),
-                ElevatedButton(
-                  onPressed: () {
-                    // Save action
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: colorScheme.primary,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 14,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    elevation: 0,
-                  ),
-                  child: Text(
-                    l10n.addEventSave,
-                    style: CustomTextStyles.inter(
-                      color: colorScheme.onPrimary,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-              ],
             ),
           ],
         ),

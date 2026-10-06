@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:schoolmate/features/settings/presentation/widgets/custom_text_field.dart';
 import 'package:schoolmate/core/file_path.dart';
 
@@ -57,7 +56,7 @@ class _AccountSecurityPageState extends State<AccountSecurityPage> {
                   borderRadius: BorderRadius.circular(12),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryPurple.withOpacity(0.04),
+                      color: AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -135,7 +134,7 @@ class _AccountSecurityPageState extends State<AccountSecurityPage> {
                   borderRadius: BorderRadius.circular(16),
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primaryPurple.withOpacity(0.04),
+                      color: AppColors.primaryPurple.withValues(alpha: 0.04),
                       blurRadius: 10,
                       offset: const Offset(0, 4),
                     ),
@@ -398,7 +397,7 @@ class _AccountSecurityPageState extends State<AccountSecurityPage> {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: DataTable(
-            headingRowColor: MaterialStateProperty.all(Colors.transparent),
+            headingRowColor: WidgetStateProperty.all(Colors.transparent),
             dividerThickness: 0.5,
             horizontalMargin: 0,
             columnSpacing: 32,

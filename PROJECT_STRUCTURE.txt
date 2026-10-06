@@ -1,0 +1,62 @@
+# SchoolMate Project Structure
+
+This document outlines the architecture, file organization, and conventions for the SchoolMate Flutter project.
+
+## 1. Project Overview
+
+SchoolMate is an educational institution management application designed to handle academic calendars, classes, sections, exams, attendance, and more. It serves different roles such as Institution Admin, Teachers, and Students.
+
+## 2. Folder Structure
+
+The project follows a feature-first architecture located within `lib/`.
+
+```text
+lib/
+├── core/
+│   ├── bloc/          # Global state management blocs
+│   ├── errors/        # App-wide error handling classes
+│   ├── network/       # API clients and network info
+│   ├── theme/         # Theming (colors, text styles, dark/light modes)
+│   ├── widgets/       # Global/shared reusable widgets
+│   └── file_path.dart # Centralized barrel file for exports
+├── features/
+│   ├── auth/          # Authentication flows
+│   ├── dashboard/     # Role-specific dashboard pages
+│   ├── institution_admin/ # Admin role pages and specific widgets
+│   ├── onboarding/    # Splash screens and role selection
+│   └── settings/      # App-wide settings and security
+├── l10n/              # Localization files (app_en.arb, app_bn.arb)
+└── main.dart          # Application entry point
+```
+
+## 3. Widget Architecture
+
+### Core / Global Widgets (`lib/core/widgets/`)
+Widgets that are generic and reused across multiple unrelated features are placed here.
+Examples:
+- `school_mate_app_bar.dart` (Main App Bar)
+- `app_drawer.dart` (Global Navigation Drawer)
+- `metric_card.dart` (Reusable statistic cards)
+- `dashboard_section_card.dart`
+- `dashed_border_painter.dart`
+
+### Feature-Specific / Local Widgets (`lib/features/<feature>/presentation/widgets/`)
+Widgets specific to a single feature. If a widget is only used inside the `academic` feature, it should stay inside `academic/widgets/`.
+Examples:
+- `academic_header_card.dart` (Inside `academic/widgets/`)
+- `add_event_dialog.dart` (Inside `academic/widgets/` for Calendar)
+
+## 4. State Management
+The project uses the `flutter_bloc` package (Bloc/Cubit) for state management. Global states are kept in `lib/core/bloc/`, while feature-specific logic is placed within `lib/features/<feature>/presentation/bloc/`.
+
+## 5. Routing and Navigation
+The project uses `go_router` for declarative URL-based navigation. Routes are defined centrally in `lib/core/routes/app_routes.dart`.
+
+## 6. Localization
+All user-facing strings are strictly defined in `lib/l10n/app_en.arb` and `lib/l10n/app_bn.arb`.
+Running `flutter gen-l10n` generates the `AppLocalizations` class. No hardcoded strings are allowed in the UI.
+
+## 7. Important Conventions
+- **Reuse first:** Before creating a UI component, check `lib/core/widgets/` to see if a similar one exists.
+- **Do not break UI:** Refactoring must not alter the visual design, spacing, colors, or typography.
+- **Imports:** Use the centralized `package:schoolmate/core/file_path.dart` instead of deep relative imports where possible.

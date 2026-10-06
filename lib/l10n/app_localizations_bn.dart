@@ -1448,6 +1448,23 @@ class AppLocalizationsBn extends AppLocalizations {
   String get componentTypesColStatus => 'স্ট্যাটাস';
 
   @override
+  String get classesSectionsHeaderBadge => 'ক্লাস এবং সেকশন কনফিগারেশন';
+
+  @override
+  String get classesSectionsHeaderDesc =>
+      'ক্লাস, সেকশন, শিফট এবং দায়িত্বপ্রাপ্ত শিক্ষকদের সমন্বয়ে একটি সুশৃঙ্খল কাঠামো তৈরি করুন।';
+
+  @override
+  String classesSectionsTotalClasses(int count) {
+    return 'মোট ক্লাস: $countটি';
+  }
+
+  @override
+  String classesSectionsTotalSections(int count) {
+    return 'মোট সেকশন: $countটি';
+  }
+
+  @override
   String get classesSectionsTitle => 'ক্লাস ও সেকশন';
 
   @override

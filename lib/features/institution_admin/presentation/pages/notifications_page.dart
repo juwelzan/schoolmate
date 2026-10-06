@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:schoolmate/core/file_path.dart';
-import 'package:go_router/go_router.dart';
 
 class NotificationsPage extends StatelessWidget {
   static const String routeName = '/notifications';

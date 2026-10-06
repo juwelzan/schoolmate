@@ -1440,6 +1440,23 @@ class AppLocalizationsEn extends AppLocalizations {
   String get componentTypesColStatus => 'Status';
 
   @override
+  String get classesSectionsHeaderBadge => 'Class & Section Configuration';
+
+  @override
+  String get classesSectionsHeaderDesc =>
+      'Define the hierarchical structure of classes, sections, shifts, and assign responsible teachers.';
+
+  @override
+  String classesSectionsTotalClasses(int count) {
+    return 'Total Classes: $count';
+  }
+
+  @override
+  String classesSectionsTotalSections(int count) {
+    return 'Total Sections: $count';
+  }
+
+  @override
   String get classesSectionsTitle => 'Classes & Sections';
 
   @override

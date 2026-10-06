@@ -1,5 +1,4 @@
 import 'package:schoolmate/core/file_path.dart';
-import 'package:schoolmate/core/widgets/school_mate_bottom_nav.dart';
 
 class MorePage extends StatelessWidget {
   static const String routeName = '/more';

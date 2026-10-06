@@ -490,6 +490,12 @@
   "classesSectionsTitle": "ক্লাস ও সেকশন",
   "classesSectionsSubtitle": "ক্লাস হায়ারার্কি ও শিফট-ভিত্তিক সেকশনগুলো পরিচালনা করুন",
   "classesSectionsAddClass": "ক্লাস যোগ করুন",
+  "classesSectionsHeaderBadge": "ক্লাস এবং সেকশন কনফিগারেশন",
+  "classesSectionsHeaderDesc": "ক্লাস, সেকশন, শিফট এবং দায়িত্বপ্রাপ্ত শিক্ষকদের সমন্বয়ে একটি সুশৃঙ্খল কাঠামো তৈরি করুন।",
+  "classesSectionsTotalClasses": "মোট ক্লাস: {count}টি",
+  "classesSectionsTotalSections": "মোট সেকশন: {count}টি",
+
+
   "classesSectionsTree": "ক্লাস ট্রি (Class Tree)",
   "classesSectionsAddSection": "সেকশন",
   "classesSectionsCollapseAll": "সব সংকুচিত করুন",
